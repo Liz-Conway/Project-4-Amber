@@ -1,0 +1,29 @@
+rabbit.data.layerStore.addLayerFromHtml('<div xmlns:sketchedHelper="java:it.rapidrabb.editor.stencils.helpers.SketchedHelper" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fn="http://www.w3.org/2005/xpath-functions">\
+   <div id="result">\
+      <div xmlns:xs="http://www.w3.org/2001/XMLSchema" id="__containerId__layer468730896" class="layer" name="__containerId__layer" data-layer-id="layer468730896" data-layer-type="layer" style="position:absolute;left:0px;top:0px;">\
+         <div id="__containerId__-layer468730896-chart485684942" style="position: absolute; left: 75px; top: 375px; width: 640px; height: 220px;-webkit-transform: rotate(0deg);transform: rotate(0deg);" data-stencil-type="static.chart" data-interactive-element-type="static.chart" class="chart stencil mobile-interaction-potential-trigger " data-stencil-id="chart485684942" data-anchor="" data-review-reference-id="chart485684942">\
+            <div class="stencil-wrapper" style="width: 640px; height: 220px">\
+               <div xmlns="http://www.w3.org/1999/xhtml" title="">\
+                  <svg overflow="hidden" style="height: 220px;width:640px;" viewBox="0 0 640 220" width="640" height="220">\
+                     <g width="640" height="220">\
+                        <g transform="scale(3.5555555555555554, 1.4666666666666666)">\
+                           <path xmlns="" id="defaultID" class=" svg_unselected_element" d="M 0.00, 0.00 Q 10.00, -1.48, 20.00, -1.58 Q 30.00, -1.67, 40.00, -1.38 Q 50.00, -1.55, 60.00, -1.54 Q 70.00, -1.13, 80.00, -1.05 Q 90.00, -0.91, 100.00, -1.13 Q 110.00, -0.80, 120.00, -1.22 Q 130.00, -0.47, 140.00, -0.67 Q 150.00, -0.60, 160.00, -0.56 Q 170.00, -0.58, 180.18, -0.18 Q 180.51, 10.55, 180.27, 21.39 Q 179.77, 32.16, 179.88, 42.86 Q 180.45, 53.56, 180.94, 64.28 Q 179.84, 75.00, 179.57, 85.72 Q 180.07, 96.43, 180.34, 107.14 Q 180.63, 117.86, 180.98, 128.57 Q 180.58, 139.29, 180.57, 150.57 Q 170.17, 150.51, 160.05, 150.38 Q 150.04, 150.53, 140.01, 150.27 Q 130.01, 150.75, 120.01, 150.76 Q 110.00, 150.28, 100.00, 150.65 Q 90.00, 149.63, 80.00, 149.74 Q 70.00, 149.63, 60.00, 149.36 Q 50.00, 150.67, 40.00, 150.08 Q 30.00, 150.49, 20.00, 151.18 Q 10.00, 149.82, 0.14, 149.86 Q 0.51, 139.12, 0.48, 128.50 Q -0.04, 117.86, -0.24, 107.15 Q -0.10, 96.43, -0.02, 85.71 Q -0.00, 75.00, -0.81, 64.29 Q -0.01, 53.57, -1.27, 42.86 Q -0.91, 32.14, -0.73, 21.43 Q 0.00, 10.71, 0.00, -0.00" style="fill:white;stroke:none;"></path>\
+                           <g style="stroke:black;fill:none;stroke-width:1px;">\
+                              <path xmlns="" class=" svg_unselected_element" d="M 9.00, 3.00 Q 10.60, 14.42, 10.59, 25.83 Q 10.56, 37.25, 10.52, 48.67 Q 10.86, 60.08, 10.54, 71.50 Q 10.83, 82.92, 9.97, 94.33 Q 10.78, 105.75, 10.21, 117.17 Q 9.79, 128.58, 9.54, 139.46 Q 19.93, 138.71, 30.22, 138.49 Q 40.57, 139.01, 51.02, 139.31 Q 61.52, 138.98, 72.02, 138.09 Q 82.51, 138.30, 93.00, 138.74 Q 103.50, 138.70, 114.00, 138.54 Q 124.50, 138.45, 135.00, 138.25 Q 145.50, 138.57, 156.00, 138.73 Q 166.50, 140.00, 177.00, 140.00" style=" fill:none;"></path>\
+                              <path xmlns="" class=" svg_unselected_element" d="M 168.00, 135.00 Q 173.67, 136.17, 178.78, 140.00 Q 173.00, 142.50, 168.00, 145.00" style=" fill:none;"></path>\
+                              <path xmlns="" class=" svg_unselected_element" d="M 4.00, 13.00 Q 7.27, 8.39, 9.00, 3.30 Q 11.50, 8.00, 14.00, 13.00" style=" fill:none;"></path>\
+                              <path xmlns="" class=" svg_unselected_element" d="M 19.00, 63.00 Q 28.50, 62.72, 38.29, 62.71 Q 38.72, 75.59, 38.91, 88.54 Q 38.85, 101.44, 38.95, 114.30 Q 38.75, 127.15, 38.47, 140.47 Q 28.40, 139.70, 18.75, 140.25 Q 18.65, 127.26, 18.59, 114.38 Q 19.10, 101.50, 18.85, 88.67 Q 19.00, 75.83, 19.00, 63.00" style=" fill:white;"></path>\
+                              <path xmlns="" class=" svg_unselected_element" d="M 47.00, 47.00 Q 56.50, 45.07, 67.05, 45.95 Q 67.54, 58.11, 67.63, 70.02 Q 67.83, 81.75, 67.78, 93.44 Q 67.40, 105.10, 67.51, 116.74 Q 67.84, 128.37, 66.96, 140.96 Q 56.98, 141.46, 46.32, 140.68 Q 46.31, 128.56, 46.27, 116.83 Q 46.06, 105.17, 46.04, 93.52 Q 45.78, 81.89, 45.55, 70.26 Q 47.00, 58.62, 47.00, 47.00" style=" fill:white;"></path>\
+                              <path xmlns="" class=" svg_unselected_element" d="M 76.00, 56.00 Q 85.50, 57.73, 94.54, 56.46 Q 93.88, 66.87, 95.42, 76.94 Q 95.04, 87.50, 94.23, 98.02 Q 95.77, 108.49, 96.23, 118.99 Q 95.56, 129.50, 95.32, 140.32 Q 85.42, 139.77, 76.18, 139.82 Q 76.54, 129.35, 75.97, 119.00 Q 75.10, 108.55, 75.82, 98.00 Q 76.18, 87.50, 75.88, 77.00 Q 76.00, 66.50, 76.00, 56.00" style=" fill:white;"></path>\
+                              <path xmlns="" class=" svg_unselected_element" d="M 104.00, 89.00 Q 113.50, 90.47, 122.42, 89.58 Q 122.84, 101.80, 123.14, 114.48 Q 123.46, 127.22, 123.59, 140.59 Q 113.98, 141.50, 103.27, 140.70 Q 102.70, 127.59, 102.63, 114.65 Q 104.00, 101.75, 104.00, 89.00" style=" fill:white;"></path>\
+                              <path xmlns="" class=" svg_unselected_element" d="M 133.00, 31.00 Q 142.50, 31.42, 151.76, 31.24 Q 151.68, 42.01, 152.21, 52.77 Q 152.72, 63.65, 152.77, 74.58 Q 153.14, 85.48, 152.95, 96.39 Q 152.82, 107.30, 152.35, 118.20 Q 152.01, 129.10, 152.13, 140.13 Q 142.34, 139.52, 132.83, 140.17 Q 132.36, 129.27, 131.88, 118.32 Q 132.60, 107.32, 132.34, 96.42 Q 132.66, 85.50, 132.88, 74.60 Q 132.62, 63.70, 132.54, 52.80 Q 133.00, 41.90, 133.00, 31.00" style=" fill:white;"></path>\
+                           </g>\
+                        </g>\
+                     </g>\
+                  </svg>\
+               </div>\
+            </div>\
+         </div>\
+      </div>\
+   </div>\
+</div>');

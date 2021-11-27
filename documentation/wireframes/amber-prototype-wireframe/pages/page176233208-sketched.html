@@ -1,0 +1,177 @@
+<!DOCTYPE html><html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml"><head><title>notes - Pidoco° - Prototype Test</title><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=normal"></meta><meta name="apple-mobile-web-app-capable" content="yes"></meta><link rel="manifest" href="../resources/manifest.json"></link><style>
+					@font-face {
+						font-family: 'Glyphicons';
+						src: url('../resources/fonts/glyphicons-regular.eot');
+						src: url('../resources/fonts/glyphicons-regular.eot?#iefix') format('eot'), url('../resources/fonts/glyphicons-regular.woff') format('woff'), url('../resources/fonts/glyphicons-regular.ttf') format('truetype');
+						font-weight: normal;
+						font-style: normal;
+					}
+					
+					@font-face {
+						font-family: 'Pidoco Android';
+						src: url('../resources/fonts/androidiconfont.eot');
+						src: url('../resources/fonts/androidiconfont.eot?#iefix') format('eot'), url('../resources/fonts/androidiconfont.woff') format('woff'), url('../resources/fonts/androidiconfont.ttf') format('truetype');
+						font-weight: normal;
+						font-style: normal;
+					}
+
+					/* Critical CSS */
+					.pidoco .p-Preview {
+						display: flex;
+						flex-direction: column;
+						flex-wrap: nowrap;
+						align-items: flex-start;
+						height: 100%;
+					}
+
+					.pidoco .p-Preview-prototype {
+						margin: auto;
+					}
+				</style><link rel="preload" type="text/css" href="../resources/simulation-assets/version-2.56.0/result/css/result-min-2.56.0.css" as="style" onload="this.onload=null;this.rel='stylesheet'"></link><link rel="preload" type="text/css" href="../resources/yui/container/assets/skins/sam/container.css" as="style" onload="this.onload=null;this.rel='stylesheet'"></link><link rel="preload" type="text/css" href="../resources/yui/calendar/assets/skins/sam/calendar.css" as="style" onload="this.onload=null;this.rel='stylesheet'"></link><link rel="preload" type="text/css" href="../resources/yui/menu/assets/skins/sam/menu.css" as="style" onload="this.onload=null;this.rel='stylesheet'"></link><link rel="preload" type="text/css" href="../resources/yui/autocomplete/assets/skins/sam/autocomplete.css" as="style" onload="this.onload=null;this.rel='stylesheet'"></link><script type="text/javascript">
+						
+							/*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */
+							!function(n){"use strict";n.loadCSS||(n.loadCSS=function(){});var o=loadCSS.relpreload={};if(o.support=function(){var e;try{e=n.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),o.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},o.poly=function(){if(!o.support())for(var t=n.document.getElementsByTagName("link"),e=0;e<t.length;e++){var a=t[e];"preload"!==a.rel||"style"!==a.getAttribute("as")||a.getAttribute("data-loadcss")||(a.setAttribute("data-loadcss",!0),o.bindMediaToggle(a))}},!o.support()){o.poly();var t=n.setInterval(o.poly,500);n.addEventListener?n.addEventListener("load",function(){o.poly(),n.clearInterval(t)}):n.attachEvent&&n.attachEvent("onload",function(){o.poly(),n.clearInterval(t)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:n.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+						
+					</script><script type="text/javascript">
+					var rabbit = {
+						errorContext: function(f) {
+							try {
+								f();
+							} catch(e) {
+								rabbit.util.submitError(e);
+							}
+						},
+						parameters: {
+						}
+					};
+					var pidoco = {};
+					
+					rabbit.parameters.codeVersion = '2.56.0';
+					rabbit.parameters.uid = 'anonymous';
+					rabbit.parameters.bugsnagApiKey = '8084398cac101d633d1781f9f653ea96';
+					rabbit.parameters.bugsnagEnvironmentPrefix = '';
+					rabbit.parameters.isExport = true;
+					rabbit.prototypeType = '';
+				</script><script xmlns="" type="text/javascript">Ext = {util:{}};</script><script xmlns="" type="text/javascript" src="../resources/simulation-assets/version-2.56.0/result/scripts/script.js"></script><script xmlns="" type="text/javascript" src="../resources/simulation-assets/version-2.56.0/result/scripts/lang/en.js"></script><script type="text/javascript">
+					rabbit.result.manager.currentPageNr = 'page176233208';
+					rabbit.result.manager.currentPrototypeId = '295670';
+					rabbit.result.manager.baseUrl = '../resources/view/295670';
+					rabbit.result.lang = 'en';
+					rabbit.result.manager.urlPattern = 'null-sketched.html';
+					rabbit.result.manager.currentRole = '';
+					rabbit.parameters.isApi = false;
+					rabbit.parameters.isAnonymous = false;
+					rabbit.parameters.showFrame = true;
+					rabbit.parameters.fitScreen = true;
+					rabbit.parameters.isInvitation = false;
+					rabbit.parameters.userPrefs = {};
+					rabbit.parameters.prototypePrefs = {};
+					rabbit.parameters.viewMode = 'view';
+					rabbit.parameters.fontFamily = 'none';
+					rabbit.parameters.exportSuffixFilename = 'sketched';
+					rabbit.parameters.environment = 'SERVER';
+					rabbit.parameters.readApiKey = '';
+					rabbit.parameters.parsedUserAgent = {"Useragent":"{}","DeviceClass":"Hacker","DeviceName":"Hacker","DeviceBrand":"Hacker","DeviceVersion":"Hacker","OperatingSystemClass":"Hacker","OperatingSystemName":"Hacker","OperatingSystemVersion":"Hacker","OperatingSystemVersionMajor":"Hacker","OperatingSystemNameVersion":"Hacker","OperatingSystemNameVersionMajor":"Hacker","LayoutEngineClass":"Hacker","LayoutEngineName":"Hacker","LayoutEngineVersion":"Hacker","LayoutEngineVersionMajor":"Hacker","LayoutEngineNameVersion":"Hacker","LayoutEngineNameVersionMajor":"Hacker","AgentClass":"Hacker","AgentName":"Hacker","AgentVersion":"Hacker","AgentVersionMajor":"Hacker","AgentNameVersion":"Hacker","AgentNameVersionMajor":"Hacker","HackerAttackVector":"Unknown","HackerToolkit":"Unknown","__SyntaxError__":"true"};
+					
+					
+					_.mixin(s.exports());
+					
+				</script><style type="text/css">
+					.repository.during-transition {
+						background-image: none !important;
+					}
+					
+		
+		.repository[data-review-reference-id="page176233208"], .transition-wrapper[data-page-id="page176233208"] .layer-container {
+			position: absolute;
+			background-color: rgba(255, 255, 255, 1);
+		}
+	
+		body[data-current-page-id="page176233208"] .border-wrapper,
+		body[data-current-page-id="page176233208"] .simulation-container {
+			width:300px;
+		}
+		
+		body.has-frame[data-current-page-id="page176233208"] .border-wrapper,
+		body.has-frame[data-current-page-id="page176233208"] .simulation-container {
+			height:100px;
+		}
+		
+		body[data-current-page-id="page176233208"] .svg-border-300-100 {
+			display: block !important;
+		}
+		
+		body[data-current-page-id="page176233208"] .border-wrapper .border-div {
+			width:300px;
+			height:100px;
+		}
+	</style><link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico"></link></head><body class="p-Simulation--web  sketched-none sketched pidoco browser-non-ie  no-api-call " data-current-page-id="page176233208" onload=""><script type="text/javascript">
+					$(document).ready(function(){
+						rabbit.errorContext(function () {
+
+							if (!rabbit.data) {
+								rabbit.data = {};
+							}
+							if (!rabbit.data.raw) {
+								rabbit.data.raw = {};
+							}
+							rabbit.data.raw = {
+								
+									folders:{
+										
+									},
+									pages:{
+										"page176233208": 
+										
+		{
+			"id": "page176233208",
+			"name": "notes",
+			"layers": {
+				
+					"layer678448374":false,
+					"layer57648228":false,
+					"layer343166964":false,
+					"layer468730896":false,
+					"layer256459151":false,
+					"layer985253505":false,
+					"layer62462689":false,
+					"layer654934836":false,
+					"layer822000984":false,
+					"layer604003765":false,
+					"layer815454564":false,
+					"layer633563046":false,
+					"layer10632108":false,
+					"layer240632018":false,
+					"layer281830823":false,
+					"layer439961405":false
+			},
+			"image":"../resources/icons/no_image.png",
+			"width":300,
+			"height":100,
+			"parentFolder": "",
+			"frame": "custom",
+			"frameOrientation": "custom",
+			"renderAboveLayer": "layer281830823"
+		}
+	
+									}
+								
+							}
+					
+							rabbit.result.manager.init('page176233208', '', 'non-ie', false);
+						});
+					});
+				</script><div id="mode" style="display:none">sketched</div><div id="mode" style="display:none">sketched</div><div id="pageNames" style="display: none">{"page274097127":"page274097127-sketched.html","page908621287":"page908621287-sketched.html","page349848148":"page349848148-sketched.html","230889988":"230889988-sketched.html","395948620":"395948620-sketched.html","1928008671":"1928008671-sketched.html","page939173444":"page939173444-sketched.html","1843522631":"1843522631-sketched.html","861212225":"861212225-sketched.html","525533101":"525533101-sketched.html","page387313055":"page387313055-sketched.html","589777108":"589777108-sketched.html","page456294535":"page456294535-sketched.html","page561306194":"page561306194-sketched.html","1143104807":"1143104807-sketched.html","1352844016":"1352844016-sketched.html","page326910238":"page326910238-sketched.html","page271449406":"page271449406-sketched.html","571017249":"571017249-sketched.html","416590292":"416590292-sketched.html","1030411162":"1030411162-sketched.html","191701443":"191701443-sketched.html","page500707536":"page500707536-sketched.html","page756331396":"page756331396-sketched.html","page50841528":"page50841528-sketched.html","page176233208":"page176233208-sketched.html","page968649984":"page968649984-sketched.html","page30520088":"page30520088-sketched.html","page319966564":"page319966564-sketched.html","548834494":"548834494-sketched.html","page604742207":"page604742207-sketched.html","1908333526":"1908333526-sketched.html","1250610135":"1250610135-sketched.html"}</div><svg style="position: absolute; top: 0px; left:0px;width:0px;height:0px;"><defs><marker id="startarrowhead" viewBox="0 0 10 10" refX="1" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="8" orient="auto"><path style="fill:none;stroke:black;" d="M 10 0 L 0 5 L 10 10"></path></marker><marker id="endarrowhead" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="8" orient="auto"><path style="fill:none;stroke:black;" d="M 0 0 L 10 5 L 0 10"></path></marker><pattern id="sketchedHover" x="30" y="20" width="50" height="60" patternUnits="userSpaceOnUse"><image href="../resources/icons/sketchedFilledButton.png" width="175" height="75"></image></pattern></defs></svg><div class="p-Preview" data-p-component="preview"><div class="p-Preview-prototype"><div class="simulation-container"><div class="simulation-scaled"><svg class="frame-wrapper" height="100000" width="100000"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" class="frame" x="0" y="0"><use xlink:href="#"></use></svg></svg><div class="border-wrapper"><div xmlns:json="http://json.org/" xmlns="" class="svg-border svg-border-300-100" style="display: none;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" overflow="hidden" class="svg_border" style="position:absolute;left:-43px;top:-13px;width:357px;height:124px;"><path xmlns="" class=" svg_unselected_element" d="M 32.00, 3.00 Q 42.33, 2.70, 52.67, 3.05 Q 63.00, 3.06, 73.33, 3.47 Q 83.67, 2.14, 94.00, 2.99 Q 104.33, 2.83, 114.67, 3.07 Q 125.00, 3.26, 135.33, 1.85 Q 145.67, 1.95, 156.00, 3.25 Q 166.33, 3.85, 176.67, 2.85 Q 187.00, 2.80, 197.33, 3.30 Q 207.67, 4.78, 218.00, 3.70 Q 228.33, 3.16, 238.67, 1.90 Q 249.00, 1.09, 259.33, 2.77 Q 269.67, 2.99, 280.00, 4.79 Q 290.33, 3.59, 300.67, 4.27 Q 311.00, 3.50, 321.33, 2.35 Q 331.67, 1.82, 342.51, 2.49 Q 342.73, 13.26, 342.30, 23.96 Q 341.39, 34.54, 340.74, 45.04 Q 340.83, 55.52, 342.46, 66.00 Q 342.54, 76.50, 341.64, 87.00 Q 341.84, 97.50, 341.85, 107.85 Q 331.93, 108.79, 321.51, 109.26 Q 311.05, 108.68, 300.67, 108.05 Q 290.34, 108.50, 280.01, 109.03 Q 269.67, 108.67, 259.33, 107.25 Q 249.00, 107.47, 238.67, 109.07 Q 228.33, 109.25, 218.00, 108.35 Q 207.67, 108.34, 197.33, 109.01 Q 187.00, 109.15, 176.67, 109.09 Q 166.33, 108.82, 156.00, 108.63 Q 145.67, 108.65, 135.33, 108.19 Q 125.00, 108.02, 114.67, 108.17 Q 104.33, 108.84, 94.00, 107.90 Q 83.67, 107.05, 73.33, 107.11 Q 63.00, 106.71, 52.67, 107.59 Q 42.33, 107.22, 31.92, 108.08 Q 31.07, 97.81, 30.76, 87.18 Q 30.75, 76.58, 30.86, 66.04 Q 31.31, 55.51, 31.86, 45.00 Q 31.71, 34.50, 31.15, 24.00 Q 32.00, 13.50, 32.00, 3.00" style=" fill:white;"></path><path xmlns="" class=" svg_unselected_element" d="M 23.00, 7.00 Q 33.33, 5.50, 43.67, 5.34 Q 54.00, 5.61, 64.33, 5.61 Q 74.67, 5.62, 85.00, 5.94 Q 95.33, 5.81, 105.67, 5.97 Q 116.00, 5.87, 126.33, 5.84 Q 136.67, 6.07, 147.00, 6.20 Q 157.33, 6.84, 167.67, 6.65 Q 178.00, 6.59, 188.33, 6.93 Q 198.67, 7.69, 209.00, 6.51 Q 219.33, 6.89, 229.67, 6.26 Q 240.00, 6.25, 250.33, 6.60 Q 260.67, 6.20, 271.00, 6.25 Q 281.33, 6.30, 291.67, 7.09 Q 302.00, 6.49, 312.33, 6.62 Q 322.67, 6.23, 333.22, 6.78 Q 332.90, 17.53, 332.83, 28.02 Q 332.13, 38.56, 332.46, 49.02 Q 332.68, 59.51, 334.00, 69.99 Q 333.93, 80.50, 333.13, 91.00 Q 333.36, 101.50, 333.48, 112.48 Q 323.04, 113.13, 312.42, 112.64 Q 302.00, 111.95, 291.69, 112.58 Q 281.35, 112.97, 271.01, 112.96 Q 260.67, 113.11, 250.33, 112.85 Q 240.00, 113.14, 229.67, 113.02 Q 219.33, 112.47, 209.00, 112.07 Q 198.67, 112.37, 188.33, 112.79 Q 178.00, 111.86, 167.67, 112.21 Q 157.33, 112.37, 147.00, 112.84 Q 136.67, 112.80, 126.33, 112.34 Q 116.00, 111.80, 105.67, 111.75 Q 95.33, 112.11, 85.00, 111.41 Q 74.67, 112.30, 64.33, 110.78 Q 54.00, 110.74, 43.67, 111.78 Q 33.33, 111.88, 22.87, 112.13 Q 22.51, 101.66, 21.71, 91.18 Q 21.24, 80.62, 21.61, 70.04 Q 23.27, 59.50, 22.14, 49.01 Q 21.21, 38.51, 21.74, 28.00 Q 23.00, 17.50, 23.00, 7.00" style=" fill:white;"></path><path xmlns="" class=" svg_unselected_element" d="M 40.00, 11.00 Q 50.33, 8.85, 60.67, 9.14 Q 71.00, 9.05, 81.33, 10.51 Q 91.67, 10.28, 102.00, 9.05 Q 112.33, 9.13, 122.67, 10.19 Q 133.00, 10.44, 143.33, 10.05 Q 153.67, 10.19, 164.00, 9.99 Q 174.33, 9.06, 184.67, 10.60 Q 195.00, 10.51, 205.33, 10.81 Q 215.67, 10.85, 226.00, 10.25 Q 236.33, 10.20, 246.67, 9.46 Q 257.00, 9.82, 267.33, 9.98 Q 277.67, 9.85, 288.00, 10.32 Q 298.33, 9.79, 308.67, 9.47 Q 319.00, 10.32, 329.33, 10.57 Q 339.67, 10.56, 350.80, 10.20 Q 351.55, 20.98, 351.86, 31.73 Q 352.14, 42.36, 352.30, 52.93 Q 352.51, 63.46, 352.13, 73.98 Q 351.70, 84.49, 350.99, 95.00 Q 351.42, 105.50, 350.73, 116.73 Q 339.93, 116.79, 329.46, 116.89 Q 319.05, 116.72, 308.68, 116.34 Q 298.34, 116.54, 288.00, 116.49 Q 277.67, 115.89, 267.33, 115.89 Q 257.00, 116.16, 246.67, 116.75 Q 236.33, 116.61, 226.00, 117.04 Q 215.67, 116.74, 205.33, 115.91 Q 195.00, 115.77, 184.67, 115.33 Q 174.33, 115.22, 164.00, 115.60 Q 153.67, 116.02, 143.33, 117.16 Q 133.00, 117.92, 122.67, 117.60 Q 112.33, 117.46, 102.00, 117.60 Q 91.67, 117.43, 81.33, 118.15 Q 71.00, 118.45, 60.67, 117.99 Q 50.33, 118.01, 38.85, 117.15 Q 38.80, 105.90, 38.72, 95.18 Q 38.68, 84.59, 39.14, 74.03 Q 40.45, 63.49, 39.88, 53.00 Q 39.66, 42.50, 39.17, 32.00 Q 40.00, 21.50, 40.00, 11.00" style=" fill:white;"></path></svg></div><div id="borderDiv" class="border-div"><div class="p-OriginElement">origin</div><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="" id="repository" style="width: 100%; height: 100%;" class="repository mobile-interaction-potential-trigger" data-review-reference-id="page176233208" data-page-id="page176233208"><div data-layer-id="layer678448374" id="repository-layer678448374-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer678448374 u-p-hidden"></div><div data-layer-id="layer57648228" id="repository-layer57648228-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer57648228 u-p-hidden"></div><div data-layer-id="layer343166964" id="repository-layer343166964-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer343166964 u-p-hidden"></div><div data-layer-id="layer468730896" id="repository-layer468730896-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer468730896 u-p-hidden"></div><div data-layer-id="layer256459151" id="repository-layer256459151-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer256459151 u-p-hidden"></div><div data-layer-id="layer985253505" id="repository-layer985253505-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer985253505 u-p-hidden"></div><div data-layer-id="layer62462689" id="repository-layer62462689-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer62462689 u-p-hidden"></div><div data-layer-id="layer654934836" id="repository-layer654934836-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer654934836 u-p-hidden"></div><div data-layer-id="layer822000984" id="repository-layer822000984-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer822000984 u-p-hidden"></div><div data-layer-id="layer604003765" id="repository-layer604003765-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer604003765 u-p-hidden"></div><div data-layer-id="layer815454564" id="repository-layer815454564-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer815454564 u-p-hidden"></div><div data-layer-id="layer633563046" id="repository-layer633563046-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer633563046 u-p-hidden"></div><div data-layer-id="layer10632108" id="repository-layer10632108-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer10632108 u-p-hidden"></div><div data-layer-id="layer240632018" id="repository-layer240632018-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer240632018 u-p-hidden"></div><div data-layer-id="layer281830823" id="repository-layer281830823-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer281830823 u-p-hidden"></div><div data-layer-id="page176233208" id="repository-page176233208-wrapper" data-updated-at="1580246999" class=" wrapper wrapper-page176233208"><div id="repositorypage176233208-layer" class="layer" name="repositorypageLayer" data-layer-id="page176233208" data-layer-type="pageLayer" style="position:absolute;left:0px;top:0px;"><div id="repository-page176233208-layer-text2244038117" style="position: absolute; left: 15px; top: 10px; width: 210px; height: 64px;-webkit-transform: rotate(0deg);transform: rotate(0deg);" data-stencil-type="default.text2" data-interactive-element-type="default.text2" class="text2 stencil mobile-interaction-potential-trigger " data-stencil-id="text2244038117" data-anchor="" data-review-reference-id="text2244038117"><div class="stencil-wrapper" style="width: 210px; height: 64px"><div xmlns="http://www.w3.org/1999/xhtml" title=""><span class="default-text2-container-wrapper default-text2-version2-container-wrapper" title=""><span class="default-text2-container" data-child-type="default.text2"><ul>
+<li style="font-size: 14px;">Not confident with horse.</li>
+<li style="font-size: 14px;">Monitor for attention</li>
+<li style="font-size: 14px;">Start with introducing to horse.</li>
+<li style="font-size: 14px;">What to do</li>
+</ul></span></span></div></div></div></div></div><div data-layer-id="layer439961405" id="repository-layer439961405-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer439961405 u-p-hidden"></div></div><div id="dContainer" style="position:absolute;top:0px;width:300px;height:0px;left:0px;background:transparent;" class="yui-skin-sam"></div></div></div></div></div></div></div><script type="text/javascript">
+			$(document).ready(function(){
+				rabbit.errorContext(function () {
+					
+						rabbit.result.manager.pageReady('page176233208');
+					
+				});
+			});
+		</script></body></html>

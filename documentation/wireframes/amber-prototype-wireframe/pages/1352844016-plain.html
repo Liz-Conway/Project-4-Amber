@@ -1,0 +1,182 @@
+<!DOCTYPE html><html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml"><head><title>Dialogue - Session Recorded - Pidoco° - Prototype Test</title><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=normal"></meta><meta name="apple-mobile-web-app-capable" content="yes"></meta><link rel="manifest" href="../resources/manifest.json"></link><style>
+					@font-face {
+						font-family: 'Glyphicons';
+						src: url('../resources/fonts/glyphicons-regular.eot');
+						src: url('../resources/fonts/glyphicons-regular.eot?#iefix') format('eot'), url('../resources/fonts/glyphicons-regular.woff') format('woff'), url('../resources/fonts/glyphicons-regular.ttf') format('truetype');
+						font-weight: normal;
+						font-style: normal;
+					}
+					
+					@font-face {
+						font-family: 'Pidoco Android';
+						src: url('../resources/fonts/androidiconfont.eot');
+						src: url('../resources/fonts/androidiconfont.eot?#iefix') format('eot'), url('../resources/fonts/androidiconfont.woff') format('woff'), url('../resources/fonts/androidiconfont.ttf') format('truetype');
+						font-weight: normal;
+						font-style: normal;
+					}
+
+					/* Critical CSS */
+					.pidoco .p-Preview {
+						display: flex;
+						flex-direction: column;
+						flex-wrap: nowrap;
+						align-items: flex-start;
+						height: 100%;
+					}
+
+					.pidoco .p-Preview-prototype {
+						margin: auto;
+					}
+				</style><link rel="preload" type="text/css" href="../resources/simulation-assets/version-2.56.0/result/css/result-min-2.56.0.css" as="style" onload="this.onload=null;this.rel='stylesheet'"></link><link rel="preload" type="text/css" href="../resources/yui/container/assets/skins/sam/container.css" as="style" onload="this.onload=null;this.rel='stylesheet'"></link><link rel="preload" type="text/css" href="../resources/yui/calendar/assets/skins/sam/calendar.css" as="style" onload="this.onload=null;this.rel='stylesheet'"></link><link rel="preload" type="text/css" href="../resources/yui/menu/assets/skins/sam/menu.css" as="style" onload="this.onload=null;this.rel='stylesheet'"></link><link rel="preload" type="text/css" href="../resources/yui/autocomplete/assets/skins/sam/autocomplete.css" as="style" onload="this.onload=null;this.rel='stylesheet'"></link><script type="text/javascript">
+						
+							/*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */
+							!function(n){"use strict";n.loadCSS||(n.loadCSS=function(){});var o=loadCSS.relpreload={};if(o.support=function(){var e;try{e=n.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),o.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},o.poly=function(){if(!o.support())for(var t=n.document.getElementsByTagName("link"),e=0;e<t.length;e++){var a=t[e];"preload"!==a.rel||"style"!==a.getAttribute("as")||a.getAttribute("data-loadcss")||(a.setAttribute("data-loadcss",!0),o.bindMediaToggle(a))}},!o.support()){o.poly();var t=n.setInterval(o.poly,500);n.addEventListener?n.addEventListener("load",function(){o.poly(),n.clearInterval(t)}):n.attachEvent&&n.attachEvent("onload",function(){o.poly(),n.clearInterval(t)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:n.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+						
+					</script><script type="text/javascript">
+					var rabbit = {
+						errorContext: function(f) {
+							try {
+								f();
+							} catch(e) {
+								rabbit.util.submitError(e);
+							}
+						},
+						parameters: {
+						}
+					};
+					var pidoco = {};
+					
+					rabbit.parameters.codeVersion = '2.56.0';
+					rabbit.parameters.uid = 'anonymous';
+					rabbit.parameters.bugsnagApiKey = '8084398cac101d633d1781f9f653ea96';
+					rabbit.parameters.bugsnagEnvironmentPrefix = '';
+					rabbit.parameters.isExport = true;
+					rabbit.prototypeType = '';
+				</script><script xmlns="" type="text/javascript">Ext = {util:{}};</script><script xmlns="" type="text/javascript" src="../resources/simulation-assets/version-2.56.0/result/scripts/script.js"></script><script xmlns="" type="text/javascript" src="../resources/simulation-assets/version-2.56.0/result/scripts/lang/en.js"></script><script type="text/javascript">
+					rabbit.result.manager.currentPageNr = '1352844016';
+					rabbit.result.manager.currentPrototypeId = '295670';
+					rabbit.result.manager.baseUrl = '../resources/view/295670';
+					rabbit.result.lang = 'en';
+					rabbit.result.manager.urlPattern = 'null-plain.html';
+					rabbit.result.manager.currentRole = '';
+					rabbit.parameters.isApi = false;
+					rabbit.parameters.isAnonymous = false;
+					rabbit.parameters.showFrame = true;
+					rabbit.parameters.fitScreen = true;
+					rabbit.parameters.isInvitation = false;
+					rabbit.parameters.userPrefs = {};
+					rabbit.parameters.prototypePrefs = {};
+					rabbit.parameters.viewMode = 'view';
+					rabbit.parameters.fontFamily = 'none';
+					rabbit.parameters.exportSuffixFilename = 'plain';
+					rabbit.parameters.environment = 'SERVER';
+					rabbit.parameters.readApiKey = '';
+					rabbit.parameters.parsedUserAgent = {"Useragent":"{}","DeviceClass":"Hacker","DeviceName":"Hacker","DeviceBrand":"Hacker","DeviceVersion":"Hacker","OperatingSystemClass":"Hacker","OperatingSystemName":"Hacker","OperatingSystemVersion":"Hacker","OperatingSystemVersionMajor":"Hacker","OperatingSystemNameVersion":"Hacker","OperatingSystemNameVersionMajor":"Hacker","LayoutEngineClass":"Hacker","LayoutEngineName":"Hacker","LayoutEngineVersion":"Hacker","LayoutEngineVersionMajor":"Hacker","LayoutEngineNameVersion":"Hacker","LayoutEngineNameVersionMajor":"Hacker","AgentClass":"Hacker","AgentName":"Hacker","AgentVersion":"Hacker","AgentVersionMajor":"Hacker","AgentNameVersion":"Hacker","AgentNameVersionMajor":"Hacker","HackerAttackVector":"Unknown","HackerToolkit":"Unknown","__SyntaxError__":"true"};
+					
+					
+					_.mixin(s.exports());
+					
+				</script><style type="text/css">
+					.repository.during-transition {
+						background-image: none !important;
+					}
+					
+		
+		.repository[data-review-reference-id="1352844016"], .transition-wrapper[data-page-id="1352844016"] .layer-container {
+			position: absolute;
+			background-color: rgba(255, 255, 255, 1);
+		}
+	
+		body[data-current-page-id="1352844016"] .border-wrapper,
+		body[data-current-page-id="1352844016"] .simulation-container {
+			width:420px;
+		}
+		
+		body.has-frame[data-current-page-id="1352844016"] .border-wrapper,
+		body.has-frame[data-current-page-id="1352844016"] .simulation-container {
+			height:200px;
+		}
+		
+		body[data-current-page-id="1352844016"] .svg-border-420-200 {
+			display: block !important;
+		}
+		
+		body[data-current-page-id="1352844016"] .border-wrapper .border-div {
+			width:420px;
+			height:200px;
+		}
+	</style><link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico"></link></head><body class="p-Simulation--web  plain-none plain pidoco browser-non-ie  no-api-call " data-current-page-id="1352844016" onload=""><script type="text/javascript">
+					$(document).ready(function(){
+						rabbit.errorContext(function () {
+
+							if (!rabbit.data) {
+								rabbit.data = {};
+							}
+							if (!rabbit.data.raw) {
+								rabbit.data.raw = {};
+							}
+							rabbit.data.raw = {
+								
+									folders:{
+										
+									},
+									pages:{
+										"1352844016": 
+										
+		{
+			"id": "1352844016",
+			"name": "Dialogue - Session Recorded",
+			"layers": {
+				
+					"layer678448374":false,
+					"layer57648228":false,
+					"layer343166964":false,
+					"layer468730896":false,
+					"layer256459151":false,
+					"layer985253505":false,
+					"layer62462689":false,
+					"layer654934836":false,
+					"layer822000984":false,
+					"layer604003765":false,
+					"layer815454564":false,
+					"layer633563046":false,
+					"layer10632108":false,
+					"layer240632018":false,
+					"layer281830823":false,
+					"layer439961405":false
+			},
+			"image":"../resources/icons/no_image.png",
+			"width":420,
+			"height":200,
+			"parentFolder": "",
+			"frame": "custom",
+			"frameOrientation": "custom",
+			"renderAboveLayer": "layer604003765"
+		}
+	
+									}
+								
+							}
+					
+							rabbit.result.manager.init('1352844016', '', 'non-ie', false);
+						});
+					});
+				</script><div id="mode" style="display:none">plain</div><div id="mode" style="display:none">plain</div><div id="pageNames" style="display: none">{"page274097127":"page274097127-plain.html","page908621287":"page908621287-plain.html","page349848148":"page349848148-plain.html","230889988":"230889988-plain.html","395948620":"395948620-plain.html","1928008671":"1928008671-plain.html","page939173444":"page939173444-plain.html","1843522631":"1843522631-plain.html","861212225":"861212225-plain.html","525533101":"525533101-plain.html","page387313055":"page387313055-plain.html","589777108":"589777108-plain.html","page456294535":"page456294535-plain.html","page561306194":"page561306194-plain.html","1143104807":"1143104807-plain.html","1352844016":"1352844016-plain.html","page326910238":"page326910238-plain.html","page271449406":"page271449406-plain.html","571017249":"571017249-plain.html","416590292":"416590292-plain.html","1030411162":"1030411162-plain.html","191701443":"191701443-plain.html","page500707536":"page500707536-plain.html","page756331396":"page756331396-plain.html","page50841528":"page50841528-plain.html","page176233208":"page176233208-plain.html","page968649984":"page968649984-plain.html","page30520088":"page30520088-plain.html","page319966564":"page319966564-plain.html","548834494":"548834494-plain.html","page604742207":"page604742207-plain.html","1908333526":"1908333526-plain.html","1250610135":"1250610135-plain.html"}</div><svg style="position: absolute; top: 0px; left:0px;width:0px;height:0px;"><defs><marker id="startarrowhead" viewBox="0 0 10 10" refX="1" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="8" orient="auto"><path style="fill:none;stroke:black;" d="M 10 0 L 0 5 L 10 10"></path></marker><marker id="endarrowhead" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="8" orient="auto"><path style="fill:none;stroke:black;" d="M 0 0 L 10 5 L 0 10"></path></marker><pattern id="sketchedHover" x="30" y="20" width="50" height="60" patternUnits="userSpaceOnUse"><image href="../resources/icons/sketchedFilledButton.png" width="175" height="75"></image></pattern></defs></svg><div class="p-Preview" data-p-component="preview"><div class="p-Preview-prototype"><div class="simulation-container"><div class="simulation-scaled"><svg class="frame-wrapper" height="100000" width="100000"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" class="frame" x="0" y="0"><use xlink:href="#"></use></svg></svg><div class="border-wrapper"><div id="borderDiv" class="border-div"><div class="p-OriginElement">origin</div><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="" id="repository" style="width: 100%; height: 100%;" class="repository mobile-interaction-potential-trigger" data-review-reference-id="1352844016" data-page-id="1352844016"><div data-layer-id="layer678448374" id="repository-layer678448374-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer678448374 u-p-hidden"></div><div data-layer-id="layer57648228" id="repository-layer57648228-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer57648228 u-p-hidden"></div><div data-layer-id="layer343166964" id="repository-layer343166964-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer343166964 u-p-hidden"></div><div data-layer-id="layer468730896" id="repository-layer468730896-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer468730896 u-p-hidden"></div><div data-layer-id="layer256459151" id="repository-layer256459151-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer256459151 u-p-hidden"></div><div data-layer-id="layer985253505" id="repository-layer985253505-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer985253505 u-p-hidden"></div><div data-layer-id="layer62462689" id="repository-layer62462689-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer62462689 u-p-hidden"></div><div data-layer-id="layer654934836" id="repository-layer654934836-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer654934836 u-p-hidden"></div><div data-layer-id="layer822000984" id="repository-layer822000984-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer822000984 u-p-hidden"></div><div data-layer-id="layer604003765" id="repository-layer604003765-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer604003765 u-p-hidden"></div><div data-layer-id="1352844016" id="repository-1352844016-wrapper" data-updated-at="1580246999" class=" wrapper wrapper-1352844016"><div id="repository1352844016-layer" class="layer" name="repositorypageLayer" data-layer-id="1352844016" data-layer-type="pageLayer" style="position:absolute;left:0px;top:0px;"><div id="repository-1352844016-layer-1530484103" style="position: absolute; left: 5px; top: 5px; width: 410px; height: 190px;-webkit-transform: rotate(0deg);transform: rotate(0deg);" data-stencil-type="static.rect" data-interactive-element-type="static.rect" class="rect stencil mobile-interaction-potential-trigger " data-stencil-id="1530484103" data-anchor="" data-review-reference-id="1530484103"><div class="stencil-wrapper" style="width: 410px; height: 190px"><div xmlns="http://www.w3.org/1999/xhtml" title=""><svg xmlns:xlink="http://www.w3.org/1999/xlink" overflow="hidden" style="height: 190.0px; width:410.0px;" width="410.0" height="190.0" viewBox="0 0 410.0 190.0"><g width="410.0" height="190.0"><rect x="0" y="0" width="410.0" height="190.0" fill="rgba(0, 0, 0, 1)" stroke="rgba(0, 0, 0, 1)" style="stroke-width:1;"></rect></g></svg></div></div></div><div id="repository-1352844016-layer-1890294924" style="position: absolute; left: 35px; top: 45px; width: 312px; height: 30px;-webkit-transform: rotate(0deg);transform: rotate(0deg);" data-stencil-type="default.text2" data-interactive-element-type="default.text2" class="text2 stencil mobile-interaction-potential-trigger " data-stencil-id="1890294924" data-anchor="" data-review-reference-id="1890294924"><div class="stencil-wrapper" style="width: 312px; height: 30px"><div xmlns="http://www.w3.org/1999/xhtml" title="" style="width:322px;width:-webkit-max-content;width:-moz-max-content;width:max-content;"><span class="default-text2-container-wrapper default-text2-version2-container-wrapper" title=""><span class="default-text2-container" data-child-type="default.text2"><p style="font-size: 14px;"><span style="background-color: #000000; color: #ffffcc; font-size: 26px;">Record Session completed</span></p></span></span></div></div></div><div id="repository-1352844016-layer-1675742855" style="position: absolute; left: 195px; top: 140px; width: 50px; height: 30px;-webkit-transform: rotate(0deg);transform: rotate(0deg);" data-stencil-type="default.iphoneButton" data-interactive-element-type="default.iphoneButton" class="iphoneButton pidoco-clickable-element stencil mobile-interaction-potential-trigger " data-stencil-id="1675742855" data-anchor="" data-review-reference-id="1675742855"><div class="stencil-wrapper" style="width: 50px; height: 30px"><div xmlns="http://www.w3.org/1999/xhtml" xmlns:pidoco="http://www.pidoco.com/util" title="" style="height: 30px;width:50px;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" overflow="hidden" width="50" height="30" viewBox="0 0 50 30"><a><path fill-rule="evenodd" clip-rule="evenodd" fill="rgba(128, 128, 128, 1)" stroke="rgba(102, 102, 102, 1)" d="M5,29.5 l-2,-0.5 -1,-1 -1,-1.5 -0.5,-1.5 0,-20 0.5,-2 1,-1 1,-1 2,-0.5 40,0 1.5,0.5 1.5,1 1,1.5 0.5,1.5 0,20 -0.5,1.5 -1,1.5 -1.5,1 -1.5,0.5 z"></path><text x="25" y="15" dy="0.3em" fill="#FFFFFF" style="font-size:1.6666666em;stroke-width:0pt;" font-family="'HelveticaNeue-Bold'" text-anchor="middle" xml:space="preserve">OK</text></a></svg></div></div><div class="interactive-stencil-highlighter" style="width: 50px; height: 30px"></div><div xmlns:json="http://json.org/" xmlns="http://www.w3.org/1999/xhtml"></div></div></div></div><div data-layer-id="layer815454564" id="repository-layer815454564-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer815454564 u-p-hidden"></div><div data-layer-id="layer633563046" id="repository-layer633563046-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer633563046 u-p-hidden"></div><div data-layer-id="layer10632108" id="repository-layer10632108-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer10632108 u-p-hidden"></div><div data-layer-id="layer240632018" id="repository-layer240632018-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer240632018 u-p-hidden"></div><div data-layer-id="layer281830823" id="repository-layer281830823-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer281830823 u-p-hidden"></div><div data-layer-id="layer439961405" id="repository-layer439961405-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer439961405 u-p-hidden"></div></div><div id="dContainer" style="position:absolute;top:0px;width:420px;height:0px;left:0px;background:transparent;" class="yui-skin-sam"></div></div></div></div></div></div></div><script type="text/javascript">
+				$(document).ready(function(){
+					rabbit.errorContext(function () {
+						rabbit.interaction.manager.registerInteraction('repository-1352844016-layer-1675742855', '2115607190', {"button":"left","id":"1953927814","numberOfFinger":"1","type":"click"},  
+							[
+								{"delay":"0","id":"60170223","type":"hideOverlay"}
+							]
+						);
+					});
+				});
+			 
+			$(document).ready(function(){
+				rabbit.errorContext(function () {
+					
+						rabbit.result.manager.pageReady('1352844016');
+					
+				});
+			});
+		</script></body></html>

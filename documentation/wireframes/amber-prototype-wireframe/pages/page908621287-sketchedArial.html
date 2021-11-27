@@ -1,0 +1,183 @@
+<!DOCTYPE html><html xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.w3.org/1999/xhtml"><head><title>Add New Diagnosis - Pidoco° - Prototype Test</title><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=normal"></meta><meta name="apple-mobile-web-app-capable" content="yes"></meta><link rel="manifest" href="../resources/manifest.json"></link><style>
+					@font-face {
+						font-family: 'Glyphicons';
+						src: url('../resources/fonts/glyphicons-regular.eot');
+						src: url('../resources/fonts/glyphicons-regular.eot?#iefix') format('eot'), url('../resources/fonts/glyphicons-regular.woff') format('woff'), url('../resources/fonts/glyphicons-regular.ttf') format('truetype');
+						font-weight: normal;
+						font-style: normal;
+					}
+					
+					@font-face {
+						font-family: 'Pidoco Android';
+						src: url('../resources/fonts/androidiconfont.eot');
+						src: url('../resources/fonts/androidiconfont.eot?#iefix') format('eot'), url('../resources/fonts/androidiconfont.woff') format('woff'), url('../resources/fonts/androidiconfont.ttf') format('truetype');
+						font-weight: normal;
+						font-style: normal;
+					}
+
+					/* Critical CSS */
+					.pidoco .p-Preview {
+						display: flex;
+						flex-direction: column;
+						flex-wrap: nowrap;
+						align-items: flex-start;
+						height: 100%;
+					}
+
+					.pidoco .p-Preview-prototype {
+						margin: auto;
+					}
+				</style><link rel="preload" type="text/css" href="../resources/simulation-assets/version-2.56.0/result/css/result-min-2.56.0.css" as="style" onload="this.onload=null;this.rel='stylesheet'"></link><link rel="preload" type="text/css" href="../resources/yui/container/assets/skins/sam/container.css" as="style" onload="this.onload=null;this.rel='stylesheet'"></link><link rel="preload" type="text/css" href="../resources/yui/calendar/assets/skins/sam/calendar.css" as="style" onload="this.onload=null;this.rel='stylesheet'"></link><link rel="preload" type="text/css" href="../resources/yui/menu/assets/skins/sam/menu.css" as="style" onload="this.onload=null;this.rel='stylesheet'"></link><link rel="preload" type="text/css" href="../resources/yui/autocomplete/assets/skins/sam/autocomplete.css" as="style" onload="this.onload=null;this.rel='stylesheet'"></link><script type="text/javascript">
+						
+							/*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */
+							!function(n){"use strict";n.loadCSS||(n.loadCSS=function(){});var o=loadCSS.relpreload={};if(o.support=function(){var e;try{e=n.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),o.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},o.poly=function(){if(!o.support())for(var t=n.document.getElementsByTagName("link"),e=0;e<t.length;e++){var a=t[e];"preload"!==a.rel||"style"!==a.getAttribute("as")||a.getAttribute("data-loadcss")||(a.setAttribute("data-loadcss",!0),o.bindMediaToggle(a))}},!o.support()){o.poly();var t=n.setInterval(o.poly,500);n.addEventListener?n.addEventListener("load",function(){o.poly(),n.clearInterval(t)}):n.attachEvent&&n.attachEvent("onload",function(){o.poly(),n.clearInterval(t)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:n.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+						
+					</script><script type="text/javascript">
+					var rabbit = {
+						errorContext: function(f) {
+							try {
+								f();
+							} catch(e) {
+								rabbit.util.submitError(e);
+							}
+						},
+						parameters: {
+						}
+					};
+					var pidoco = {};
+					
+					rabbit.parameters.codeVersion = '2.56.0';
+					rabbit.parameters.uid = 'anonymous';
+					rabbit.parameters.bugsnagApiKey = '8084398cac101d633d1781f9f653ea96';
+					rabbit.parameters.bugsnagEnvironmentPrefix = '';
+					rabbit.parameters.isExport = true;
+					rabbit.prototypeType = '';
+				</script><script xmlns="" type="text/javascript">Ext = {util:{}};</script><script xmlns="" type="text/javascript" src="../resources/simulation-assets/version-2.56.0/result/scripts/script.js"></script><script xmlns="" type="text/javascript" src="../resources/simulation-assets/version-2.56.0/result/scripts/lang/en.js"></script><script type="text/javascript">
+					rabbit.result.manager.currentPageNr = 'page908621287';
+					rabbit.result.manager.currentPrototypeId = '295670';
+					rabbit.result.manager.baseUrl = '../resources/view/295670';
+					rabbit.result.lang = 'en';
+					rabbit.result.manager.urlPattern = '../resources/view/295670/__page__/sketched?fontFamily=arial';
+					rabbit.result.manager.currentRole = '';
+					rabbit.parameters.isApi = false;
+					rabbit.parameters.isAnonymous = false;
+					rabbit.parameters.showFrame = true;
+					rabbit.parameters.fitScreen = true;
+					rabbit.parameters.isInvitation = false;
+					rabbit.parameters.userPrefs = {};
+					rabbit.parameters.prototypePrefs = {};
+					rabbit.parameters.viewMode = 'view';
+					rabbit.parameters.fontFamily = 'arial';
+					rabbit.parameters.exportSuffixFilename = 'sketchedArial';
+					rabbit.parameters.environment = 'SERVER';
+					rabbit.parameters.readApiKey = '';
+					rabbit.parameters.parsedUserAgent = {"Useragent":"{}","DeviceClass":"Hacker","DeviceName":"Hacker","DeviceBrand":"Hacker","DeviceVersion":"Hacker","OperatingSystemClass":"Hacker","OperatingSystemName":"Hacker","OperatingSystemVersion":"Hacker","OperatingSystemVersionMajor":"Hacker","OperatingSystemNameVersion":"Hacker","OperatingSystemNameVersionMajor":"Hacker","LayoutEngineClass":"Hacker","LayoutEngineName":"Hacker","LayoutEngineVersion":"Hacker","LayoutEngineVersionMajor":"Hacker","LayoutEngineNameVersion":"Hacker","LayoutEngineNameVersionMajor":"Hacker","AgentClass":"Hacker","AgentName":"Hacker","AgentVersion":"Hacker","AgentVersionMajor":"Hacker","AgentNameVersion":"Hacker","AgentNameVersionMajor":"Hacker","HackerAttackVector":"Unknown","HackerToolkit":"Unknown","__SyntaxError__":"true"};
+					
+					
+					_.mixin(s.exports());
+					
+				</script><style type="text/css">
+					.repository.during-transition {
+						background-image: none !important;
+					}
+					
+		
+		.repository[data-review-reference-id="page908621287"], .transition-wrapper[data-page-id="page908621287"] .layer-container {
+			position: absolute;
+			background-color: rgba(255, 255, 255, 1);
+		}
+	
+		body[data-current-page-id="page908621287"] .border-wrapper,
+		body[data-current-page-id="page908621287"] .simulation-container {
+			width:300px;
+		}
+		
+		body.has-frame[data-current-page-id="page908621287"] .border-wrapper,
+		body.has-frame[data-current-page-id="page908621287"] .simulation-container {
+			height:600px;
+		}
+		
+		body[data-current-page-id="page908621287"] .svg-border-300-600 {
+			display: block !important;
+		}
+		
+		body[data-current-page-id="page908621287"] .border-wrapper .border-div {
+			width:300px;
+			height:600px;
+		}
+	</style><link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.ico"></link></head><body class="p-Simulation--web  sketched-arial sketched pidoco browser-non-ie  no-api-call " data-current-page-id="page908621287" onload=""><script type="text/javascript">
+					$(document).ready(function(){
+						rabbit.errorContext(function () {
+
+							if (!rabbit.data) {
+								rabbit.data = {};
+							}
+							if (!rabbit.data.raw) {
+								rabbit.data.raw = {};
+							}
+							rabbit.data.raw = {
+								
+									folders:{
+										
+									},
+									pages:{
+										"page908621287": 
+										
+		{
+			"id": "page908621287",
+			"name": "Add New Diagnosis",
+			"layers": {
+				
+					"layer678448374":false,
+					"layer57648228":false,
+					"layer343166964":false,
+					"layer468730896":false,
+					"layer256459151":false,
+					"layer985253505":false,
+					"layer62462689":false,
+					"layer654934836":false,
+					"layer822000984":false,
+					"layer604003765":false,
+					"layer815454564":false,
+					"layer633563046":false,
+					"layer10632108":false,
+					"layer240632018":false,
+					"layer281830823":false,
+					"layer439961405":false
+			},
+			"image":"../resources/icons/no_image.png",
+			"width":300,
+			"height":600,
+			"parentFolder": "",
+			"frame": "custom",
+			"frameOrientation": "custom",
+			"renderAboveLayer": "layer439961405"
+		}
+	
+									}
+								
+							}
+					
+							rabbit.result.manager.init('page908621287', '', 'non-ie', false);
+						});
+					});
+				</script><div id="mode" style="display:none">sketched</div><div id="mode" style="display:none">sketched</div><div id="pageNames" style="display: none">{"page274097127":"page274097127-sketchedArial.html","page908621287":"page908621287-sketchedArial.html","page349848148":"page349848148-sketchedArial.html","230889988":"230889988-sketchedArial.html","395948620":"395948620-sketchedArial.html","1928008671":"1928008671-sketchedArial.html","page939173444":"page939173444-sketchedArial.html","1843522631":"1843522631-sketchedArial.html","861212225":"861212225-sketchedArial.html","525533101":"525533101-sketchedArial.html","page387313055":"page387313055-sketchedArial.html","589777108":"589777108-sketchedArial.html","page456294535":"page456294535-sketchedArial.html","page561306194":"page561306194-sketchedArial.html","1143104807":"1143104807-sketchedArial.html","1352844016":"1352844016-sketchedArial.html","page326910238":"page326910238-sketchedArial.html","page271449406":"page271449406-sketchedArial.html","571017249":"571017249-sketchedArial.html","416590292":"416590292-sketchedArial.html","1030411162":"1030411162-sketchedArial.html","191701443":"191701443-sketchedArial.html","page500707536":"page500707536-sketchedArial.html","page756331396":"page756331396-sketchedArial.html","page50841528":"page50841528-sketchedArial.html","page176233208":"page176233208-sketchedArial.html","page968649984":"page968649984-sketchedArial.html","page30520088":"page30520088-sketchedArial.html","page319966564":"page319966564-sketchedArial.html","548834494":"548834494-sketchedArial.html","page604742207":"page604742207-sketchedArial.html","1908333526":"1908333526-sketchedArial.html","1250610135":"1250610135-sketchedArial.html"}</div><svg style="position: absolute; top: 0px; left:0px;width:0px;height:0px;"><defs><marker id="startarrowhead" viewBox="0 0 10 10" refX="1" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="8" orient="auto"><path style="fill:none;stroke:black;" d="M 10 0 L 0 5 L 10 10"></path></marker><marker id="endarrowhead" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="8" orient="auto"><path style="fill:none;stroke:black;" d="M 0 0 L 10 5 L 0 10"></path></marker><pattern id="sketchedHover" x="30" y="20" width="50" height="60" patternUnits="userSpaceOnUse"><image href="../resources/icons/sketchedFilledButton.png" width="175" height="75"></image></pattern></defs></svg><div class="p-Preview" data-p-component="preview"><div class="p-Preview-prototype"><div class="simulation-container"><div class="simulation-scaled"><svg class="frame-wrapper" height="100000" width="100000"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" class="frame" x="0" y="0"><use xlink:href="#"></use></svg></svg><div class="border-wrapper"><div xmlns:json="http://json.org/" xmlns="" class="svg-border svg-border-300-600" style="display: none;"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" overflow="hidden" class="svg_border" style="position:absolute;left:-43px;top:-13px;width:357px;height:624px;"><path xmlns="" class=" svg_unselected_element" d="M 32.00, 3.00 Q 42.33, 2.75, 52.67, 2.65 Q 63.00, 3.22, 73.33, 1.78 Q 83.67, 3.64, 94.00, 4.41 Q 104.33, 3.07, 114.67, 1.99 Q 125.00, 2.90, 135.33, 3.63 Q 145.67, 3.49, 156.00, 3.52 Q 166.33, 1.60, 176.67, 2.66 Q 187.00, 2.13, 197.33, 1.94 Q 207.67, 1.63, 218.00, 2.72 Q 228.33, 2.76, 238.67, 2.58 Q 249.00, 2.38, 259.33, 2.12 Q 269.67, 3.67, 280.00, 3.23 Q 290.33, 2.61, 300.67, 1.80 Q 311.00, 2.88, 321.33, 3.87 Q 331.67, 3.56, 341.77, 3.23 Q 342.23, 13.01, 341.90, 23.18 Q 342.94, 33.19, 343.29, 43.29 Q 343.14, 53.40, 343.40, 63.49 Q 343.89, 73.58, 344.20, 83.66 Q 343.93, 93.75, 343.91, 103.83 Q 343.87, 113.92, 343.95, 124.00 Q 344.14, 134.08, 344.25, 144.17 Q 342.85, 154.25, 342.20, 164.33 Q 343.05, 174.42, 343.51, 184.50 Q 343.53, 194.58, 344.08, 204.67 Q 343.89, 214.75, 344.07, 224.83 Q 343.28, 234.92, 341.82, 245.00 Q 341.59, 255.08, 341.69, 265.17 Q 342.06, 275.25, 342.16, 285.33 Q 341.84, 295.42, 341.93, 305.50 Q 341.48, 315.58, 342.57, 325.67 Q 342.19, 335.75, 341.32, 345.83 Q 341.49, 355.92, 342.51, 366.00 Q 343.04, 376.08, 343.20, 386.17 Q 342.28, 396.25, 343.11, 406.33 Q 343.51, 416.42, 342.80, 426.50 Q 343.03, 436.58, 343.33, 446.67 Q 344.00, 456.75, 344.27, 466.83 Q 343.55, 476.92, 343.92, 487.00 Q 343.71, 497.08, 343.71, 507.17 Q 343.61, 517.25, 343.23, 527.33 Q 343.46, 537.42, 343.38, 547.50 Q 344.22, 557.58, 344.28, 567.67 Q 344.31, 577.75, 344.20, 587.83 Q 343.45, 597.92, 341.81, 607.81 Q 331.50, 607.49, 321.24, 607.32 Q 310.96, 607.45, 300.68, 608.57 Q 290.35, 608.97, 280.01, 609.15 Q 269.67, 609.24, 259.33, 608.86 Q 249.00, 609.11, 238.67, 609.11 Q 228.33, 609.43, 218.00, 609.60 Q 207.67, 609.38, 197.33, 609.92 Q 187.00, 609.45, 176.67, 609.20 Q 166.33, 609.04, 156.00, 608.69 Q 145.67, 609.11, 135.33, 609.31 Q 125.00, 608.70, 114.67, 609.16 Q 104.33, 609.31, 94.00, 608.97 Q 83.67, 608.65, 73.33, 608.69 Q 63.00, 608.74, 52.67, 608.72 Q 42.33, 609.10, 31.27, 608.73 Q 31.37, 598.13, 32.08, 587.82 Q 32.06, 577.75, 31.20, 567.69 Q 31.30, 557.59, 31.52, 547.50 Q 31.98, 537.42, 32.41, 527.33 Q 32.58, 517.25, 31.69, 507.17 Q 31.12, 497.08, 31.49, 487.00 Q 31.26, 476.92, 31.37, 466.83 Q 31.03, 456.75, 30.98, 446.67 Q 30.11, 436.58, 30.87, 426.50 Q 30.60, 416.42, 29.92, 406.33 Q 29.70, 396.25, 30.22, 386.17 Q 30.99, 376.08, 31.12, 366.00 Q 30.84, 355.92, 30.94, 345.83 Q 30.96, 335.75, 31.11, 325.67 Q 30.67, 315.58, 31.17, 305.50 Q 30.51, 295.42, 30.82, 285.33 Q 30.40, 275.25, 31.28, 265.17 Q 30.44, 255.08, 30.63, 245.00 Q 30.73, 234.92, 31.27, 224.83 Q 32.21, 214.75, 31.20, 204.67 Q 31.30, 194.58, 31.70, 184.50 Q 31.41, 174.42, 31.67, 164.33 Q 31.37, 154.25, 31.35, 144.17 Q 31.14, 134.08, 32.12, 124.00 Q 31.36, 113.92, 31.18, 103.83 Q 30.87, 93.75, 30.38, 83.67 Q 29.93, 73.58, 29.90, 63.50 Q 30.44, 53.42, 30.48, 43.33 Q 30.62, 33.25, 31.41, 23.17 Q 32.00, 13.08, 32.00, 3.00" style=" fill:white;"></path><path xmlns="" class=" svg_unselected_element" d="M 23.00, 7.00 Q 33.33, 5.14, 43.67, 5.10 Q 54.00, 5.80, 64.33, 5.70 Q 74.67, 6.71, 85.00, 6.30 Q 95.33, 5.68, 105.67, 5.94 Q 116.00, 5.94, 126.33, 7.44 Q 136.67, 7.20, 147.00, 6.79 Q 157.33, 6.27, 167.67, 6.27 Q 178.00, 7.29, 188.33, 6.55 Q 198.67, 5.98, 209.00, 5.82 Q 219.33, 6.07, 229.67, 6.57 Q 240.00, 5.99, 250.33, 5.53 Q 260.67, 5.39, 271.00, 5.46 Q 281.33, 5.71, 291.67, 6.04 Q 302.00, 5.99, 312.33, 6.39 Q 322.67, 7.21, 333.06, 6.94 Q 333.87, 16.79, 334.35, 26.97 Q 334.44, 37.15, 334.48, 47.29 Q 334.10, 57.40, 334.49, 67.49 Q 334.84, 77.58, 334.95, 87.66 Q 334.49, 97.75, 334.57, 107.83 Q 334.31, 117.92, 334.12, 128.00 Q 334.18, 138.08, 334.52, 148.17 Q 334.33, 158.25, 334.68, 168.33 Q 334.80, 178.42, 334.84, 188.50 Q 335.18, 198.58, 334.21, 208.67 Q 334.11, 218.75, 334.18, 228.83 Q 333.70, 238.92, 334.10, 249.00 Q 334.19, 259.08, 334.54, 269.17 Q 333.94, 279.25, 333.98, 289.33 Q 334.25, 299.42, 334.25, 309.50 Q 334.41, 319.58, 333.95, 329.67 Q 333.75, 339.75, 334.19, 349.83 Q 334.53, 359.92, 333.48, 370.00 Q 334.16, 380.08, 333.81, 390.17 Q 333.83, 400.25, 333.16, 410.33 Q 333.69, 420.42, 333.77, 430.50 Q 334.69, 440.58, 334.77, 450.67 Q 334.49, 460.75, 334.91, 470.83 Q 334.55, 480.92, 334.36, 491.00 Q 334.31, 501.08, 334.00, 511.17 Q 332.86, 521.25, 333.63, 531.33 Q 333.34, 541.42, 333.38, 551.50 Q 333.31, 561.58, 333.73, 571.67 Q 333.79, 581.75, 333.44, 591.83 Q 333.84, 601.92, 333.32, 612.32 Q 322.87, 612.60, 312.47, 612.94 Q 302.08, 613.16, 291.71, 613.25 Q 281.35, 612.96, 271.01, 613.00 Q 260.67, 613.47, 250.34, 613.57 Q 240.00, 613.03, 229.67, 612.10 Q 219.33, 612.35, 209.00, 612.93 Q 198.67, 612.88, 188.33, 613.16 Q 178.00, 613.08, 167.67, 612.69 Q 157.33, 613.50, 147.00, 613.41 Q 136.67, 614.06, 126.33, 613.28 Q 116.00, 613.98, 105.67, 613.56 Q 95.33, 613.06, 85.00, 612.77 Q 74.67, 612.71, 64.33, 612.46 Q 54.00, 611.73, 43.67, 612.79 Q 33.33, 612.88, 22.37, 612.63 Q 22.19, 602.19, 21.97, 591.98 Q 22.64, 581.77, 23.05, 571.67 Q 22.03, 561.60, 23.05, 551.50 Q 22.15, 541.42, 22.06, 531.34 Q 21.69, 521.25, 21.66, 511.17 Q 22.06, 501.08, 23.25, 491.00 Q 22.69, 480.92, 22.95, 470.83 Q 23.12, 460.75, 23.26, 450.67 Q 23.02, 440.58, 22.67, 430.50 Q 23.52, 420.42, 23.76, 410.33 Q 23.22, 400.25, 22.29, 390.17 Q 21.56, 380.08, 22.05, 370.00 Q 21.31, 359.92, 21.51, 349.83 Q 21.87, 339.75, 22.03, 329.67 Q 22.42, 319.58, 22.27, 309.50 Q 22.16, 299.42, 21.22, 289.33 Q 21.30, 279.25, 21.13, 269.17 Q 21.24, 259.08, 21.93, 249.00 Q 22.45, 238.92, 22.40, 228.83 Q 22.18, 218.75, 22.12, 208.67 Q 22.58, 198.58, 22.68, 188.50 Q 22.23, 178.42, 21.62, 168.33 Q 22.51, 158.25, 22.41, 148.17 Q 22.90, 138.08, 22.89, 128.00 Q 22.76, 117.92, 22.45, 107.83 Q 22.73, 97.75, 21.57, 87.67 Q 21.66, 77.58, 21.81, 67.50 Q 23.59, 57.42, 23.09, 47.33 Q 22.05, 37.25, 21.73, 27.17 Q 23.00, 17.08, 23.00, 7.00" style=" fill:white;"></path><path xmlns="" class=" svg_unselected_element" d="M 40.00, 11.00 Q 50.33, 12.78, 60.67, 12.48 Q 71.00, 12.50, 81.33, 11.91 Q 91.67, 11.54, 102.00, 11.91 Q 112.33, 11.50, 122.67, 11.93 Q 133.00, 11.45, 143.33, 12.25 Q 153.67, 11.88, 164.00, 11.44 Q 174.33, 10.52, 184.67, 10.22 Q 195.00, 11.49, 205.33, 12.12 Q 215.67, 10.43, 226.00, 11.09 Q 236.33, 10.88, 246.67, 10.95 Q 257.00, 10.93, 267.33, 11.13 Q 277.67, 12.41, 288.00, 11.13 Q 298.33, 11.07, 308.67, 10.38 Q 319.00, 9.84, 329.33, 9.77 Q 339.67, 10.93, 350.00, 11.00 Q 349.66, 21.20, 348.70, 31.35 Q 349.06, 41.31, 349.95, 51.33 Q 350.00, 61.42, 349.26, 71.51 Q 348.78, 81.59, 349.69, 91.67 Q 350.44, 101.75, 350.14, 111.83 Q 350.37, 121.92, 350.49, 132.00 Q 350.71, 142.08, 350.39, 152.17 Q 349.41, 162.25, 348.60, 172.33 Q 349.37, 182.42, 350.58, 192.50 Q 350.78, 202.58, 350.34, 212.67 Q 350.52, 222.75, 351.01, 232.83 Q 351.26, 242.92, 351.65, 253.00 Q 351.55, 263.08, 351.58, 273.17 Q 351.33, 283.25, 350.89, 293.33 Q 350.05, 303.42, 350.56, 313.50 Q 349.81, 323.58, 350.29, 333.67 Q 349.83, 343.75, 349.23, 353.83 Q 349.92, 363.92, 350.22, 374.00 Q 350.54, 384.08, 350.84, 394.17 Q 351.09, 404.25, 350.57, 414.33 Q 350.56, 424.42, 350.05, 434.50 Q 349.82, 444.58, 350.07, 454.67 Q 350.67, 464.75, 351.12, 474.83 Q 351.66, 484.92, 352.08, 495.00 Q 351.37, 505.08, 351.80, 515.17 Q 351.75, 525.25, 351.96, 535.33 Q 352.05, 545.42, 351.87, 555.50 Q 351.63, 565.58, 352.28, 575.67 Q 351.28, 585.75, 351.01, 595.83 Q 350.21, 605.92, 350.25, 616.25 Q 339.69, 616.08, 329.35, 616.15 Q 319.01, 616.09, 308.67, 616.07 Q 298.34, 616.11, 288.00, 616.52 Q 277.67, 616.59, 267.34, 616.97 Q 257.00, 617.12, 246.67, 617.46 Q 236.33, 617.78, 226.00, 617.90 Q 215.67, 617.92, 205.33, 617.97 Q 195.00, 617.45, 184.67, 617.82 Q 174.33, 617.90, 164.00, 618.00 Q 153.67, 617.87, 143.33, 617.49 Q 133.00, 617.66, 122.67, 617.85 Q 112.33, 617.38, 102.00, 617.17 Q 91.67, 617.06, 81.33, 617.01 Q 71.00, 616.01, 60.67, 616.21 Q 50.33, 617.31, 39.39, 616.61 Q 39.72, 606.01, 40.25, 595.80 Q 40.92, 585.69, 39.51, 575.68 Q 39.51, 565.59, 39.61, 555.50 Q 40.20, 545.42, 40.03, 535.33 Q 39.48, 525.25, 39.49, 515.17 Q 39.17, 505.08, 39.21, 495.00 Q 38.87, 484.92, 39.50, 474.83 Q 40.17, 464.75, 40.40, 454.67 Q 39.43, 444.58, 38.95, 434.50 Q 39.11, 424.42, 38.35, 414.33 Q 38.50, 404.25, 38.34, 394.17 Q 38.44, 384.08, 38.68, 374.00 Q 38.62, 363.92, 38.49, 353.83 Q 39.12, 343.75, 38.69, 333.67 Q 38.53, 323.58, 38.44, 313.50 Q 38.23, 303.42, 39.13, 293.33 Q 39.13, 283.25, 38.99, 273.17 Q 38.50, 263.08, 38.24, 253.00 Q 38.77, 242.92, 39.59, 232.83 Q 39.81, 222.75, 38.97, 212.67 Q 39.33, 202.58, 39.12, 192.50 Q 39.57, 182.42, 39.34, 172.33 Q 39.23, 162.25, 38.74, 152.17 Q 39.10, 142.08, 38.91, 132.00 Q 38.81, 121.92, 39.36, 111.83 Q 38.44, 101.75, 38.82, 91.67 Q 38.73, 81.58, 39.72, 71.50 Q 38.68, 61.42, 39.16, 51.33 Q 39.73, 41.25, 40.06, 31.17 Q 40.00, 21.08, 40.00, 11.00" style=" fill:white;"></path></svg></div><div id="borderDiv" class="border-div"><div class="p-OriginElement">origin</div><div xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="" id="repository" style="width: 100%; height: 100%;" class="repository mobile-interaction-potential-trigger" data-review-reference-id="page908621287" data-page-id="page908621287"><div data-layer-id="layer678448374" id="repository-layer678448374-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer678448374 u-p-hidden"></div><div data-layer-id="layer57648228" id="repository-layer57648228-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer57648228 u-p-hidden"></div><div data-layer-id="layer343166964" id="repository-layer343166964-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer343166964 u-p-hidden"></div><div data-layer-id="layer468730896" id="repository-layer468730896-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer468730896 u-p-hidden"></div><div data-layer-id="layer256459151" id="repository-layer256459151-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer256459151 u-p-hidden"></div><div data-layer-id="layer985253505" id="repository-layer985253505-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer985253505 u-p-hidden"></div><div data-layer-id="layer62462689" id="repository-layer62462689-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer62462689 u-p-hidden"></div><div data-layer-id="layer654934836" id="repository-layer654934836-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer654934836 u-p-hidden"></div><div data-layer-id="layer822000984" id="repository-layer822000984-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer822000984 u-p-hidden"></div><div data-layer-id="layer604003765" id="repository-layer604003765-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer604003765 u-p-hidden"></div><div data-layer-id="layer815454564" id="repository-layer815454564-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer815454564 u-p-hidden"></div><div data-layer-id="layer633563046" id="repository-layer633563046-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer633563046 u-p-hidden"></div><div data-layer-id="layer10632108" id="repository-layer10632108-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer10632108 u-p-hidden"></div><div data-layer-id="layer240632018" id="repository-layer240632018-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer240632018 u-p-hidden"></div><div data-layer-id="layer281830823" id="repository-layer281830823-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer281830823 u-p-hidden"></div><div data-layer-id="layer439961405" id="repository-layer439961405-wrapper" data-updated-at="1580251957" class=" wrapper wrapper-layer439961405 u-p-hidden"></div><div data-layer-id="page908621287" id="repository-page908621287-wrapper" data-updated-at="1638019060" class=" wrapper wrapper-page908621287"><div id="repositorypage908621287-layer" class="layer" name="repositorypageLayer" data-layer-id="page908621287" data-layer-type="pageLayer" style="position:absolute;left:0px;top:0px;"><div id="repository-page908621287-layer-text2331633131" style="position: absolute; left: 15px; top: 20px; width: 280px; height: 37px;-webkit-transform: rotate(0deg);transform: rotate(0deg);" data-stencil-type="default.text2" data-interactive-element-type="default.text2" class="text2 stencil mobile-interaction-potential-trigger " data-stencil-id="text2331633131" data-anchor="" data-review-reference-id="text2331633131"><div class="stencil-wrapper" style="width: 280px; height: 37px"><div xmlns="http://www.w3.org/1999/xhtml" title="" style="width:290px;width:-webkit-max-content;width:-moz-max-content;width:max-content;"><span class="default-text2-container-wrapper default-text2-version2-container-wrapper" title=""><span class="default-text2-container" data-child-type="default.textHeadline12"><p><span style="font-size: 32px;">Add New Diagnosis</span></p></span></span></div></div></div><div id="repository-page908621287-layer-textinput821672471" style="position: absolute; left: 20px; top: 70px; width: 270px; height: 55px;-webkit-transform: rotate(0deg);transform: rotate(0deg);" data-stencil-type="default.textinput" data-interactive-element-type="default.textinput" class="textinput stencil mobile-interaction-potential-trigger " data-stencil-id="textinput821672471" data-anchor="" data-review-reference-id="textinput821672471"><div class="stencil-wrapper" style="width: 270px; height: 55px"><div xmlns="http://www.w3.org/1999/xhtml"><svg overflow="hidden" style="height: 55.0px;width:270.0px;" width="270.0" height="55.0"><g id="repository-page908621287-layer-textinput821672471svg" width="270.0" height="55.0"><path xmlns="" id="repository-page908621287-layer-textinput821672471_input_svg_border" class=" svg_unselected_element" d="M 2.00, 2.00 Q 12.23, 0.78, 22.46, -0.08 Q 32.69, -0.25, 42.92, -0.31 Q 53.15, -0.28, 63.38, -0.23 Q 73.62, 0.29, 83.85, 0.16 Q 94.08, 0.14, 104.31, 0.08 Q 114.54, -0.17, 124.77, -0.38 Q 135.00, 0.01, 145.23, 0.50 Q 155.46, 0.69, 165.69, 0.52 Q 175.92, 0.22, 186.15, 0.23 Q 196.38, 0.15, 206.62, 0.07 Q 216.85, -0.19, 227.08, 0.07 Q 237.31, 0.13, 247.54, -0.10 Q 257.77, 0.06, 268.85, 1.15 Q 268.80, 14.48, 269.08, 27.35 Q 268.26, 40.23, 268.44, 53.44 Q 257.91, 53.43, 247.60, 53.48 Q 237.38, 54.10, 227.11, 54.15 Q 216.86, 54.17, 206.62, 54.30 Q 196.39, 54.31, 186.16, 54.63 Q 175.92, 54.21, 165.69, 54.24 Q 155.46, 54.33, 145.23, 54.54 Q 135.00, 54.05, 124.77, 53.76 Q 114.54, 53.58, 104.31, 54.19 Q 94.08, 54.53, 83.85, 54.72 Q 73.62, 54.63, 63.38, 54.30 Q 53.15, 53.95, 42.92, 54.30 Q 32.69, 54.31, 22.46, 53.99 Q 12.23, 54.88, 1.11, 53.89 Q 1.86, 40.30, 1.65, 27.55 Q 2.00, 14.75, 2.00, 2.00" style=" fill:rgba(255, 255, 255, 1);stroke:rgba(0, 0, 0, 1);"></path><path xmlns="" id="repository-page908621287-layer-textinput821672471_line1" class=" svg_unselected_element" d="M 3.00, 3.00 Q 13.15, 4.46, 23.31, 3.66 Q 33.46, 3.74, 43.62, 2.67 Q 53.77, 2.83, 63.92, 3.66 Q 74.08, 3.56, 84.23, 2.96 Q 94.38, 2.73, 104.54, 2.58 Q 114.69, 2.37, 124.85, 3.24 Q 135.00, 2.68, 145.15, 3.31 Q 155.31, 3.55, 165.46, 3.61 Q 175.62, 3.51, 185.77, 3.56 Q 195.92, 3.23, 206.08, 2.70 Q 216.23, 3.06, 226.38, 2.24 Q 236.54, 2.93, 246.69, 3.49 Q 256.85, 3.00, 267.00, 3.00" style=" fill:none;stroke:rgba(0, 0, 0, 1);"></path><path xmlns="" id="repository-page908621287-layer-textinput821672471_line2" class=" svg_unselected_element" d="M 3.00, 3.00 Q 3.43, 15.25, 3.66, 27.50 Q 3.00, 39.75, 3.00, 52.00" style=" fill:none;stroke:rgba(0, 0, 0, 1);"></path><path xmlns="" id="repository-page908621287-layer-textinput821672471_line3" class=" svg_unselected_element" d="M 3.00, 3.00 Q 13.15, 1.74, 23.31, 1.11 Q 33.46, 1.21, 43.62, 1.39 Q 53.77, 1.64, 63.92, 1.92 Q 74.08, 2.47, 84.23, 2.47 Q 94.38, 2.87, 104.54, 2.79 Q 114.69, 2.16, 124.85, 2.69 Q 135.00, 2.20, 145.15, 2.57 Q 155.31, 3.25, 165.46, 2.55 Q 175.62, 2.19, 185.77, 3.59 Q 195.92, 2.38, 206.08, 3.35 Q 216.23, 2.12, 226.38, 2.68 Q 236.54, 2.40, 246.69, 3.00 Q 256.85, 3.00, 267.00, 3.00" style=" fill:none;stroke:rgba(0, 0, 0, 1);"></path><path xmlns="" id="repository-page908621287-layer-textinput821672471_line4" class=" svg_unselected_element" d="M 3.00, 3.00 Q 3.67, 15.25, 3.36, 27.50 Q 3.00, 39.75, 3.00, 52.00" style=" fill:none;stroke:rgba(0, 0, 0, 1);"></path></g></svg><div style="position:absolute;left: 6px; top: 1px;" title=""><textarea id="repository-page908621287-layer-textinput821672471input" onblur="rabbit.facade.raiseEvent(rabbit.events.svgBlur, new Array('repository-page908621287-layer-textinput821672471_input_svg_border','repository-page908621287-layer-textinput821672471_line1','repository-page908621287-layer-textinput821672471_line2','repository-page908621287-layer-textinput821672471_line3','repository-page908621287-layer-textinput821672471_line4'))" onfocus="rabbit.facade.raiseEvent(rabbit.events.svgFocus, new Array('repository-page908621287-layer-textinput821672471_input_svg_border','repository-page908621287-layer-textinput821672471_line1','repository-page908621287-layer-textinput821672471_line2','repository-page908621287-layer-textinput821672471_line3','repository-page908621287-layer-textinput821672471_line4'))" rows="" cols="" style="width:263px;height:49px; color: rgba(0, 0, 0, 1);"></textarea></div></div></div></div><div id="repository-page908621287-layer-button902916855" style="position: absolute; left: 220px; top: 155px; width: 60px; height: 30px;-webkit-transform: rotate(0deg);transform: rotate(0deg);" data-stencil-type="default.button" data-interactive-element-type="default.button" class="button pidoco-clickable-element stencil mobile-interaction-potential-trigger " data-stencil-id="button902916855" data-anchor="" data-review-reference-id="button902916855"><div class="stencil-wrapper" style="width: 60px; height: 30px"><div xmlns:helper="java:it.rapidrabb.editor.stencils.helpers.StencilHelper" xmlns="http://www.w3.org/1999/xhtml" style="position:absolute; left:0; top:-2px;" title=""><svg overflow="hidden" style="position: absolute;top: 2px;height: 30.0px;width:60.0px;" width="60.0" height="30.0"><g width="60.0" height="30.0"><path xmlns="" class=" svg_unselected_element" d="M 2.00, 2.00 Q 15.25, 1.16, 28.50, 1.13 Q 41.75, 0.93, 55.41, 1.59 Q 56.01, 13.16, 55.40, 25.40 Q 41.84, 25.33, 28.58, 25.70 Q 15.28, 25.68, 1.29, 25.69 Q 2.00, 13.50, 2.00, 2.00" style=" fill:rgba(217, 217, 217, 1);stroke:rgba(0, 0, 0, 1);"></path><path xmlns="" class=" svg_unselected_element" d="M 56.00, 4.00 Q 56.00, 16.00, 56.00, 28.00" style=" fill:none;"></path><path xmlns="" class=" svg_unselected_element" d="M 57.00, 5.00 Q 57.00, 17.00, 57.00, 29.00" style=" fill:none;"></path><path xmlns="" class=" svg_unselected_element" d="M 58.00, 6.00 Q 58.00, 18.00, 58.00, 30.00" style=" fill:none;"></path><path xmlns="" class=" svg_unselected_element" d="M 4.00, 26.00 Q 17.50, 25.21, 31.00, 25.21 Q 44.50, 26.00, 58.00, 26.00" style=" fill:none;"></path><path xmlns="" class=" svg_unselected_element" d="M 5.00, 27.00 Q 18.50, 24.93, 32.00, 25.42 Q 45.50, 27.00, 59.00, 27.00" style=" fill:none;"></path><path xmlns="" class=" svg_unselected_element" d="M 6.00, 28.00 Q 19.50, 26.27, 33.00, 26.11 Q 46.50, 28.00, 60.00, 28.00" style=" fill:none;"></path></g></svg><button id="repository-page908621287-layer-button902916855button" type="button" onmouseover="rabbit.facade.raiseEvent(rabbit.events.buttonMouseOver, 'repository-page908621287-layer-button902916855button');" onmouseout="rabbit.facade.raiseEvent(rabbit.events.buttonMouseOut, &#34;repository-page908621287-layer-button902916855button&#34;);" title="" class="ClickableSketch" style="position: absolute; width:56px;height:26px;font-size:1em;cursor:pointer;color:black" xml:space="preserve">Save  
+			</button></div></div><div class="interactive-stencil-highlighter" style="width: 60px; height: 30px"></div><div xmlns:json="http://json.org/" xmlns="http://www.w3.org/1999/xhtml"></div></div></div></div></div><div id="dContainer" style="position:absolute;top:0px;width:300px;height:0px;left:0px;background:transparent;" class="yui-skin-sam"></div></div></div></div></div></div></div><script type="text/javascript">
+				$(document).ready(function(){
+					rabbit.errorContext(function () {
+						rabbit.interaction.manager.registerInteraction('repository-page908621287-layer-button902916855', 'interaction3238225', {"button":"left","id":"action452285254","numberOfFinger":"1","type":"click"},  
+							[
+								{"delay":"0","id":"reaction426174058","type":"browserBack"}
+							]
+						);
+					});
+				});
+			 
+			$(document).ready(function(){
+				rabbit.errorContext(function () {
+					
+						rabbit.result.manager.pageReady('page908621287');
+					
+				});
+			});
+		</script></body></html>
