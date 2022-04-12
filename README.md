@@ -1,108 +1,304 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+![Amber logo](static/images/amber-logo.png)
+# Amber - Hippotherapy measurement tool
 
-Welcome USER_NAME,
+## Table of Contents
+<details>
+<summary>## [Overview](#overview)</summary>
+### [Who is this app for?](#who-for)
+### [What does it do?](#what-do)
+</details>
+## [Screen Mockup](#mockup)
+## [Features](#features)
+### [Known Bugs](#known-bugs)
+### [Future features](#future-features)
+## [Data Model](#data-model)
+### [Entity Model](#entity-model)
+### [Entity Relationship Model](#erd)
+### [Python Structure](#python-structure)
+## [UX](#ux)
+### [Storyboard](#storyboard)
+### [Personas](#personas)
+### [Customer Journey Maps](#cjm)
+### [Wireframes](#wireframes)
+### [Flow Chart](#flow-chart)
+#### [Key](#flow-key)
+### [Site Map](#site-map)
+### [Accessibility](#accessibility)
+## [Design Decisions](#design-decisions)
+### [Colours](#colours)
+### [Usability](#usability)
+## [Software Development Process](#software-development)
+### [Agile Methodology](#agile)
+### [Project Planning](#planning)
+### [Version control](#git)
+### [Testing](#testing)
+### [Documentation](#documentation)
+### [Deployment](#deployment)
+## [Technology Used](#technology)
+### [Some of the technology used](#technology-used)
+## [Contributing](#contributing)
+### [Clone](#clone)
+### [Fork](#fork)
+### [Clone versus Fork](#clone-fork)
+## [Credit](#credit)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+## <a id="overview"></a>Overview
+Hippotherapy is the practise of performing Occupational Therapy exercises, whilst mounted on a horse.  Hippotherapy improves neurological function, sensory processing by providing carefully constructed graded motor and sensory input.  It is during ambulation that the horse provides rhythmic movement which in turn stimulates the anterior, and posterior swinging movements, this encourages proper balance, posture, and strengthening of core muscles which are required for daily functional tasks from climbing stairs, writing, speaking, listening and engaging in the world successfully. 
 
-## Gitpod Reminders
+Hippotherapy can also shorten recovery time and ensure correct development of the paraspinal muscles.  Multifaceted swinging movement and rhythm of the horse’s gait effects the bones of the patient’s girdle twice more strongly than the gait of the individual patient.  The therapeutic benefit needs to be measured and Natalia OT has created an application that measures this precisely.   
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+Using Amber as a Hippotherapy measurement tool will serve to prove the therapeutic benefits of Hippotherapy as an essential and much required occupational therapy for people with special needs, brain injuries, etc.; shortening the recovery time of medical and surgical treatment. 
 
-`python3 -m http.server`
+### <a id="who-for"></a>Who is this app for?
+This web-based app is for all Occupational Therapists who are involved in providing Hippotherapy sessions to clients.
+ 
+ 
+### <a id="what-do"></a>What does it do?
+Amber measures and records the therapeutic benefits of Hippotherapy.
+  
+ 
+ ## <a id="how-work"></a>How does it work
+Amber captures, documents and records Key Performance Indicators for individual Hippotherapy sessions and displays the results in an straightforward manner.
 
-A blue button should appear to click: _Make Public_,
 
-Another blue button should appear to click: _Open Browser_.
+## <a id="mockup"></a>Screen Mockup
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+![Mockup of screen](documentation/mockup/mockup.png)
 
-A blue button should appear to click: _Make Public_,
+## <a id="features"></a>Features
 
-Another blue button should appear to click: _Open Browser_.
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+### <a id="known-bugs"></a>Known Bugs
 
-To log into the Heroku toolbelt CLI:
+### <a id="future-features"></a>Future feature
+Since Amber is a "real-life" project, this section will be used to "de-scope" some of the Use Cases and User Stories.  This will provide a Minimum Viable Product for the end-user which will also meet the criteria for examination by Code Institute. 
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+## <a id="data-model"></a>Data model
 
-------
+### <a id="entity-diagram"></a>Entity Diagram
 
-## Release History
+### <a id="erd"></a>Entity Relationship Diagram
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+### <a id="python-structure"></a>Python structure
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+## <a id="ux"></a>UX
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+### <a id="storyboard"></a>Storyboard
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+### <a id="personas"></a>Personas
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+### <a id="cjm"></a>Customer Journey Maps
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+### <a id="wireframes"></a>Wireframes
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+## <a id="flow-chart"></a>Flow chart
+### <a id="flow-key"></a>Key
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+|Type|Symbol|
+| --- | --- |
+|Input | ![Input symbol](documentation/flow-chart/input.png)|
+|Output |![Output symbol](documentation/flow-chart/output.png)|
+|Process |![Process symbol](documentation/flow-chart/process.png)|
+|Code |![Code symbol](documentation/flow-chart/code.png)|
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+<img alt="Flow chart for Amber" src="documentation/flow-chart/hitchhikers-flow-chart.png" width="100%">
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+### <a id="site-map"></a>Site Map
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+### <a id="accessibility"></a>Accessibility
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+## <a id="design-decisions"></a>Design Decisions
 
-------
 
-## FAQ about the uptime script
+### <a id="colours"></a>Colours
+The main colours for the Amber application were deliberately chosen to invoke specific emotional reponses from the user.
+*white* - Amber is first and foremost a clinical application.  Therefore the background is deliberately set to white.  White is perceived to be a sterile and clinical colour.  The predominance of this colour on every page enforces this idea of Amber being a tool for serious clinicians.
+*orange* - Orange is associated with both energy and warmth.  This colour is used throughout the Amber application to invoke a welcoming feeling from the user, as well as to show that there a certain vibrancy about the application.
+*blue* - Blue is a colour that makes people feel safe.  Websites often use the colour blue when they want to make their users trust them.
 
-**Why have you added this script?**
+The use of colours in the Amber application should make the user feel welcomed and trusting.  Whilst at the same time the user knows that this is not a "fun" app, but a serious tool that will be used by professionals.
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+### <a id="usability"></a>Usability
+- **Suitability for purpose**
+    
+- **Ease of use**
+    
+- **Information Display** 
+    
 
-**How will this affect me?**
+## <a id="software-development"></a>Software Development Process
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+### <a id="agile"></a>Agile methodology
+The use cases were arranged as Epics, the Epics were broken down into User Stories.  Acceptance criteria were developed for every User Story.
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+[Trello](https://trello.com/b/0wEVCThe/amber-p4-ci-project) was used as the Agile tool for managing this project.  Each User Story was embodied in a trello card.  Each of these cards was added to a Kanban board.  The Kanban board was set up with a number of lists:
+* Story
+* ToDo
+* Doing always - iteration
+* In Process (Code the ... / Test the ...)
+* Testing
+* Code review
+* Done
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+When a Story is being coded it is moved from the **ToDo** list into the **In Process** list.  When the code is finished for a story it is moved into the **Testing** list.  Once a story has been tested it is moved to the **Code Review** list.  When the code has been reviewed with the mentor is it moved to the **Done** list and is completed.
 
-**So….?**
+At the end of the project, all User Stories will be in the **Done** list and the project will be finished.
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+### <a id="planning"></a>Project Planning
+The Amber project's User Stories have been allocated into Sprints.  The stories in each Sprint will go through the full process of *ToDo* **>** *In Process* **>** *Testing* **>** *Code Review* **>** *Done*, before the next Sprint begins.
 
-**Can I opt out?**
+<img src="static/documentation/agile-planning/Amber-board-story-map.png" alt="User Story Map Sprint plan" width="100%"/>
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+### <a id="git"></a>Version Control 
+**Git** is used for version control of this project
+- Git commit message prefix convention denoting the type of change made in this commit:
+    - DOC: Documentation
+    - FEAT: Feature
+    - FIX: Bugfix
+    - STYLE: Changes to CSS
+    - REFACTOR: Where changes are made that do not change the functionality.
+- Git messages will be no longer than 50 characters long.
 
-**Anything more?**
+**GitHub** is used as the central version control repository for this project.
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+### <a id="testing"></a>Testing 
+Testing is documented in the [Testing document](documentation/test/TESTING.md)
 
----
+### <a id="vakidation"></a>Validation
+Source code was validated with [PEP8 Validator](http://pep8online.com/).
 
-Happy coding!
+
+### <a id="documentation"></a>Documentation  
+- README.md :  Comprehensive overview of the Hitchhikers Guide to the Red planet application detailing how it works, what its features are, the technologies involved and all the design decisions that were made in creating this command line application.
+- [Vision doc](static/documentation/requirements/vision-doc-amber.docx) :  Business needs and feature list.
+ 
+
+### <a id="deployment"></a>Deployment
+This project is deployed to [Heroku](https://amber-ci.herokuapp.com/)
+
+1. Push the code to Github using `git push`.
+
+2. Go to the [Heroku Dashboard](https://dashboard.heroku.com/apps)
+
+3. In the Heroku Dashboard, click on the *Create new app* button.
+
+![Create new App](static/documentation/deploy/heroku-create-new-app.png)
+
+
+4. Enter an app name (*amber-ci*) and region (*Europe*) and click the *Create app* button.
+
+![Create app](static/documentation/deploy/heroku-create-app.png)
+
+
+5. Click on *Settings* tab
+
+![Heroku Settings](static/documentation/deploy/heroku-settings.png)
+
+6. In the 'Config Vars' section, click on *Reveal Config Vars*.  Add a key of **PORT** and a value of **8000**.  Click *Add* button.
+
+![Reveal config vars](static/documentation/deploy/heroku-reveal-config-vars.png)
+![Config vars](static/documentation/deploy/heroku-config-vars.png)
+
+7. In the 'Build Packs' section, click on *Add Build Pack* button.  Select **Python**.  Click *Save Changes* button.
+
+![Build Packs section](static/documentation/deploy/heroku-add-buildpack.png)
+![Python & nodejs buildpacks](static/documentation/deploy/heroku-buildpacks.png)
+
+8. Click on *Add Build Pack* button again and select **nodejs**. Click *Save Changes* button.
+
+![Build packs added](static/documentation/deploy/heroku-buildpacks-added.png)
+
+9. Click on *Deploy* tab.
+
+![Heroku deploy tab](static/documentation/deploy/heroku-deploy.png)
+
+10. Choose Deployment Method *Github*.
+
+![Heroku deployment method](static/documentation/deploy/heroku-deployment-method.png)
+
+11. In *Connect to Github* section, type **Hitchhiker** in the *repo-name* box and click *Search* button.
+
+![Search github](static/documentation/deploy/heroku-search-github.png)
+
+12. Click the *Connect* button next to **Liz-Conway/Project-3-Python**.
+
+![Connect to github](static/documentation/deploy/heroku-hitchhiker-connect.png)
+
+13. Heroku app is now connected to the Github repository.
+
+![Heroku connected to Github](static/documentation/deploy/heroku-connected-github.png)
+
+14. Go to *Manual deploy* section, ensure the branch to deploy is **main**.  Click on *Deploy Branch* button.
+
+![Manual deploy app](static/documentation/deploy/heroku-manual-deploy.png)
+
+15. Once the app is successfully deployed click on the *view* button, or navigate to [Amber application](https://amber-ci.herokuapp.com/) to run the application.
+
+![App successfully deployed](static/documentation/deploy/heroku-successful-deploy.png)
+
+16. Once the app has been deployed you can access it by navigating to [Amber application](https://amber-ci.herokuapp.com/) to run the application.
+
+## <a id="technology"></a>Technology Used
+
+### <a id="technology-used"></a>Some of the technology used includes:
+- [Django](https://www.djangoproject.com)
+	- Django is a high-level Python web framework that is used to develop the Amber application. 
+
+- [Heroku](https://heroku.com/)
+    - **Heroku** is used to host and run the Amber application.
+
+
+## <a id="contributing"></a>Contributing
+
+### <a id="clone"></a>Clone
+1. Firstly you will need to clone this repository by running the `git clone https://github.com/Liz-Conway/Project-4-Amber.git` command
+2. After you've that you'll need to make sure that you have a package manager such as **npm**  installed
+   You can get **npm** by installing Node from [here](https://nodejs.org/en/)
+3. Make sure that you have **python 3** installed. You can install this by running the following: `npm install -g python3` .  This also may require sudo on Mac/Linux
+4. Make sure that you have **Django** installed. You can install this by running the following: `pip install django`  This also may require sudo on Mac/Linux
+5. Once **Django** is installed run `python3 manage.py runserver` in the root directory (the one where manage.py is).
+6. Navigate to http://127.0.0.1:8000/amber-ci in your browser to run the Amber application.
+7. Make changes to the code and if you think it belongs in here then just submit a pull request.
+
+### <a id="fork"></a>Fork
+1. Log into [Github](https://github.com/)
+2. Search for **Amber** and choose to go to `Liz-Conway/Project-4-Amber`.
+3. Click on the *Fork* button on the top right hand side of the screen.
+4. This will make a copy of **Amber** in your github account.
+5. In your version of Amber click on the `Code` button and copy the clone text.
+6. Then, you will need to clone this repository by pasting the command you just copied into a terminal window on your computer and running it.  This will create a copy of Amber from your github account onto your computer.
+7. After you've done that you'll need to make sure that you have a package manager such as **npm**  installed
+   You can get **npm** by installing Node from [here](https://nodejs.org/en/)
+8. Make sure that you have **python3** installed. You can install this by running the following: `npm install -g python3`  This also may require sudo on Mac/Linux
+9. Make sure that you have **Django** installed. You can install this by running the following: `pip install -g django`  This also may require sudo on Mac/Linux
+10. Once **Django** is installed run `python3 manage.py runserver` in the root directory (the one where manage.py is).
+11. Navigate to http://127.0.0.1:8000/amber-ci in your browser to run the Amber application.
+12. Make changes to the code and run `git push` to save those changes to your github account.
+
+
+### <a id="clone-fork"></a>Cloning versus Forking
+The major difference between cloning and forking is where your updates go when you perform a `git push`.
+
+With cloning you are pushing the updates to the `Liz-Conway/Project-4-Amber` repo on github.
+
+With forking you are pushing the updates to your own Amber repo on github.
+
+
+## <a id="credit"></a>Credit
+
+| Code purpose                    | Author               | Link                                                                                 |
+| ------------------------------- | -------------------- | ------------------------------------------------------------------------------------ |
+| Validate a date string          | kite.com             | https://www.kite.com/python/answers/how-to-validate-a-date-string-format-in-python   |
+| Skip first line in a file       | kite.com             | https://www.kite.com/python/answers/how-to-skip-the-first-line-of-a-file-in-python   |
+| Format dates in Python          | Nicholas Samuel      | https://stackabuse.com/how-to-format-dates-in-python/                                |
+| Python Errors                   | TutorialsTeacher.com | https://www.tutorialsteacher.com/python/error-types-in-python                        |
+| Check if a string is an integer | Pratik Kinage        | https://www.pythonpool.com/python-check-if-string-is-integer/                        |
+| Run a python file from another  | Delftstack           | https://www.delftstack.com/howto/python/python-run-another-python-script/            |
+| How to colourise text in python | Stack Overflow       | https://stackoverflow.com/questions/287871/how-to-print-colored-text-to-the-terminal |
+|How to pad out strings in Python| Delftstack |https://www.delftstack.com/howto/python/python-pad-string-with-spaces/|
