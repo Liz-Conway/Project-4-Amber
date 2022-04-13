@@ -3,127 +3,157 @@
 
 ## Table of Contents
 <details>
-<summary>## [Overview](#overview)</summary>
-### [Who is this app for?](#who-for)
-### [What does it do?](#what-do)
+<summary>Overview</summary>
+
+[Who is this app for?](#who-for)
+
+[What does it do?](#what-do)
+
 </details>
-## [Screen Mockup](#mockup)
-## [Features](#features)
-### [Known Bugs](#known-bugs)
-### [Future features](#future-features)
-## [Data Model](#data-model)
-### [Entity Model](#entity-model)
-### [Entity Relationship Model](#erd)
-### [Python Structure](#python-structure)
-## [UX](#ux)
-### [Storyboard](#storyboard)
-### [Personas](#personas)
-### [Customer Journey Maps](#cjm)
-### [Wireframes](#wireframes)
-### [Flow Chart](#flow-chart)
-#### [Key](#flow-key)
-### [Site Map](#site-map)
-### [Accessibility](#accessibility)
-## [Design Decisions](#design-decisions)
-### [Colours](#colours)
-### [Usability](#usability)
-## [Software Development Process](#software-development)
-### [Agile Methodology](#agile)
-### [Project Planning](#planning)
-### [Version control](#git)
-### [Testing](#testing)
-### [Documentation](#documentation)
-### [Deployment](#deployment)
-## [Technology Used](#technology)
-### [Some of the technology used](#technology-used)
-## [Contributing](#contributing)
-### [Clone](#clone)
-### [Fork](#fork)
-### [Clone versus Fork](#clone-fork)
-## [Credit](#credit)
+<details>
+<summary>Screen Mockup</summary>
 
+[Screen Mockup](#mockup)
 
-## <a id="overview"></a>Overview
+</details>
+
+<details>
+<summary>Features</summary>
+
+[Known Bugs](#known-bugs)
+
+[Future features](#future-features)
+
+</details>
+
+<details>
+<summary>Data Model</summary>
+
+[Entity Model](#entity-model)
+
+[Entity Relationship Model](#erd)
+
+[Python Structure](#python-structure)
+
+</details>
+
+<details>
+<summary>UX</summary>
+[Future features](#future-features)
+
+</details>
+
+<details>
+<summary>Data Model</summary>
+
+[Entity Model](#entity-diagram)
+
+[Entity Relationship Model](#erd)
+
+[Python Structure](#python-structure)
+
+</details>
+
+<details>
+<summary>UX</summary>
+
+## Overview
 Hippotherapy is the practise of performing Occupational Therapy exercises, whilst mounted on a horse.  Hippotherapy improves neurological function, sensory processing by providing carefully constructed graded motor and sensory input.  It is during ambulation that the horse provides rhythmic movement which in turn stimulates the anterior, and posterior swinging movements, this encourages proper balance, posture, and strengthening of core muscles which are required for daily functional tasks from climbing stairs, writing, speaking, listening and engaging in the world successfully. 
 
-Hippotherapy can also shorten recovery time and ensure correct development of the paraspinal muscles.  Multifaceted swinging movement and rhythm of the horse’s gait effects the bones of the patient’s girdle twice more strongly than the gait of the individual patient.  The therapeutic benefit needs to be measured and Natalia OT has created an application that measures this precisely.   
+Hippotherapy can also shorten recovery time and ensure correct development of the paraspinal muscles.  Multifaceted swinging movement and rhythm of the horse’s gait effects the bones of the patient’s girdle twice as strongly as the gait of the individual patient.  The therapeutic benefit needs to be measured and Natalia has created an application that measures this precisely.   
 
-Using Amber as a Hippotherapy measurement tool will serve to prove the therapeutic benefits of Hippotherapy as an essential and much required occupational therapy for people with special needs, brain injuries, etc.; shortening the recovery time of medical and surgical treatment. 
 
-### <a id="who-for"></a>Who is this app for?
-This web-based app is for all Occupational Therapists who are involved in providing Hippotherapy sessions to clients.
+
+### Who is this app for?
+<a id="who-for"></a>This web-based app is for all Occupational Therapists who are involved in providing Hippotherapy sessions to clients.
  
  
-### <a id="what-do"></a>What does it do?
-Amber measures and records the therapeutic benefits of Hippotherapy.
+### What does it do?
+<a id="what-do"></a>Using Amber as a Hippotherapy measurement tool will serve to prove the therapeutic benefits of Hippotherapy as an essential and much required occupational therapy for people with special needs, brain injuries, etc.; shortening the recovery time of medical and surgical treatment. 
   
  
- ## <a id="how-work"></a>How does it work
-Amber captures, documents and records Key Performance Indicators for individual Hippotherapy sessions and displays the results in an straightforward manner.
+ ## How does it work
+<a id="how-work"></a>Amber captures, documents and records Key Performance Indicators for individual Hippotherapy sessions and displays the results in an straightforward manner.
 
 
-## <a id="mockup"></a>Screen Mockup
+## Screen Mockup
+<a id="mockup"></a>
 
-![Mockup of screen](documentation/mockup/mockup.png)
+![Mockup of screen](static/documentation/mockup/mockup.png)
 
-## <a id="features"></a>Features
-
-
-### <a id="known-bugs"></a>Known Bugs
-
-### <a id="future-features"></a>Future feature
-Since Amber is a "real-life" project, this section will be used to "de-scope" some of the Use Cases and User Stories.  This will provide a Minimum Viable Product for the end-user which will also meet the criteria for examination by Code Institute. 
+## Features
 
 
-## <a id="data-model"></a>Data model
+### Known Bugs
+<a id="known-bugs"></a>
 
-### <a id="entity-diagram"></a>Entity Diagram
-
-### <a id="erd"></a>Entity Relationship Diagram
-
-### <a id="python-structure"></a>Python structure
-
-## <a id="ux"></a>UX
-
-### <a id="storyboard"></a>Storyboard
-
-### <a id="personas"></a>Personas
-
-### <a id="cjm"></a>Customer Journey Maps
-
-### <a id="wireframes"></a>Wireframes
+### Future feature
+<a id="future-features"></a>Since Amber is a "real-life" project, this section will be used to "de-scope" some of the Use Cases and User Stories.  This will provide a Minimum Viable Product for the end-user which will also meet the criteria for examination by Code Institute. 
 
 
-## <a id="flow-chart"></a>Flow chart
-### <a id="flow-key"></a>Key
+## Data model
+
+### Entity Diagram
+<a id="entity-diagram"></a>
+
+### Entity Relationship Diagram
+<a id="erd"></a>
+
+### Python structure
+<a id="python-structure"></a>
+
+## UX
+<a id="ux"></a>
+
+### Storyboard
+<a id="storyboard"></a>
+
+### Personas
+<a id="personas"></a>
+
+
+### Customer Journey Maps
+<a id="cjm"></a>
+
+### Wireframes
+<a id="wireframes"></a>
+
+
+### Flow chart
+<a id="flow-chart"></a>
+#### Key
+<a id="flow-key"></a>
 
 |Type|Symbol|
 | --- | --- |
-|Input | ![Input symbol](documentation/flow-chart/input.png)|
-|Output |![Output symbol](documentation/flow-chart/output.png)|
-|Process |![Process symbol](documentation/flow-chart/process.png)|
-|Code |![Code symbol](documentation/flow-chart/code.png)|
+|Input | ![Input symbol](static/documentation/flow-chart/input.png)|
+|Output |![Output symbol](static/documentation/flow-chart/output.png)|
+|Process |![Process symbol](static/documentation/flow-chart/process.png)|
+|Code |![Code symbol](static/documentation/flow-chart/code.png)|
 
 
 
-<img alt="Flow chart for Amber" src="documentation/flow-chart/hitchhikers-flow-chart.png" width="100%">
+<img alt="Flow chart for Amber" src="static/documentation/flow-chart/hitchhikers-flow-chart.png" width="100%">
 
-### <a id="site-map"></a>Site Map
+### Site Map
+<a id="site-map"></a>
 
-### <a id="accessibility"></a>Accessibility
+### Accessibility
+<a id="accessibility"></a>
 
-## <a id="design-decisions"></a>Design Decisions
+## Design Decisions
 
 
-### <a id="colours"></a>Colours
-The main colours for the Amber application were deliberately chosen to invoke specific emotional reponses from the user.
+### Colours
+<a id="colours"></a>The main colours for the Amber application were deliberately chosen to invoke specific emotional reponses from the user.
 *white* - Amber is first and foremost a clinical application.  Therefore the background is deliberately set to white.  White is perceived to be a sterile and clinical colour.  The predominance of this colour on every page enforces this idea of Amber being a tool for serious clinicians.
 *orange* - Orange is associated with both energy and warmth.  This colour is used throughout the Amber application to invoke a welcoming feeling from the user, as well as to show that there a certain vibrancy about the application.
 *blue* - Blue is a colour that makes people feel safe.  Websites often use the colour blue when they want to make their users trust them.
 
 The use of colours in the Amber application should make the user feel welcomed and trusting.  Whilst at the same time the user knows that this is not a "fun" app, but a serious tool that will be used by professionals.
 
-### <a id="usability"></a>Usability
+### Usability
+<a id="usability"></a>
 - **Suitability for purpose**
     
 - **Ease of use**
@@ -131,10 +161,10 @@ The use of colours in the Amber application should make the user feel welcomed a
 - **Information Display** 
     
 
-## <a id="software-development"></a>Software Development Process
+## Software Development Process
 
-### <a id="agile"></a>Agile methodology
-The use cases were arranged as Epics, the Epics were broken down into User Stories.  Acceptance criteria were developed for every User Story.
+### Agile methodology
+<a id="agile"></a>The use cases were arranged as Epics, the Epics were broken down into User Stories.  Acceptance criteria were developed for every User Story.
 
 [Trello](https://trello.com/b/0wEVCThe/amber-p4-ci-project) was used as the Agile tool for managing this project.  Each User Story was embodied in a trello card.  Each of these cards was added to a Kanban board.  The Kanban board was set up with a number of lists:
 * Story
@@ -149,14 +179,14 @@ When a Story is being coded it is moved from the **ToDo** list into the **In Pro
 
 At the end of the project, all User Stories will be in the **Done** list and the project will be finished.
 
-### <a id="planning"></a>Project Planning
-The Amber project's User Stories have been allocated into Sprints.  The stories in each Sprint will go through the full process of *ToDo* **>** *In Process* **>** *Testing* **>** *Code Review* **>** *Done*, before the next Sprint begins.
+### Project Planning
+<a id="planning"></a>The Amber project's User Stories have been allocated into Sprints.  The stories in each Sprint will go through the full process of *ToDo* **>** *In Process* **>** *Testing* **>** *Code Review* **>** *Done*, before the next Sprint begins.
 
-<img src="static/documentation/agile-planning/Amber-board-story-map.png" alt="User Story Map Sprint plan" width="100%"/>
+<img src="static/documentation/agile-planning/amber-board-story-map.png" alt="User Story Map Sprint plan" width="100%"/>
 
 
-### <a id="git"></a>Version Control 
-**Git** is used for version control of this project
+### Version Control 
+<a id="git"></a>**Git** is used for version control of this project
 - Git commit message prefix convention denoting the type of change made in this commit:
     - DOC: Documentation
     - FEAT: Feature
@@ -167,20 +197,20 @@ The Amber project's User Stories have been allocated into Sprints.  The stories 
 
 **GitHub** is used as the central version control repository for this project.
 
-### <a id="testing"></a>Testing 
-Testing is documented in the [Testing document](documentation/test/TESTING.md)
+### Testing 
+<a id="testing"></a>Testing is documented in the [Testing document](documentation/test/TESTING.md)
 
-### <a id="vakidation"></a>Validation
-Source code was validated with [PEP8 Validator](http://pep8online.com/).
+### Validation
+<a id="vakidation"></a>Source code was validated with [PEP8 Validator](http://pep8online.com/).
 
 
-### <a id="documentation"></a>Documentation  
-- README.md :  Comprehensive overview of the Hitchhikers Guide to the Red planet application detailing how it works, what its features are, the technologies involved and all the design decisions that were made in creating this command line application.
+### Documentation  
+<a id="documentation"></a>- README.md :  Comprehensive overview of the Hitchhikers Guide to the Red planet application detailing how it works, what its features are, the technologies involved and all the design decisions that were made in creating this command line application.
 - [Vision doc](static/documentation/requirements/vision-doc-amber.docx) :  Business needs and feature list.
  
 
-### <a id="deployment"></a>Deployment
-This project is deployed to [Heroku](https://amber-ci.herokuapp.com/)
+### Deployment
+<a id="deployment"></a>This project is deployed to [Heroku](https://amber-ci.herokuapp.com/)
 
 1. Push the code to Github using `git push`.
 
@@ -244,9 +274,10 @@ This project is deployed to [Heroku](https://amber-ci.herokuapp.com/)
 
 16. Once the app has been deployed you can access it by navigating to [Amber application](https://amber-ci.herokuapp.com/) to run the application.
 
-## <a id="technology"></a>Technology Used
+## Technology Used
 
-### <a id="technology-used"></a>Some of the technology used includes:
+### Some of the technology used includes:
+<a id="technology"></a>
 - [Django](https://www.djangoproject.com)
 	- Django is a high-level Python web framework that is used to develop the Amber application. 
 
@@ -254,10 +285,10 @@ This project is deployed to [Heroku](https://amber-ci.herokuapp.com/)
     - **Heroku** is used to host and run the Amber application.
 
 
-## <a id="contributing"></a>Contributing
+## Contributing
 
-### <a id="clone"></a>Clone
-1. Firstly you will need to clone this repository by running the `git clone https://github.com/Liz-Conway/Project-4-Amber.git` command
+### Clone
+<a id="clone"></a>1. Firstly you will need to clone this repository by running the `git clone https://github.com/Liz-Conway/Project-4-Amber.git` command
 2. After you've that you'll need to make sure that you have a package manager such as **npm**  installed
    You can get **npm** by installing Node from [here](https://nodejs.org/en/)
 3. Make sure that you have **python 3** installed. You can install this by running the following: `npm install -g python3` .  This also may require sudo on Mac/Linux
@@ -266,8 +297,8 @@ This project is deployed to [Heroku](https://amber-ci.herokuapp.com/)
 6. Navigate to http://127.0.0.1:8000/amber-ci in your browser to run the Amber application.
 7. Make changes to the code and if you think it belongs in here then just submit a pull request.
 
-### <a id="fork"></a>Fork
-1. Log into [Github](https://github.com/)
+### Fork
+<a id="fork"></a>1. Log into [Github](https://github.com/)
 2. Search for **Amber** and choose to go to `Liz-Conway/Project-4-Amber`.
 3. Click on the *Fork* button on the top right hand side of the screen.
 4. This will make a copy of **Amber** in your github account.
@@ -282,16 +313,16 @@ This project is deployed to [Heroku](https://amber-ci.herokuapp.com/)
 12. Make changes to the code and run `git push` to save those changes to your github account.
 
 
-### <a id="clone-fork"></a>Cloning versus Forking
-The major difference between cloning and forking is where your updates go when you perform a `git push`.
+### Cloning versus Forking
+<a id="clone-fork"></a>The major difference between cloning and forking is where your updates go when you perform a `git push`.
 
 With cloning you are pushing the updates to the `Liz-Conway/Project-4-Amber` repo on github.
 
 With forking you are pushing the updates to your own Amber repo on github.
 
 
-## <a id="credit"></a>Credit
-
+## Credit
+<a id="credit"></a>
 | Code purpose                    | Author               | Link                                                                                 |
 | ------------------------------- | -------------------- | ------------------------------------------------------------------------------------ |
 | Validate a date string          | kite.com             | https://www.kite.com/python/answers/how-to-validate-a-date-string-format-in-python   |
