@@ -16,7 +16,6 @@
 [Screen Mockup](#mockup)
 
 </details>
-
 <details>
 <summary>Features</summary>
 
@@ -25,7 +24,6 @@
 [Future features](#future-features)
 
 </details>
-
 <details>
 <summary>Data Model</summary>
 
@@ -36,7 +34,6 @@
 [Python Structure](#python-structure)
 
 </details>
-
 <details>
 <summary>UX</summary>
 
@@ -55,7 +52,6 @@
 [Accessibility](#accessibility)
 
 </details>
-
 <details>
 <summary>Design Decisions</summary>
 
@@ -64,7 +60,6 @@
 [Usability](#usability)
 
 </details>
-
 <details>
 <summary>Software Development Process</summary>
 
@@ -81,15 +76,12 @@
 [Deployment](#deployment)
 
 </details>
-
 <details>
 <summary>Technology Used</summary>
 
 [Technology Used](#technology)
 
 </details>
-
-
 <details>
 <summary>Contributing</summary>
 
@@ -100,7 +92,6 @@
 [Clone versus Fork](#clone-fork)
 
 </details>
-
 <details>
 <summary>Credit</summary>
 
@@ -138,8 +129,24 @@ Hippotherapy can also shorten recovery time and ensure correct development of th
 ### Known Bugs
 <a id="known-bugs"></a>
 
-### Future feature
+### Future features
 <a id="future-features"></a>Since Amber is a "real-life" project, this section will be used to "de-scope" some of the Use Cases and User Stories.  This will provide a Minimum Viable Product for the end-user which will also meet the criteria for examination by Code Institute. 
+
+* Add long-term goals
+	* Allow the Occupational Therapist to record long-term goals which she will aim to use Hippotherapy to reach for the client.
+* View long-term goals
+	* Allow the Occupational Therapist to view the long-term goals for a particular client 
+* Set Session notes
+	* Allow the Occupational Therapist to record notes for a particular session. 
+* View Session notes
+	* Allow the Occupational Therapist to see the Session notes for a particular session. 
+* Print Charts
+	* Allow the Hippotherapy Analyst to print out charts for a course of Hippotherapy sessions concerning a particular client.
+* Maintain Configuration
+	* Allow the Admin to add, edit and delete static information (such as hat sizes, etc.).
+* Maintain Functional Skills
+	* Allow the Admin to add, edit and delete functions, skills within those functions, as well as the hints relating to each functional skill.
+
 
 
 ## Data model
