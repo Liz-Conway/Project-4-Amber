@@ -313,6 +313,32 @@ At the end of the project, all User Stories will be in the **Done** list and the
 ### Testing 
 <a id="testing"></a>Testing is documented in the [Testing document](documentation/test/TESTING.md)
 
+### Bug Fixes
+**BUG:**
+TemplateSyntaxError at /
+Could not parse the remainder: '('static', filename='css/style.css')' from 'url_for('static', filename='css/style.css')'
+**FIX:**
+Switched from using Flash syntax `href="{{ url_for('static', filename='css/style.css') }}"` to using Django syntax `href="{% static 'css/style.css' %}"`.
+
+**BUG:**
+TemplateSyntaxError at /
+Could not parse the remainder: '('home')' from 'url_for('home')'
+**FIX:**
+Switched from using Flash syntax `href="{{ url_for('home') }}"` to using Django syntax `href="{% static 'css/style.css' %}"`.
+
+**BUG:**
+TemplateSyntaxError at /
+Could not parse the remainder: '('static', filename='js/script.js')' from 'url_for('static', filename='js/script.js')'
+**FIX:**
+Switched from using Flash syntax `src="{{ url_for('static', filename='js/script.js') }}"` to using Django syntax `src="{% static 'js/script.js' %}"`.
+
+**BUG:**
+NoReverseMatch at /
+Reverse for 'client' not found. 'client' is not a valid view function or pattern name.
+**FIX:**
+Removed non-existant links from the base.html template.
+
+
 ### Validation
 <a id="vakidation"></a>Source code was validated with [PEP8 Validator](http://pep8online.com/).
 
