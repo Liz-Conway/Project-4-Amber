@@ -1,0 +1,53 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Amber</title>
+	
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+	<header>
+		<!-- Top navbar -->
+		<nav class="light-blue darken-1">
+		    <div class="nav-wrapper">
+		      <a href="{% url 'home' %}" class="brand-logo">Amber</a>
+		      <ul class="right hide-on-med-and-down">
+		      	<!-- Need to tell Flask the name of the function to call in the Controller -->
+		        <li><a href="{% url 'home' %}">Home</a></li>
+		      </ul>
+		    </div>
+	  </nav>
+		
+	</header>
+	
+	<!-- Materialize element 'container' -->
+	<main class="container">
+		{% block content %}
+		{% endblock %}
+	</main>
+	
+	<!-- Materialize Footer -->
+	<footer class="page-footer blue darken-3">
+        <div class="footer-copyright">
+            <div class="container">
+            	For educational purposes only
+            	<a class="white-text right" href="https://codeinstitute.net" target="_blank">&copy; Waycon Technologies</a>
+            </div>
+        </div>
+     </footer>
+            
+	<!-- jQuery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" 
+		integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" 
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script src="{% static 'js/script.js' %}"></script>
+
+</body>
+</html>
