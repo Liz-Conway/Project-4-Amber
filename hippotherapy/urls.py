@@ -21,5 +21,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.go_home, name='home'),
+    path('', views.HomePage.as_view(), name='home'),
 ]

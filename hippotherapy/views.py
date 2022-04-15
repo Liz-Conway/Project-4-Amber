@@ -1,6 +1,7 @@
 from django.shortcuts import render
+from django.views.generic import TemplateView
 
 # Create your views here.
+class HomePage(TemplateView):
+    template_name = "index.html"
 
-def go_home(request):
-    return render(request, 'hippo/index.html')
