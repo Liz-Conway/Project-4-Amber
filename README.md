@@ -376,30 +376,21 @@ Removed non-existant links from the base.html template.
 ![Reveal config vars](static/documentation/deploy/heroku-reveal-config-vars.png)
 ![Config vars](static/documentation/deploy/heroku-config-vars.png)
 
-7. In the 'Build Packs' section, click on *Add Build Pack* button.  Select **Python**.  Click *Save Changes* button.
-
-![Build Packs section](static/documentation/deploy/heroku-add-buildpack.png)
-![Python & nodejs buildpacks](static/documentation/deploy/heroku-buildpacks.png)
-
-8. Click on *Add Build Pack* button again and select **nodejs**. Click *Save Changes* button.
-
-![Build packs added](static/documentation/deploy/heroku-buildpacks-added.png)
-
-9. Click on *Deploy* tab.
+7. Click on *Deploy* tab.
 
 ![Heroku deploy tab](static/documentation/deploy/heroku-deploy.png)
 
-10. Choose Deployment Method *Github*.
+8. Choose Deployment Method *Github*.
 
 ![Heroku deployment method](static/documentation/deploy/heroku-deployment-method.png)
 
-11. In *Connect to Github* section, type **Amber** in the *repo-name* box and click *Search* button.
+9. In *Connect to Github* section, type **Amber** in the *repo-name* box and click *Search* button.
 
 ![Search github](static/documentation/deploy/heroku-search-github.png)
 
 12. Click the *Connect* button next to **Liz-Conway/Project-4-Amber**.
 
-![Connect to github](static/documentation/deploy/heroku-hitchhiker-connect.png)
+![Connect to github](static/documentation/deploy/heroku-amber-connect.png)
 
 13. Heroku app is now connected to the Github repository.
 
