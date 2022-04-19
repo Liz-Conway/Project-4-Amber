@@ -129,6 +129,8 @@ Hippotherapy can also shorten recovery time and ensure correct development of th
 ### Known Bugs
 <a id="known-bugs"></a>
 
+* Javascript is used to position the "My Account" and "Logout" links when the page is loaded.  This depends on the width of the screen when the application is first loaded.  If a user views the Amber application on a tablet and changes the orientation, then the layout of these links will be in the wrong place.
+
 ### Future features
 <a id="future-features"></a>Since Amber is a "real-life" project, this section will be used to "de-scope" some of the Use Cases and User Stories.  This will provide a Minimum Viable Product for the end-user which will also meet the criteria for examination by Code Institute. 
 
