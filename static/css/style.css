@@ -10,7 +10,7 @@ body {
   /* Instead of calculating the line height by multiplying the font-size with a number like 1.5, */
   /* this alternative uses the font-size as a base, and adds a fixed amount of space to each line. */
   line-height: calc(1em + 0.7rem);
-  color: #000000;
+  color: #3D2724;
 }
 
 /*===== END  Typography  ===== */
@@ -68,21 +68,7 @@ html {
   /* For mobile 1st design we will use 8px for the mobile device */
   font-size: 50%;
 }
-@media only screen and (min-width: 50em) {
-  html {
-    font-size: 56.25%;
-  }
-}
-@media only screen and (min-width: 59.375em) {
-  html {
-    font-size: 62.5%;
-  }
-}
-@media only screen and (min-width: 75em) {
-  html {
-    font-size: 75%;
-  }
-}
+
 
 body {
   /* Inheritable properties */
@@ -113,18 +99,8 @@ body {
   /* Mobile first - so smaller values first */
   margin-bottom: 3rem;
 }
-@media only screen and (min-width: 50em) {
-  .marginBottomMedium {
-    margin-bottom: 4rem;
-  }
-}
 .marginBottomBig {
   margin-bottom: 5rem;
-}
-@media only screen and (min-width: 50em) {
-  .marginBottomBig {
-    margin-bottom: 8rem;
-  }
 }
 
 .marginTopSmall {
@@ -179,14 +155,248 @@ header {
       -ms-flex-direction: row;
           flex-direction: row;
   margin-bottom: auto;
+  margin-top: 1rem;
 }
 #titleBar h1 {
   margin-right: auto;
+  margin-left: auto;
 }
 #titleBar a:not(:last-child) {
   padding-right: 2rem;
 }
 
 /*===== END  Header  ===== */
+/*~~~~~~~  Navbar  ~~~~~~~ */
+#navigationNav {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1500;
+  /*Hide the navigation initially */
+  opacity: 0;
+  /*It is not enough to have an opacity of zero */
+  /*The elements are still there and are clickable, so we need to set the width to zero as well */
+  width: 0;
+  -webkit-transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
 
-/*# sourceMappingURL=style.css.map */
+.navigation {
+  /*Coloured background for the navigation */
+  /*It will start as a small circle behind the white circle containing the "hamburger" icon */
+  /*It will expand to fill the screen when the "hamburger" icon is clicked */
+  /*When the button is clicked change the "hamburger" to a cross */
+  /*When the checkbox is selected - get its adjacent sibling and */
+  /*select the child element of the adjacent sibling */
+}
+.navigationButton {
+  display: inline;
+  background-color: #FFFFFF;
+  /*Make this slightly larger than the navigationBackground, to be sure to cover it */
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  position: fixed;
+  top: 6rem;
+  right: 6rem;
+  z-index: 2000;
+  -webkit-box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
+  text-align: center;
+  cursor: pointer;
+}
+.navigationBackground {
+  display: block;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  /*Stays in the same position even if we scroll down the page */
+  position: fixed;
+  top: 6.5rem;
+  right: 6.5rem;
+  background-image: radial-gradient(#F5853F, #923d08);
+  z-index: 1000;
+  /*Custom transition function, uses a cubic bezier curve for ease-in and ease-out */
+  /*See easings.net & cubic-bezier.com */
+  -webkit-transition: -webkit-transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+  transition: -webkit-transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+  transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+  transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1), -webkit-transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+}
+.navigationList {
+  list-style: none;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-direction: row;
+      flex-direction: row;
+}
+.navigationItem {
+  margin: 1rem;
+}
+.navigationLink:link, .navigationLink:visited {
+  display: inline-block;
+  font-size: 3rem;
+  font-weight: 300;
+  padding: 1rem 2rem;
+  color: #191970;
+  text-decoration: none;
+  text-transform: uppercase;
+  background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #FFCDBC 50%);
+  /*Increasing the background shoves the RHS of the linear gradient off the element, so it is invisible */
+  background-size: 235%;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+.navigationLink:link span, .navigationLink:visited span {
+  padding-right: 1.5rem;
+}
+.navigationLink:hover, .navigationLink:active {
+  background-position: 100%;
+  color: #F5853F;
+  -webkit-transform: translateX(1rem);
+          transform: translateX(1rem);
+}
+.navigationCheckbox:checked ~ .navigationBackground {
+  -webkit-transform: scale(80);
+          transform: scale(80);
+}
+.navigationCheckbox:checked ~ .navigationNav {
+  opacity: 1;
+  width: 100%;
+}
+.navigationIcon {
+  display: inline-block;
+  position: relative;
+  margin-top: 3.5rem;
+  /*A bar before the span, the span is a bar, a bar after the span */
+  /*Each bar is 3rem x 2px and is coloured dark grey */
+  /*For ::before and ::after to show they need content and display properties to be set */
+}
+.navigationIcon, .navigationIcon::before, .navigationIcon::after {
+  width: 3rem;
+  /*Always stays the same height, no matter what the base font size is */
+  height: 2px;
+  background-color: #333333;
+  display: inline-block;
+}
+.navigationIcon::before, .navigationIcon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.navigationIcon::before {
+  top: -0.8rem;
+  /*By default elements will rotate around the centre. */
+  /*If you want to rotate around the edge you can set the transform-origin */
+  /*transform-origin: right */
+}
+.navigationIcon::after {
+  top: 0.8rem;
+  /*transform-origin: left */
+}
+.navigationButton:hover .navigationIcon::before {
+  top: -1rem;
+}
+.navigationButton:hover .navigationIcon::after {
+  top: 1rem;
+}
+.navigationCheckbox:checked + .navigationButton > .navigationIcon {
+  /*Step 1 make the middle bar invisible (this is the span in the navigationIcon) */
+  background-color: transparent;
+}
+.navigationCheckbox:checked + .navigationButton > .navigationIcon::before {
+  /*Step 2 make the top bar rotate (this is the navigationIcon::before) */
+  /*Rotate 180 degrees - 45 degrees : Takes longer, so looks better */
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+  top: 0;
+}
+.navigationCheckbox:checked + .navigationButton > .navigationIcon::after {
+  /*Step 3 make the bottom bar rotate (this is the navigationIcon::after) */
+  /*Rotate 180 degrees - 45 degrees : Takes longer, so looks better */
+  -webkit-transform: rotate(-135deg);
+          transform: rotate(-135deg);
+  top: 0;
+}
+
+/*===== END  Navbar  ===== */
+
+/* Media Queries for Tablets in Landscape mode */
+@media only screen and (min-width: 50em) {
+  html {
+    font-size: 56.25%;
+  }
+
+  .marginBottomMedium {
+    margin-bottom: 4rem;
+  }
+
+  .marginBottomBig {
+    margin-bottom: 8rem;
+  }
+
+  #navigationNav {
+    background-color: #F5853F;
+    width: 100%;
+    height: auto;
+    opacity: 1;
+    position: relative;
+  }
+
+  .navigationCheckbox {
+    display: none;
+  }
+
+  .navigationButton {
+    display: none;
+  }
+
+  .navigationBackground {
+    display: none;
+  }
+
+  .navigationList {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+
+  .navigationLink:link, .navigationLink:visited {
+    font-size: 1.4rem;
+  }
+
+  .navigationIcon {
+    display: none;
+  }
+}
+
+/* Media Queries for Laptop/Desktop screen */
+@media only screen and (min-width: 59.375em) {
+  html {
+    font-size: 62.5%;
+  }
+}
+
+/* Media Queries for Extra Large Desktop screens */
+@media only screen and (min-width: 75em) {
+  html {
+    font-size: 75%;
+  }
+}
