@@ -478,7 +478,9 @@ With forking you are pushing the updates to your own Amber repo on github.
 <a id="credit"></a>
 | Code purpose                    | Author               | Link                                                                                 |
 | ------------------------------- | -------------------- | ------------------------------------------------------------------------------------ |
-| Custom Reset          | Josh Comeau             | https://www.joshwcomeau.com/css/custom-css-reset/   || Validate a date string          | kite.com             | https://www.kite.com/python/answers/how-to-validate-a-date-string-format-in-python   |
+| Custom Reset          | Josh Comeau             | https://www.joshwcomeau.com/css/custom-css-reset/   |
+| Host static files in Cloudinary | https://cloudinary.com/blog/author/nadav_soferman             | https://cloudinary.com/blog/using_cloudinary_to_manage_all_your_website_s_assets_in_the_cloud   |
+| Validate a date string          | kite.com             | https://www.kite.com/python/answers/how-to-validate-a-date-string-format-in-python   |
 | Skip first line in a file       | kite.com             | https://www.kite.com/python/answers/how-to-skip-the-first-line-of-a-file-in-python   |
 | Format dates in Python          | Nicholas Samuel      | https://stackabuse.com/how-to-format-dates-in-python/                                |
 | Python Errors                   | TutorialsTeacher.com | https://www.tutorialsteacher.com/python/error-types-in-python                        |
