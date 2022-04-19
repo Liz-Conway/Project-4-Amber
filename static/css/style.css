@@ -159,7 +159,6 @@ header {
 }
 #titleBar h1 {
   margin-right: auto;
-  margin-left: auto;
 }
 #titleBar a:not(:last-child) {
   padding-right: 2rem;
@@ -168,9 +167,8 @@ header {
 /*===== END  Header  ===== */
 /*~~~~~~~  Navbar  ~~~~~~~ */
 #navigationNav {
-  height: 100vh;
   position: fixed;
-  top: 0;
+  top: 7rem;
   left: 0;
   z-index: 1500;
   /*Hide the navigation initially */
@@ -182,6 +180,28 @@ header {
   transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
+#accountLinks {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 1rem;
+  position: fixed;
+  z-index: 1500;
+  /*Hide the navigation initially */
+  opacity: 0;
+  /*It is not enough to have an opacity of zero */
+  /*The elements are still there and are clickable, so we need to set the width to zero as well */
+  width: 0;
+  -webkit-transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
 
 #naviToggle {
   display: none;
@@ -203,14 +223,15 @@ header {
   height: 7rem;
   border-radius: 50%;
   position: fixed;
-  top: 6rem;
-  right: 6rem;
+  top: 1rem;
+  right: 1rem;
   z-index: 2000;
   -webkit-box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
           box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
   text-align: center;
   cursor: pointer;
 }
+
 .navigationBackground {
   display: block;
   width: 6rem;
@@ -218,8 +239,8 @@ header {
   border-radius: 50%;
   /*Stays in the same position even if we scroll down the page */
   position: fixed;
-  top: 6.5rem;
-  right: 6.5rem;
+  top: 1.5rem;
+  right: 1.5rem;
   background-image: radial-gradient(#F5853F, #923d08);
   z-index: 1000;
   /*Custom transition function, uses a cubic bezier curve for ease-in and ease-out */
@@ -265,9 +286,6 @@ header {
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
 }
-.navigationLink:link span, .navigationLink:visited span {
-  padding-right: 1.5rem;
-}
 .navigationLink:hover, .navigationLink:active {
   background-position: 100%;
   color: #F5853F;
@@ -278,11 +296,9 @@ header {
   -webkit-transform: scale(80);
           transform: scale(80);
 }
-.navigationCheckbox:checked ~ #navigationNav {
+.navigationCheckbox:checked ~ #navigationNav, .navigationCheckbox:checked ~ #accountLinks {
   opacity: 1;
   width: 100%;
-  -webkit-transform: translateY(14rem);
-          transform: translateY(14rem);
 }
 .navigationIcon {
   display: inline-block;
@@ -363,6 +379,7 @@ header {
     height: auto;
     opacity: 1;
     position: relative;
+    top: 0;
   }
 
   .navigationCheckbox {
@@ -395,6 +412,35 @@ header {
   .navigationCheckbox:checked ~ #navigationNav {
     -webkit-transform: translateY(0);
             transform: translateY(0);
+  }
+
+  #navWrapper {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  #titleBar {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  #accountLinks {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    background-color: #FFFFFF;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: auto;
+    opacity: 1;
+    position: relative;
+    margin-top: 0;
   }
 }
 

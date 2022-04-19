@@ -28,8 +28,10 @@
 	       	</div>
 			<div id="titleBar">
 				<h1>Amber</h1>
-				<a href="{% url 'home' %}">My Account</a> 
-				<a href="{% url 'home' %}">Logout</a>
+			</div>
+			<div id="accountLinks">
+				<a href="{% url 'home' %}" class="navigationLink accountLink">My Account</a> 
+				<a href="{% url 'home' %}" class="navigationLink accountLink">Logout</a>
 			</div>
 			<!-- Top navbar -->
 			<nav id="navigationNav" class="navigationBar">
@@ -73,6 +75,10 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" 
 		integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" 
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<!-- jQuery UI -->
+	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js" 
+		integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" 
+		crossorigin="anonymous"></script>
     
     <script src="{% static 'js/script.js' %}"></script>
 
