@@ -182,6 +182,11 @@ header {
   transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
+
+#naviToggle {
+  display: none;
+}
+
 .navigation {
   /*Coloured background for the navigation */
   /*It will start as a small circle behind the white circle containing the "hamburger" icon */
@@ -241,8 +246,7 @@ header {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-direction: row;
-      flex-direction: row;
+  flex-direction: column;
 }
 .navigationItem {
   margin: 1rem;
@@ -274,9 +278,11 @@ header {
   -webkit-transform: scale(80);
           transform: scale(80);
 }
-.navigationCheckbox:checked ~ .navigationNav {
+.navigationCheckbox:checked ~ #navigationNav {
   opacity: 1;
   width: 100%;
+  -webkit-transform: translateY(14rem);
+          transform: translateY(14rem);
 }
 .navigationIcon {
   display: inline-block;
@@ -384,6 +390,11 @@ header {
 
   .navigationIcon {
     display: none;
+  }
+
+  .navigationCheckbox:checked ~ #navigationNav {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
   }
 }
 
