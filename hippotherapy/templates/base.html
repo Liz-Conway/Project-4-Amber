@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,33 +12,56 @@
 </head>
 <body>
 
-	<header>
-		<!-- Top navbar -->
-		<nav class="light-blue darken-1">
-		    <div class="nav-wrapper">
-		      <a href="{% url 'home' %}" class="brand-logo">Amber</a>
-		      <ul class="right hide-on-med-and-down">
-		      	<!-- Need to tell Flask the name of the function to call in the Controller -->
-		        <li><a href="{% url 'home' %}">Home</a></li>
-		      </ul>
-		    </div>
-	  </nav>
-		
+	<header class="navigation">
+		<input type="checkbox" class="navigationCheckbox" id="naviToggle">
+       	<label class="navigationButton" for="naviToggle">
+			<span class="navigationIcon">&nbsp;</span>
+		</label>
+       	<div class="navigationBackground">
+       		&nbsp;
+       	</div>
+		<div id="logo">
+			<a href="{% url 'home' %}">
+				<img alt="Amber logo" src="{% static "images/amber-logo.png" %}">
+			</a>
+		</div>
+		<div id="navWrapper">
+			<div id="titleBar">
+				<h1>Amber</h1>
+				<a href="{% url 'home' %}">My Account</a> <a href="{% url 'home' %}">Logout</a>
+			</div>
+			<!-- Top navbar -->
+			<nav id="navigationNav">
+				<ul class="navigationList">
+					<li class="navigationItem">
+						<a href="{% url 'home' %}" class="navigationLink"> Client</a>
+					</li>
+					<li class="navigationItem">
+						<a href="{% url 'home' %}" class="navigationLink">Record Session</a>
+					</li>
+					<li class="navigationItem">
+						<a href="{% url 'home' %}" class="navigationLink">View Session</a>
+					</li>
+					<li class="navigationItem">
+						<a href="{% url 'home' %}" class="navigationLink">Generate Charts</a>
+					</li>
+					<li class="navigationItem">
+						<a href="{% url 'home' %}" class="navigationLink">View Charts</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+
 	</header>
 	
-	<!-- Materialize element 'container' -->
-	<main class="container">
+	<main>
 		{% block content %}
 		{% endblock %}
 	</main>
 	
-	<!-- Materialize Footer -->
-	<footer class="page-footer blue darken-3">
+	<footer>
         <div class="footer-copyright">
-            <div class="container">
-            	For educational purposes only
-            	<a class="white-text right" href="https://codeinstitute.net" target="_blank">&copy; Waycon Technologies</a>
-            </div>
+            &copy; Natalia Campbell, 2022
         </div>
      </footer>
             
