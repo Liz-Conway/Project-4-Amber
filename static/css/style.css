@@ -3,7 +3,6 @@
 body {
   font-family: Gabriela;
   font-weight: 400;
-  font-size: 1.6rem;
   /* For accessibility - The WCAG criteria states that line-height should be at least 1.5 */
   /* The WCAG criteria is meant for "body" text, not headings. */
   /* So we can calculate the proper line height for all elements : */
@@ -15,15 +14,15 @@ body {
 
 .subTitle {
   text-align: center;
-  line-height: calc(1em + 2rem);
-  padding: 0 5rem;
+  line-height: calc(1em + 1rem);
+  padding: 0 1rem;
 }
 .subTitle #amber {
   font-weight: 300;
-  font-size: 3rem;
+  font-size: 2rem;
 }
-.subTitle #OT {
-  font-style: italic;
+.subTitle #hippo {
+  font-weight: 300;
 }
 
 /*===== END  Typography  ===== */
@@ -97,7 +96,7 @@ body {
           flex-direction: column;
   min-height: 100vh;
   /* Non-inheritable properties */
-  padding: 3rem;
+  padding: 0;
 }
 
 /*~~~~~~~  Utilities  ~~~~~~~ */
@@ -172,6 +171,8 @@ header {
 }
 #titleBar h1 {
   margin-right: auto;
+  padding-top: 3rem;
+  padding-left: 2rem;
 }
 #titleBar a:not(:last-child) {
   padding-right: 2rem;
@@ -393,10 +394,10 @@ footer {
 /*===== END  Footer  ===== */
 /*~~~~~~~  Home Page  ~~~~~~~ */
 .splash {
-  padding: 5rem 5rem;
+  padding: 1rem 1rem;
   margin-top: 5rem;
-  margin-left: 20rem;
-  margin-right: 20rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
   margin-bottom: 5rem;
   /* To put a gradient on top of an image */
   /* Just specify both in the background-image separated by a comma */
@@ -414,11 +415,19 @@ footer {
           box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.55);
 }
 .splashTitle {
-  font-size: 5rem;
+  font-size: 2.5rem;
+  margin-top: 1rem;
 }
 .splashSubtitle {
-  font-size: 2.6rem;
-  margin-top: 50rem;
+  font-size: 1.8rem;
+  /*Place the text close to the bottom of the image */
+  margin-top: 10rem;
+  /*Change display to inline-block, so we can modify the width */
+  display: inline-block;
+  /*Change width to force the text to wrap */
+  width: 43%;
+  /*Change the line-height to space out the text vertically */
+  line-height: calc(1em + 2rem);
 }
 
 /*===== END  Home Page  ===== */
@@ -505,6 +514,35 @@ footer {
     opacity: 1;
     position: relative;
     margin-top: 0;
+  }
+
+  .subTitle {
+    padding: 0 5rem;
+    line-height: calc(1em + 2rem);
+  }
+
+  .subTitle #amber {
+    font-size: 2.3rem;
+  }
+
+  body {
+    padding: 3rem;
+  }
+
+  .splash {
+    margin-left: 20rem;
+    margin-right: 20rem;
+    padding: 5rem 5rem;
+  }
+
+  .splashTitle {
+    font-size: 5rem;
+  }
+
+  .splashSubtitle {
+    font-size: 3rem;
+    margin-top: 43rem;
+    width: 35%;
   }
 }
 
