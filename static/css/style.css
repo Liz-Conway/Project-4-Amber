@@ -359,6 +359,26 @@ header {
 
 /*===== END  Navbar  ===== */
 
+/*~~~~~~~  Footer  ~~~~~~~ */
+footer {
+  /*Sticky footer */
+  margin-top: auto;
+  background-color: #3D2724;
+  color: #FFCDBC;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+/*===== END  Footer  ===== */
+
 /* Media Queries for Tablets in Landscape mode */
 @media only screen and (min-width: 50em) {
   html {
