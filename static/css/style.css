@@ -13,6 +13,19 @@ body {
   color: #3D2724;
 }
 
+.subTitle {
+  text-align: center;
+  line-height: calc(1em + 2rem);
+  padding: 0 5rem;
+}
+.subTitle #amber {
+  font-weight: 300;
+  font-size: 3rem;
+}
+.subTitle #OT {
+  font-style: italic;
+}
+
 /*===== END  Typography  ===== */
 /*~~~~~~~  Reset  ~~~~~~~ */
 /* Josh's Custom CSS Reset
@@ -378,6 +391,37 @@ footer {
 }
 
 /*===== END  Footer  ===== */
+/*~~~~~~~  Home Page  ~~~~~~~ */
+.splash {
+  padding: 5rem 5rem;
+  margin-top: 5rem;
+  margin-left: 20rem;
+  margin-right: 20rem;
+  margin-bottom: 5rem;
+  /* To put a gradient on top of an image */
+  /* Just specify both in the background-image separated by a comma */
+  /*We can specify an angle for the gradient instead of 'to right' use '90deg', etc. */
+  /* For the gradient we can specify in percentages at which point the gradient should be */
+  /*We can have the first colour starting at 0% and the full second colour at 30% */
+  /*If we also say at 30% we want it to be the first colour ... */
+  /*This gives us two solid colours - first colour on LHS & second colour on RHS */
+  /*Since we specified the angle to be 75 degrees the colours meet at a 75 degree angle */
+  /*To make the RHS see through, just change second colour to transparent */
+  background-image: linear-gradient(75deg, rgba(255, 205, 188, 0.9) 0%, rgba(255, 205, 188, 0.9) 43%, transparent 50%), url(https://res.cloudinary.com/foxywolf/image/upload/v1650394746/static/images/hippotherapy-large_kcfunq.jpg);
+  background-size: 100%;
+  border-radius: 3px;
+  -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.55);
+          box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.55);
+}
+.splashTitle {
+  font-size: 5rem;
+}
+.splashSubtitle {
+  font-size: 2.6rem;
+  margin-top: 50rem;
+}
+
+/*===== END  Home Page  ===== */
 
 /* Media Queries for Tablets in Landscape mode */
 @media only screen and (min-width: 50em) {
