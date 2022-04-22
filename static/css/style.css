@@ -12,10 +12,23 @@ body {
   color: #3D2724;
 }
 
+.subTitle {
+  text-align: center;
+  line-height: calc(1em + 1rem);
+  padding: 0 1rem;
+}
+.subTitle #amber {
+  font-weight: 300;
+  font-size: 2rem;
+}
+.subTitle #hippo {
+  font-weight: 300;
+}
+
 /*===== END  Typography  ===== */
 /*~~~~~~~  Reset  ~~~~~~~ */
-/* Josh's Custom CSS Reset
- * https://www.joshwcomeau.com/css/custom-css-reset */
+/*  Josh's Custom CSS Reset  */
+/*  https://www.joshwcomeau.com/css/custom-css-reset */
 *, *::before, *::after {
   -webkit-box-sizing: inherit;
           box-sizing: inherit;
@@ -24,9 +37,9 @@ body {
   margin: 0;
 }
 
-/* The height of an element is calculated based on its CHILDREN.
- * So setting height: 100% on an element will cause it to be 100% of the child's height.
- * This setting causes the height to be calculated from the parent */
+/*  The height of an element is calculated based on its CHILDREN.   */
+/*  So setting height: 100% on an element will cause it to be 100% of the child's height.  */
+/*  This setting causes the height to be calculated from the parent  */
 html, body {
   height: 100%;
 }
@@ -159,7 +172,11 @@ header {
   margin-top: 1rem;
 }
 #titleBar h1 {
+  font-size: 3rem;
   margin-right: auto;
+  margin-left: auto;
+  padding-top: 3rem;
+  padding-right: 10rem;
 }
 #titleBar a:not(:last-child) {
   padding-right: 2rem;
@@ -381,7 +398,7 @@ footer {
 /*===== END  Footer  ===== */
 /*~~~~~~~  Home Page  ~~~~~~~ */
 .splash {
-  padding: 1rem 1rem;
+  padding: 1rem;
   margin-top: 5rem;
   margin-left: 5rem;
   margin-right: 5rem;
@@ -400,6 +417,17 @@ footer {
   border-radius: 3px;
   -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.55);
           box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.55);
+  height: 26rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 .splashTitle {
   font-size: 2.5rem;
@@ -415,11 +443,46 @@ footer {
   width: 43%;
   /*Change the line-height to space out the text vertically */
   line-height: calc(1em + 2rem);
+  margin-top: auto;
 }
+
 
 /*===== END  Home Page  ===== */
 
-/* Media Queries for Tablets in Landscape mode */
+/* Media Queries for big Phones */
+@media only screen and (min-width: 28.125em) {
+  .splash {
+    height: 40rem;
+    padding: 3rem;
+  }
+
+  .splashSubtitle {
+    font-size: 2.3rem;
+    width: 40%;
+  }
+
+  .splashTitle {
+    font-size: 3.2rem;
+  }
+}
+
+/* Media Queries for Tablets in Portrait orientation */
+@media only screen and (min-width: 37.5em) {
+  #titleBar h1 {
+    font-size: 4rem;
+  }
+
+  .splash {
+    height: 56rem;
+    padding: 4rem;
+  }
+
+  .splashSubtitle {
+    width: 27%;
+  }
+}
+
+/* Media Queries for Tablets in Landscape orientation */
 @media only screen and (min-width: 50em) {
   html {
     font-size: 56.25%;
@@ -488,6 +551,12 @@ footer {
     margin-left: auto;
   }
 
+  #titleBar h1 {
+    padding-top: 0;
+    padding-right: 0;
+    padding-left: 7rem;
+  }
+  
   #accountLinks {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -532,9 +601,24 @@ footer {
     width: 35%;
   }
 
-  #titleBar {
-    margin-right: auto;
-    margin-left: auto;
+  .subTitle {
+    padding: 0 5rem;
+    line-height: calc(1em + 2rem);
+  }
+
+  .subTitle #amber {
+    font-size: 2.3rem;
+  }
+
+  .splash {
+    margin-left: 20rem;
+    margin-right: 20rem;
+    padding: 5rem;
+    height: 37rem;
+  }
+
+  .splashSubtitle {
+    width: 48%;
   }
 }
 
@@ -547,11 +631,48 @@ footer {
   body {
     min-height: 100vh;
   }
+
+  .splash {
+    height: 43rem;
+  }
+
+  .splashSubtitle {
+    width: 40%;
+  }
 }
+
+@media only screen and (min-width: 72.75em) {
+  .splashSubtitle {
+    width: 37%;
+  }
+}
+
 
 /* Media Queries for Extra Large Desktop screens */
 @media only screen and (min-width: 75em) {
   html {
     font-size: 75%;
+  }
+
+  .splash {
+    margin-left: 25rem;
+    margin-right: 25rem;
+    height: 38rem;
+  }
+
+  .splashSubtitle {
+    width: 35%;
+  }
+}
+
+/* Media Queries for XXL Desktop screens */
+@media only screen and (min-width: 93.75em) {
+  .splash {
+    height: 60rem;
+  }
+
+  .splashSubtitle {
+    font-size: 2.65rem;
+    width: 30%;
   }
 }
