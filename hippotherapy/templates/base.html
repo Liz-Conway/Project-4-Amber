@@ -8,14 +8,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Amber</title>
 	
-    <link rel="stylesheet" type="text/css" href="https://res.cloudinary.com/liz-conway/raw/upload/v1650481414/amber/CSS/style_t3e15k.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
 
 	<header class="navigation">
 		<div id="logo">
 			<a href="{% url 'home' %}">
-				<img alt="Amber logo" src="https://res.cloudinary.com/liz-conway/image/upload/v1650387827/amber/images/amber-logo_cp0chc.png">
+				<img alt="Amber logo" src="{% static "images/amber-logo.png" %}">
 			</a>
 		</div>
 		<div id="navWrapper">
@@ -80,7 +80,7 @@
 		integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" 
 		crossorigin="anonymous"></script>
     
-    <script src="https://res.cloudinary.com/liz-conway/raw/upload/v1650387807/amber/js/script_ykv1d0.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 
 </body>
 </html>

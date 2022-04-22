@@ -12,19 +12,6 @@ body {
   color: #3D2724;
 }
 
-.subTitle {
-  text-align: center;
-  line-height: calc(1em + 1rem);
-  padding: 0 1rem;
-}
-.subTitle #amber {
-  font-weight: 300;
-  font-size: 2rem;
-}
-.subTitle #hippo {
-  font-weight: 300;
-}
-
 /*===== END  Typography  ===== */
 /*~~~~~~~  Reset  ~~~~~~~ */
 /* Josh's Custom CSS Reset
@@ -173,8 +160,6 @@ header {
 }
 #titleBar h1 {
   margin-right: auto;
-  padding-top: 3rem;
-  padding-left: 2rem;
 }
 #titleBar a:not(:last-child) {
   padding-right: 2rem;
@@ -545,6 +530,11 @@ footer {
     font-size: 3rem;
     margin-top: 43rem;
     width: 35%;
+  }
+
+  #titleBar {
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 
