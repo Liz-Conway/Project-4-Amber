@@ -81,7 +81,6 @@ html {
   font-size: 50%;
 }
 
-
 body {
   /* Inheritable properties */
   -webkit-box-sizing: border-box;
@@ -185,26 +184,6 @@ header {
   margin-left: 1rem;
   margin-top: 1rem;
 }
-@media only screen and (min-width: 28em) {
-  #logo {
-    width: 10rem;
-  }
-}
-@media only screen and (min-width: 37.5em) {
-  #logo {
-    width: 11rem;
-  }
-}
-@media only screen and (min-width: 50em) {
-  #logo {
-    width: 12rem;
-  }
-}
-@media only screen and (min-width: 59.375em) {
-  #logo {
-    width: 13rem;
-  }
-}
 
 /*===== END  Header  ===== */
 /*~~~~~~~  Navbar  ~~~~~~~ */
@@ -273,7 +252,6 @@ header {
   text-align: center;
   cursor: pointer;
 }
-
 .navigationBackground {
   display: block;
   width: 6rem;
@@ -399,8 +377,8 @@ header {
   top: 0;
 }
 
+/*Reset links to 'normal' for non-mobile screens */
 /*===== END  Navbar  ===== */
-
 /*~~~~~~~  Footer  ~~~~~~~ */
 footer {
   /*Sticky footer */
@@ -471,38 +449,44 @@ footer {
 }
 
 
-/*===== END  Home Page  ===== */
-
-/* Media Queries for big Phones */
+/* Media Queries for Big Phones */
 @media only screen and (min-width: 28em) {
   #titleBar {
     padding-top: 3.8rem;
   }
-}
-@media only screen and (min-width: 28.125em) {
+
+  #logo {
+    width: 10rem;
+  }
+
   .splash {
     height: 40rem;
     padding: 3rem;
+  }
+
+  .splashTitle {
+    font-size: 3.2rem;
   }
 
   .splashSubtitle {
     font-size: 2.3rem;
     width: 40%;
   }
-
-  .splashTitle {
-    font-size: 3.2rem;
-  }
 }
+
 
 /* Media Queries for Tablets in Portrait orientation */
 @media only screen and (min-width: 37.5em) {
+  #titleBar h1 {
+    font-size: 4rem;
+  }
+
   #titleBar {
     padding-top: 4.3rem;
   }
 
-  #titleBar h1 {
-    font-size: 4rem;
+  #logo {
+    width: 11rem;
   }
 
   .splash {
@@ -513,13 +497,25 @@ footer {
   .splashSubtitle {
     width: 27%;
   }
-
 }
 
 /* Media Queries for Tablets in Landscape orientation */
 @media only screen and (min-width: 50em) {
+  .subTitle {
+    padding: 0 5rem;
+    line-height: calc(1em + 2rem);
+  }
+
+  .subTitle #amber {
+    font-size: 2.3rem;
+  }
+
   html {
     font-size: 56.25%;
+  }
+
+  body {
+    padding: 3rem;
   }
 
   .marginBottomMedium {
@@ -528,6 +524,31 @@ footer {
 
   .marginBottomBig {
     margin-bottom: 8rem;
+  }
+
+  #navWrapper {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    padding-left: 1rem;
+  }
+
+  #titleBar h1 {
+    padding-right: 0;
+    padding-left: 7rem;
+  }
+
+  #titleBar {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 0.4rem;
+  }
+
+  #logo {
+    width: 12rem;
   }
 
   #navigationNav {
@@ -539,8 +560,19 @@ footer {
     top: 0;
   }
 
-  .navigationCheckbox {
-    display: none;
+  #accountLinks {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    background-color: #FFFFFF;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: auto;
+    opacity: 1;
+    position: relative;
+    margin-top: 0;
   }
 
   .navigationButton {
@@ -566,84 +598,6 @@ footer {
     display: none;
   }
 
-  .navigationCheckbox:checked ~ #navigationNav {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
-  }
-
-  #navWrapper {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-  }
-
-  #titleBar {
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 0.4rem;
-  }
-
-  #titleBar h1 {
-    padding-right: 0;
-    padding-left: 7rem;
-  }
-  
-  #accountLinks {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    background-color: #FFFFFF;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-    height: auto;
-    opacity: 1;
-    position: relative;
-    margin-top: 0;
-  }
-
-  .subTitle {
-    padding: 0 5rem;
-    line-height: calc(1em + 2rem);
-  }
-
-  .subTitle #amber {
-    font-size: 2.3rem;
-  }
-
-  body {
-    padding: 3rem;
-  }
-
-  .splash {
-    margin-left: 20rem;
-    margin-right: 20rem;
-    padding: 5rem 5rem;
-  }
-
-  .splashTitle {
-    font-size: 5rem;
-  }
-
-  .splashSubtitle {
-    font-size: 3rem;
-    margin-top: 43rem;
-    width: 35%;
-  }
-
-  .subTitle {
-    padding: 0 5rem;
-    line-height: calc(1em + 2rem);
-  }
-
-  .subTitle #amber {
-    font-size: 2.3rem;
-  }
-
   .splash {
     margin-left: 20rem;
     margin-right: 20rem;
@@ -656,7 +610,7 @@ footer {
   }
 }
 
-/* Media Queries for Laptop/Desktop screen */
+/* Media Queries for Desktop/Laptop screens */
 @media only screen and (min-width: 59.375em) {
   html {
     font-size: 62.5%;
@@ -666,6 +620,14 @@ footer {
     min-height: 100vh;
   }
 
+  #titleBar {
+    padding-top: 0.7rem;
+  }
+
+  #logo {
+    width: 13rem;
+  }
+
   .splash {
     height: 43rem;
   }
@@ -673,27 +635,27 @@ footer {
   .splashSubtitle {
     width: 40%;
   }
-
-  #titleBar {
-    padding-top: 0.7rem;
-  }
 }
 
 @media only screen and (min-width: 72.75em) {
-  .splashSubtitle {
-    width: 37%;
-  }
-
   #titleBar {
     padding-top: 1.2rem;
+  }
+
+  .splashSubtitle {
+    width: 37%;
   }
 }
 
 
-/* Media Queries for Extra Large Desktop screens */
+/* Media Queries for Extra Large screens */
 @media only screen and (min-width: 75em) {
   html {
     font-size: 75%;
+  }
+
+  #titleBar {
+    padding-top: 0.7rem;
   }
 
   .splash {
@@ -705,14 +667,14 @@ footer {
   .splashSubtitle {
     width: 35%;
   }
-
-  #titleBar {
-    padding-top: 0.7rem;
-  }
 }
 
-/* Media Queries for XXL Desktop screens */
+/* Media Queries for XXL screens */
 @media only screen and (min-width: 93.75em) {
+  #titleBar {
+    padding-top: 1.2rem;
+  }
+
   .splash {
     height: 60rem;
   }
@@ -721,8 +683,8 @@ footer {
     font-size: 2.65rem;
     width: 30%;
   }
-
-  #titleBar {
-    padding-top: 1.2rem;
-  }
 }
+
+
+/*===== END  Home Page  ===== */
+
