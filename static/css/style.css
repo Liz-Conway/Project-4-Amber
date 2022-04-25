@@ -228,15 +228,10 @@ header {
   display: none;
 }
 
-.navigation {
+.navigationButton {
   /*Coloured background for the navigation */
   /*It will start as a small circle behind the white circle containing the "hamburger" icon */
   /*It will expand to fill the screen when the "hamburger" icon is clicked */
-  /*When the button is clicked change the "hamburger" to a cross */
-  /*When the checkbox is selected - get its adjacent sibling and */
-  /*select the child element of the adjacent sibling */
-}
-.navigationButton {
   display: inline;
   background-color: #FFFFFF;
   /*Make this slightly larger than the navigationBackground, to be sure to cover it */
@@ -414,7 +409,7 @@ footer {
   /*This gives us two solid colours - first colour on LHS & second colour on RHS */
   /*Since we specified the angle to be 75 degrees the colours meet at a 75 degree angle */
   /*To make the RHS see through, just change second colour to transparent */
-  background-image: linear-gradient(75deg, rgba(255, 205, 188, 0.9) 0%, rgba(255, 205, 188, 0.9) 43%, transparent 50%), url(https://res.cloudinary.com/foxywolf/image/upload/v1650394746/static/images/hippotherapy-large_kcfunq.jpg);
+  background-image: linear-gradient(75deg, rgba(255, 205, 188, 0.9) 0%, rgba(255, 205, 188, 0.9) 43%, transparent 50%), url("../images/hippotherapy-small.jpg");
   background-size: 100%;
   border-radius: 3px;
   -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.55);
@@ -599,6 +594,7 @@ footer {
   }
 
   .splash {
+	background-image: linear-gradient(75deg, rgba(255, 205, 188, 0.9) 0%, rgba(255, 205, 188, 0.9) 43%, transparent 50%), url("../images/hippotherapy-large.jpg");
     margin-left: 20rem;
     margin-right: 20rem;
     padding: 5rem;
