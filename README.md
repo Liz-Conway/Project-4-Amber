@@ -282,6 +282,9 @@ The favicon for amber project was created using [Real Favicon Generator](https:/
     - Main Navbar with *Home*, *Client*, *Record Session*, *View Session*, *Generate Charts* and *View Charts* links on all screen sizes from Tablet in Landscape orientation upwards.
     - Links to *My Account* and *Logout* above the main navbar on all screen sizes from Tablet in Landscape orientation upwards.
     - On phones and tablets in portrait orientation all navigation links are removed from the page. A "hamburger" icon is provided.  When the "hamburger" icon is clicked a navigation menu appears which covers the entire page.  This navigation menu includes both the main navigation links and the My Account and Logout links. It also include a large close button.  When the close button is clicked, the navigation menu disappears and the previous page is displayed.  When a link on the navigation menu is clicked, the navigation menu disappears and the appropriate page is shown.
+- Image Treatment 
+    - Images are compressed to reduce download times.  [tinypng.com](https://tinypng.com) and [tinyjpg.com](https://tinyjpg.com) were used to compress the  image files.
+    - Multiple versions of the home screen splash image are used, with a smaller image used for smaller devices.  This reduces the download times for tablets and especially mobile devices.  This is a background image specified in CSS, so a media query is used in CSS to set the background image to the larger image when the screen size is for tablets in landscape orientation and larger.
 
 ### Static Files
 All static files are hosted with **WhiteNoise**.  WhiteNoise allows your web app to serve its own static files, making it a self-contained unit that can be deployed anywhere without relying on an external server.  During deployment to Heroku, Django collects the static files, whitenoise then serves these files, and updates the links in the html pages to point to the appropriate file on WhiteNoise.
