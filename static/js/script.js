@@ -61,18 +61,20 @@ function submitDiagnosis(event) {
         	console.log("Diagnosis successfully added");
             // on successfull creating object
             // 1. clear the form.
-            $(this).trigger('reset');
+            $("#diagnosisForm").trigger('reset');
             // 2. focus to diagnosis input 
             $("#id_diagnosis").focus();
+            $("#id_diagnosis").val("");
 
             // display the new diagnosis in the list.
             let instance = JSON.parse(response["instance"]);
             let fields = instance[0]["fields"];
             $("#diagnosisList").append(
-                `<li>
+                `<li class="diagnosisItem">
                 ${fields["diagnosis"]}
                 </li>`
             )
+            location.reload();
         },
         error: function (response) {
         	console.log(response);

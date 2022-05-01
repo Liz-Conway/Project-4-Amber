@@ -415,8 +415,8 @@ footer {
   background-image: linear-gradient(75deg, rgba(255, 205, 188, 0.9) 0%, rgba(255, 205, 188, 0.9) 43%, transparent 50%), url("../images/hippotherapy-small.jpg");
   background-size: 100%;
   border-radius: 3px;
-  -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.55);
-          box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.55);
+  -webkit-box-shadow: 0 1.5rem 4rem rgba(61, 39, 36, 0.55);
+          box-shadow: 0 1.5rem 4rem rgba(61, 39, 36, 0.55);
   height: 26rem;
   display: -webkit-box;
   display: -ms-flexbox;

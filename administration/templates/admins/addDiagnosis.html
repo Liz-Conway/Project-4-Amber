@@ -1,120 +1,48 @@
 {% extends "admins/base.html" %}
 
 {% block content %}
-
-	<h1>List of client diagnoses:</h1>
-	<!-- Render the items key from the context dictionary that we 
-	created using this double curly bracket syntax -->
-	<!-- A template variable - anything that you return to the template
-	in the context dictionary can be rendered in the same way.
-	That includes almost anything that you can use in Python
-	Meaning you can return strings, numbers, lists, other dictionaries, 
-	or even functions and classes. -->
-	<!-- {{ diagnoses }} -->
-	
-	<!-- A query set is kind of like a list which means we can iterate through it in our
-	template just like we could iterate through a list in Python. -->
-	<ul id="diagnosisList">
-		{% for diagnosis in diagnoses %}
-			<li>{{ diagnosis.diagnosis }}</li>
-				
-		<!-- What to do if there are NO diagnoses returned from DB -->
-		{% empty %}
-			<li>There are no diagnoses yet.  Please add one below :</li>
-		{% endfor %}
-	</ul>
-	<!-- 'addDiagnosis' URL that we will submit the form to 
-		i.e. this is a "postback" -->
-	<form id="diagnosisForm">
-	<!-- Whenever we're posting information in Django,
-	we need to add the CSRF or cross-site request forgery token.
-	This token is a randomly generated unique value which will be added
-	to the form as a hidden input field when the forms submitted.
-	And works to guarantee that the data we're posting is actually coming from our
-	todo list app and not from another website. -->
-	{% csrf_token %}
-	<!-- 'form' has been passed as a Django form in the context to this page -->
-	<!-- as_p renders the elements as paragraphs, as_table renders them as a table -->
-	{{ form.as_p }}
-	<div>
-		<p>
-			<input type="submit" value="Add Diagnosis" />
-		</p>
+	<div id="diagnosisContainer">
+		
+		<h1>List of client diagnoses:</h1>
+		<!-- Render the items key from the context dictionary that we 
+		created using this double curly bracket syntax -->
+		<!-- A template variable - anything that you return to the template
+		in the context dictionary can be rendered in the same way.
+		That includes almost anything that you can use in Python
+		Meaning you can return strings, numbers, lists, other dictionaries, 
+		or even functions and classes. -->
+		<!-- {{ diagnoses }} -->
+		
+		<!-- A query set is kind of like a list which means we can iterate through it in our
+		template just like we could iterate through a list in Python. -->
+		<ul id="diagnosisList">
+			{% for diagnosis in diagnoses %}
+				<li class="diagnosisItem">{{ diagnosis.diagnosis }}</li>
+					
+			<!-- What to do if there are NO diagnoses returned from DB -->
+			{% empty %}
+				<li>There are no diagnoses yet.  Please add one below :</li>
+			{% endfor %}
+		</ul>
+		<!-- 'addDiagnosis' URL that we will submit the form to 
+			i.e. this is a "postback" -->
+		<form id="diagnosisForm">
+			<!-- Whenever we're posting information in Django,
+			we need to add the CSRF or cross-site request forgery token.
+			This token is a randomly generated unique value which will be added
+			to the form as a hidden input field when the forms submitted.
+			And works to guarantee that the data we're posting is actually coming from our
+			todo list app and not from another website. -->
+			{% csrf_token %}
+			<!-- 'form' has been passed as a Django form in the context to this page -->
+			<!-- as_p renders the elements as paragraphs, as_table renders them as a table -->
+			
+			<div class="formGroup">
+				{{ form.diagnosis }}
+				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
+				<label for="id_{{ form.diagnosis.name }}" class="formLabel">{{ form.diagnosis.label }}:</label>
+			</div>
+			<input type="submit" class="btn btnMain" value="Add Diagnosis" />
+		</form>
 	</div>
-	</form>
 {% endblock content %}
-{% block javascript %}
-<script>
-    /*
-        On submiting the form, send the POST ajax
-        request to server and after successful submission
-        display the object.
-    */
-    $("#diagnosisForm").submit(function (e) {
-        // preventing from page reload and default actions
-        e.preventDefault();
-        // serialize the data for sending the form data.
-        let serializedData = $(this).serialize();
-        // make POST ajax call
-        $.ajax({
-            type: 'POST',
-            url: "{% url 'addDiagnosis' %}",
-            data: serializedData,
-            success: function (response) {
-            	console.log("Diagnosis successfully added");
-                // on successfull creating object
-                // 1. clear the form.
-                $("#diagnosisForm").trigger('reset');
-                // 2. focus to diagnosis input 
-                $("#id_diagnosis").focus();
-
-                // display the new diagnosis in the list.
-                let instance = JSON.parse(response["instance"]);
-                let fields = instance[0]["fields"];
-                $("#diagnosisList").append(
-                    `<li>
-                    ${fields["diagnosis"]}
-                    </li>`
-                )
-            },
-            error: function (response) {
-            	console.log(response);
-                // alert the error if any error occured
-                alert(response["responseJSON"]["error"]["diagnosis"]);
-            }
-        })
-    })
-</script>
-
-<script>
-    /*
-    On focus out on the add diagnosis field,
-    call AJAX get request to check if the diagnosis
-    already exists or not.
-    */
-    $("#id_diagnosis").focusout(function (e) {
-        e.preventDefault();
-        // get the diagnosis entered
-        let diagnosis = $(this).val();
-        // GET AJAX request
-        $.ajax({
-            type: 'GET',
-            url: "{% url 'validateDiagnosis' %}",
-            data: {"diagnosis": diagnosis},
-            success: function (response) {
-            	let duplicate = $("#id_diagnosis").val();
-                // if not valid user, alert the user
-                if(!response["valid"]){
-                    alert("A diagnosis of '" + duplicate + "' has already been added.\nYou cannot add a diagnosis with the same name.'");
-                    let diagnosis = $("#id_diagnosis");
-                    diagnosis.val("")
-                    diagnosis.focus()
-                }
-            },
-            error: function (response) {
-                console.log(response)
-            }
-        })
-    })
-</script>
-{% endblock javascript %}

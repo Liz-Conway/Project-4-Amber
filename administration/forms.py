@@ -6,6 +6,7 @@ Created on 20 Mar 2022
 from django import forms
 from administration.models import Diagnosis
 import datetime
+from django.db.models.fields import CharField
 """
 Creating forms manually leaves our application open to errors if we don't validate them properly.
 For example if we create a form and forget to mark one of the fields as required,
@@ -40,5 +41,22 @@ class DiagnosisForm(forms.ModelForm):
         including those we might not want the user to see.
         """
         fields = ["diagnosis"]
+        
+        widgets={
+                   "diagnosis":forms.TextInput(attrs={'class':'formInput', 'placeholder': 'New Diagnosis'}),
+                }
+        
+        '''# https://stackoverflow.com/questions/19489699/how-to-add-class-id-placeholder-attributes-to-a-field-in-django-model-forms
+        def __init__(self, *args, **kwargs):
+            # super(DiagnosisForm, self).__init__(*args, **kwargs)
+            super().__init__(*args, **kwargs)
+            # self.fields["diagnosis"].widget.attrs={
+            # 'class': 'myCustomClass',
+            # 'placeholder': 'myCustomPlaceholder'}
+            for field in iter(self.fields):
+                self.fields[field].widget.attrs.update({
+                    'class': 'form-control'
+                })'''
+
 
         
