@@ -434,6 +434,13 @@ Removed non-existant links from the base.html template.
 
 * [Django](https://www.djangoproject.com)
 	- **Django** is a high-level Python web framework that is used to develop the Amber application.
+* [AJAX](https://www.w3schools.com/js/js_ajax_intro.asp)
+	- **AJAX** stands for Asynchronous Javascript And Xml. Ajax is a means of loading data from the server and selectively updating parts of a web page without reloading the whole page.
+* [jQuery](https://jquery.com/)
+	- **jQuery** is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.
+* [jQuery UI](https://jqueryui.com/)
+	- **jQuery UI** is a curated set of user interface interactions, effects, widgets, and themes built on top of the jQuery JavaScript Librar.
+
 * [Heroku](https://heroku.com/)
     - **Heroku** is used to host and run the Amber application.
 * [Trello](https://trello.com/)
@@ -514,3 +521,7 @@ With forking you are pushing the updates to your own Amber repo on github.
 |How to pad out strings in Python| Delftstack |https://www.delftstack.com/howto/python/python-pad-string-with-spaces/ |
 |Django - Working with form fields | Vitor Freitas |https://simpleisbetterthancomplex.com/article/2017/08/19/how-to-render-django-form-manually.html#working-example |
 |Mastering Django Forms | Big Nige |https://djangobook.com/django-tutorials/mastering-django-forms/ |
+| Link to Admin Panel | Stack Overflow |https://stackoverflow.com/questions/45122421/refer-to-admin-site-using-url-admin-in-app-django |
+| Pass parameter as key to Javascript object | Stack Overflow |https://stackoverflow.com/questions/11113008/in-javascript-how-can-i-use-a-function-parameter-as-the-key-to-an-objecto |
+| Pass parameters to a Javascript event handler | Stack Overflow |https://stackoverflow.com/questions/10000083/javascript-event-handler-with-parameters |
+
