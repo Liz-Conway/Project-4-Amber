@@ -18,8 +18,9 @@ Created on 14 Apr 2022
 @author: liz
 '''
 from django.urls import path
-from . import views
+from . import views, validators
 
 urlpatterns = [
-    path('addDiagnosis/', views.get_diagnosis_list, name='addDiagnosis'),
+    path('addDiagnosis/', views.DiagnosisList.as_view(), name='addDiagnosis'),
+    path('get/ajax/validate/diagnosis', validators.DiagnosisValidator.as_view(), name = "validateDiagnosis"),
 ]
