@@ -8,4 +8,4 @@ class Diagnosis(models.Model):
     
     def __str__(self):
         return self.diagnosis
-    
+

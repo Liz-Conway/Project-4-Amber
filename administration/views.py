@@ -7,9 +7,10 @@ from django.views import View
 
 
 # https://www.pluralsight.com/guides/work-with-ajax-django
+# How to add an item on the same page that displays an existing list of "stuff"
 class DiagnosisList(View):
     form_class = DiagnosisForm
-    template_name = "addDiagnosis.html"
+    template_name = "admins/addDiagnosis.html"
 
     """
     In class-based views:

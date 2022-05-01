@@ -1,0 +1,90 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{% block title %}{% endblock title %}</title>
+	
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'icon/apple-touch-icon.png' %}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'icon/favicon-32x32.png' %}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'icon/favicon-16x16.png' %}">
+	<link rel="manifest" href="{% static 'icon/site.webmanifest' %}">
+	<link rel="mask-icon" href="{% static 'icon/safari-pinned-tab.svg' %}" color="#f5853f">
+	<link rel="shortcut icon" href="{% static 'icon/favicon.ico' %}">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="msapplication-config" content="{% static 'icon/browserconfig.xml' %}">
+	<meta name="theme-color" content="#ffffff">
+</head>
+<body>
+
+	<header class="navigation">
+		<div id="logo">
+			<a href="{% url 'home' %}">
+				<img alt="Amber logo" src="{% static "images/amber-logo.png" %}">
+			</a>
+		</div>
+		<div id="navWrapper">
+			<input type="checkbox" class="navigationCheckbox" id="naviToggle">
+	       	<label class="navigationButton" for="naviToggle">
+				<span class="navigationIcon">&nbsp;</span>
+			</label>
+	       	<div class="navigationBackground">
+	       		&nbsp;
+	       	</div>
+			<div id="titleBar">
+				<h1>Amber</h1>
+			</div>
+			<div id="accountLinks">
+				<a href="{% url 'home' %}" class="navigationLink accountLink">My Account</a> 
+				<a href="{% url 'home' %}" class="navigationLink accountLink">Logout</a>
+			</div>
+			<!-- Top navbar -->
+			<nav id="navigationNav" class="navigationBar">
+				<ul class="navigationList">
+					<li class="navigationItem">
+						<a href="{% url 'home' %}" class="navigationLink"> Home</a>
+					</li>
+					<li class="navigationItem">
+						<a href="{% url 'addDiagnosis' %}" class="navigationLink">Add Diagnosis</a>
+					</li>
+					<li class="navigationItem">
+						<a href="{% url 'admin:index' %}" class="navigationLink">Maintain Configuration</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+
+	</header>
+	
+	<main>
+		{% block content %}
+		{% endblock content %}
+	</main>
+	
+	<footer>
+        <div class="footer-copyright">
+            &copy; Natalia Campbell, 2022
+        </div>
+     </footer>
+            
+	<!-- jQuery -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" 
+		integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" 
+		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<!-- jQuery UI -->
+	<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js" 
+		integrity="sha256-hlKLmzaRlE8SCJC1Kw8zoUbU8BxA+8kR3gseuKfMjxA=" 
+		crossorigin="anonymous"></script>
+    
+    <script src="{% static 'js/script.js' %}"></script>
+    {% block javascript %}
+    {% endblock javascript %}
+
+</body>
+</html>

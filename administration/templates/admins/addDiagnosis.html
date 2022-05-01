@@ -1,4 +1,4 @@
-{% extends "base2.html" %}
+{% extends "admins/base.html" %}
 
 {% block content %}
 
@@ -71,9 +71,9 @@
                 // display the new diagnosis in the list.
                 let instance = JSON.parse(response["instance"]);
                 let fields = instance[0]["fields"];
-                $("#diagnosisList").appendChild(
+                $("#diagnosisList").append(
                     `<li>
-                    ${fields["diagnois"]}
+                    ${fields["diagnosis"]}
                     </li>`
                 )
             },
