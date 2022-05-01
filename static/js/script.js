@@ -8,7 +8,15 @@ function domLoaded() {
 	the navigation link on mobile devices*/
 	$(".navigationLink").on("click", closeNavigation);
 	placeAccountLinks();
+
+	/*Add a diagnosis*/
+	$("#diagnosisForm").submit(submitDiagnosis);
+	/*Validate unique diagnosis*/
+	$("#id_diagnosis").focusout(unfocusUnique);
 }
+
+let unfocusUnique = (event) => validateUnique(event, "validateDiagnosis", "diagnosis", "#id_diagnosis");
+
 
 /* Close the navigation panel on mobile devices
 when a link is clicked*/
@@ -32,14 +40,16 @@ function closeNavigation(event) {
  	} 
 }
 
+
+/*https://www.pluralsight.com/guides/work-with-ajax-django*/
 /*
     On submiting the form, send the POST ajax
     request to server and after successful submission
     display the object.
 */
-$("#diagnosisForm").submit(function (e) {
+function submitDiagnosis(event) {
     // preventing from page reload and default actions
-    e.preventDefault();
+    event.preventDefault();
     // serialize the data for sending the form data.
     let serializedData = $(this).serialize();
     // make POST ajax call
@@ -51,7 +61,7 @@ $("#diagnosisForm").submit(function (e) {
         	console.log("Diagnosis successfully added");
             // on successfull creating object
             // 1. clear the form.
-            $("#diagnosisForm").trigger('reset');
+            $(this).trigger('reset');
             // 2. focus to diagnosis input 
             $("#id_diagnosis").focus();
 
@@ -70,7 +80,7 @@ $("#diagnosisForm").submit(function (e) {
             alert(response["responseJSON"]["error"]["diagnosis"]);
         }
     })
-})
+}
 
 
 /*
@@ -78,27 +88,35 @@ On focus out on the add diagnosis field,
 call AJAX get request to check if the diagnosis
 already exists or not.
 */
-$("#id_diagnosis").focusout(function (e) {
-    e.preventDefault();
+function validateUnique(event, validUrl, fieldType, uniqueId) {
+    console.log("validateUnique() called");
+    event.preventDefault();
     // get the diagnosis entered
-    let diagnosis = $(this).val();
+    let unique = $(uniqueId).val();
+    console.log("Diagnosis entered :  ", unique);
+    let dataObj = {};
+    dataObj[fieldType] = unique;
+
     // GET AJAX request
     $.ajax({
         type: 'GET',
-        url: "validateDiagnosis",
-        data: {"diagnosis": diagnosis},
+        url: validUrl,
+        data: dataObj,
         success: function (response) {
-        	let duplicate = $("#id_diagnosis").val();
+        	let duplicate = $(uniqueId).val();
+        	console.log("Diagnosis entered (AJAX success()) :  ", unique);
+        	console.log(response);
+
             // if not valid user, alert the user
             if(!response["valid"]){
-                alert("A diagnosis of '" + duplicate + "' has already been added.\nYou cannot add a diagnosis with the same name.'");
-                let diagnosis = $("#id_diagnosis");
-                diagnosis.val("")
-                diagnosis.focus()
+                alert("A " + fieldType + " of '" + duplicate + "' has already been added.\nYou cannot add a " + fieldType + " with the same name.'");
+                let unique = $(uniqueId);
+                unique.val("")
+                unique.focus()
             }
         },
         error: function (response) {
             console.log(response)
         }
     })
-})
+}

@@ -4,7 +4,7 @@ Created on 20 Mar 2022
 @author: fintan
 '''
 from django import forms
-from administration.models import Diagnosis, Friend
+from administration.models import Diagnosis
 import datetime
 """
 Creating forms manually leaves our application open to errors if we don't validate them properly.
