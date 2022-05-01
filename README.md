@@ -121,7 +121,7 @@ Hippotherapy can also shorten recovery time and ensure correct development of th
 ## Screen Mockup
 <a id="mockup"></a>
 
-![Mockup of screen](static/documentation/mockup/mockup.png)
+![Mockup of screen](documentation/mockup/mockup.png)
 
 ## Features
 
@@ -168,49 +168,49 @@ Hippotherapy can also shorten recovery time and ensure correct development of th
 
 ### Personas
 <a id="personas"></a>
-![Occupational Therapist](static/documentation/ux/persona/occupational-therapist.png)
+![Occupational Therapist](documentation/ux/persona/occupational-therapist.png)
 
 ### Customer Journey Maps
 <a id="cjm"></a>
-![Customer Journey Map for Occupational Therapist](static/documentation/ux/customer-journey-map/natalia-campbell.png)
+![Customer Journey Map for Occupational Therapist](documentation/ux/customer-journey-map/natalia-campbell.png)
 
 ### Wireframes
 <a id="wireframes"></a>
 **Login**
 
-![Login page wireframe](static/documentation/ux/wireframes/Login.png)
+![Login page wireframe](documentation/ux/wireframes/Login.png)
 
 **Home Page**
 
-![Home page wireframe](static/documentation/ux/wireframes/HomePage.png)
+![Home page wireframe](documentation/ux/wireframes/HomePage.png)
 
 **Add Client**
 
-![Add Client page wireframe](static/documentation/ux/wireframes/AddClient.png)
+![Add Client page wireframe](documentation/ux/wireframes/AddClient.png)
 
 **Select Client**
 
-![Select Client page wireframe](static/documentation/ux/wireframes/SelectClient.png)
+![Select Client page wireframe](documentation/ux/wireframes/SelectClient.png)
 
 **Edit Client**
 
-![Edit Client page wireframe](static/documentation/ux/wireframes/EditClient.png)
+![Edit Client page wireframe](documentation/ux/wireframes/EditClient.png)
 
 **Record a Session**
 
-![Record a Session page wireframe](static/documentation/ux/wireframes/RecordaSession.png)
+![Record a Session page wireframe](documentation/ux/wireframes/RecordaSession.png)
 
 **Generate Charts**
 
-![Generate Charts page wireframe](static/documentation/ux/wireframes/GenerateCharts.png)
+![Generate Charts page wireframe](documentation/ux/wireframes/GenerateCharts.png)
 
 **Edit Account**
 
-![Edit Account page wireframe](static/documentation/ux/wireframes/MyAccount.png)
+![Edit Account page wireframe](documentation/ux/wireframes/MyAccount.png)
 
 **Add Diagnosis**
 
-![Add Diagnosis page wireframe](static/documentation/ux/wireframes/AddNewDiagnosis.png)
+![Add Diagnosis page wireframe](documentation/ux/wireframes/AddNewDiagnosis.png)
 
 
 ### Flow charts
@@ -226,24 +226,24 @@ Hippotherapy can also shorten recovery time and ensure correct development of th
 |Code |![Code symbol](documentation/flow-chart/code.png)|
 
 
-![Record a Session User Flow chart](static/documentation/ux/user-flow/record-session.png)
+![Record a Session User Flow chart](documentation/ux/user-flow/record-session.png)
 
 
-![Generate Charts User Flow chart](static/documentation/ux/user-flow/generate-charts.png)
+![Generate Charts User Flow chart](documentation/ux/user-flow/generate-charts.png)
 
 
-![Add Client User Flow chart](static/documentation/ux/user-flow/add-client.png)
+![Add Client User Flow chart](documentation/ux/user-flow/add-client.png)
 
 
-![Edit Client User Flow chart](static/documentation/ux/user-flow/edit-client.png)
+![Edit Client User Flow chart](documentation/ux/user-flow/edit-client.png)
 
 
-![Delete Client User Flow chart](static/documentation/ux/user-flow/delete-client.png)
+![Delete Client User Flow chart](documentation/ux/user-flow/delete-client.png)
 
 ### Site Map
 <a id="site-map"></a>
 
-![Site Map](static/documentation/ux/wireframes/SiteMap.png)
+![Site Map](documentation/ux/wireframes/SiteMap.png)
 
 ### Accessibility
 <a id="accessibility"></a>
@@ -283,11 +283,11 @@ The favicon for amber project was created using [Real Favicon Generator](https:/
     - Links to *My Account* and *Logout* above the main navbar on all screen sizes from Tablet in Landscape orientation upwards.
     - On phones and tablets in portrait orientation all navigation links are removed from the page. A "hamburger" icon is provided.  When the "hamburger" icon is clicked a navigation menu appears which covers the entire page.  This navigation menu includes both the main navigation links and the My Account and Logout links. It also include a large close button.  When the close button is clicked, the navigation menu disappears and the previous page is displayed.  When a link on the navigation menu is clicked, the navigation menu disappears and the appropriate page is shown.
 - Image Treatment 
-    - Images are compressed to reduce download times.  [tinypng.com](https://tinypng.com) and [tinyjpg.com](https://tinyjpg.com) were used to compress the  image files.
+    - Images are compressed to reduce download times.  [tinypng.com](https://tinypng.com) was used to compress the  image files.
     - Multiple versions of the home screen splash image are used, with a smaller image used for smaller devices.  This reduces the download times for tablets and especially mobile devices.  This is a background image specified in CSS, so a media query is used in CSS to set the background image to the larger image when the screen size is for tablets in landscape orientation and larger.
 
 ### Static Files
-All static files are hosted with **WhiteNoise**.  WhiteNoise allows your web app to serve its own static files, making it a self-contained unit that can be deployed anywhere without relying on an external server.  During deployment to Heroku, Django collects the static files, whitenoise then serves these files, and updates the links in the html pages to point to the appropriate file on WhiteNoise.
+All static files are hosted with **WhiteNoise**.  [WhiteNoise](http://whitenoise.evans.io/en/stable/django.html) allows your web app to serve its own static files, making it a self-contained unit that can be deployed anywhere without relying on an external server.  During deployment to Heroku, Django collects the static files, whitenoise then serves these files, and updates the links in the html pages to point to the appropriate file on WhiteNoise.
 
 
 ## Software Development Process
@@ -312,7 +312,7 @@ At the end of the project, all User Stories will be in the **Done** list and the
 ### Project Planning
 <a id="planning"></a>The Amber project's User Stories have been allocated into Sprints.  The stories in each Sprint will go through the full process of *ToDo* **>** *In Process* **>** *Testing* **>** *Code Review* **>** *Done*, before the next Sprint begins.
 
-<img src="static/documentation/agile-planning/amber-board-story-map.png" alt="User Story Map Sprint plan" width="100%"/>
+<img src="documentation/agile-planning/amber-board-story-map.png" alt="User Story Map Sprint plan" width="100%"/>
 
 
 ### Version Control 
@@ -325,6 +325,7 @@ At the end of the project, all User Stories will be in the **Done** list and the
     - FIX: Bugfix
     - STYLE: Changes to CSS
     - REFACTOR: Where changes are made that do not change the functionality.
+    - DEPLOY: Changes made for deploying the application
     
 - Git messages will be no longer than 50 characters long.
 
@@ -367,7 +368,7 @@ Removed non-existant links from the base.html template.
 <a id="documentation"></a>
 
 - README.md :  Comprehensive overview of the Amber application detailing how it works, what its features are, the technologies involved and all the design decisions that were made in creating this web-based application.
-- [Vision doc](static/documentation/requirements/vision-doc-amber.docx) :  Business needs and feature list.
+- [Vision doc](documentation/requirements/vision-doc-amber.docx) :  Business needs and feature list.
  
 
 ### Deployment
@@ -379,50 +380,50 @@ Removed non-existant links from the base.html template.
 
 3. In the Heroku Dashboard, click on the *Create new app* button.
 
-![Create new App](static/documentation/deploy/heroku-create-new-app.png)
+![Create new App](documentation/deploy/heroku-create-new-app.png)
 
 
 4. Enter an app name (*amber-ci*) and region (*Europe*) and click the *Create app* button.
 
-![Create app](static/documentation/deploy/heroku-create-app.png)
+![Create app](documentation/deploy/heroku-create-app.png)
 
 
 5. Click on *Settings* tab
 
-![Heroku Settings](static/documentation/deploy/heroku-settings.png)
+![Heroku Settings](documentation/deploy/heroku-settings.png)
 
 6. In the 'Config Vars' section, click on *Reveal Config Vars*.  Add a key of **PORT** and a value of **8000**.  Click *Add* button.
 
-![Reveal config vars](static/documentation/deploy/heroku-reveal-config-vars.png)
-![Config vars](static/documentation/deploy/heroku-config-vars.png)
+![Reveal config vars](documentation/deploy/heroku-reveal-config-vars.png)
+![Config vars](documentation/deploy/heroku-config-vars.png)
 
 7. Click on *Deploy* tab.
 
-![Heroku deploy tab](static/documentation/deploy/heroku-deploy.png)
+![Heroku deploy tab](documentation/deploy/heroku-deploy.png)
 
 8. Choose Deployment Method *Github*.
 
-![Heroku deployment method](static/documentation/deploy/heroku-deployment-method.png)
+![Heroku deployment method](documentation/deploy/heroku-deployment-method.png)
 
 9. In *Connect to Github* section, type **Amber** in the *repo-name* box and click *Search* button.
 
-![Search github](static/documentation/deploy/heroku-search-github.png)
+![Search github](documentation/deploy/heroku-search-github.png)
 
 12. Click the *Connect* button next to **Liz-Conway/Project-4-Amber**.
 
-![Connect to github](static/documentation/deploy/heroku-amber-connect.png)
+![Connect to github](documentation/deploy/heroku-amber-connect.png)
 
 13. Heroku app is now connected to the Github repository.
 
-![Heroku connected to Github](static/documentation/deploy/heroku-connected-github.png)
+![Heroku connected to Github](documentation/deploy/heroku-connected-github.png)
 
 14. Go to *Manual deploy* section, ensure the branch to deploy is **main**.  Click on *Deploy Branch* button.
 
-![Manual deploy app](static/documentation/deploy/heroku-manual-deploy.png)
+![Manual deploy app](documentation/deploy/heroku-manual-deploy.png)
 
 15. Once the app is successfully deployed click on the *view* button, or navigate to [Amber application](https://amber-ci.herokuapp.com/) to run the application.
 
-![App successfully deployed](static/documentation/deploy/heroku-successful-deploy.png)
+![App successfully deployed](documentation/deploy/heroku-successful-deploy.png)
 
 16. Once the app has been deployed you can access it by navigating to [Amber application](https://amber-ci.herokuapp.com/) to run the application.
 
@@ -435,6 +436,9 @@ Removed non-existant links from the base.html template.
 	- **Django** is a high-level Python web framework that is used to develop the Amber application.
 * [Heroku](https://heroku.com/)
     - **Heroku** is used to host and run the Amber application.
+* [Trello](https://trello.com/)
+	* Trello is used as the Agile project planning tool for the Amber application.
+
 
 
 ## Contributing
@@ -499,7 +503,7 @@ With forking you are pushing the updates to your own Amber repo on github.
 | Code purpose                    | Author               | Link                                                                                 |
 | ------------------------------- | -------------------- | ------------------------------------------------------------------------------------ |
 | Custom Reset          | Josh Comeau             | https://www.joshwcomeau.com/css/custom-css-reset/   |
-| Host static files in Cloudinary | https://cloudinary.com/blog/author/nadav_soferman             | https://cloudinary.com/blog/using_cloudinary_to_manage_all_your_website_s_assets_in_the_cloud   |
+| Checkbox Hack | Chris Coyler             | https://css-tricks.com/the-checkbox-hack/   |
 | Validate a date string          | kite.com             | https://www.kite.com/python/answers/how-to-validate-a-date-string-format-in-python   |
 | Skip first line in a file       | kite.com             | https://www.kite.com/python/answers/how-to-skip-the-first-line-of-a-file-in-python   |
 | Format dates in Python          | Nicholas Samuel      | https://stackabuse.com/how-to-format-dates-in-python/                                |

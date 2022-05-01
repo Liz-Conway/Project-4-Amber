@@ -1,6 +1,6 @@
 name=django.static.bullshit
 if [[ -e $name  ]] ; then
-    i=0
+    i=1
     while [[ -e $name.$i ]] ; do
         let i++
     done
