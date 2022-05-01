@@ -12,9 +12,18 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import dj_database_url
 
 if os.path.isfile('env.py'):
-    import env
+    import env  # noqa
+# noqa means 'no quality assurance' - the linter will not try to validate this line
+
+"""
+If there's an environment variable called DEVELOPMENT in the environment,
+this variable will be set to its value. 
+Otherwise, it'll be false.
+"""
+development = os.environ.get("DEVELOPMENT", False)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,15 +34,33 @@ ADMIN_TEMPLATES = os.path.join(BASE_DIR, "administration/templates")
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+"""
+Using a blank string as the default
+will prevent the Django server from even starting 
+if this environment variable is not set.
+"""
+SECRET_KEY = os.environ.get("SECRET_KEY", '')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+"""
+In dev DEBUG will be true
+On Heroku DEBUG will be false
+If there's an error on Heroku - we won't expose any internal source code on the error page.
+"""
+DEBUG = development
 
-ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'amber-ci.herokuapp.com'
-]
+"""
+This list allows Django to ensure that HTTP requests are coming from domain names it trusts.
+Without it malicious users would potentially be able to load malicious scripts,
+Poison the cached versions of our pages, 
+or even change the reset links in our password reset emails.
+By default, Django will block a request from any host not in this list.
+"""
+if development:
+    ALLOWED_HOSTS = ["127.0.0.1"]
+else:
+    ALLOWED_HOSTS = [os.environ.get("HEROKU_HOSTNAME")]
 
 
 # Application definition
@@ -85,12 +112,8 @@ WSGI_APPLICATION = 'amber_p4.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
