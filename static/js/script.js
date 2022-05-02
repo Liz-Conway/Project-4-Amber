@@ -135,5 +135,37 @@ function validateUnique(event, validUrl, fieldType, uniqueId) {
         error: function (response) {
             console.log(response)
         }
-    })
+    });
 }
+
+function addMessage(msgType, msg) {
+	messageBlock();
+
+	let uiState = "ui-state-";
+	let state = "";
+
+	switch(msgType) {
+		case "success":
+			state = "highlight";
+			break;
+		case "error":
+			state = "error";
+			break;
+		default:
+			state = "";
+	}
+	uiState += state;
+
+	$("#messageBlock").empty();
+	$("#messageBlock").append('<div class="message ' + uiState + '">' + msg + '</div>');
+}
+
+function messageBlock() {
+
+	// If message block does not exist
+	if (!$("#messageBlock").length ) {
+		// Add a message block
+		$("header.navigation").after('<div class="messages" id="messageBlock"></div>');
+	}
+}
+
