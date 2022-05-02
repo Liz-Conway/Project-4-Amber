@@ -153,12 +153,21 @@ Hippotherapy can also shorten recovery time and ensure correct development of th
 
 ### Entity Diagram
 <a id="entity-diagram"></a>
+![Amber Entity Diagram](documentation/entity-relationship/entity-diagram.png)
 
 ### Entity Relationship Diagram
 <a id="erd"></a>
+![Amber Entity-Relationship Diagram](documentation/entity-relationship/entity-relationship-diagram.png)
 
 ### Python structure
 <a id="python-structure"></a>
+The Django structure for the amber application is broken into 2 apps.
+1. administration
+	This app contains all the code for pages that an admin user will interact with.
+
+2. hippotherary
+	The app contains all the code for pages that an Occupational Therapist and Hippotherapy Analyst will interact with.
+
 
 ## UX
 <a id="ux"></a>
