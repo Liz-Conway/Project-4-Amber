@@ -357,6 +357,9 @@ header {
   top: 1rem;
 }
 .navigationCheckbox:checked + .navigationButton > .navigationIcon {
+  /*When the button is clicked change the "hamburger" to a cross */
+  /*When the checkbox is selected - get its adjacent sibling and */
+  /*select the child element of the adjacent sibling */
   /*Step 1 make the middle bar invisible (this is the span in the navigationIcon) */
   background-color: transparent;
 }
@@ -686,4 +689,210 @@ footer {
 
 
 /*===== END  Home Page  ===== */
+#diagnosisContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 1rem;
+}
 
+#diagnosisList {
+  margin: 3rem 1rem 1rem 2rem;
+  padding: 3rem 1rem;
+  border-top: 1px solid #f4f2f2;
+  border-bottom: 1px solid #f4f2f2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.diagnosisItem {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+  margin-bottom: 0.7rem;
+  /*&::before
+   * content: ""
+   * display: inline-block
+   * width: 1rem
+   * height: 1rem
+   * margin-right: .7rem */
+}
+
+.form {
+  /*Use adjacent sibling selector '+' to choose a label which is next to an input element */
+  /*If there were elements between the label and the input we would have to use the general sibling selector '~' */
+  /*The sibling we want to select/use always has to be after the other element in the HTML */
+}
+.formGroup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
+.formGroup:not(:last-child) {
+  margin-bottom: 2rem;
+}
+.formInput {
+  /*Always when padding an element give it a bit more on the sides to look better */
+  font-size: 1.5rem;
+  font-family: inherit;
+  /*Font family & colour are set by the browser for form inputs */
+  /*So we need to set them to inherit from the body element */
+  color: inherit;
+  padding: 1.5rem 2rem;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  -webkit-box-shadow: 0 1.5rem 4rem rgba(61, 39, 36, 0.15);
+          box-shadow: 0 1.5rem 4rem rgba(61, 39, 36, 0.15);
+  /*Add a transparent border at the bottom to match the border when the input is focussed */
+  /*Otherwise the form elements will 'jump' when focus switches */
+  border-bottom: 3px solid transparent;
+  /*Full width on its own line */
+  width: 90%;
+  display: block;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  /*Target the placeholder text */
+}
+.formInput:focus {
+  /*Browser highlights a border (outline) around the input element when it has focus */
+  /*We want to remove this */
+  outline: none;
+  /*This focus is important for ARIA, i.e. keyboard navigation */
+  /*Always make form elements that are focussed visible */
+  /*Give it a box shadow and a border at the bottom */
+  -webkit-box-shadow: 0 1rem 2rem rgba(61, 39, 36, 0.1);
+          box-shadow: 0 1rem 2rem rgba(61, 39, 36, 0.1);
+  border-bottom: 3px solid #F5853F;
+  /*Apply this style when we have an invalid focussed input element */
+}
+.formInput:focus:invalid {
+  border-bottom: 3px solid #191970;
+}
+.formInput::-webkit-input-placeholder {
+  color: #999999;
+}
+.formInput:-ms-input-placeholder {
+  color: #999999;
+}
+.formInput::-ms-input-placeholder {
+  color: #999999;
+}
+.formInput::placeholder {
+  color: #999999;
+}
+.formLabel {
+  font-size: 1.2rem;
+  font-weight: 700;
+  /*Use 'block' so we can apply margins to the element */
+  display: block;
+  margin-left: 2rem;
+  margin-top: 0.7rem;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.formInput.fadeInLabel:placeholder-shown + .formLabel {
+  /*When the placeholder is shown -> these attributes are applied to the label */
+  /*Once we start typing -> these attributes will not be applied and the label will appear */
+  /*Using opacity since we want to animate the label disappearing */
+  opacity: 0;
+  /*Using visibility since we want the element to be gone from the page */
+  visibility: hidden;
+  /*Move the label up to the same position as the placeholder text - at the start of the animation */
+  -webkit-transform: translateY(-4rem);
+          transform: translateY(-4rem);
+}
+
+input:required + label::after {
+  content: " *";
+  color: #cc0000;
+}
+
+/*~~~~~~~  Button  ~~~~~~~ */
+.btn {
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 1.5rem 4rem;
+  border-radius: 10rem;
+  font-size: 1.6rem;
+  background-color: #FFCDBC;
+  color: #3D2724;
+  border: 3px solid #3D2724;
+  text-align: center;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.btn:hover {
+  /* Make the button pop up => 3D effect */
+  -webkit-transform: translateY(-0.5rem);
+          transform: translateY(-0.5rem);
+  /* Box Shadow X Y Blur Colour */
+  -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+.btn:active {
+  color: #F5853F;
+  background-color: #3D2724;
+  /* Make the button appear to be pressed => 3D effect */
+  -webkit-transform: translateY(-0.1rem);
+          transform: translateY(-0.1rem);
+  /* Box Shadow X Y Blur Colour */
+  -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+          box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+.btn:not(:last-child) {
+  margin-right: 1.5rem;
+}
+.btnMain {
+  background-color: #191970;
+  color: #FFCDBC;
+}
+.btnGhost {
+  background-color: #FFFFFF;
+}
+.btnGhost:hover {
+  color: #000000;
+}
+.btnGhost:active {
+  color: #FFFFFF;
+}
+.btnTextOnly {
+  border: none;
+  background-color: transparent;
+}
+.btnTextOnly:hover, .btnTextOnly:active {
+  background-color: transparent;
+  color: #F5853F;
+}
+
+/*===== END  Button  ===== */
+.message {
+  padding: 1rem 0rem 1rem 3rem;
+  color: #3D2724;
+  font-size: 1.2rem;
+}
+.message span.newEntry {
+  font-weight: 700;
+}
+.messages {
+  margin: 0 1rem 2rem 1rem;
+}
+
+/*# sourceMappingURL=style.css.map */

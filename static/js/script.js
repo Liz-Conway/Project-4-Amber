@@ -52,6 +52,7 @@ function submitDiagnosis(event) {
     event.preventDefault();
     // serialize the data for sending the form data.
     let serializedData = $(this).serialize();
+    let newDiagnosis = $("#id_diagnosis").val();
     // make POST ajax call
     $.ajax({
         type: 'POST',
@@ -61,6 +62,7 @@ function submitDiagnosis(event) {
         	console.log("Diagnosis successfully added");
             // on successfull creating object
             // 1. clear the form.
+            //let newDiagnosis = $("#id_diagnosis").val();
             $("#diagnosisForm").trigger('reset');
             // 2. focus to diagnosis input 
             $("#id_diagnosis").focus();
@@ -74,12 +76,23 @@ function submitDiagnosis(event) {
                 ${fields["diagnosis"]}
                 </li>`
             )
-            location.reload();
+            addMessage("success", "<span class='newEntry'>" + newDiagnosis + "</span> diagnosis was added successfully");
         },
         error: function (response) {
         	console.log(response);
             // alert the error if any error occured
-            alert(response["responseJSON"]["error"]["diagnosis"]);
+            // alert(response["responseJSON"]["error"]["diagnosis"]);
+            console.log(response["responseJSON"]["error"]["diagnosis"]);
+            //let newDiagnosis = $("#id_diagnosis").val();
+            console.log("newDiagnosis :  ", newDiagnosis);
+            let errorMessage = "";
+            if (response["responseJSON"]["error"]["diagnosis"][0] === "Diagnosis with this Diagnosis already exists." ) {
+            	errorMessage = "A Diagnosis of <span class='newEntry'>" + newDiagnosis + "</span> has already been added.<br>You cannot add a diagnosis with the same name.'";
+            } else {
+            	errorMessage = response["responseJSON"]["error"]["diagnosis"][0];
+            }
+            console.log("Error :  ", errorMessage);
+            addMessage("error", errorMessage);
         }
     })
 }
@@ -111,10 +124,12 @@ function validateUnique(event, validUrl, fieldType, uniqueId) {
 
             // if not valid user, alert the user
             if(!response["valid"]){
-                alert("A " + fieldType + " of '" + duplicate + "' has already been added.\nYou cannot add a " + fieldType + " with the same name.'");
+                errorMessage = "A " + fieldType + " of '" + duplicate + "' has already been added.\nYou cannot add a " + fieldType + " with the same name.'";
+                //alert(errorMessage);
+                addMessage("error", errorMessage);
                 let unique = $(uniqueId);
-                unique.val("")
-                unique.focus()
+                unique.val("");
+                unique.focus();
             }
         },
         error: function (response) {
