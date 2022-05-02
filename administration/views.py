@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from .models import Diagnosis
 from .forms import DiagnosisForm
 from django.views import View
-
+from django.contrib import messages
 
 # https://www.pluralsight.com/guides/work-with-ajax-django
 # How to add an item on the same page that displays an existing list of "stuff"
@@ -17,7 +17,7 @@ class DiagnosisList(View):
     Instead of using an if statement to check the request method,  
     we simply create class methods called GET, POST, or any other HTTP verb.
     """
-    def get(self, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         """
         '*args' = Standard arguments parameter
         '**kwargs' = Standard keyword arguments parameter
@@ -28,7 +28,7 @@ class DiagnosisList(View):
         Send all the diagnoses to our render method
         """
         return render(
-            self.request, 
+            request, 
             self.template_name, # view to render
             # Context - passed into the HTML template
             {
@@ -41,18 +41,18 @@ class DiagnosisList(View):
     In class based views -
     GET & POST are supplied as class methods
     """
-    def post(self, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         """
         '*args' = Standard arguments parameter
         '**kwargs' = Standard keyword arguments parameter
         """
-        if self.request.method == "POST":
+        if request.method == "POST":
             """
             Get the data from our form
             and assign it to a variable.
             Gets all of the data that we posted from our form
             """
-            form = self.form_class(self.request.POST)
+            form = self.form_class(request.POST)
             """
             Form is valid => If all the required fields have been completed
             """
@@ -63,10 +63,13 @@ class DiagnosisList(View):
                 # send to client side.
                 return JsonResponse({"instance": ser_instance}, status=200)
             else:
+                # Set an invalid message
+                messages.error(request, "That diagnosis already exists")
                 # Send a JSON error to the client
                 return JsonResponse({"error": form.errors}, status=400)
 
         # Not post => Send an error to the client
+        messages.error(request, "Form not Posted correctly")
         return JsonResponse({"error": ""}, status=400)
 
 

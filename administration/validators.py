@@ -17,8 +17,7 @@ class DiagnosisValidator(View):
     '''
 
 
-    def get(self, *args, **kwargs):
-        request = self.request
+    def get(self, request, *args, **kwargs):
         if request.method == "GET":
             # get the diagnosis from the client side.
             diagnosis = request.GET.get("diagnosis", None)

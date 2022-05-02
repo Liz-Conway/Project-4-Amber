@@ -9,6 +9,7 @@
 	<title>{% block title %}{% endblock title %}</title>
 	
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.min.css' %}">
     
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'icon/apple-touch-icon.png' %}">
@@ -61,6 +62,8 @@
 		</div>
 
 	</header>
+	
+	{% include 'hippo/includes/messages.html' %}
 	
 	<main>
 		{% block content %}

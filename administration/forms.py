@@ -46,17 +46,4 @@ class DiagnosisForm(forms.ModelForm):
                    "diagnosis":forms.TextInput(attrs={'class':'formInput', 'placeholder': 'New Diagnosis'}),
                 }
         
-        '''# https://stackoverflow.com/questions/19489699/how-to-add-class-id-placeholder-attributes-to-a-field-in-django-model-forms
-        def __init__(self, *args, **kwargs):
-            # super(DiagnosisForm, self).__init__(*args, **kwargs)
-            super().__init__(*args, **kwargs)
-            # self.fields["diagnosis"].widget.attrs={
-            # 'class': 'myCustomClass',
-            # 'placeholder': 'myCustomPlaceholder'}
-            for field in iter(self.fields):
-                self.fields[field].widget.attrs.update({
-                    'class': 'form-control'
-                })'''
-
-
         
