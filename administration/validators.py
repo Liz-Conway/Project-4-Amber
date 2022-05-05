@@ -30,3 +30,4 @@ class DiagnosisValidator(View):
                 return JsonResponse({"valid":True}, status = 200)
     
         return JsonResponse({}, status = 400)
+

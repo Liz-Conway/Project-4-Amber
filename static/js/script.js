@@ -13,6 +13,9 @@ function domLoaded() {
 	$("#diagnosisForm").submit(submitDiagnosis);
 	/*Validate unique diagnosis*/
 	$("#id_diagnosis").focusout(unfocusUnique);
+
+	/*Set the date picker*/
+	$(".dateInput").datepicker( {showAnim: "clip"} );
 }
 
 let unfocusUnique = (event) => validateUnique(event, "validateDiagnosis", "diagnosis", "#id_diagnosis");
