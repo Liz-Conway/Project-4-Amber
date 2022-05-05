@@ -79,7 +79,7 @@ function submitDiagnosis(event) {
                 ${fields["diagnosis"]}
                 </li>`
             )
-            addMessage("success", "<span class='newEntry'>" + newDiagnosis + "</span> diagnosis was added successfully");
+            addMessage("success", "<span class='name'>" + newDiagnosis + "</span> diagnosis was added successfully");
         },
         error: function (response) {
         	console.log(response);

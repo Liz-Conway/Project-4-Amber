@@ -496,9 +496,6 @@ footer {
 /*===== END  Diagnosis  ===== */
 /*~~~~~~~  Form  ~~~~~~~ */
 .form {
-  /*Use adjacent sibling selector '+' to choose a label which is next to an input element */
-  /*If there were elements between the label and the input we would have to use the general sibling selector '~' */
-  /*The sibling we want to select/use always has to be after the other element in the HTML */
   margin-bottom: 2rem;
 }
 .formGroup {
@@ -534,7 +531,6 @@ footer {
   display: block;
   -webkit-transition: all 1s;
   transition: all 1s;
-  /*Target the placeholder text */
 }
 .formInput:focus, .form #id_diagnosis:focus {
   /*Browser highlights a border (outline) around the input element when it has focus */

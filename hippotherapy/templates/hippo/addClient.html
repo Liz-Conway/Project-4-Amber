@@ -17,7 +17,7 @@
 		
 		<!-- 'addClient' URL that we will submit the form to 
 			i.e. this is a "postback" -->
-		<form id="addClientForm">
+		<form id="addClientForm" method="POST" action="addClient">
 			<!-- Whenever we're posting information in Django,
 			we need to add the CSRF or cross-site request forgery token.
 			This token is a randomly generated unique value which will be added
@@ -59,7 +59,7 @@
 				<label for="id_{{ form.hat_size.name }}" class="formLabel">{{ form.hat_size.label }}:</label>
 			</div>
 			<div class="formGroup diagnosisGroup">
-				<p>Control-click to select multiple diagnoses.  Scroll to see more diagnoses</p>
+				<p>You can select multiple diagnoses.  Scroll to see more diagnoses</p>
 				{{ form.diagnosis }}
 				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
 				<label for="id_{{ form.diagnosis.name }}" class="formLabel">{{ form.diagnosis.label }}:</label>
