@@ -536,3 +536,7 @@ With forking you are pushing the updates to your own Amber repo on github.
 
 |Add attribute to form element | Stack Overflow |https://stackoverflow.com/questions/19489699/how-to-add-class-id-placeholder-attributes-to-a-field-in-django-model-forms |
 |Add class to label | Stack Overflow |https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ |
+|Django messages | Jaysha |https://ordinarycoders.com/blog/article/django-messages-framework |
+|Form postback | Aniruddha Chaudhari |https://www.csestack.org/display-messages-form-submit-django/ |
+|Custom filter in Django | Stack Overflow |https://stackoverflow.com/questions/21483003/replacing-a-character-in-django-template |
+|Include HTML in Django message | David Winterbottom |https://dzone.com/articles/embedding-html-django-messages |
