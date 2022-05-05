@@ -46,17 +46,18 @@ class ClientForm(forms.ModelForm):
         
         diagnosis = forms.ModelMultipleChoiceField(
                 queryset=Diagnosis.objects.all(),
-                 widget=forms.CheckboxSelectMultiple(attrs={'data-hint': 'Control click to select multiple diagnoses.  Scroll to see more diagnoses'}),
+                 widget=forms.CheckboxSelectMultiple(attrs={'data-hint': 'Control click to select multiple diagnoses.  Scroll to see more diagnoses',
+                                                            'class': 'formInput'}),
             )
         
         widgets={
                    "first_name":forms.TextInput(attrs={'class':'formInput', 'placeholder': 'First name'}),
                    "last_name":forms.TextInput(attrs={'class':'formInput', 'placeholder': 'Surname'}),
-                   "date_of_birth":forms.TextInput(attrs={'class':'dateInput', 'placeholder': 'Date of Birth'}),
+                   "date_of_birth":forms.TextInput(attrs={'class':'dateInput formInput', 'placeholder': 'Date of Birth'}),
                    "gender":forms.RadioSelect(),
-                   "hat_size":forms.Select(
+                   # "hat_size":forms.Select(attrs={'class':'dateInput'}
                             # queryset=Hat.objects.all().order_by('size')
-                       ),
+                       # ),
                    "degree_of_difficulty":forms.Textarea(attrs={'class':'formInput', 'placeholder': 'Degree of Difficulty'}),
                    "additional_notes":forms.Textarea(attrs={'class':'formInput', 'placeholder': 'Enter any additional notes here'}),
                 }

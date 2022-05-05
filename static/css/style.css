@@ -499,6 +499,7 @@ footer {
   /*Use adjacent sibling selector '+' to choose a label which is next to an input element */
   /*If there were elements between the label and the input we would have to use the general sibling selector '~' */
   /*The sibling we want to select/use always has to be after the other element in the HTML */
+  margin-bottom: 2rem;
 }
 .formGroup {
   display: -webkit-box;
@@ -512,7 +513,7 @@ footer {
 .formGroup:not(:last-child) {
   margin-bottom: 2rem;
 }
-.formInput {
+.formInput, .form #id_diagnosis {
   /*Always when padding an element give it a bit more on the sides to look better */
   font-size: 1.5rem;
   font-family: inherit;
@@ -522,7 +523,7 @@ footer {
   padding: 1.5rem 2rem;
   border-radius: 2px;
   background-color: rgba(255, 255, 255, 0.5);
-  border: none;
+  border: 1px solid #7EB2DD;
   -webkit-box-shadow: 0 1.5rem 4rem rgba(61, 39, 36, 0.15);
           box-shadow: 0 1.5rem 4rem rgba(61, 39, 36, 0.15);
   /*Add a transparent border at the bottom to match the border when the input is focussed */
@@ -535,7 +536,7 @@ footer {
   transition: all 1s;
   /*Target the placeholder text */
 }
-.formInput:focus {
+.formInput:focus, .form #id_diagnosis:focus {
   /*Browser highlights a border (outline) around the input element when it has focus */
   /*We want to remove this */
   outline: none;
@@ -544,22 +545,26 @@ footer {
   /*Give it a box shadow and a border at the bottom */
   -webkit-box-shadow: 0 1rem 2rem rgba(61, 39, 36, 0.1);
           box-shadow: 0 1rem 2rem rgba(61, 39, 36, 0.1);
-  border-bottom: 3px solid #F5853F;
+  border-bottom: 3px solid #7EB2DD;
   /*Apply this style when we have an invalid focussed input element */
 }
-.formInput:focus:invalid {
+.formInput:focus:invalid, .form #id_diagnosis:focus:invalid {
   border-bottom: 3px solid #191970;
 }
-.formInput::-webkit-input-placeholder {
+.formInput::-webkit-input-placeholder, .form #id_diagnosis::-webkit-input-placeholder {
+  /*Target the placeholder text */
   color: #999999;
 }
-.formInput:-ms-input-placeholder {
+.formInput:-ms-input-placeholder, .form #id_diagnosis:-ms-input-placeholder {
+  /*Target the placeholder text */
   color: #999999;
 }
-.formInput::-ms-input-placeholder {
+.formInput::-ms-input-placeholder, .form #id_diagnosis::-ms-input-placeholder {
+  /*Target the placeholder text */
   color: #999999;
 }
-.formInput::placeholder {
+.formInput::placeholder, .form #id_diagnosis::placeholder {
+  /*Target the placeholder text */
   color: #999999;
 }
 .formLabel {
@@ -573,6 +578,9 @@ footer {
   transition: all 0.3s;
 }
 .formInput.fadeInLabel:placeholder-shown + .formLabel {
+  /*Use adjacent sibling selector '+' to choose a label which is next to an input element */
+  /*If there were elements between the label and the input we would have to use the general sibling selector '~' */
+  /*The sibling we want to select/use always has to be after the other element in the HTML */
   /*When the placeholder is shown -> these attributes are applied to the label */
   /*Once we start typing -> these attributes will not be applied and the label will appear */
   /*Using opacity since we want to animate the label disappearing */
@@ -584,9 +592,60 @@ footer {
           transform: translateY(-4rem);
 }
 
-input:required + label::after {
+input:required + label::after, select:required + label::after {
   content: " *";
   color: #cc0000;
+}
+
+#addClientContainer {
+  margin-left: 2rem;
+}
+#addClientContainer h1 {
+  text-align: center;
+}
+
+#addClientForm {
+  margin-bottom: 2rem;
+}
+#addClientForm #id_gender {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.5rem;
+}
+#addClientForm #id_gender label {
+  margin-right: 3rem;
+}
+#addClientForm #id_diagnosis {
+  font-size: 1.4rem;
+  width: 90%;
+  border: 1px solid #7EB2DD;
+  -webkit-box-shadow: 0 1.5rem 4rem rgba(61, 39, 36, 0.15);
+          box-shadow: 0 1.5rem 4rem rgba(61, 39, 36, 0.15);
+  /*Add a transparent border at the bottom to match the border when the input is focussed */
+  /*Otherwise the form elements will 'jump' when focus switches */
+  border-bottom: 3px solid transparent;
+}
+#addClientForm #id_diagnosis:focus {
+  /*Browser highlights a border (outline) around the input element when it has focus */
+  /*We want to remove this */
+  outline: none;
+  /*This focus is important for ARIA, i.e. keyboard navigation */
+  /*Always make form elements that are focussed visible */
+  /*Give it a box shadow and a border at the bottom */
+  -webkit-box-shadow: 0 1rem 2rem rgba(61, 39, 36, 0.1);
+          box-shadow: 0 1rem 2rem rgba(61, 39, 36, 0.1);
+  border-bottom: 3px solid #7EB2DD;
+}
+#addClientForm .diagnosisGroup > p {
+  font-size: 1.1rem;
+  margin-top: 0.7rem;
 }
 
 /*===== END  Form  ===== */
@@ -596,7 +655,7 @@ input:required + label::after {
   display: inline-block;
   padding: 1.5rem 4rem;
   border-radius: 10rem;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   background-color: #FFCDBC;
   color: #3D2724;
   border: 3px solid #3D2724;
@@ -631,12 +690,14 @@ input:required + label::after {
 }
 .btnGhost {
   background-color: #FFFFFF;
+  border-color: #191970;
+  color: #3D2724;
 }
 .btnGhost:hover {
-  color: #000000;
+  color: #191970;
 }
 .btnGhost:active {
-  color: #FFFFFF;
+  color: #FFCDBC;
 }
 .btnTextOnly {
   border: none;
@@ -646,6 +707,26 @@ input:required + label::after {
   background-color: transparent;
   color: #F5853F;
 }
+.btnGroup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.btnGroup input:not(:last-child), .btnGroup a:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+.btnGroup input[type="reset"] {
+  /*"Reset Form" text seems to be slightly to the right of centre */
+  /*So shift it to bring it back to centre-line */
+  margin-right: 2rem;
+}
 
 /*===== END  Button  ===== */
 /*~~~~~~~  Message  ~~~~~~~ */
@@ -654,7 +735,7 @@ input:required + label::after {
   color: #3D2724;
   font-size: 1.2rem;
 }
-.message span.newEntry {
+.message span.name {
   font-weight: 700;
 }
 .messages {
