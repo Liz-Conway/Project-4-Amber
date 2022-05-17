@@ -13,6 +13,7 @@ from django.http import response
 class HomePage(TemplateView):
     template_name = "hippo/index.html"
 
+
 class AddClient(TemplateView):
     template_name = "hippo/addClient.html"
     form_class = ClientForm
@@ -64,7 +65,8 @@ class AddClient(TemplateView):
         Form is valid => If all the fields have been completed
         """
         if add_client_form.is_valid():
-            add_client_form.save()
+            saved_client = add_client_form.save()
+            save_diagnoses(saved_client.id, request.POST)
             first_name = request.POST['first_name']
             last_name = request.POST['last_name']
             messages.success(request,
@@ -156,19 +158,28 @@ def get_next_session_week(course):
 
 def save_tasks(session_id, post):
     total_tasks = Task.objects.count()
-    print(f"Total Tasks : {total_tasks}")
     
     session = Session.objects.get(id=session_id)
-    print(f"Session :  {session}")
     
     for i in range(1, total_tasks + 1):
         task_identifier = f"task_{i}"
-        # print(i)
-        # print(post.get(task_identifier))
         if post.get(task_identifier) != None:
             task = Task.objects.get(id=i)
             session.tasks.add(task)
         
+
+def save_diagnoses(client_id, post):
+    print("post")
+    print(post)
+    total_diagnoses = Diagnosis.objects.count()
+    
+    client = Client.objects.get(id=client_id)
+    
+    for i in range(1, total_diagnoses + 1):
+        diagnosis_identifier = f"diagnosis_{i}"
+        if post.get(diagnosis_identifier) != None:
+            diagnosis = Diagnosis.objects.get(id=i)
+            client.diagnosis.add(diagnosis)
 
 
 class RecordSession(TemplateView):
@@ -235,7 +246,6 @@ class RecordSession(TemplateView):
         '*args' = Standard arguments parameter
         '**kwargs' = Standard keyword arguments parameter
         """
-            
         """
         Get the data from our form
         and assign it to a variable.
@@ -247,10 +257,7 @@ class RecordSession(TemplateView):
         Form is valid => If all the fields have been completed
         """
         if record_session_form.is_valid():
-            print("Form is valid")
             form_saved = record_session_form.save()
-            print("Record session data saved")
-            print(request.POST)
             save_tasks(form_saved.id, request.POST)
             course_number = request.POST['course']
             week_number = request.POST['week_number']
