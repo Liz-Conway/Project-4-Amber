@@ -217,7 +217,6 @@ header {
       -ms-flex-align: center;
           align-items: center;
   margin-top: 1rem;
-  position: fixed;
   z-index: 1500;
   /*Hide the navigation initially */
   opacity: 0;
@@ -288,8 +287,10 @@ header {
           align-items: center;
   flex-direction: column;
 }
-.navigationItem {
-  margin: 1rem;
+}
+.navigationLink {
+  -webkit-transform: translateX(-200px);
+          transform: translateX(-200px);
 }
 .navigationLink:link, .navigationLink:visited {
   display: inline-block;
@@ -311,12 +312,22 @@ header {
   -webkit-transform: translateX(1rem);
           transform: translateX(1rem);
 }
+.navigationItem {
+  margin: 1rem;
+  /*Hide the navigation list item initially */
+  /*It is not enough to have an opacity of zero */
+  /*The elements are still there and are clickable, so we need to set the width to zero as well */
+  width: 0;
+}
 .navigationCheckbox:checked ~ .navigationBackground {
   -webkit-transform: scale(80);
           transform: scale(80);
 }
 .navigationCheckbox:checked ~ #navigationNav, .navigationCheckbox:checked ~ #accountLinks {
   opacity: 1;
+  width: 100%;
+}
+.navigationCheckbox:checked ~ #navigationNav .navigationItem, .navigationCheckbox:checked ~ #accountLinks a {
   width: 100%;
 }
 .navigationIcon {
@@ -379,13 +390,12 @@ header {
   top: 0;
 }
 
-/*Reset links to 'normal' for non-mobile screens */
 /*===== END  Navbar  ===== */
 /*~~~~~~~  Footer  ~~~~~~~ */
 footer {
   /*Sticky footer */
   margin-top: auto;
-  background-color: #F5853F;
+  background-color: #3D2724;
   color: #FFCDBC;
   display: -webkit-box;
   display: -ms-flexbox;

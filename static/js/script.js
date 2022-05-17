@@ -1,13 +1,12 @@
 /*This jQuery code is only run after the HTML document has fully loaded*/
-$(
-	domLoaded
-);
+//https://api.jquery.com/ready/
+$( domLoaded );
 
 function domLoaded() {
+	placeAccountLinks();
 	/*Event listener to respond to a click on 
 	the navigation link on mobile devices*/
 	$(".navigationLink").on("click", closeNavigation);
-	placeAccountLinks();
 
 	/*Add a diagnosis*/
 	$("#diagnosisForm").submit(submitDiagnosis);
@@ -35,10 +34,10 @@ function closeNavigation(event) {
  	if (screen.width < 800) {
  		console.log("Setting location of #accountLinks");
  		$("#accountLinks").position({
-  			my:      "left top",
-  			at:        "left bottom",
+  			my:      "top+30",
+  			at:        "bottom",
  	   		of:        $("#navigationNav"),
-   		 	collision: "fit"
+   		 	collision: "none"
 		});
  	} 
 }
