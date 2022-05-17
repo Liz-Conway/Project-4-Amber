@@ -327,8 +327,12 @@ header {
   opacity: 1;
   width: 100%;
 }
-.navigationCheckbox:checked ~ #navigationNav .navigationItem, .navigationCheckbox:checked ~ #accountLinks a {
+.navigationCheckbox:checked ~ #navigationNav .navigationItem, .navigationCheckbox:checked ~ #accountLinks .navigationLink {
   width: 100%;
+}
+.navigationCheckbox:checked ~ #accountLinks .navigationLink, .navigationCheckbox:checked ~ #navigationNav .navigationLink {
+  -webkit-transform: none;
+          transform: none;
 }
 .navigationIcon {
   display: inline-block;
