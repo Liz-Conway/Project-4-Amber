@@ -542,3 +542,4 @@ With forking you are pushing the updates to your own Amber repo on github.
 |Include HTML in Django message | David Winterbottom |https://dzone.com/articles/embedding-html-django-messages |
 |Redirect to another page | John Elder |https://www.tutorialspoint.com/django/django_page_redirection.htm |
 |Coping with Many-Many relationships | Lacey Williams Henschel |https://www.revsys.com/tidbits/tips-using-djangos-manytomanyfield/ |
+|Truncate text in CSS | Shan Shah |https://dev.to/codewithshan/truncate-text-with-css-the-possible-ways-1p4o |
