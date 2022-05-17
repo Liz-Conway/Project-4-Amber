@@ -38,6 +38,11 @@
 			{% csrf_token %}
 			<!-- 'form' has been passed as a Django form in the context to this page -->
 			<!-- as_p renders the elements as paragraphs, as_table renders them as a table -->
+			
+			<input type="hidden" name="course" value="{{ course_number }}">
+			<input type="hidden" name="week_number" value="{{ session_week }}">
+			<input type="hidden" name="session_date" value="{{ session_date_string }}">
+			
 			<div class="formGroup">
 				<select name="{{ form.horse.name }}" id="id_{{ form.horse.name }}" class="formInput" required>
 					<option value="" selected disabled>Choose your ride</option>

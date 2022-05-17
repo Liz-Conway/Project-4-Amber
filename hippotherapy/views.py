@@ -98,19 +98,33 @@ def get_course_for_client(client_id):
         # Retrieve an instance of the client
         client = Client.objects.filter(id=client_id)[0]
         # Create a new course for this client
-        course = Course(client=client)
+        last_course = Course(client=client)
         # Save the course to the database
-        course.save()
-    elif len(courses) == 1:
+        last_course.save()
+    elif courses.count() == 1:
         # Use this course
-        course = courses[0]
+        last_course = courses[0]
     else:
         # Find the course with the latest Session date
-        course = Course.objects.select_related('Session').filter(Max('session_date'))
+        # course = Course.objects.filter(client=client).select_related('Session').filter('course__client'==client_id, Max('session__session_date'))[0]
+        # Find the courses for this client
+        courses = Course.objects.filter(client=client_id)
+        # Create an array with the course ids
+        course_ids = []
+        for course in courses:
+            course_id = course.id
+            course_ids.append(course_id)
+        # Find the latest date for any session for these courses
+        last_session_date = Session.objects.filter(course__in=course_ids).aggregate(max_date=Max('session_date'))[0]
+        
+        # Find the session with the latest date for any courses for this client
+        last_session = Session.objects.filter(session_date=last_session_date)[0]
+        
+        last_course = last_session.course
         
         # print(str(course.query))
     
-    return course
+    return last_course
 
 
 def get_next_session_week(course):
@@ -211,21 +225,21 @@ class RecordSession(TemplateView):
         """
         Form is valid => If all the fields have been completed
         """
-        # if record_session_form.is_valid():
-        #     record_session_form.save()
-            # first_name = request.POST['first_name']
-            # last_name = request.POST['last_name']
-            # messages.success(request,
-            #                  f'New client <span class="name">{first_name} {last_name}</span> added successfully.',
-            #                  extra_tags='safe')
-        # else:
-            # """
-            # If the form is NOT valid  
-            # then return an  empty 'add client' form instance
-            # showing the errors
-            # """
-            # messages.error(request, 'Invalid form submission.')
-            # messages.error(request, record_session_form.errors)
+        if record_session_form.is_valid():
+            record_session_form.save()
+            course_number = request.POST['course_number']
+            week_number = request.POST['week_number']
+            messages.success(request,
+                             f'New session for Session# <span class="boldEntry">{course_number} / {week_number}</span> added successfully.',
+                             extra_tags='safe')
+        else:
+            """
+            If the form is NOT valid  
+            then return an  empty 'record session' form instance
+            showing the errors
+            """
+            messages.error(request, 'Invalid form submission.')
+            messages.error(request, record_session_form.errors)
 
         """
         Send all of this information to our render method
