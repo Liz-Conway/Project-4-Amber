@@ -5,7 +5,7 @@ Created on 2 May 2022
 '''
 from django import forms
 from administration.models import Diagnosis, Task
-from hippotherapy.models import Client, Hat, Session
+from hippotherapy.models import Client, Hat, Session, Skill
 import datetime
 from django.db.models.fields import CharField
 from django.contrib.admin.utils import help_text_for_field
@@ -44,10 +44,10 @@ class ClientForm(forms.ModelForm):
         """
         fields = ["first_name", "last_name", "gender", "date_of_birth", "hat_size", "diagnosis", "degree_of_difficulty", "additional_notes"]
         
-        # diagnosis = forms.ModelMultipleChoiceField(
-        #         queryset=Diagnosis.objects.all(),
-        #          widget=forms.CheckboxSelectMultiple
-        #     )
+        diagnosis = forms.ModelMultipleChoiceField(
+                queryset=Diagnosis.objects.all(),
+                 widget=forms.CheckboxSelectMultiple
+            )
         
         widgets={
                    "first_name":forms.TextInput(attrs={'class':'formInput', 'placeholder': 'First name'}),
@@ -95,11 +95,11 @@ class ObservationForm(forms.ModelForm):
     Like which fields it should render, how it should display error messages, and so on.
     """
     class Meta:
-        # model = Client
+        model = Skill
         """
         Define the fields to display explicitly in the inner metaclass on the item form.
         The reason for this is otherwise the form will display all fields on the model
         including those we might not want the user to see.
         """
-        # fields = ["first_name", "last_name"]    
+        fields = ["skill_name", ]
 

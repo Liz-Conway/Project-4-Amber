@@ -5,9 +5,31 @@
 {% block content %}
 	<div id="observationContainer">
 		
-		<h1>Session Observations</h1>
+		<h1>Hippotherapy Session Observations</h1>
 
 		<h2>Session :  {{ session }}</h2>
+		
+		<div id="accordion">
+			{% for function in functions %}
+		  		<h3>{{ function.function_name }}</h3>
+			  <div>
+			    {% for skill in skills %}
+			    	{% if skill.function_id == function.id %}
+			    		<p class="boldEntry">
+			    			{{ skill.skill_name }}
+			    		</p>
+			    		<ul>
+			    			{% for hint in hints %}
+			    				{% if hint.skill_id == skill.id %}
+			    					<li>{{ hint.hint_name }}</li>
+			    				{% endif %}
+			    			{% endfor %}
+			    		</ul>
+		    		{% endif %}
+			    {% endfor %}
+			  </div>
+			{% endfor %}
+		</div>
 		
 	</div>
 

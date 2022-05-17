@@ -1,12 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import TemplateView
 from django.contrib import messages
-from hippotherapy.forms import ClientForm, SessionForm
-from hippotherapy.models import Hat, Client, Course, Session
+from hippotherapy.forms import ClientForm, SessionForm, ObservationForm
+from hippotherapy.models import Hat, Client, Course, Session, Function, Skill,\
+    Hint
 from django.db.models.aggregates import Max
 from _datetime import date
 from django.db.models.expressions import F
-from administration.models import Horse, Task, Diagnosis
+from administration.models import Horse, Task
 from django.http import response
 
 # Create your views here.
@@ -356,17 +357,23 @@ class ObserveSession(TemplateView):
         '*args' = Standard arguments parameter
         '**kwargs' = Standard keyword arguments parameter
         """
-        # form = ObservationForm()
+        form = ObservationForm()
         
-        # Get the client id that was passed in the URL
+        # Get the session id that was passed in the URL
         session_id = kwargs['session']
+        functions = Function.objects.all()
+        skills = Skill.objects.all()
+        hints = Hint.objects.all()
         
         return render(
             request, 
             self.template_name, # view to render
             # Context - passed into the HTML template
             {
-                "session": session_id, 
+                "session": session_id,
+                "functions": functions,
+                "skills": skills,
+                "hints": hints 
             }
         )
         
