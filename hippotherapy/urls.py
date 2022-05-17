@@ -23,5 +23,6 @@ from . import views
 urlpatterns = [
     path('', views.HomePage.as_view(), name='home'),
     path('addClient', views.AddClient.as_view(), name='addClient'),
+    path('selectClient', views.SelectClient.as_view(), name='selectClient'),
     path('recordSession', views.RecordSession.as_view(), name='recordSession'),
 ]

@@ -238,3 +238,28 @@ class RecordSession(TemplateView):
         #     }
         # )
         
+
+class SelectClient(TemplateView):
+    template_name = "hippo/selectClient.html"
+    
+    
+    """
+    In class-based views:
+    Instead of using an if statement to check the request method,  
+    we simply create class methods called GET, POST, or any other HTTP verb.
+    """
+    def get(self, request, *args, **kwargs):
+        """
+        '*args' = Standard arguments parameter
+        '**kwargs' = Standard keyword arguments parameter
+        """
+        clients = Client.objects.all()
+        
+        return render(
+            request, 
+            self.template_name, # view to render
+            # Context - passed into the HTML template
+            {
+                "clients": clients, 
+            }
+        )
