@@ -26,9 +26,9 @@
 			</div>
 		</div>
 		
-		<!-- 'recordSession' URL that we will submit the form to 
+		<!-- Set action to a blank URL that we will submit the form to 
 			i.e. this is a "postback" -->
-		<form id="recordSessionForm" method="POST" action="recordSession">
+		<form id="recordSessionForm" method="POST" action="">
 			<!-- Whenever we're posting information in Django,
 			we need to add the CSRF or cross-site request forgery token.
 			This token is a randomly generated unique value which will be added
@@ -41,14 +41,14 @@
 			
 			<input type="hidden" name="course" value="{{ course_number }}">
 			<input type="hidden" name="week_number" value="{{ session_week }}">
-			<input type="hidden" name="session_date" value="{{ session_date_string }}">
+			<input type="hidden" name="session_date" value="{{ session_date }}">
 			
 			<div class="formGroup">
 				<select name="{{ form.horse.name }}" id="id_{{ form.horse.name }}" class="formInput" required>
 					<option value="" selected disabled>Choose your ride</option>
-					{% for nag in horsies %}
-						<option value="{{ nag.id }}">{{ nag.horse_name }}</option>
-					{% endfor %}
+						{% for nag in horsies %}
+							<option value="{{ nag.id }}">{{ nag.horse_name }}</option>
+						{% endfor %}
 				</select>
 
 				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
@@ -58,7 +58,7 @@
 			<div class="formGroup">
 				{% for task in unmounted %}
 					<div class="recordSessionCheck">
-						<input type="checkbox" name="{{ task.task_name }}" id="id_{{ task.task_name }}" >
+						<input type="checkbox" name="task_{{ task.id }}" id="id_{{ task.task_name }}" >
 						<label for="id_{{ task.task_name }}">{{ task.task_name }}</label>
 					</div>
 				{% endfor %}
@@ -68,7 +68,7 @@
 			<div class="formGroup">
 				{% for task in mounted %}
 					<div class="recordSessionCheck">
-						<input type="checkbox" name="{{ task.task_name }}" id="id_{{ task.task_name }}" >
+						<input type="checkbox" name="task_{{ task.id }}" id="id_{{ task.task_name }}" >
 						<label for="id_{{ task.task_name }}">{{ task.task_name }}</label>
 					</div>
 				{% endfor %}

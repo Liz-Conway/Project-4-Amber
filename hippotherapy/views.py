@@ -135,12 +135,14 @@ def get_next_session_week(course):
     sessions = Session.objects.filter(course=course.id)
     # Entire object -> 'None' if nothing matches
     # sessions = Session.objects.filter(course=course.id).order_by('week_number').last() # Entire session object
-    print(sessions)
+    for session in sessions:
+        print(session)
     if sessions.count() > 0:
         # Already have some sessions for this course
         print("We got sumfink")
         last_week = sessions.aggregate(Max('week_number'))
-        next_session_week = last_week + 1
+        print(last_week)
+        next_session_week = last_week['week_number__max'] + 1
     else:
         # No Sessions for this Course yet
         print("Nuffink returned")
@@ -148,6 +150,23 @@ def get_next_session_week(course):
     #     print(connection.queries[x])
     
     return next_session_week
+
+
+def save_tasks(session_id, post):
+    total_tasks = Task.objects.count()
+    print(f"Total Tasks : {total_tasks}")
+    
+    session = Session.objects.get(id=session_id)
+    print(f"Session :  {session}")
+    
+    for i in range(1, total_tasks + 1):
+        task_identifier = f"task_{i}"
+        # print(i)
+        # print(post.get(task_identifier))
+        if post.get(task_identifier) != None:
+            task = Task.objects.get(id=i)
+            session.tasks.add(task)
+        
 
 
 class RecordSession(TemplateView):
@@ -226,12 +245,26 @@ class RecordSession(TemplateView):
         Form is valid => If all the fields have been completed
         """
         if record_session_form.is_valid():
-            record_session_form.save()
-            course_number = request.POST['course_number']
+            print("Form is valid")
+            form_saved = record_session_form.save()
+            print("Record session data saved")
+            print(request.POST)
+            save_tasks(form_saved.id, request.POST)
+            course_number = request.POST['course']
             week_number = request.POST['week_number']
             messages.success(request,
                              f'New session for Session# <span class="boldEntry">{course_number} / {week_number}</span> added successfully.',
                              extra_tags='safe')
+
+            # Redirect to the 'observeSession' page after adding a new Session
+            # Works by going to the URL paths defined in 'urls.py'
+            # Finds the method whose 3rd ('name=') parameter is the String passed into redirect
+            # https://www.tutorialspoint.com/django/django_page_redirection.htm
+            return redirect(
+                "observeSession",               # view to render
+                session=form_saved.id  # parameter to pass to URL
+            )
+
         else:
             """
             If the form is NOT valid  
@@ -241,17 +274,15 @@ class RecordSession(TemplateView):
             messages.error(request, 'Invalid form submission.')
             messages.error(request, record_session_form.errors)
 
-        """
-        Send all of this information to our render method
-        """
-        # return render(
-        #     request, 
-        #     'addObservations.html', # View to render
-        #     # Context - passed into the HTML template
-        #     { 
-        #         'form': ObservationsForm(request.GET)
-        #     }
-        # )
+            """
+            Postback to the recordSession page when the form is not valid
+            """
+            # https://www.tutorialspoint.com/django/django_page_redirection.htm
+            return redirect(
+                'recordSession',       # view to render
+                client=client   # parameter to pass to URL
+            )
+
         
 
 class SelectClient(TemplateView):
@@ -302,3 +333,31 @@ class SelectClient(TemplateView):
             page_url,       # view to render
             client=client   # parameter to pass to URL
         )
+
+class ObserveSession(TemplateView):
+    template_name = "hippo/observeSession.html"
+
+    """
+    In class-based views:
+    Instead of using an if statement to check the request method,  
+    we simply create class methods called GET, POST, or any other HTTP verb.
+    """
+    def get(self, request, *args, **kwargs):
+        """
+        '*args' = Standard arguments parameter
+        '**kwargs' = Standard keyword arguments parameter
+        """
+        # form = ObservationForm()
+        
+        # Get the client id that was passed in the URL
+        session_id = kwargs['session']
+        
+        return render(
+            request, 
+            self.template_name, # view to render
+            # Context - passed into the HTML template
+            {
+                "session": session_id, 
+            }
+        )
+        

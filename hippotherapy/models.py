@@ -68,11 +68,9 @@ class Session(models.Model):
     # Automatically adds the date when this object is first saved to database
     session_date = models.DateField()
     horse = models.ForeignKey(Horse, related_name='ridden', on_delete=models.PROTECT)
-    tasks = models.ManyToManyField(Task, related_name='performed')
+    tasks = models.ManyToManyField(Task, related_name='performed', blank=True, null=True)
     skills = models.ManyToManyField(Skill, related_name='skill_score')
 
     def __str__(self):
-        return f"{self.course}/{self.week_number}"
-    
-    
-    
+        return f"{self.course.id} / {self.week_number}"
+

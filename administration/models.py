@@ -20,9 +20,9 @@ class Horse(models.Model):
 
 
 class Task(models.Model):
-    # null = False attribute here prevents Horse from being created without a horse_name field programmatically
-    # and blank = False will make the field required on forms.
-    task_name = models.CharField(max_length=40, null=False, blank=False, unique=True)
+    # null = True attribute here since only some Tasks will be chosen for a given Session
+    # and blank = True will allow for some Tasks not to be selected on forms.
+    task_name = models.CharField(max_length=40, null=True, blank=True)
     mounted = models.BooleanField(default=False)
     
     def __str__(self):
