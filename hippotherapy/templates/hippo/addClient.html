@@ -58,12 +58,17 @@
 				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
 				<label for="id_{{ form.hat_size.name }}" class="formLabel">{{ form.hat_size.label }}:</label>
 			</div>
-			<div class="formGroup diagnosisGroup">
-				<p>You can select multiple diagnoses.  Scroll to see more diagnoses</p>
-				{{ form.diagnosis }}
+			<label class="formLabel manyManyLabel required" for="manyManyDiagnosis">Diagnoses:</label>
+			<div class="formGroup manyMany" id="manyManyDiagnosis">
+				{% for diag in diagnoses %}
+					<div class="manyManyCheck">
+						<input type="checkbox" name="diagnosis_{{ diag.id }}" id="id_{{ diag.diagnosis }}" >
+						<label for="id_{{ diag.diagnosis }}">{{ diag.diagnosis }}</label>
+					</div>
+				{% endfor %}
 				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
-				<label for="id_{{ form.diagnosis.name }}" class="formLabel">{{ form.diagnosis.label }}:</label>
 			</div>
+			
 			<div class="formGroup">
 				{{ form.degree_of_difficulty }}
 				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->

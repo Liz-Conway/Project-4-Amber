@@ -44,19 +44,16 @@ class ClientForm(forms.ModelForm):
         """
         fields = ["first_name", "last_name", "gender", "date_of_birth", "hat_size", "diagnosis", "degree_of_difficulty", "additional_notes"]
         
-        diagnosis = forms.ModelMultipleChoiceField(
-                queryset=Diagnosis.objects.all(),
-                 widget=forms.CheckboxSelectMultiple
-            )
+        # diagnosis = forms.ModelMultipleChoiceField(
+        #         queryset=Diagnosis.objects.all(),
+        #          widget=forms.CheckboxSelectMultiple
+        #     )
         
         widgets={
                    "first_name":forms.TextInput(attrs={'class':'formInput', 'placeholder': 'First name'}),
                    "last_name":forms.TextInput(attrs={'class':'formInput', 'placeholder': 'Surname'}),
                    "date_of_birth":forms.TextInput(attrs={'class':'dateInput formInput', 'placeholder': 'Date of Birth'}),
                    "gender":forms.RadioSelect(),
-                   # "hat_size":forms.Select(attrs={'class':'dateInput'}
-                            # queryset=Hat.objects.all().order_by('size')
-                       # ),
                    "degree_of_difficulty":forms.Textarea(attrs={'class':'formInput', 'placeholder': 'Degree of Difficulty'}),
                    "additional_notes":forms.Textarea(attrs={'class':'formInput', 'placeholder': 'Enter any additional notes here'}),
                 }
@@ -76,22 +73,6 @@ class SessionForm(forms.ModelForm):
         including those we might not want the user to see.
         """
         fields = ["horse", "tasks", "course", "week_number", "session_date"]
-        
-        # tasks_unmounted = forms.ModelMultipleChoiceField(
-        #         queryset=Task.objects.filter(mounted=False),
-        #          widget=forms.CheckboxInput(attrs={'class': 'formInput'}),
-        #     )
-        #
-        # tasks_mounted = forms.ModelMultipleChoiceField(
-        #         queryset=Task.objects.filter(mounted=True),
-        #          widget=forms.CheckboxInput(attrs={'class': 'formInput'}),
-        #     )
-        
-
-        # tasks = forms.ModelMultipleChoiceField(
-        #     queryset=Task.objects.all(),
-        #     # widget=forms.CheckboxInput(attrs={'class': 'formInput'}),
-        # )
         
         course = forms.IntegerField(widget=forms.HiddenInput())
         

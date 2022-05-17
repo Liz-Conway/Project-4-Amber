@@ -57,7 +57,7 @@
 			<h2>Tasks</h2>
 			<div class="formGroup">
 				{% for task in unmounted %}
-					<div class="recordSessionCheck">
+					<div class="manyManyCheck">
 						<input type="checkbox" name="task_{{ task.id }}" id="id_{{ task.task_name }}" >
 						<label for="id_{{ task.task_name }}">{{ task.task_name }}</label>
 					</div>
@@ -67,7 +67,7 @@
 			</div>
 			<div class="formGroup">
 				{% for task in mounted %}
-					<div class="recordSessionCheck">
+					<div class="manyManyCheck">
 						<input type="checkbox" name="task_{{ task.id }}" id="id_{{ task.task_name }}" >
 						<label for="id_{{ task.task_name }}">{{ task.task_name }}</label>
 					</div>

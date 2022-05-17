@@ -531,18 +531,6 @@ footer {
 .recordSessionHeader {
   margin-bottom: 2rem;
 }
-.recordSessionCheck {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-}
-.recordSessionCheck label {
-  margin-left: 1rem;
-}
 
 /*===== END  Record Session page  ===== */
 /*~~~~~~~  Form  ~~~~~~~ */
@@ -639,7 +627,7 @@ footer {
           transform: translateY(-4rem);
 }
 
-input:required + label::after, select:required + label::after {
+input:required + label::after, select:required + label::after, .manyManyLabel.required::after {
   content: " *";
   color: #cc0000;
 }
@@ -783,6 +771,21 @@ input:required + label::after, select:required + label::after {
 }
 
 /*===== END  Message  ===== */
+/*~~~~~~~  Many-to-many components  ~~~~~~~ */
+.manyManyCheck {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+.manyManyCheck label {
+  margin-left: 1rem;
+}
+
+/*===== END  Many-to-many components  ===== */
 
 /* Media Queries for Big Phones */
 @media only screen and (min-width: 28em) {

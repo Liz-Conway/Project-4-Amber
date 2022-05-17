@@ -6,7 +6,7 @@ from hippotherapy.models import Hat, Client, Course, Session
 from django.db.models.aggregates import Max
 from _datetime import date
 from django.db.models.expressions import F
-from administration.models import Horse, Task
+from administration.models import Horse, Task, Diagnosis
 from django.http import response
 
 # Create your views here.
@@ -30,6 +30,7 @@ class AddClient(TemplateView):
         """
         form = ClientForm()
         hat_sizes = Hat.objects.all()
+        diagnoses = Diagnosis.objects.all()
         
         return render(
             request, 
@@ -38,6 +39,7 @@ class AddClient(TemplateView):
             {
                 "form": form, 
                 "hat_sizes": hat_sizes,
+                "diagnoses": diagnoses,
             }
         )
         
