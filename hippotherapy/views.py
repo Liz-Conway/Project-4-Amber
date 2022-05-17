@@ -155,10 +155,10 @@ class RecordSession(TemplateView):
         horsies = Horse.objects.all()
         unmounted_tasks = Task.objects.filter(mounted=False)
         mounted_tasks = Task.objects.filter(mounted=True)
-        print(horsies)
         
-        # For the moment :  Assume client is #1 (Rainbow Dash)
-        client = Client.objects.filter(id=1)[0]
+        # Get the client id that was passed in the URL
+        client_id = kwargs['client']
+        client = Client.objects.filter(id=client_id)[0]
         course = get_course_for_client(client.id)
         
         # Create a new session for this course
