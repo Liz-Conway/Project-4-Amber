@@ -23,4 +23,5 @@ from . import views
 urlpatterns = [
     path('', views.HomePage.as_view(), name='home'),
     path('addClient', views.AddClient.as_view(), name='addClient'),
+    path('recordSession', views.RecordSession.as_view(), name='recordSession'),
 ]

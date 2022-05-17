@@ -1,0 +1,73 @@
+{% extends "hippo/base.html" %}
+
+{% block title %}Amber|Record Session{% endblock title %}
+
+{% block content %}
+	<div id="recordSessionContainer">
+		
+		<h1>Record Hippotherapy Session</h1>
+		<!-- Render the items key from the context dictionary that we 
+		created using this double curly bracket syntax -->
+		<!-- A template variable - anything that you return to the template
+		in the context dictionary can be rendered in the same way.
+		That includes almost anything that you can use in Python
+		Meaning you can return strings, numbers, lists, other dictionaries, 
+		or even functions and classes. -->
+		<!-- {{ session }} -->
+		<div class="sessionHeader">
+			<h2>Session</h2>
+			<div>Client : {{ client }}</div>
+			<div>Session : {{ course_number }}/{{ session_week }} Course: {{ course_number }} Week: {{ session_week }}</div>
+			<div>Date : {{ session_date_string }}</div>
+		</div>
+		
+		<!-- 'recordSession' URL that we will submit the form to 
+			i.e. this is a "postback" -->
+		<form id="recordSessionForm" method="POST" action="recordSession">
+			<!-- Whenever we're posting information in Django,
+			we need to add the CSRF or cross-site request forgery token.
+			This token is a randomly generated unique value which will be added
+			to the form as a hidden input field when the forms submitted.
+			And works to guarantee that the data we're posting is actually coming from our
+			todo list app and not from another website. -->
+			{% csrf_token %}
+			<!-- 'form' has been passed as a Django form in the context to this page -->
+			<!-- as_p renders the elements as paragraphs, as_table renders them as a table -->
+			<div class="formGroup">
+				<select name="{{ form.horse.name }}" id="id_{{ form.horse.name }}" class="formInput" required>
+					<option value="" selected disabled>Choose your ride</option>
+					{% for nag in horsies %}
+						<option value="{{ nag.id }}">{{ nag.horse_name }}</option>
+					{% endfor %}
+				</select>
+
+				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
+				<label for="id_{{ form.horse.name }}" class="formLabel">{{ form.horse.label }}:</label>
+			</div>
+			
+			<div class="formGroup">
+				{% for task in unmounted %}
+					<input type="checkbox" name="{{ task.task_name }}" id="id_{{ task.task_name }}" >
+					<label for="id_{{ task.task_name }}" class="">{{ task.task_name }}:</label>
+				{% endfor %}
+				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
+				<label for="id_{{ form.task_unmounted }}" class="formLabel tasksHeading">Unmounted Tasks:</label>
+			</div>
+			<div class="formGroup">
+				{% for task in mounted %}
+					<input type="checkbox" name="{{ task.task_name }}" id="id_{{ task.task_name }}" >
+					<label for="id_{{ task.task_name }}" class="">{{ task.task_name }}:</label>
+				{% endfor %}
+				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
+				<label for="id_{{ form.tasks_mounted.name }}" class="formLabel tasksHeading">Mounted Tasks:</label>
+			</div>
+			
+			
+			<div class="btnGroup">
+				<input type="submit" class="btn btnMain" value="Save Session" />
+				<a href="{% url 'home' %}" class="btn btnGhost">Cancel</a>
+				<input type="reset" class="btn btnTextOnly" value="Reset Form" />
+			</div>
+		</form>
+	</div>
+{% endblock content %}

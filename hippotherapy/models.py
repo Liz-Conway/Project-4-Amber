@@ -1,5 +1,5 @@
 from django.db import models
-from administration.models import Diagnosis
+from administration.models import Diagnosis, Horse, Task
 
 
 class Hat(models.Model):
@@ -26,5 +26,53 @@ class Client(models.Model):
 
     def __str__(self):
         return self.first_name + " " + self.last_name
+    
+
+class Function(models.Model):
+    function_name = models.CharField(max_length=32, null=False, blank=False, unique=True) 
+    
+    def __str__(self):
+        return self.function_name
+    
+    
+class Skill(models.Model):
+    skill_name = models.CharField(max_length=32, null=False, blank=False, unique=True)
+    function = models.ForeignKey(Function, related_name='functional_skill', on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.skill_name
+    
+
+class Hint(models.Model):
+    hint_name = models.TextField(null=False, blank=False)    
+    skill = models.ForeignKey(Skill, related_name='skill_hint', on_delete=models.CASCADE)
+    order_in_skill = models.IntegerField(null=False, blank=False)
+    
+    class Meta:
+        ordering = ['skill', 'order_in_skill']
+    
+    def __str__(self):
+        return self.hint_name[0:16]
+    
+    
+class Course(models.Model):
+    id = models.AutoField(primary_key=True)
+    client = models.ForeignKey(Client, related_name='participates', on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.id
+    
+class Session(models.Model):
+    course = models.ForeignKey(Course, related_name='session_course', on_delete=models.CASCADE)
+    week_number = models.IntegerField(null=False, blank=False)
+    # Automatically adds the date when this object is first saved to database
+    session_date = models.DateField()
+    horse = models.ForeignKey(Horse, related_name='ridden', on_delete=models.PROTECT)
+    tasks = models.ManyToManyField(Task, related_name='performed')
+    skills = models.ManyToManyField(Skill, related_name='skill_score')
+
+    def __str__(self):
+        return f"{self.course}/{self.week_number}"
+    
     
     

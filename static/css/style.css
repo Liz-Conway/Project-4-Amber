@@ -229,9 +229,6 @@ header {
 }
 
 .navigationButton {
-  /*When the button is clicked change the "hamburger" to a cross */
-  /*When the checkbox is selected - get its adjacent sibling and */
-  /*select the child element of the adjacent sibling */
   display: inline;
   background-color: #FFFFFF;
   /*Make this slightly larger than the navigationBackground, to be sure to cover it */
@@ -251,7 +248,7 @@ header {
   /*Coloured background for the navigation */
   /*It will start as a small circle behind the white circle containing the "hamburger" icon */
   /*It will expand to fill the screen when the "hamburger" icon is clicked */
- display: block;
+  display: block;
   width: 6rem;
   height: 6rem;
   border-radius: 50%;

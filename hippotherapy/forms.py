@@ -4,8 +4,8 @@ Created on 2 May 2022
 @author: liz
 '''
 from django import forms
-from administration.models import Diagnosis
-from hippotherapy.models import Client, Hat
+from administration.models import Diagnosis, Task
+from hippotherapy.models import Client, Hat, Session
 import datetime
 from django.db.models.fields import CharField
 from django.contrib.admin.utils import help_text_for_field
@@ -62,4 +62,33 @@ class ClientForm(forms.ModelForm):
                    "additional_notes":forms.Textarea(attrs={'class':'formInput', 'placeholder': 'Enter any additional notes here'}),
                 }
         
-   
+class SessionForm(forms.ModelForm):
+    """
+    To tell the form which model it's going to be associated with,
+    we need to provide an inner class called meta.
+    This inner class just gives our form some information about itself.
+    Like which fields it should render, how it should display error messages, and so on.
+    """
+    class Meta:
+        model = Session
+        """
+        Define the fields to display explicitly in the inner metaclass on the item form.
+        The reason for this is otherwise the form will display all fields on the model
+        including those we might not want the user to see.
+        """
+        fields = ["horse", "tasks"]
+        
+        tasks_unmounted = forms.ModelMultipleChoiceField(
+                queryset=Task.objects.filter(mounted=False),
+                 widget=forms.CheckboxInput(attrs={'class': 'formInput'}),
+            )
+        
+        tasks_mounted = forms.ModelMultipleChoiceField(
+                queryset=Task.objects.filter(mounted=True),
+                 widget=forms.CheckboxInput(attrs={'class': 'formInput'}),
+            )
+        
+        widgets={
+                   "horse":forms.Select(),
+                }
+        
