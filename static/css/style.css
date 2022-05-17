@@ -25,6 +25,10 @@ body {
   font-weight: 300;
 }
 
+.boldEntry {
+  font-weight: 700;
+}
+
 /*===== END  Typography  ===== */
 /*~~~~~~~  Reset  ~~~~~~~ */
 /*  Josh's Custom CSS Reset  */
@@ -381,7 +385,7 @@ header {
 footer {
   /*Sticky footer */
   margin-top: auto;
-  background-color: #3D2724;
+  background-color: #F5853F;
   color: #FFCDBC;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -393,9 +397,22 @@ footer {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  padding: 1rem 0;
+  font-family: "Roboto Slab", "Helvetica Neue", sans-serif;
 }
 
 /*===== END  Footer  ===== */
+/*~~~~~~~  Layout  ~~~~~~~ */
+[id$="Container"] {
+  /* Target all elements with an id that ends in 'Container' */
+  margin-left: 2rem;
+}
+[id$="Container"] h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/*===== END  Layout  ===== */
 /*~~~~~~~  Home Page  ~~~~~~~ */
 .splash {
   padding: 1rem;
@@ -491,6 +508,43 @@ footer {
 }
 
 /*===== END  Diagnosis  ===== */
+/*~~~~~~~  Record Session page  ~~~~~~~ */
+.sessionHeader div {
+  font-size: 1.2rem;
+}
+
+.spreadOut {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-right: 2rem;
+  margin-top: 0.8rem;
+}
+
+.recordSessionHeader {
+  margin-bottom: 2rem;
+}
+.recordSessionCheck {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+.recordSessionCheck label {
+  margin-left: 1rem;
+}
+
+/*===== END  Record Session page  ===== */
 /*~~~~~~~  Form  ~~~~~~~ */
 .form {
   margin-bottom: 2rem;
@@ -588,13 +642,6 @@ footer {
 input:required + label::after, select:required + label::after {
   content: " *";
   color: #cc0000;
-}
-
-#addClientContainer {
-  margin-left: 2rem;
-}
-#addClientContainer h1 {
-  text-align: center;
 }
 
 #addClientForm {
