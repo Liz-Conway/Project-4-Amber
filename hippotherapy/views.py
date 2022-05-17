@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import TemplateView
 from django.contrib import messages
 from hippotherapy.forms import ClientForm, SessionForm
@@ -7,6 +7,7 @@ from django.db.models.aggregates import Max
 from _datetime import date
 from django.db.models.expressions import F
 from administration.models import Horse, Task
+from django.http import response
 
 # Create your views here.
 class HomePage(TemplateView):
@@ -194,7 +195,7 @@ class RecordSession(TemplateView):
     In class based views -
     GET & POST are supplied as class methods
     """
-    def post(self, request, *args, **kwargs):
+    def post(self, request, client, *args, **kwargs):
         """
         '*args' = Standard arguments parameter
         '**kwargs' = Standard keyword arguments parameter
@@ -262,4 +263,28 @@ class SelectClient(TemplateView):
             {
                 "clients": clients, 
             }
+        )
+        
+    """
+    In class based views -
+    GET & POST are supplied as class methods
+    """
+    def post(self, request, *args, **kwargs):
+        """
+        '*args' = Standard arguments parameter
+        '**kwargs' = Standard keyword arguments parameter
+        """
+            
+        """
+        Get the data from our form
+        and assign it to a variable.
+        """
+        client = request.POST['client']
+        # page = 'recordSession.html'
+        page_url = 'recordSession'
+        
+        # https://www.tutorialspoint.com/django/django_page_redirection.htm
+        return redirect(
+            page_url,       # view to render
+            client=client   # parameter to pass to URL
         )
