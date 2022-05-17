@@ -541,3 +541,4 @@ With forking you are pushing the updates to your own Amber repo on github.
 |Custom filter in Django | Stack Overflow |https://stackoverflow.com/questions/21483003/replacing-a-character-in-django-template |
 |Include HTML in Django message | David Winterbottom |https://dzone.com/articles/embedding-html-django-messages |
 |Redirect to another page | John Elder |https://www.tutorialspoint.com/django/django_page_redirection.htm |
+|Coping with Many-Many relationships | Lacey Williams Henschel |https://www.revsys.com/tidbits/tips-using-djangos-manytomanyfield/ |
