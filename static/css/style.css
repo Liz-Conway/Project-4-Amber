@@ -656,6 +656,10 @@ footer {
   background-image: none;
 }
 
+.observationAccordion {
+  margin-bottom: 2rem;
+}
+
 /*===== END  Observations page  ===== */
 /*~~~~~~~  Form  ~~~~~~~ */
 .form {

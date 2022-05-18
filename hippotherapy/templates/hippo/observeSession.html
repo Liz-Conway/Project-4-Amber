@@ -13,37 +13,44 @@
 			<p>Date : <span class="boldEntry">{{ session.session_date }}</span></p>
 		</div>
 
-		<div id="accordion">
-			{% for function in functions %}
-		  		<h3>{{ function.function_name }}</h3>
-			  <div class="skill">
-			    {% for skill in skills %}
-			    	{% if skill.function_id == function.id %}
-			    		<div class="skillDetails">
-				    		<div class="skillName">
-				    			{{ skill.skill_name }}
+		<form id="observationForm" method="POST" action="">
+			<div id="accordion" class="observationAccordion">
+				{% for function in functions %}
+			  		<h3>{{ function.function_name }}</h3>
+				  <div class="skill">
+				    {% for skill in skills %}
+				    	{% if skill.function_id == function.id %}
+				    		<div class="skillDetails">
+					    		<div class="skillName">
+					    			{{ skill.skill_name }}
+					    		</div>
+					    		<div class="skillHints">
+					    			{% for hint in hints %}
+					    				{% if hint.skill_id == skill.id %}
+					    					<div class="skillHint">{{ hint.hint_name }}</div>
+					    				{% endif %}
+					    			{% endfor %}
+					    		</div>
+					    		<div class="skillScores">
+					    			{% for i in score_range %}
+					    				<div class="skillRadio">
+						    				<input type="radio" id="score{{ i }}" name="score{{ skill.id }}" value="{{ i }}" required>
+											<label for="score{{ i }}">{{ i }}</label>
+					    				</div>
+					    			{% endfor %}
+					    		</div>
 				    		</div>
-				    		<div class="skillHints">
-				    			{% for hint in hints %}
-				    				{% if hint.skill_id == skill.id %}
-				    					<div class="skillHint">{{ hint.hint_name }}</div>
-				    				{% endif %}
-				    			{% endfor %}
-				    		</div>
-				    		<div class="skillScores">
-				    			{% for i in score_range %}
-				    				<div class="skillRadio">
-					    				<input type="radio" id="score{{ i }}" name="score{{ skill.id }}" value="{{ i }}" required>
-										<label for="score{{ i }}">{{ i }}</label>
-				    				</div>
-				    			{% endfor %}
-				    		</div>
-			    		</div>
-		    		{% endif %}
-			    {% endfor %}
-			  </div>
-			{% endfor %}
-		</div>
+			    		{% endif %}
+				    {% endfor %}
+				  </div>
+				{% endfor %}
+			</div>
+			<div class="btnGroup">
+				<input type="submit" class="btn btnMain" value="Save Observations" />
+				<a href="{% url 'home' %}" class="btn btnGhost">Cancel</a>
+				<input type="reset" class="btn btnTextOnly" value="Reset Form" />
+			</div>
+		</form>
 		
 	</div>
 
