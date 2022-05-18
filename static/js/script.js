@@ -15,6 +15,9 @@ function domLoaded() {
 
 	/*Set the date picker*/
 	$(".dateInput").datepicker( {showAnim: "clip"} );
+	
+	/*Set the accordion element*/
+	$("#accordion").accordion();
 }
 
 let unfocusUnique = (event) => validateUnique(event, "validateDiagnosis", "diagnosis", "#id_diagnosis");

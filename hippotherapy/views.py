@@ -9,8 +9,6 @@ from _datetime import date
 from django.db.models.expressions import F
 from administration.models import Horse, Task
 from django.http import response
-from django.template.base import kwarg_re
-from _testbuffer import get_contiguous
 
 # Create your views here.
 class HomePage(TemplateView):
@@ -161,12 +159,16 @@ def get_next_session_week(course):
 def save_tasks(session_id, post):
     total_tasks = Task.objects.count()
     
-    session = Session.objects.get(id=session_id)
+    session_query = Session.objects.filter(id=session_id)
+    session = get_object_or_404(session_query)
     
     for i in range(1, total_tasks + 1):
         task_identifier = f"task_{i}"
+
         if post.get(task_identifier) != None:
-            task = Task.objects.get(id=i)
+            task_query = Task.objects.filter(id=i)
+            task = get_object_or_404(task_query)
+
             session.tasks.add(task)
         
 
@@ -206,7 +208,8 @@ class RecordSession(TemplateView):
         
         # Get the client id that was passed in the URL
         client_id = kwargs['client']
-        client = Client.objects.filter(id=client_id)[0]
+        client_query = Client.objects.filter(id=client_id)
+        client = get_object_or_404(client_query)
         course = get_course_for_client(client.id)
         
         # Create a new session for this course
@@ -299,7 +302,6 @@ class RecordSession(TemplateView):
 class SelectClient(TemplateView):
     template_name = "hippo/selectClient.html"
     
-    
     """
     In class-based views:
     Instead of using an if statement to check the request method,  
@@ -336,7 +338,6 @@ class SelectClient(TemplateView):
         and assign it to a variable.
         """
         client = request.POST['client']
-        # page = 'recordSession.html'
         page_url = 'recordSession'
         
         # https://www.tutorialspoint.com/django/django_page_redirection.htm
@@ -362,7 +363,8 @@ class ObserveSession(TemplateView):
         
         # Get the session id that was passed in the URL
         session_id = kwargs['session']
-        session = Session.objects.get(id=session_id)
+        session_query = Session.objects.filter(id=session_id)
+        session = get_object_or_404(session_query)
         course = session.course
         client = course.client
         functions = Function.objects.all()
@@ -413,9 +415,11 @@ class ObserveSession(TemplateView):
             score = observation_data[observation]
             
             # Get the skill object for this skill ID
-            skill=Skill.objects.get(id=skill_id)
+            skill_query = Skill.objects.filter(id=skill_id)
+            skill = get_object_or_404(skill_query)
             # Get the session object for the session ID passed into the post method
-            session = Session.objects.get(id=session_id)
+            session_query = Session.objects.filter(id=session_id)
+            session = get_object_or_404(session_query)
             
             # Create a SkillScore object for this Skill, during this Session
             # having the observed score
