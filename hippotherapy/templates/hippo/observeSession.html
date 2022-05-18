@@ -33,8 +33,8 @@
 				    		<div class="skillScores">
 				    			{% for i in score_range %}
 				    				<div class="skillRadio">
-					    				<input type="radio" id="score_{{ i }}" name="score" value="{{ i }}">
-										<label for="score_{{ i }}">{{ i }}</label>
+					    				<input type="radio" id="score{{ i }}" name="score{{ skill.id }}" value="{{ i }}" required>
+										<label for="score{{ i }}">{{ i }}</label>
 				    				</div>
 				    			{% endfor %}
 				    		</div>

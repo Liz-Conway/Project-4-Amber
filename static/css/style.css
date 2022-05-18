@@ -560,9 +560,9 @@ footer {
 
 /*===== END  Record Session page  ===== */
 /*~~~~~~~  Observations page  ~~~~~~~ */
-/*Need to add 'ui-accordion' class here since jQuery styles this element with 2 classes */
-/*We need to match with 2 classes in our selector to override the jQuery styling */
 .ui-accordion .skill {
+  /*Need to add 'ui-accordion' class here since jQuery styles this element with 2 classes */
+  /*We need to match with 2 classes in our selector to override the jQuery styling */
   padding-left: 1rem;
   padding-right: 0.5rem;
 }
@@ -576,6 +576,11 @@ footer {
       -ms-flex-direction: column;
           flex-direction: column;
 }
+.skillName {
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding-bottom: 0.5rem;
+}
 .skillDetails {
   /*Stripe the skills for each function */
   display: -webkit-box;
@@ -586,6 +591,7 @@ footer {
       -ms-flex-direction: column;
           flex-direction: column;
   margin-bottom: 1rem;
+  padding-top: 1rem;
 }
 .skillDetails:nth-child(even) {
   background-color: #FFCDBC;
@@ -614,15 +620,31 @@ footer {
 .skillHint:hover, .skillHint:active {
   overflow: visible;
   text-overflow: unset;
-  -webkit-transform: translateY(2rem);
-          transform: translateY(2rem);
+  -webkit-transform: translateY(-1.75rem);
+          transform: translateY(-1.75rem);
   font-weight: 700;
   width: 100%;
+  background-color: #7EB2DD;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  white-space: normal;
+}
+.skillScores {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 #accordion h3 {
   /*First colour is a "fall back" in case the image does not work */
   background: #F5853F url(../images/ui-state-default-bg.png) 50% 50% repeat-x;
+  font-size: 1.4rem;
 }
 #accordion h3[aria-selected="true"] {
   /*First colour is a "fall back" in case the image does not work */
