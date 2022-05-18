@@ -68,12 +68,13 @@ class Session(models.Model):
     # Automatically adds the date when this object is first saved to database
     session_date = models.DateField()
     horse = models.ForeignKey(Horse, related_name='ridden', on_delete=models.PROTECT)
-    tasks = models.ManyToManyField(Task, related_name='performed', blank=True, null=True)
-    skills = models.ManyToManyField(Skill, related_name='skill_score')
+    tasks = models.ManyToManyField(Task, related_name='performed', blank=True)
+    skill = models.ManyToManyField(through='SkillScore', to=Skill, related_name='skill_score')
 
     def __str__(self):
         return f"{self.course.id} / {self.week_number}"
 
+# https://awbacker.io/migrating-an-existing-django-manytomany-to-a-through-model/
 class SkillScore(models.Model):
     session = models.ForeignKey(Session, related_name='score_session', on_delete=models.PROTECT)
     skill = models.ForeignKey(Skill, related_name='score_skill', on_delete=models.PROTECT)
@@ -81,3 +82,4 @@ class SkillScore(models.Model):
     
     def __str__(self):
         return f'Session:{self.session} has a score of  {self.score}  for skill:{self.skill}'
+

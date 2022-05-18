@@ -14,6 +14,13 @@
 		</div>
 
 		<form id="observationForm" method="POST" action="">
+			<!-- Whenever we're posting information in Django,
+			we need to add the CSRF or cross-site request forgery token.
+			This token is a randomly generated unique value which will be added
+			to the form as a hidden input field when the forms submitted.
+			And works to guarantee that the data we're posting is actually coming from our
+			todo list app and not from another website. -->
+			{% csrf_token %}
 			<div id="accordion" class="observationAccordion">
 				{% for function in functions %}
 			  		<h3>{{ function.function_name }}</h3>

@@ -3,12 +3,14 @@ from django.views.generic import TemplateView
 from django.contrib import messages
 from hippotherapy.forms import ClientForm, SessionForm, ObservationForm
 from hippotherapy.models import Hat, Client, Course, Session, Function, Skill,\
-    Hint
+    Hint, SkillScore
 from django.db.models.aggregates import Max
 from _datetime import date
 from django.db.models.expressions import F
 from administration.models import Horse, Task
 from django.http import response
+from django.template.base import kwarg_re
+from _testbuffer import get_contiguous
 
 # Create your views here.
 class HomePage(TemplateView):
@@ -381,3 +383,45 @@ class ObserveSession(TemplateView):
             }
         )
         
+    """
+    In class based views -
+    GET & POST are supplied as class methods
+    """
+    def post(self, request, *args, **kwargs):
+        """
+        '*args' = Standard arguments parameter
+        '**kwargs' = Standard keyword arguments parameter
+        """
+        """
+        Get the data from our form
+        and assign it to a variable.
+        Gets all of the data that we posted from our form
+        """
+        observation_data=request.POST
+        session_id = kwargs['session']
+        
+        for observation in observation_data:
+            # First post data is the CSRF token - So skip this data point
+            if observation.startswith('csrf'):
+                continue
+            
+            # observation will be of the form 'scoreX' or scoreXX' where X is a digit
+            # Splitting the string leaves a blank character as the first element
+            # of the returned array, so take the element at index 1 and convert to an int
+            # This gives the id of the skill associated with this score
+            skill_id = int(observation.split('score')[1])
+            score = observation_data[observation]
+            
+            # Get the skill object for this skill ID
+            skill=Skill.objects.get(id=skill_id)
+            # Get the session object for the session ID passed into the post method
+            session = Session.objects.get(id=session_id)
+            
+            # Create a SkillScore object for this Skill, during this Session
+            # having the observed score
+            skill_score = SkillScore(session=session, skill=skill, score=score)
+            # Save the SkillScore object to the 'through' table
+            skill_score.save()
+        
+        return redirect('/')
+
