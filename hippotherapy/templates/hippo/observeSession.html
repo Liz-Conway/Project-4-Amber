@@ -20,7 +20,7 @@
 			    {% for skill in skills %}
 			    	{% if skill.function_id == function.id %}
 			    		<div class="skillDetails">
-				    		<div class="boldEntry">
+				    		<div class="skillName">
 				    			{{ skill.skill_name }}
 				    		</div>
 				    		<div class="skillHints">
@@ -28,6 +28,14 @@
 				    				{% if hint.skill_id == skill.id %}
 				    					<div class="skillHint">{{ hint.hint_name }}</div>
 				    				{% endif %}
+				    			{% endfor %}
+				    		</div>
+				    		<div class="skillScores">
+				    			{% for i in score_range %}
+				    				<div class="skillRadio">
+					    				<input type="radio" id="score_{{ i }}" name="score" value="{{ i }}">
+										<label for="score_{{ i }}">{{ i }}</label>
+				    				</div>
 				    			{% endfor %}
 				    		</div>
 			    		</div>

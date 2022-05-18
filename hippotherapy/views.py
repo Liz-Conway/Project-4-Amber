@@ -377,6 +377,7 @@ class ObserveSession(TemplateView):
                 "skills": skills,
                 "hints": hints,
                 "client": client,
+                "score_range": range(1, 6),
             }
         )
         

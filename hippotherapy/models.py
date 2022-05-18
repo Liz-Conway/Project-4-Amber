@@ -74,3 +74,10 @@ class Session(models.Model):
     def __str__(self):
         return f"{self.course.id} / {self.week_number}"
 
+class SkillScore(models.Model):
+    session = models.ForeignKey(Session, related_name='score_session', on_delete=models.PROTECT)
+    skill = models.ForeignKey(Skill, related_name='score_skill', on_delete=models.PROTECT)
+    score = models.IntegerField()
+    
+    def __str__(self):
+        return f'Session:{self.session} has a score of  {self.score}  for skill:{self.skill}'
