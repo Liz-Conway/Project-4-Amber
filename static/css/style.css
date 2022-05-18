@@ -545,8 +545,96 @@ footer {
 .recordSessionHeader {
   margin-bottom: 2rem;
 }
+.recordSessionCheck {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+.recordSessionCheck label {
+  margin-left: 1rem;
+}
 
 /*===== END  Record Session page  ===== */
+/*~~~~~~~  Observations page  ~~~~~~~ */
+/*Need to add 'ui-accordion' class here since jQuery styles this element with 2 classes */
+/*We need to match with 2 classes in our selector to override the jQuery styling */
+.ui-accordion .skill {
+  padding-left: 1rem;
+  padding-right: 0.5rem;
+}
+
+.skill {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.skillDetails {
+  /*Stripe the skills for each function */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 1rem;
+}
+.skillDetails:nth-child(even) {
+  background-color: #FFCDBC;
+}
+.skillHints {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.skillHint {
+  width: 16%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.skillHint:hover, .skillHint:active {
+  overflow: visible;
+  text-overflow: unset;
+  -webkit-transform: translateY(2rem);
+          transform: translateY(2rem);
+  font-weight: 700;
+  width: 100%;
+}
+
+#accordion h3 {
+  /*First colour is a "fall back" in case the image does not work */
+  background: #F5853F url(../images/ui-state-default-bg.png) 50% 50% repeat-x;
+}
+#accordion h3[aria-selected="true"] {
+  /*First colour is a "fall back" in case the image does not work */
+  background: #f8a46f url(../images/ui-state-active-bg.png) 50% 50% repeat-x;
+  color: #191970;
+}
+#accordion h3:hover {
+  background-color: #F5853F;
+  background-image: none;
+}
+
+/*===== END  Observations page  ===== */
 /*~~~~~~~  Form  ~~~~~~~ */
 .form {
   margin-bottom: 2rem;

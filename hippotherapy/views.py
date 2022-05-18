@@ -66,8 +66,7 @@ class AddClient(TemplateView):
         Form is valid => If all the fields have been completed
         """
         if add_client_form.is_valid():
-            saved_client = add_client_form.save()
-            save_diagnoses(saved_client.id, request.POST)
+            add_client_form.save()
             first_name = request.POST['first_name']
             last_name = request.POST['last_name']
             messages.success(request,
@@ -361,6 +360,9 @@ class ObserveSession(TemplateView):
         
         # Get the session id that was passed in the URL
         session_id = kwargs['session']
+        session = Session.objects.get(id=session_id)
+        course = session.course
+        client = course.client
         functions = Function.objects.all()
         skills = Skill.objects.all()
         hints = Hint.objects.all()
@@ -370,10 +372,11 @@ class ObserveSession(TemplateView):
             self.template_name, # view to render
             # Context - passed into the HTML template
             {
-                "session": session_id,
+                "session": session,
                 "functions": functions,
                 "skills": skills,
-                "hints": hints 
+                "hints": hints,
+                "client": client,
             }
         )
         

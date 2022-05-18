@@ -6,25 +6,31 @@
 	<div id="observationContainer">
 		
 		<h1>Hippotherapy Session Observations</h1>
-
-		<h2>Session :  {{ session }}</h2>
 		
+		<div class="observationHeader">
+			<p>Session : <span class="boldEntry">{{session.course.id}}/{{session.week_number}}</span></p>
+			<p>Client : <span class="boldEntry">{{ client }}</span></p>
+			<p>Date : <span class="boldEntry">{{ session.session_date }}</span></p>
+		</div>
+
 		<div id="accordion">
 			{% for function in functions %}
 		  		<h3>{{ function.function_name }}</h3>
-			  <div>
+			  <div class="skill">
 			    {% for skill in skills %}
 			    	{% if skill.function_id == function.id %}
-			    		<p class="boldEntry">
-			    			{{ skill.skill_name }}
-			    		</p>
-			    		<ul>
-			    			{% for hint in hints %}
-			    				{% if hint.skill_id == skill.id %}
-			    					<li>{{ hint.hint_name }}</li>
-			    				{% endif %}
-			    			{% endfor %}
-			    		</ul>
+			    		<div class="skillDetails">
+				    		<div class="boldEntry">
+				    			{{ skill.skill_name }}
+				    		</div>
+				    		<div class="skillHints">
+				    			{% for hint in hints %}
+				    				{% if hint.skill_id == skill.id %}
+				    					<div class="skillHint">{{ hint.hint_name }}</div>
+				    				{% endif %}
+				    			{% endfor %}
+				    		</div>
+			    		</div>
 		    		{% endif %}
 			    {% endfor %}
 			  </div>
