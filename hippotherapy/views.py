@@ -340,7 +340,7 @@ class SelectClient(TemplateView):
         and assign it to a variable.
         """
         client = request.POST['client']
-        page_url = 'recordSession'
+        page_url = request.POST['targetPage']
         
         # https://www.tutorialspoint.com/django/django_page_redirection.htm
         return redirect(

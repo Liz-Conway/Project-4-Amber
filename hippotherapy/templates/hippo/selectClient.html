@@ -27,6 +27,7 @@
 			{% csrf_token %}
 
 			<div class="formGroup">
+				<input type="hidden" name="targetPage" value="{{ target }}">
 				<select name="client" id="id_client" class="formInput" required>
 					<option value="" selected disabled>Choose a Client</option>
 					{% for client in clients %}
