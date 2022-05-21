@@ -44,10 +44,6 @@ class ClientForm(forms.ModelForm):
         """
         fields = ["first_name", "last_name", "gender", "date_of_birth", "hat_size", "diagnosis", "degree_of_difficulty", "additional_notes"]
         
-        diagnosis = forms.ModelMultipleChoiceField(
-                queryset=Diagnosis.objects.all(),
-                 widget=forms.CheckboxSelectMultiple
-            )
         
         widgets={
                    "first_name":forms.TextInput(attrs={'class':'formInput', 'placeholder': 'First name'}),
@@ -56,8 +52,10 @@ class ClientForm(forms.ModelForm):
                    "gender":forms.RadioSelect(),
                    "degree_of_difficulty":forms.Textarea(attrs={'class':'formInput', 'placeholder': 'Degree of Difficulty'}),
                    "additional_notes":forms.Textarea(attrs={'class':'formInput', 'placeholder': 'Enter any additional notes here'}),
+                   "to_page":forms.HiddenInput(),
                 }
-        
+
+
 class SessionForm(forms.ModelForm):
     """
     To tell the form which model it's going to be associated with,
@@ -102,4 +100,32 @@ class ObservationForm(forms.ModelForm):
         including those we might not want the user to see.
         """
         fields = ["skill_name", ]
+        
+        # tasks_unmounted = forms.ModelMultipleChoiceField(
+        #         queryset=Task.objects.filter(mounted=False),
+        #          widget=forms.CheckboxInput(attrs={'class': 'formInput'}),
+        #     )
+        #
+        # tasks_mounted = forms.ModelMultipleChoiceField(
+        #         queryset=Task.objects.filter(mounted=True),
+        #          widget=forms.CheckboxInput(attrs={'class': 'formInput'}),
+        #     )
+        
+
+        # tasks = forms.ModelMultipleChoiceField(
+        #     queryset=Task.objects.all(),
+        #     # widget=forms.CheckboxInput(attrs={'class': 'formInput'}),
+        # )
+        
+        course = forms.IntegerField(widget=forms.HiddenInput())
+        
+        week_number = forms.IntegerField(widget=forms.HiddenInput())
+        
+        session_date = forms.DateField(widget=forms.HiddenInput())
+        
+        widgets={
+                   "horse":forms.Select(),
+                }
+        
+
 

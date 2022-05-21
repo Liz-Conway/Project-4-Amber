@@ -7,7 +7,7 @@ from hippotherapy.models import Hat, Client, Course, Session, Function, Skill,\
 from django.db.models.aggregates import Max
 from _datetime import date
 from django.db.models.expressions import F
-from administration.models import Horse, Task
+from administration.models import Horse, Task, Diagnosis
 from django.http import response
 
 # Create your views here.
@@ -66,7 +66,8 @@ class AddClient(TemplateView):
         Form is valid => If all the fields have been completed
         """
         if add_client_form.is_valid():
-            add_client_form.save()
+            saved_client = add_client_form.save()
+            save_diagnoses(saved_client.id, request.POST)
             first_name = request.POST['first_name']
             last_name = request.POST['last_name']
             messages.success(request,
@@ -307,7 +308,7 @@ class SelectClient(TemplateView):
     Instead of using an if statement to check the request method,  
     we simply create class methods called GET, POST, or any other HTTP verb.
     """
-    def get(self, request, *args, **kwargs):
+    def get(self, request, target, *args, **kwargs):
         """
         '*args' = Standard arguments parameter
         '**kwargs' = Standard keyword arguments parameter
@@ -319,7 +320,8 @@ class SelectClient(TemplateView):
             self.template_name, # view to render
             # Context - passed into the HTML template
             {
-                "clients": clients, 
+                "clients": clients,
+                "target": target, 
             }
         )
         
