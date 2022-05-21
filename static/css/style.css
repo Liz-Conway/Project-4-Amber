@@ -657,37 +657,6 @@ footer {
 }
 
 /*===== END  Observations page  ===== */
-/*~~~~~~~  View Session page  ~~~~~~~ */
-.scoreTable {
-  border: 1px solid #191970;
-  margin: 1rem auto;
-}
-.scoreRow:nth-child(even) {
-  background-color: #FFCDBC;
-}
-.scoreRow:hover {
-  background-color: #7EB2DD;
-}
-.scoreLabel {
-  padding-left: 2rem;
-  padding-right: 1rem;
-}
-.scoreFunction {
-  font-size: 1.3rem;
-  font-weight: 500;
-  background-color: #7EB2DD;
-}
-.scoreFunctionLabel {
-  padding: 0.5rem 1rem;
-}
-.scoreValue {
-  text-align: center;
-}
-.scoreClient {
-  font-weight: 600;
-}
-
-/*===== END  View Session page  ===== */
 /*~~~~~~~  Form  ~~~~~~~ */
 .form {
   margin-bottom: 2rem;
@@ -964,6 +933,42 @@ input:required + label::after, select:required + label::after, .manyManyLabel.re
 }
 
 /*===== END  Many-to-many components  ===== */
+
+/*~~~~~~~  Table  ~~~~~~~ */
+.scoreTable {
+  border: 1px solid #191970;
+  margin: 1rem auto;
+  border-collapse: collapse;
+}
+.scoreTable .rightPad {
+  padding-right: 1rem;
+}
+.scoreRow:nth-child(even) {
+  background-color: #FFCDBC;
+}
+.scoreRow:hover {
+  background-color: #7EB2DD;
+}
+.scoreLabel {
+  padding-left: 2rem;
+  padding-right: 1rem;
+}
+.scoreFunction {
+  font-size: 1.3rem;
+  font-weight: 500;
+  background-color: #7EB2DD;
+}
+.scoreFunctionLabel {
+  padding: 0.5rem 1rem;
+}
+.scoreValue {
+  text-align: center;
+}
+.scoreClient {
+  font-weight: 600;
+}
+
+/*===== END  Table  ===== */
 
 /* Media Queries for Big Phones */
 @media only screen and (min-width: 28em) {

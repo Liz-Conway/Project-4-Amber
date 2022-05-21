@@ -20,14 +20,17 @@
 				Horse : <span class="boldEntry">{{ scores.first.session.horse }}</span>
 			</div>
 			<div>
-				Tasks : 
 				<table class="scoreTable">
+				<caption>
+					<p>Tasks performed by:</p>
+					<span class="scoreClient">{{ scores.first.session.course.client }}</span>
+				</caption>
 					{% for task in tasks %}
 						<tr class="scoreRow">
 							<td class="scoreLabel">
 								{{ task.task_name }}
 							</td>
-							<td>
+							<td class="rightPad">
 								{% if task.mounted %}
 									Mounted
 								{% endif %}
@@ -57,7 +60,7 @@
 			    <thead>
 			        <tr>
 			            <th>Skill</th>
-			            <th>Score</th>
+			            <th class="rightPad">Score</th>
 			        </tr>
 			    </thead>
     			<tbody>
