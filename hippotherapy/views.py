@@ -127,7 +127,6 @@ def get_course_for_client(client_id):
         
         last_course = last_session.course
         
-        # print(str(course.query))
     
     return last_course
 
@@ -140,19 +139,14 @@ def get_next_session_week(course):
     sessions = Session.objects.filter(course=course.id)
     # Entire object -> 'None' if nothing matches
     # sessions = Session.objects.filter(course=course.id).order_by('week_number').last() # Entire session object
-    for session in sessions:
-        print(session)
+
     if sessions.count() > 0:
         # Already have some sessions for this course
-        print("We got sumfink")
         last_week = sessions.aggregate(Max('week_number'))
-        print(last_week)
         next_session_week = last_week['week_number__max'] + 1
     else:
         # No Sessions for this Course yet
-        print("Nuffink returned")
         next_session_week = 1 
-    #     print(connection.queries[x])
     
     return next_session_week
 
@@ -429,5 +423,119 @@ class ObserveSession(TemplateView):
             # Save the SkillScore object to the 'through' table
             skill_score.save()
         
-        return redirect('/')
+        return redirect('viewPostedSession', session=session_id)
 
+
+class ChooseSession(TemplateView):
+    template_name = "hippo/chooseSession.html"
+    
+    
+    """
+    In class-based views:
+    Instead of using an if statement to check the request method,  
+    we simply create class methods called GET, POST, or any other HTTP verb.
+    """
+    def get(self, request, *args, **kwargs):
+        """
+        '*args' = Standard arguments parameter
+        '**kwargs' = Standard keyword arguments parameter
+        """
+        
+        # Get the client id that was passed in the URL
+        client_id = kwargs['client']
+        client_query = Client.objects.filter(id=client_id)
+        client = get_object_or_404(client_query)
+        
+        # Get all sessions for this client
+        sessions = Session.objects.filter(course__client=client)
+        # sessions = get_object_or_404(sessions_query)
+        for session in sessions:
+            print(session)
+            print(session.session_date)
+            print()
+        
+        # Get the client name
+        client_name = f'{client.first_name} {client.last_name}'
+        
+        return render(
+            request, 
+            self.template_name, # view to render
+            # Context - passed into the HTML template
+            {
+                "client": client_name,
+                "sessions": sessions,
+            }
+        )
+        
+
+        
+class ViewSession(TemplateView):
+    template_name = "hippo/viewSession.html"
+
+    """
+    In class-based views:
+    Instead of using an if statement to check the request method,  
+    we simply create class methods called GET, POST, or any other HTTP verb.
+    """
+    def get(self, request, *args, **kwargs):
+        """
+        '*args' = Standard arguments parameter
+        '**kwargs' = Standard keyword arguments parameter
+        """
+        # Get the session id that was passed in the URL
+        session_id = kwargs['session']
+        """
+        Get the Scores for the chosen session
+        """
+        session_scores = SkillScore.objects.filter(session_id__id=session_id)
+        
+        """
+        Get the Tasks for the chosen session
+        """
+        tasks = Task.objects.filter(performed__id=session_id).order_by('-mounted')
+        
+        return render(
+            request, 
+            self.template_name, # view to render
+            # Context - passed into the HTML template
+            {
+                "scores": session_scores,
+                "tasks" : tasks,
+            }
+        )
+        
+    """
+    In class based views -
+    GET & POST are supplied as class methods
+    """
+    def post(self, request, *args, **kwargs):
+        """
+        '*args' = Standard arguments parameter
+        '**kwargs' = Standard keyword arguments parameter
+        """
+        """
+        Get the data from our form
+        and assign it to a variable.
+        Gets all of the data that we posted from our form
+        """
+        session_id = request.POST['chosenSession']
+        
+        """
+        Get the Scores for the chosen session
+        """
+        session_scores = SkillScore.objects.filter(session_id__id=session_id)
+        
+        """
+        Get the Tasks for the chosen session
+        """
+        tasks = Task.objects.filter(performed__id=session_id).order_by('-mounted')
+        
+        return render(
+            request, 
+            self.template_name, # view to render
+            # Context - passed into the HTML template
+            {
+                "scores": session_scores,
+                "tasks" : tasks,
+            }
+        )

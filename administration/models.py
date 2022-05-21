@@ -4,7 +4,7 @@ from django.db import models
 class Diagnosis(models.Model):
     # null = False attribute here prevents Diagnoses from being created without a diagnosis field programmatically
     # and blank = False will make the field required on forms.
-    diagnosis = models.CharField(max_length=32, null=False, blank=False, unique=True)
+    diagnosis = models.CharField(max_length=32, null=True, blank=True)
     
     def __str__(self):
         return self.diagnosis
@@ -26,4 +26,7 @@ class Task(models.Model):
     mounted = models.BooleanField(default=False)
     
     def __str__(self):
-        return self.task_name
+        task_str = self.task_name
+        if(self.mounted):
+            task_str = task_str + " (mounted)"
+        return task_str

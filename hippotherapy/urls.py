@@ -24,7 +24,10 @@ urlpatterns = [
     path('', views.HomePage.as_view(), name='home'),
     path('addClient', views.AddClient.as_view(), name='addClient'),
     path('selectClient/<target>', views.SelectClient.as_view(), name='selectClient'),
-    # path('selectClient', views.SelectClient.as_view(), name='selectClient'),
     path('recordSession/<client>/', views.RecordSession.as_view(), name='recordSession'),
+    path('chooseSession', views.RecordSession.as_view(), name='chooseSession'),
     path('observeSession/<session>/', views.ObserveSession.as_view(), name='observeSession'),
+    path('chooseSession/<client>/', views.ChooseSession.as_view(), name='chooseSession'),
+    path('viewSession/<session>/', views.ViewSession.as_view(), name='viewPostedSession'),
+    path('viewSession', views.ViewSession.as_view(), name='viewSession'),
 ]

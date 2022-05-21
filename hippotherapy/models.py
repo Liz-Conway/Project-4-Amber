@@ -60,10 +60,10 @@ class Course(models.Model):
     client = models.ForeignKey(Client, related_name='participates', on_delete=models.CASCADE)
     
     def __str__(self):
-        return self.id
+        return str(self.id)
     
 class Session(models.Model):
-    course = models.ForeignKey(Course, related_name='session_course', on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, related_name='courses', on_delete=models.CASCADE)
     week_number = models.IntegerField(null=False, blank=False)
     # Automatically adds the date when this object is first saved to database
     session_date = models.DateField()
