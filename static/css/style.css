@@ -667,6 +667,11 @@ footer {
 #observationForm .btnGroup {
   margin-top: 1rem;
 }
+#observationForm input[type="radio"] + label {
+  padding-bottom: 1rem;
+  display: inline-block;
+  vertical-align: middle;
+}
 
 .allRequired {
   text-align: center;
@@ -767,7 +772,7 @@ footer {
           transform: translateY(-4rem);
 }
 
-input:required + label::after, select:required + label::after, .manyManyLabel.required::after {
+input:not([type="radio"]):required + label::after, select:required + label::after, .manyManyLabel.required::after {
   content: " *";
   color: #cc0000;
 }
