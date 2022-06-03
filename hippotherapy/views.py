@@ -354,13 +354,13 @@ class SelectClient(TemplateView):
                 course_dates['last_week'] = latest_week
                 # We need to find the date of the latest week for a given course that has scores
                 latest_date = Session.objects.filter(week_number=latest_week, course=course.id).values('session_date')
-                course_dates['last_date'] = latest_date[0]['session_date'].isoformat()
+                course_dates['last_date'] = latest_date[0]['session_date'].strftime("%a, %d %b %Y")
                 # We need to find the first week for a given course that has scores
                 first_week = Session.objects.filter(course=course.id).exclude(score_session=None).values('course').aggregate(Min('week_number'))['week_number__min']
                 course_dates['first_week'] = first_week
                 # We need to find the date of the first week for a given course that has scores
                 first_date = Session.objects.filter(week_number=first_week, course=course.id).values('session_date')
-                course_dates['first_date'] = first_date[0]['session_date'].isoformat()
+                course_dates['first_date'] = first_date[0]['session_date'].strftime("%a, %d %b %Y")
                 scored_courses.append(course_dates)
             # Store this scored_courses in the session
             request.session['scored_courses'] = scored_courses
