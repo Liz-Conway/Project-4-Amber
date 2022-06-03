@@ -643,10 +643,17 @@ footer {
   background: #F5853F url(../images/ui-state-default-bg.png) 50% 50% repeat-x;
   font-size: 1.4rem;
 }
+#accordion h3 .tapHint {
+  display: none;
+}
 #accordion h3[aria-selected="true"] {
   /*First colour is a "fall back" in case the image does not work */
   background: #f8a46f url(../images/ui-state-active-bg.png) 50% 50% repeat-x;
   color: #191970;
+}
+#accordion h3[aria-selected="true"] .tapHint {
+  display: inline-block;
+  font-size: 1rem;
 }
 #accordion h3:hover {
   background-color: #F5853F;

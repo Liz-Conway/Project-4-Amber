@@ -19,7 +19,7 @@
 			{% csrf_token %}
 			<div id="accordion" class="observationAccordion">
 				{% for function in functions %}
-			  		<h3>{{ function.function_name }}</h3>
+			  		<h3>{{ function.function_name }}<span class="tapHint">&emsp;(Tap on a hint see it in full)</span></h3>
 				  <div class="skill">
 				    {% for skill in skills %}
 				    	{% if skill.function_id == function.id %}
