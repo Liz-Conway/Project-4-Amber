@@ -603,6 +603,8 @@ footer {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  margin-top: 1rem;
+  margin-bottom: 2.5rem;
 }
 .skillHint {
   width: 16%;
