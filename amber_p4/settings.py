@@ -173,3 +173,13 @@ MESSAGE_TAGS = {
         messages.ERROR: 'ui-state-error',
 }
 
+# https://stackoverflow.com/questions/4876370/django-date-format-dd-mm-yyyy
+USE_L10N = True
+DATE_INPUT_FORMATS = ('%d/%m/%Y', '%d/%m/%y', '%dd/%mm/%Y', '%dd/%mm/%yyyy')
+
+# https://docs.djangoproject.com/en/4.0/topics/i18n/formatting/
+# https://stackoverflow.com/questions/4876370/django-date-format-dd-mm-yyyy
+FORMAT_MODULE_PATH = [
+    'amber.formats',
+]
+

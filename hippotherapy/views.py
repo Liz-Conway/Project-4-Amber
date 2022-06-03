@@ -83,18 +83,24 @@ class AddClient(TemplateView):
             then return an  empty 'add client' form instance
             showing the errors
             """
-            messages.error(request, 'Invalid form submission.')
+            messages.error(request, '<span class="boldEntry">Invalid form submission.</span>', extra_tags='safe')
             messages.error(request, add_client_form.errors)
 
+        hat_sizes = Hat.objects.all()
         """
         Send all of this information to our render method
         """
+        # https://stackoverflow.com/questions/6318074/django-bypass-form-validation
+        # Bypass Django validating the date field even though it never was asked to
+        # To add insult to injury, Django then informs that a valid date is not valid
+        initial = dict(map(lambda x:(x[0], x[1][0]), dict(request.GET).items()))
         return render(
             request, 
             'addClient.html', # View to render
             # Context - passed into the HTML template
             { 
-                'form': ClientForm(request.GET)
+                'form': ClientForm(initial=initial),
+                'hat_sizes': hat_sizes,
             }
         )
         

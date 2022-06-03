@@ -9,6 +9,7 @@ from hippotherapy.models import Client, Hat, Session, Skill
 import datetime
 from django.db.models.fields import CharField
 from django.contrib.admin.utils import help_text_for_field
+from amber_p4 import settings
 """
 Creating forms manually leaves our application open to errors if we don't validate them properly.
 For example if we create a form and forget to mark one of the fields as required,
@@ -44,6 +45,10 @@ class ClientForm(forms.ModelForm):
         """
         fields = ["first_name", "last_name", "gender", "date_of_birth", "hat_size", "diagnosis", "degree_of_difficulty", "additional_notes"]
         
+        # https://stackoverflow.com/questions/4876370/django-date-format-dd-mm-yyyy
+        date_of_birth = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS)
+        
+        # to_page = forms.CharField(widget=forms.HiddenInput())
         
         widgets={
                    "first_name":forms.TextInput(attrs={'class':'formInput', 'placeholder': 'First name'}),
