@@ -684,7 +684,7 @@ class ChartPage(TemplateView):
         latest_session = last_session.id
         # Find the scores for the last scoring week of a given course
         # Need to have .values() before .annotate() in order to perform GROUP BY
-        scores_query = SkillScore.objects.values('skill__function__id').filter(session=latest_session).annotate(Sum('score'))
+        scores_query = SkillScore.objects.values('skill__function__id').filter(session=latest_session).annotate(Sum('score')).order_by('skill__function_id')
         scores_list = [score_query.get('score__sum') for score_query in scores_query]
         
         # Find the number of skills in each Function
@@ -704,7 +704,7 @@ class ChartPage(TemplateView):
         first_session = Session.objects.filter(course=course_id, week_number=first_week).values('id')[0]['id']
         # Find the scores for the last scoring week of a given course
         # Need to have .values() before .annotate() in order to perform GROUP BY
-        baselines_query = SkillScore.objects.values('skill__function__id').filter(session=first_session).annotate(Sum('score'))
+        baselines_query = SkillScore.objects.values('skill__function__id').filter(session=first_session).annotate(Sum('score')).order_by('skill__function_id')
         baseline_list = [baseline_query.get('score__sum') for baseline_query in baselines_query]
         # Calculate each baseline score as a percentage of its total
         percent_baselines = [ round(score * 100 / total) for score, total in zip(baseline_list, totals)]
