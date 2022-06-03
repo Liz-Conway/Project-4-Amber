@@ -575,3 +575,6 @@ class ChartPage(TemplateView):
             }
         )
         
+
+
+

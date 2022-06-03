@@ -187,6 +187,7 @@ function loadJson(selector) {
   return JSON.parse(document.querySelector(selector).getAttribute('data-json'));
 }
 
+/*https://apexcharts.com/javascript-chart-demos/bar-charts/custom-datalabels/*/
 function generateChart() {
 	//scores = [20, 40, 60, 80, 100, 80]
 	baseline = [70, 70, 60, 68, 70, 72];
@@ -353,3 +354,4 @@ function generateChart() {
         var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
 }
+
