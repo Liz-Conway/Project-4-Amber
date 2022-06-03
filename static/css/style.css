@@ -615,14 +615,16 @@ footer {
 .skillHint:hover, .skillHint:active {
   overflow: visible;
   text-overflow: unset;
-  -webkit-transform: translateY(-1.75rem);
-          transform: translateY(-1.75rem);
+  -webkit-transform: translateY(-3.25rem);
+          transform: translateY(-3.25rem);
   font-weight: 700;
+  font-size: 1.1rem;
   width: 100%;
   background-color: #7EB2DD;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   white-space: normal;
+  text-align: center;
 }
 .skillScores {
   display: -webkit-box;
