@@ -10,6 +10,7 @@ from django.db.models.expressions import F
 from administration.models import Horse, Task, Diagnosis
 from django.http import response
 import json
+import datetime
 
 # Create your views here.
 class HomePage(TemplateView):
@@ -340,11 +341,34 @@ class SelectClient(TemplateView):
         """
         client = request.POST['client']
         page_url = request.POST['targetPage']
+        # If redirecting to generateChart page
+        # First get the course to show a chart of
+        scored_courses = []
+        if page_url == 'generateChart':
+            page_url = 'chooseCourse'
+            courses = Course.objects.filter(client=client)
+            for course in courses:
+                course_dates = {"course": course.id}
+                # We need to find the latest week for a given course that has scores
+                latest_week = Session.objects.filter(course=course.id).exclude(score_session=None).values('course').aggregate(Max('week_number'))['week_number__max']
+                course_dates['last_week'] = latest_week
+                # We need to find the date of the latest week for a given course that has scores
+                latest_date = Session.objects.filter(week_number=latest_week, course=course.id).values('session_date')
+                course_dates['last_date'] = latest_date[0]['session_date'].isoformat()
+                # We need to find the first week for a given course that has scores
+                first_week = Session.objects.filter(course=course.id).exclude(score_session=None).values('course').aggregate(Min('week_number'))['week_number__min']
+                course_dates['first_week'] = first_week
+                # We need to find the date of the first week for a given course that has scores
+                first_date = Session.objects.filter(week_number=first_week, course=course.id).values('session_date')
+                course_dates['first_date'] = first_date[0]['session_date'].isoformat()
+                scored_courses.append(course_dates)
+            # Store this scored_courses in the session
+            request.session['scored_courses'] = scored_courses
         
         # https://www.tutorialspoint.com/django/django_page_redirection.htm
         return redirect(
             page_url,       # view to render
-            client=client   # parameter to pass to URL
+            client=client,   # parameter to pass to URL
         )
 
 class ObserveSession(TemplateView):
@@ -453,11 +477,6 @@ class ChooseSession(TemplateView):
         
         # Get all sessions for this client
         sessions = Session.objects.filter(course__client=client)
-        # sessions = get_object_or_404(sessions_query)
-        for session in sessions:
-            print(session)
-            print(session.session_date)
-            print()
         
         # Get the client name
         client_name = f'{client.first_name} {client.last_name}'
@@ -563,12 +582,14 @@ class ChartPage(TemplateView):
     We then need to convert the actual scores to scores as a percentage of the total.
     We need to pass Labels, current scores and baseline scores to the chart page.
     """
-    def get(self, request, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         """
         '*args' = Standard arguments parameter
         '**kwargs' = Standard keyword arguments parameter
         """
-        course_id = 4
+        course_id = request.POST['chosenCourse']
+        
+        client = get_object_or_404(Client.objects.filter(participates__id=course_id))
         
         # We need to find the latest week for a given course that has scores
         latest_week = Session.objects.filter(course=course_id).exclude(score_session=None).aggregate(Max('week_number'))['week_number__max']
@@ -603,18 +624,57 @@ class ChartPage(TemplateView):
            
         baselines = json.dumps(percent_baselines)
         
+        # retrieve the course data stored in the Session
+        course_info = request.session['scored_courses']
+        
         return render(
             request, 
             self.template_name, # view to render
             # Context - passed into the HTML template
             {
-                "client": "Aisling Conway",
+                "client": client,
                 "functions": functions,
                 "scores": scores,
                 "baselines": baselines,
+                "scored_courses": course_info,
             }
         )
         
+
+class ChooseCourse(TemplateView):
+    template_name = "hippo/chooseCourse.html"
+    
+    
+    """
+    In class-based views:
+    Instead of using an if statement to check the request method,  
+    we simply create class methods called GET, POST, or any other HTTP verb.
+    """
+    def get(self, request, *args, **kwargs):
+        """
+        '*args' = Standard arguments parameter
+        '**kwargs' = Standard keyword arguments parameter
+        """
+        # Get the client id that was passed in the URL
+        client_id = kwargs['client']
+        client_query = Client.objects.filter(id=client_id)
+        client = get_object_or_404(client_query)
+        
+        # Get all courses for this client
+        courses = request.session['scored_courses']
+        
+        # Get the client name
+        client_name = f'{client.first_name} {client.last_name}'
+        
+        return render(
+            request, 
+            self.template_name, # view to render
+            # Context - passed into the HTML template
+            {
+                "client": client,
+                "courses": courses,
+            }
+        )
 
 
 

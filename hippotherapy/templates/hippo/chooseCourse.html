@@ -1,11 +1,11 @@
 {% extends "hippo/base.html" %}
 
-{% block title %}Amber|Choose a Session{% endblock title %}
+{% block title %}Amber|Choose a Course{% endblock title %}
 
 {% block content %}
-	<div id="selectSessionContainer">
+	<div id="selectCourseContainer">
 		
-		<h1>Select a session for this client</h1>
+		<h1>Select a course for this client</h1>
 		<!-- Render the items key from the context dictionary that we 
 		created using this double curly bracket syntax -->
 		<!-- A template variable - anything that you return to the template
@@ -16,7 +16,7 @@
 		<h2>{{ client }}</h2>
 		
 		<!-- 'viewSession' URL that we will submit the form to -->
-		<form id="selectSessionForm" method="POST" action="/viewSession">
+		<form id="selectCourseForm" method="POST" action="/generateChart">
 			<!-- Whenever we're posting information in Django,
 			we need to add the CSRF or cross-site request forgery token.
 			This token is a randomly generated unique value which will be added
@@ -25,17 +25,21 @@
 			todo list app and not from another website. -->
 			{% csrf_token %}
 			
-			<div class="chooseSessionRadio">
-				{% for session in sessions %}
-    				<div class="chooseSessionRadioButton">
-	    				<input type="radio" id="session{{ session.id }}" name="chosenSession" value="{{ session.id }}" required>
-						<label for="session{{ session.id }}">{{ session.session_date }} {{ session }}</label>
+			<div class="chooseCourseRadio">
+				{% for course in courses %}
+    				<div class="chooseCourseRadioButton">
+	    				<input type="radio" id="course{{ course.course }}" name="chosenCourse" value="{{ course.course }}" required>
+						<label for="course{{ course.id }}">
+							{{ course.course }}
+							First Session: {{ course.first_date }} (Week {{ course.first_week }})
+							Last Session: {{ course.last_date }} (Week {{ course.last_week }})
+						</label>
     				</div>
 	   			{% endfor %}
    			</div>
 			
 			<div class="btnGroup">
-				<input type="submit" class="btn btnMain" value="Select this Session" />
+				<input type="submit" class="btn btnMain" value="Select this Course" />
 				<a href="{% url 'home' %}" class="btn btnGhost">Cancel</a>
 				<input type="reset" class="btn btnTextOnly" value="Reset Form" />
 			</div>
