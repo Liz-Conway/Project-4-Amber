@@ -26,7 +26,7 @@ function domLoaded() {
 	$("#accordion").accordion();
 
 	/*Generate Skills chart*/
-	generateChart();
+//	generateChart();
 }
 
 let unfocusUnique = (event) => validateUnique(event, "validateDiagnosis", "diagnosis", "#id_diagnosis");
@@ -188,7 +188,7 @@ function loadJson(selector) {
 }
 
 /*https://apexcharts.com/javascript-chart-demos/bar-charts/custom-datalabels/*/
-function generateChart() {
+/*function generateChart() {
 	//scores = [20, 40, 60, 80, 100, 80]
 	baseline = [70, 70, 60, 68, 70, 72];
 	functions = ['Task Behaviour', 'Cognitive', 'Motor Planning', 'Motor', 'Sensory Modulation', 'Social/Emotional'];
@@ -353,5 +353,5 @@ function generateChart() {
 
         var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
-}
+}*/
 

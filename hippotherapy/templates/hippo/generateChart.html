@@ -1,9 +1,13 @@
 {% extends "hippo/base.html" %}
+{% load static %}
 
 {% block title %}Amber|Chart{% endblock title %}
 
 {% block content %}
 	<div id="chartContainer">
+		<div class="chartFunctions" data-chart="{{ functions }}"></div>
+		<div class="chartScores" data-chart="{{ scores }}"></div>
+		<div class="chartBaselines" data-chart="{{ baselines }}"></div>
 		
 		<h1>Hippotherapy Course Chart</h1>
 		<div style="display: none" id="jsonData" data-json="{{ data }}"></div>
@@ -18,3 +22,8 @@
 
 
 {% endblock content %}
+
+{% block customJS %}
+	<script src="{% static 'js/chart.js' %}"></script>
+	<script>document.addEventListener("DOMContentLoaded", generateChart());</script>
+{% endblock %}

@@ -20,7 +20,7 @@ class Client(models.Model):
     gender = models.CharField(max_length=1, choices=SEX, null=False, blank=False, default='M')
     date_of_birth = models.DateField()
     hat_size = models.ForeignKey(Hat, related_name='wears', on_delete=models.PROTECT)
-    diagnosis = models.ManyToManyField(Diagnosis, related_name="condition", blank=True, null=True)
+    diagnosis = models.ManyToManyField(Diagnosis, related_name="condition", blank=True)
     degree_of_difficulty = models.TextField(null=True, blank=True)
     additional_notes = models.TextField(null=True, blank=True)
 

@@ -563,7 +563,9 @@ class ChartPage(TemplateView):
         '**kwargs' = Standard keyword arguments parameter
         """
         
-        chart_data = json.dumps([30,40,35,50,49,60,70,91,125])
+        functions = json.dumps(["Task Behaviour", "Cognitive", "Motor Planning", "Motor", "Sensory Modulation", "Social / Emotional"])
+        scores = json.dumps([20, 40, 60, 80, 100, 80])
+        baselines = json.dumps([70, 70, 60, 68, 70, 72])
         
         return render(
             request, 
@@ -571,7 +573,9 @@ class ChartPage(TemplateView):
             # Context - passed into the HTML template
             {
                 "client": "Aisling Conway",
-                "data": chart_data,
+                "functions": functions,
+                "scores": scores,
+                "baselines": baselines,
             }
         )
         

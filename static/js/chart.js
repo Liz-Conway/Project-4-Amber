@@ -1,3 +1,5 @@
+
+
 const makeGoal = (baseline, colour) => {
 	if(isNaN(baseline) || baseline === "") {
 		throw new TypeError("baseline is not a number");
@@ -137,5 +139,24 @@ const createOptions = (functions, scores, baselines, functionColours) => {
 		    return optionsObject;
 }
 
+/*https://www.hacksoft.io/blog/quick-and-dirty-django-passing-data-to-javascript-without-ajax*/
+function loadJson(selector) {
+  return JSON.parse(document.querySelector(selector).getAttribute('data-chart'));
+}
+
+function generateChart() {
+	let scores = [20, 40, 60, 80, 100, 80];
+	let baselines = [70, 70, 60, 68, 70, 72];
+	let functions = ['Task Behaviour', 'Cognitive', 'Motor Planning', 'Motor', 'Sensory Modulation', 'Social/Emotional'];
+	let functionColours = {"baseline": "#7EB2DD", "bar": "#F5853F", "label": "#3D2724"};
+
+	let scoreOptions = createOptions(functions, scores, baselines, functionColours);
+
+    let chart = new ApexCharts(document.querySelector("#chart"), scoreOptions);
+    chart.render();
+}
+
+
+
 /* To export more than one item we need to place them in curly braces */
-module.exports = { makeGoal, mapScores, combineScores, mapFunctionScores, createOptions };
+//module.exports = { makeGoal, mapScores, combineScores, mapFunctionScores, createOptions };

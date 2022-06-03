@@ -1022,6 +1022,12 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
 }
 
 /*===== END  Session Detail  ===== */
+/*~~~~~~~  Chart  ~~~~~~~ */
+[data-chart] {
+  display: none;
+}
+
+/*===== END  Chart  ===== */
 
 
 /* Media Queries for Big Phones */
