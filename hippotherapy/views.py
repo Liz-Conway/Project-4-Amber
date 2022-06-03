@@ -188,8 +188,6 @@ def save_tasks(session_id, post):
         
 
 def save_diagnoses(client_id, post):
-    print("post")
-    print(post)
     total_diagnoses = Diagnosis.objects.count()
     
     client = Client.objects.get(id=client_id)
@@ -347,6 +345,7 @@ class SelectClient(TemplateView):
     In class based views -
     GET & POST are supplied as class methods
     """
+
     def post(self, request, *args, **kwargs):
         """
         '*args' = Standard arguments parameter
@@ -361,29 +360,12 @@ class SelectClient(TemplateView):
         page_url = request.POST['targetPage']
         last_session = None
         
-        # If redirecting to generateChart page
-        # First get the course to show a chart of
-        scored_courses = []
         if page_url == 'generateChart':
             page_url = 'chooseCourse'
-            courses = Course.objects.filter(client=client)
-            for course in courses:
-                course_dates = {"course": course.id}
-                # We need to find the latest week for a given course that has scores
-                latest_week = Session.objects.filter(course=course.id).exclude(score_session=None).values('course').aggregate(Max('week_number'))['week_number__max']
-                course_dates['last_week'] = latest_week
-                # We need to find the date of the latest week for a given course that has scores
-                latest_date = Session.objects.filter(week_number=latest_week, course=course.id).values('session_date')
-                course_dates['last_date'] = latest_date[0]['session_date'].strftime("%a, %d %b %Y")
-                # We need to find the first week for a given course that has scores
-                first_week = Session.objects.filter(course=course.id).exclude(score_session=None).values('course').aggregate(Min('week_number'))['week_number__min']
-                course_dates['first_week'] = first_week
-                # We need to find the date of the first week for a given course that has scores
-                first_date = Session.objects.filter(week_number=first_week, course=course.id).values('session_date')
-                course_dates['first_date'] = first_date[0]['session_date'].strftime("%a, %d %b %Y")
-                scored_courses.append(course_dates)
-            # Store this scored_courses in the session
-            request.session['scored_courses'] = scored_courses
+            
+            # courses, client, course = self.get_scored_courses_for_client(client, scored_courses)
+            # # Store this scored_courses in the session
+            # request.session['scored_courses'] = scored_courses
         elif page_url == 'recordSession':
             courses = Course.objects.filter(client=client)
             if courses.count() != 0:
@@ -439,7 +421,6 @@ class ObserveSession(TemplateView):
         
         if previous_observations != None:
             previous = convert_observations(previous_observations)    
-            print(previous)
         # Get the session id that was passed in the URL
         session_id = kwargs['session']
         session_query = Session.objects.filter(id=session_id)
@@ -509,7 +490,12 @@ class ObserveSession(TemplateView):
                 # Save the SkillScore object to the 'through' table
                 skill_score.save()
             
-            return redirect('viewSession', session=session_id)
+            course = get_object_or_404(Course.objects.filter(courses__id=session_id))
+            course_id = course.id
+            client = get_object_or_404(Client.objects.filter(participates=course_id))
+            client_id = client.id
+            # return redirect('viewSession', session=session_id)
+            return redirect('generateChart', client=client_id, course=course_id)
         
         else:
             request.session['observations'] = observation_data
@@ -668,17 +654,20 @@ class ChartPage(TemplateView):
         '*args' = Standard arguments parameter
         '**kwargs' = Standard keyword arguments parameter
         """
-        try:
-            course_id = kwargs['course']
-            print(f"Course ID :  {course_id}")
-        except:
-            print("No course id either")
+        
         try:
             course_id = request.POST['course']
             print(f"POSTed course ID")
         except KeyError:
             # No Course was chosen - redisplay the page with an error message
             print("Key Error - No 'course' in POST data")
+            try:
+                course_id = kwargs['course']
+                print(f"Course ID :  {course_id}")
+            except:
+                print("No course id either")
+                # Throw error -> 404 page
+                
         client = get_object_or_404(Client.objects.filter(participates__id=course_id))
         
         # We need to find the latest week for a given course that has scores
@@ -716,7 +705,7 @@ class ChartPage(TemplateView):
         baselines = json.dumps(percent_baselines)
         
         # retrieve the course data stored in the Session
-        course_info = request.session['scored_courses']
+        course_info = get_scored_courses_for_client(client.id)
         
         return render(
             request, 
@@ -753,7 +742,7 @@ class ChooseCourse(TemplateView):
         client = get_object_or_404(client_query)
         
         # Get all courses for this client
-        courses = request.session['scored_courses']
+        courses = get_scored_courses_for_client(client_id)
         
         return render(
             request, 
@@ -842,3 +831,21 @@ class NewCourse(TemplateView):
             'recordSession',       # view to render
             client=client,   # parameter to pass to URL
         )
+
+def get_scored_courses_for_client(client):
+    scored_courses = []
+    courses = Course.objects.filter(client=client)
+    for course in courses:
+        course_dates = {"course":course.id} # We need to find the latest week for a given course that has scores
+        latest_week = Session.objects.filter(course=course.id).exclude(score_session=None).values('course').aggregate(Max('week_number'))['week_number__max']
+        course_dates['last_week'] = latest_week # We need to find the date of the latest week for a given course that has scores
+        latest_date = Session.objects.filter(week_number=latest_week, course=course.id).values('session_date')
+        course_dates['last_date'] = latest_date[0]['session_date'].strftime("%a, %d %b %Y") # We need to find the first week for a given course that has scores
+        first_week = Session.objects.filter(course=course.id).exclude(score_session=None).values('course').aggregate(Min('week_number'))['week_number__min']
+        course_dates['first_week'] = first_week # We need to find the date of the first week for a given course that has scores
+        first_date = Session.objects.filter(week_number=first_week, course=course.id).values('session_date')
+        course_dates['first_date'] = first_date[0]['session_date'].strftime("%a, %d %b %Y")
+        scored_courses.append(course_dates)
+    
+    return scored_courses
+

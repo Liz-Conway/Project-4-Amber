@@ -32,5 +32,6 @@ urlpatterns = [
     path('viewSession/<session>/', views.ViewSession.as_view(), name='viewSession'),
     path('generateChart/<client>/<course>/', views.ChartPage.as_view(), name='generateChart'),
     path('chooseCourse/<client>/', views.ChooseCourse.as_view(), name='chooseCourse'),
+    path('chooseCourse/<client>/<session>?', views.ChooseCourse.as_view(), name='chooseCourse'),
     path('newCourse/<client>/<session>/', views.NewCourse.as_view(), name='newCourse'),
 ]
