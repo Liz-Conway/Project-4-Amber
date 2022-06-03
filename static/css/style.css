@@ -799,7 +799,7 @@ form {
 
 input:not([type="radio"]):required + label::after, select:required + label::after, .manyManyLabel.required::after {
   content: " *";
-  color: #cc0000;
+  color: #E84610;
 }
 
 #addClientForm {

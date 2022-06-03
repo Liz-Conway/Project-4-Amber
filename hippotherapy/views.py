@@ -471,7 +471,6 @@ class ChooseSession(TemplateView):
         '*args' = Standard arguments parameter
         '**kwargs' = Standard keyword arguments parameter
         """
-        
         # Get the client id that was passed in the URL
         client_id = kwargs['client']
         client_query = Client.objects.filter(id=client_id)
@@ -490,11 +489,30 @@ class ChooseSession(TemplateView):
             {
                 "client": client_name,
                 "sessions": sessions,
+                "client_id": client_id,
             }
         )
-        
 
+
+    """
+    In class-based views:
+    Instead of using an if statement to check the request method,  
+    we simply create class methods called GET, POST, or any other HTTP verb.
+    """
+    def post(self, request, *args, **kwargs):
+        """
+        '*args' = Standard arguments parameter
+        '**kwargs' = Standard keyword arguments parameter
+        """
+        client_id = request.POST['client']
+        try:
+            session_id = request.POST['chosenSession']
+        except KeyError:
+            messages.error(request, "You need to select one of the sessions before clicking the button")
+            return HttpResponseRedirect(reverse('chooseSession', args=[client_id]))
         
+        return HttpResponseRedirect(reverse('viewSession', args=[session_id]))
+       
 class ViewSession(TemplateView):
     template_name = "hippo/viewSession.html"
 
@@ -589,8 +607,17 @@ class ChartPage(TemplateView):
         '*args' = Standard arguments parameter
         '**kwargs' = Standard keyword arguments parameter
         """
-        course_id = request.POST['chosenCourse']
-        
+        try:
+            course_id = kwargs['course']
+            print(f"Course ID :  {course_id}")
+        except:
+            print("No course id either")
+        try:
+            course_id = request.POST['course']
+            print(f"POSTed course ID")
+        except KeyError:
+            # No Course was chosen - redisplay the page with an error message
+            print("Key Error - No 'course' in POST data")
         client = get_object_or_404(Client.objects.filter(participates__id=course_id))
         
         # We need to find the latest week for a given course that has scores
@@ -666,9 +693,6 @@ class ChooseCourse(TemplateView):
         
         # Get all courses for this client
         courses = request.session['scored_courses']
-        
-        # Get the client name
-        client_name = f'{client.first_name} {client.last_name}'
         
         return render(
             request, 
