@@ -255,6 +255,7 @@ class RecordSession(TemplateView):
         Gets all of the data that we posted from our form
         """
         record_session_form = SessionForm(data=request.POST)
+        session_client = get_object_or_404(Client.objects.filter(id=client))
         
         """
         Form is valid => If all the fields have been completed
@@ -265,7 +266,7 @@ class RecordSession(TemplateView):
             course_number = request.POST['course']
             week_number = request.POST['week_number']
             messages.success(request,
-                             f'New session for Session# <span class="boldEntry">{course_number} / {week_number}</span> added successfully.',
+                             f'New session for <span class="boldEntry">{session_client}</span> ({course_number} / {week_number}) added successfully.',
                              extra_tags='safe')
 
             # Redirect to the 'observeSession' page after adding a new Session
