@@ -75,7 +75,7 @@ class SessionForm(forms.ModelForm):
         The reason for this is otherwise the form will display all fields on the model
         including those we might not want the user to see.
         """
-        fields = ["horse", "tasks", "course", "week_number", "session_date"]
+        fields = ["horse", "tasks", "course", "week_number"]
         
         course = forms.IntegerField(widget=forms.HiddenInput())
         

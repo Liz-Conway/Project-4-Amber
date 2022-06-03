@@ -105,10 +105,11 @@ class AddClient(TemplateView):
         )
         
 
-def get_course_for_client(client_id):
+def get_course_for_client(client_id, new_course=False):
     courses = Course.objects.filter(client=client_id)
+    brand_new_course = get_course_with_no_sessions(client_id)
     
-    if courses.count() == 0:
+    if courses.count() == 0 or new_course:
         # First course for this client
         # Retrieve an instance of the client
         client = Client.objects.filter(id=client_id)[0]
@@ -116,30 +117,39 @@ def get_course_for_client(client_id):
         last_course = Course(client=client)
         # Save the course to the database
         last_course.save()
-    elif courses.count() == 1:
-        # Use this course
-        last_course = courses[0]
+    elif brand_new_course != None:
+        # We started a brand new course for this client
+        return brand_new_course
     else:
         # Find the course with the latest Session date
-        # course = Course.objects.filter(client=client).select_related('Session').filter('course__client'==client_id, Max('session__session_date'))[0]
-        # Find the courses for this client
+         # Find the courses for this client
         courses = Course.objects.filter(client=client_id)
-        # Create an array with the course ids
-        course_ids = []
+        latest_course = None
         for course in courses:
-            course_id = course.id
-            course_ids.append(course_id)
-        # Find the latest date for any session for these courses
-        last_session_date = Session.objects.filter(course__in=course_ids).aggregate(max_date=Max('session_date'))[0]
+            course_dates = {"course": course.id}
+            # We need to find the latest week for a given course
+            latest_week = Session.objects.filter(course=course.id).values('course').aggregate(Max('week_number'))['week_number__max']
+            course_dates['last_week'] = latest_week
+            # We need to find the date of the latest week for a given course
+            latest_date = Session.objects.filter(week_number=latest_week, course=course.id).values('session_date')
+            course_dates['last_date'] = latest_date[0]['session_date']
+            if latest_course == None:
+                latest_course = course_dates
+            elif course_dates['last_date'] > latest_course['last_date']:
+                latest_course = course_dates
         
-        # Find the session with the latest date for any courses for this client
-        last_session = Session.objects.filter(session_date=last_session_date)[0]
-        
-        last_course = last_session.course
-        
+        last_course = Course(id=latest_course['course'])
     
     return last_course
 
+def get_course_with_no_sessions(client_id):
+    courses = Course.objects.filter(client=client_id, courses=None).order_by('-id')
+    if courses.count() == 0:
+        # No brand new Courses
+        return None
+    
+    # Otherwise return the 'brand new' course with the highest id
+    return courses[0]
 
 def get_next_session_week(course):
     
@@ -349,6 +359,8 @@ class SelectClient(TemplateView):
         """
         client = request.POST['client']
         page_url = request.POST['targetPage']
+        last_session = None
+        
         # If redirecting to generateChart page
         # First get the course to show a chart of
         scored_courses = []
@@ -372,11 +384,22 @@ class SelectClient(TemplateView):
                 scored_courses.append(course_dates)
             # Store this scored_courses in the session
             request.session['scored_courses'] = scored_courses
+        elif page_url == 'recordSession':
+            courses = Course.objects.filter(client=client)
+            if courses.count() != 0:
+                page_url = 'newCourse'
+                max_session_dates = Session.objects.filter(course__in=courses).values('course').annotate(max_date=Max('session_date')).order_by('-max_date', '-course')
+                last_session_date = max_session_dates[0]
+                sess = Session.objects.filter(session_date=last_session_date['max_date'], course=last_session_date['course'])
+                last_session = get_object_or_404(sess)
+                last_session = last_session.id
+                    
         
         # https://www.tutorialspoint.com/django/django_page_redirection.htm
         return redirect(
             page_url,       # view to render
             client=client,   # parameter to pass to URL
+            session=last_session,
         )
 
 
@@ -458,16 +481,9 @@ class ObserveSession(TemplateView):
         """
         session_id = kwargs['session']
         observation_data=request.POST
-        print(f"Length of observation_data :  {len(observation_data)}")
         number_of_skills = Skill.objects.count()
-        print(f"Type of number of skills :  {type(number_of_skills)}")
-        print(f"Number of Skills :  {number_of_skills}")
-        # form = ObservationForm(data=request.POST)
-        print(f"Length of observation_data :  {len(observation_data)}")
-        print(f"Type of len(observation_data) :  {type(len(observation_data))}")
 
         if len(observation_data) == number_of_skills + 1:
-            print("Inside if loop")
             for observation in observation_data:
                 # First post data is the CSRF token - So skip this data point
                 if observation.startswith('csrf'):
@@ -768,3 +784,61 @@ class ChooseCourse(TemplateView):
         
         return HttpResponseRedirect(reverse('generateChart', args=[client_id, course_id]))
 
+
+def create_course_for_client(client_id):
+    # Retrieve an instance of the client
+    client = get_object_or_404(Client.objects.filter(id=client_id))
+    # Create a new course for this client
+    new_course = Course(client=client)
+    # Save the course to the database
+    new_course.save()
+
+
+class NewCourse(TemplateView):
+    template_name = "hippo/newCourse.html"
+    
+    """
+    In class-based views:
+    Instead of using an if statement to check the request method,  
+    we simply create class methods called GET, POST, or any other HTTP verb.
+    """
+    def get(self, request, *args, **kwargs):
+        session = kwargs['session']
+        
+        last_session = get_object_or_404(Session.objects.filter(id=session))
+        
+        return render(
+            request, 
+            self.template_name, # view to render
+            # Context - passed into the HTML template
+            {
+                "session": last_session,
+            }
+        )
+
+    """
+    In class-based views:
+    Instead of using an if statement to check the request method,  
+    we simply create class methods called GET, POST, or any other HTTP verb.
+    """
+    def post(self, request, *args, **kwargs):
+        create_new_course = False
+        new_course = ''
+        try:
+            new_course = request.POST['newCourse']
+            create_new_course = True
+        except KeyError:
+            # Do nothing - create_new_course is already false
+            pass
+        
+
+        client = kwargs['client']
+        
+        if create_new_course:
+            get_course_for_client(client, True)
+
+        # https://www.tutorialspoint.com/django/django_page_redirection.htm
+        return redirect(
+            'recordSession',       # view to render
+            client=client,   # parameter to pass to URL
+        )

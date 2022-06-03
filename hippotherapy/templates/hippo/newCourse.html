@@ -1,0 +1,47 @@
+{% extends "hippo/base.html" %}
+{% load static %}
+
+{% block title %}Amber|New Course{% endblock title %}
+
+{% block content %}
+	<div id="newCourseContainer">
+		
+		<h1>Last Session for :</h1>
+		
+		{% include 'hippo/includes/session-details.html' %}
+		
+		<div id="newCourse">
+			<!-- Blank URL that we will submit the form to -->
+			<!-- means that this is a POSTback -->
+			<form id="newCourseForm" method="POST" action="">
+				<!-- Whenever we're posting information in Django,
+				we need to add the CSRF or cross-site request forgery token.
+				This token is a randomly generated unique value which will be added
+				to the form as a hidden input field when the forms submitted.
+				And works to guarantee that the data we're posting is actually coming from our
+				todo list app and not from another website. -->
+				{% csrf_token %}
+				
+				<div class="newCourseCheckbox">
+					<input type="checkbox" id="newCourse" name="newCourse">
+					<label for="newCourse">Start a new Course for this client?</label>
+				</div>			
+				
+				
+				<div class="btnGroup">
+					<input type="submit" class="btn btnMain" value="Record Session" />
+					<a href="{% url 'home' %}" class="btn btnGhost">Cancel</a>
+					<input type="reset" class="btn btnTextOnly" value="Reset Form" />
+				</div>
+				
+			</form>
+		</div>
+
+	</div>
+
+
+{% endblock content %}
+
+{% block customJS %}
+	<script src="{% static 'js/chart.js' %}"></script>
+{% endblock %}

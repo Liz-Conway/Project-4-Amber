@@ -66,7 +66,7 @@ class Session(models.Model):
     course = models.ForeignKey(Course, related_name='courses', on_delete=models.CASCADE)
     week_number = models.IntegerField(null=False, blank=False)
     # Automatically adds the date when this object is first saved to database
-    session_date = models.DateField()
+    session_date = models.DateField(auto_now_add=True)
     horse = models.ForeignKey(Horse, related_name='ridden', on_delete=models.PROTECT)
     tasks = models.ManyToManyField(Task, related_name='performed', blank=True)
     skill = models.ManyToManyField(through='SkillScore', to=Skill, related_name='skill_score')
