@@ -594,11 +594,13 @@ class ChartPage(TemplateView):
         # We need to find the latest week for a given course that has scores
         latest_week = Session.objects.filter(course=course_id).exclude(score_session=None).aggregate(Max('week_number'))['week_number__max']
         # Find the session for the last scoring week of a given course
-        latest_session = Session.objects.filter(course=course_id, week_number=latest_week).values('id')[0]['id']
+        last_session = Session.objects.filter(course=course_id, week_number=latest_week)[0]
+        latest_session = last_session.id
         # Find the scores for the last scoring week of a given course
         # Need to have .values() before .annotate() in order to perform GROUP BY
         scores_query = SkillScore.objects.values('skill__function__id').filter(session=latest_session).annotate(Sum('score'))
         scores_list = [score_query.get('score__sum') for score_query in scores_query]
+        
         # Find the number of skills in each Function
         total_query = Skill.objects.values('function__function_name').annotate(Count('function_id')).order_by('function_id')
         # Get the labels for the chart
@@ -607,7 +609,6 @@ class ChartPage(TemplateView):
         totals = [ total['function_id__count'] * 5 for total in total_query]
         # Calculate each score as a percentage of its total
         percent_scores = [ round(score * 100 / total) for score, total in zip(scores_list, totals)]
-        
         # Format the percent scores to be sent to the chart
         scores = json.dumps(percent_scores)
         
@@ -637,6 +638,7 @@ class ChartPage(TemplateView):
                 "scores": scores,
                 "baselines": baselines,
                 "scored_courses": course_info,
+                "session": last_session,
             }
         )
         
