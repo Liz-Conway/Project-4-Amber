@@ -105,7 +105,9 @@ const createOptions = (functions, scores, baselines, functionColours) => {
 		        yaxis: {
 		          labels: {
 		            show: false
-		          }
+		          },
+		          min: 0,
+		          max: 100
 		        },
 		        title: {
 		            text: "Function Skill Scores",
