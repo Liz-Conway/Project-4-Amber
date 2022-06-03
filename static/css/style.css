@@ -435,8 +435,7 @@ footer {
   text-align: center;
   margin-bottom: 1.5rem;
 }
-
-#selectCourseContainer h2 {
+[id$="Container"] h2 {
   text-align: center;
 }
 

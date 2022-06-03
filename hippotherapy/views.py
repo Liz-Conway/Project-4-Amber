@@ -454,7 +454,7 @@ class ObserveSession(TemplateView):
             # Save the SkillScore object to the 'through' table
             skill_score.save()
         
-        return redirect('viewPostedSession', session=session_id)
+        return redirect('viewSession', session=session_id)
 
 
 class ChooseSession(TemplateView):
@@ -477,7 +477,8 @@ class ChooseSession(TemplateView):
         client = get_object_or_404(client_query)
         
         # Get all sessions for this client
-        sessions = Session.objects.filter(course__client=client)
+        # Where the session has been scored
+        sessions = Session.objects.filter(course__client=client).exclude(score_session = None)
         
         # Get the client name
         client_name = f'{client.first_name} {client.last_name}'
