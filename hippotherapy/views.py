@@ -121,9 +121,6 @@ def get_course_for_client(client_id, new_course=False):
         # We started a brand new course for this client
         return brand_new_course
     else:
-        # Find the course with the latest Session date
-         # Find the courses for this client
-        courses = Course.objects.filter(client=client_id)
         latest_course = None
         for course in courses:
             course_dates = {"course": course.id}
@@ -136,7 +133,15 @@ def get_course_for_client(client_id, new_course=False):
             if latest_course == None:
                 latest_course = course_dates
             elif course_dates['last_date'] > latest_course['last_date']:
+                # Replace latest_course with this course since this course is later
                 latest_course = course_dates
+            elif course_dates['last_date'] == latest_course['last_date']:
+                # Need to find the latest course for the same date
+                print("Same date for a number of courses")
+                print(f"course_dates :  {course_dates}")
+                print(f"latest_course :  {latest_course}")
+                if course_dates['course'] > latest_course['course']:
+                    latest_course = course_dates
         
         last_course = Course(id=latest_course['course'])
     
