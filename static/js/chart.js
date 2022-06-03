@@ -145,9 +145,9 @@ function loadJson(selector) {
 }
 
 function generateChart() {
-	let scores = [20, 40, 60, 80, 100, 80];
-	let baselines = [70, 70, 60, 68, 70, 72];
-	let functions = ['Task Behaviour', 'Cognitive', 'Motor Planning', 'Motor', 'Sensory Modulation', 'Social/Emotional'];
+	let scores = loadJson("#chartScoreData");
+	let baselines = loadJson("#chartBaselineData");
+	let functions = loadJson("#chartFunctionData");
 	let functionColours = {"baseline": "#7EB2DD", "bar": "#F5853F", "label": "#3D2724"};
 
 	let scoreOptions = createOptions(functions, scores, baselines, functionColours);

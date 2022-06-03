@@ -5,9 +5,9 @@
 
 {% block content %}
 	<div id="chartContainer">
-		<div class="chartFunctions" data-chart="{{ functions }}"></div>
-		<div class="chartScores" data-chart="{{ scores }}"></div>
-		<div class="chartBaselines" data-chart="{{ baselines }}"></div>
+		<div id="chartFunctionData" data-chart="{{ functions }}"></div>
+		<div id="chartScoreData" data-chart="{{ scores }}"></div>
+		<div id="chartBaselineData" data-chart="{{ baselines }}"></div>
 		
 		<h1>Hippotherapy Course Chart</h1>
 		<div style="display: none" id="jsonData" data-json="{{ data }}"></div>
