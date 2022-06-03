@@ -38,9 +38,9 @@
 					    		<div class="skillScores">
 					    			{% for i in score_range %}
 					    				<div class="skillRadio formRadioGroup">
-						    				<input type="radio" id="score{{ i }}" name="score{{ skill.id }}" 
+						    				<input type="radio" id="{{function.function_name|slugify}}-{{skill.skill_name|slugify}}{{ i }}" name="score{{ skill.id }}" 
 						    					class="formRadioInput" value="{{ i }}" required>
-											<label for="score{{ i }}" class="formRadioLabel">
+											<label for="{{function.function_name|slugify}}-{{skill.skill_name|slugify}}{{ i }}" class="formRadioLabel">
 												<span class="formRadioButton"></span>
 												<span class="formRadioLabelText">{{ i }}</span>
 											</label>

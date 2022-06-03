@@ -295,7 +295,6 @@ header {
           align-items: center;
   flex-direction: column;
 }
-
 .navigationLink {
   -webkit-transform: translateX(-200px);
           transform: translateX(-200px);
