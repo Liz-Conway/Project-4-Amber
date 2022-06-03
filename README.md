@@ -549,3 +549,4 @@ With forking you are pushing the updates to your own Amber repo on github.
 |Redirect to another page | John Elder |https://www.tutorialspoint.com/django/django_page_redirection.htm |
 |Mobile Navigation system | Luke Embrey |https://alvarotrigo.com/blog/hamburger-menu-css/ |
 |Pass data from Django to Javascript | Radoslav Georgiev |https://www.hacksoft.io/blog/quick-and-dirty-django-passing-data-to-javascript-without-ajax |
+|Draw chart using ApexCharts | apexcharts.com |https://apexcharts.com/javascript-chart-demos/bar-charts/custom-datalabels/ |
