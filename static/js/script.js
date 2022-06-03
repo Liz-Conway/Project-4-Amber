@@ -40,9 +40,7 @@ function closeNavigation(event) {
  - only on mobile devices*/
  function placeAccountLinks() {
  	/*Only needed for mobile devices - phones & tablets in portrait orientation*/
- 	console.log("Screen width :  ", screen.width);
  	if (screen.width < 800) {
- 		console.log("Setting location of #accountLinks");
  		$("#accountLinks").position({
   			my:      "top+30",
   			at:        "bottom",

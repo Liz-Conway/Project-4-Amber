@@ -168,6 +168,7 @@ Hippotherapy can also shorten recovery time and ensure correct development of th
 ### Python structure
 <a id="python-structure"></a>
 The Django structure for the amber application is broken into 2 apps.
+
 1. administration
 	This app contains all the code for pages that an admin user will interact with.
 
@@ -329,6 +330,10 @@ At the end of the project, all User Stories will be in the **Done** list and the
 
 <img src="documentation/agile-planning/amber-board-story-map.png" alt="User Story Map Sprint plan" width="100%"/>
 
+#### User Stories
+<img src="documentation/agile-planning/user-stories.png" alt="Amber User Stories" width="100%"/>
+
+
 
 ### Version Control 
 <a id="git"></a>**Git** is used for version control of this project
@@ -377,6 +382,12 @@ Removed non-existant links from the base.html template.
 
 ### Validation
 <a id="vakidation"></a>Source code was validated with [PEP8 Validator](http://pep8online.com/).
+
+CSS was validated using [W3C CSS validator](https://jigsaw.w3.org/css-validator/validator)
+
+HTML was validated on all pages using [W3C HTML validator](https://validator.w3.org/)
+
+Javascript was validated using [JSHint](https://jshint.com/)
 
 
 ### Documentation  

@@ -48,8 +48,6 @@ class ClientForm(forms.ModelForm):
         # https://stackoverflow.com/questions/4876370/django-date-format-dd-mm-yyyy
         date_of_birth = forms.DateField(input_formats=settings.DATE_INPUT_FORMATS)
         
-        # to_page = forms.CharField(widget=forms.HiddenInput())
-        
         widgets={
                    "first_name":forms.TextInput(attrs={'class':'formInput', 'placeholder': 'First name'}),
                    "last_name":forms.TextInput(attrs={'class':'formInput', 'placeholder': 'Surname'}),

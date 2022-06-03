@@ -254,7 +254,7 @@ class RecordSession(TemplateView):
                 "course_number": course.id,
                 "session_week": session_week,
                 "client": client_name,
-                "session_date": session_date,
+                "session_date": session_date_string,
                 "session_date_string": session_date_string,
                 "horsies": horsies,
                 "unmounted": unmounted_tasks,
@@ -397,7 +397,6 @@ class SelectClient(TemplateView):
         return redirect(
             page_url,       # view to render
             client=client,   # parameter to pass to URL
-            session=last_session,
         )
 
 
