@@ -149,7 +149,10 @@ Hippotherapy can also shorten recovery time and ensure correct development of th
 	* Allow the Admin to add, edit and delete static information (such as hat sizes, etc.).
 * Maintain Functional Skills
 	* Allow the Admin to add, edit and delete functions, skills within those functions, as well as the hints relating to each functional skill.
-
+* Optimise Django queries
+	* The Django queries at the moment may make multiple calls to the database for one query.  These will slow the Amber application down as more data is entered.  In future versions these queries will be optimised to speed up all data access.
+* Cater for multiple users
+	* Currently all logged in users have access to all clients and all information.  In future releases the Amber application will be partitioned so that each user will have to create their own clients, horses, etc.  Every user will only have access the clients and sessions they have entered into the Amber application.
 
 
 ## Data model
