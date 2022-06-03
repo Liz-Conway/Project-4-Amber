@@ -148,7 +148,7 @@ header {
       -ms-flex-direction: row;
           flex-direction: row;
   width: 100%;
-  margin-bottom: 3rem;
+  margin-bottom: -6rem;
 }
 
 #navWrapper {
@@ -428,6 +428,7 @@ footer {
 [id$="Container"] {
   /* Target all elements with an id that ends in 'Container' */
   margin-left: 2rem;
+  /*Move the container closer to the header/logo section (mobile only) */
 }
 [id$="Container"] h1 {
   text-align: center;
