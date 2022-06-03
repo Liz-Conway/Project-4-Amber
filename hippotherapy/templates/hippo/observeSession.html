@@ -7,11 +7,7 @@
 		
 		<h1>Hippotherapy Session Observations</h1>
 		
-		<div class="observationHeader">
-			<p>Session : <span class="boldEntry">{{session.course.id}}/{{session.week_number}}</span></p>
-			<p>Client : <span class="boldEntry">{{ client }}</span></p>
-			<p>Date : <span class="boldEntry">{{ session.session_date }}</span></p>
-		</div>
+		{% include 'hippo/includes/session-details.html' %}
 
 		<form id="observationForm" method="POST" action="">
 			<!-- Whenever we're posting information in Django,

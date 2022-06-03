@@ -550,10 +550,6 @@ footer {
   margin-top: 0.8rem;
 }
 
-.recordSessionHeader {
-  margin-bottom: 2rem;
-}
-
 /*===== END  Record Session page  ===== */
 /*~~~~~~~  Observations page  ~~~~~~~ */
 .ui-accordion .skill {
@@ -969,6 +965,13 @@ input:required + label::after, select:required + label::after, .manyManyLabel.re
 }
 
 /*===== END  Table  ===== */
+/*~~~~~~~  Session Detail  ~~~~~~~ */
+.sessionDetail {
+  margin-bottom: 2rem;
+}
+
+/*===== END  Session Detail  ===== */
+
 
 /* Media Queries for Big Phones */
 @media only screen and (min-width: 28em) {

@@ -14,7 +14,13 @@ function domLoaded() {
 	$("#id_diagnosis").focusout(unfocusUnique);
 
 	/*Set the date picker*/
-	$(".dateInput").datepicker( {showAnim: "clip"} );
+	$(".dateInput").datepicker( {
+		showAnim: "clip",
+		changeMonth: true,
+		changeYear: true,
+		dateFormat: "dd/mm/yy",
+		yearRange: "c-30:c+0"
+	} );
 	
 	/*Set the accordion element*/
 	$("#accordion").accordion();
