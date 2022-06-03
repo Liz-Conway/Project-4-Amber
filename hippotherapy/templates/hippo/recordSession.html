@@ -14,17 +14,7 @@
 		Meaning you can return strings, numbers, lists, other dictionaries, 
 		or even functions and classes. -->
 		<!-- {{ session }} -->
-		<div class="recordSessionHeader">
-			<h2>Session</h2>
-			<div class="spreadOut">
-				<div>Client : <span class="boldEntry">{{ client }}</span></div>
-				<div>Date : <span class="boldEntry">{{ session_date_string }}</span></div>
-			</div>
-			<div class="spreadOut">
-				<div>Session : <span class="boldEntry">{{ course_number }}/{{ session_week }}</span></div>
-				<div>Course: <span class="boldEntry">{{ course_number }}</span> Week: <span>{{ session_week }}</span></div>
-			</div>
-		</div>
+		{% include 'hippo/includes/session-details.html' %}
 		
 		<!-- Set action to a blank URL that we will submit the form to 
 			i.e. this is a "postback" -->

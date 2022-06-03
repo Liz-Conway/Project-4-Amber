@@ -220,6 +220,8 @@ class RecordSession(TemplateView):
         # https://stackabuse.com/how-to-format-dates-in-python/
         session_date_string = session_date.strftime('%d-%m-%Y')
         
+        session = Session(course=course, session_date=session_date, week_number=session_week)
+        
         return render(
             request, 
             self.template_name, # view to render
@@ -234,6 +236,7 @@ class RecordSession(TemplateView):
                 "horsies": horsies,
                 "unmounted": unmounted_tasks,
                 "mounted": mounted_tasks,
+                "session": session,
             }
         )
         
@@ -484,6 +487,7 @@ class ViewSession(TemplateView):
         """
         # Get the session id that was passed in the URL
         session_id = kwargs['session']
+        session = get_object_or_404(Session.objects.filter(id=session_id))
         """
         Get the Scores for the chosen session
         """
@@ -501,6 +505,7 @@ class ViewSession(TemplateView):
             {
                 "scores": session_scores,
                 "tasks" : tasks,
+                "session": session,
             }
         )
         
@@ -519,6 +524,7 @@ class ViewSession(TemplateView):
         Gets all of the data that we posted from our form
         """
         session_id = request.POST['chosenSession']
+        session = get_object_or_404(Session.objects.filter(id=session_id))
         
         """
         Get the Scores for the chosen session
@@ -537,5 +543,6 @@ class ViewSession(TemplateView):
             {
                 "scores": session_scores,
                 "tasks" : tasks,
+                "session": session,
             }
         )
