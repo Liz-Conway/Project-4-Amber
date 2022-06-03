@@ -4,7 +4,7 @@ from django.contrib import messages
 from hippotherapy.forms import ClientForm, SessionForm, ObservationForm
 from hippotherapy.models import Hat, Client, Course, Session, Function, Skill,\
     Hint, SkillScore
-from django.db.models.aggregates import Max
+from django.db.models.aggregates import Max, Sum, Count, Min
 from _datetime import date
 from django.db.models.expressions import F
 from administration.models import Horse, Task, Diagnosis
@@ -556,16 +556,52 @@ class ChartPage(TemplateView):
     In class-based views:
     Instead of using an if statement to check the request method,  
     we simply create class methods called GET, POST, or any other HTTP verb.
+    We will be showing the current score and the baseline score for each function
+    in a chart.
+    We need to retrieve Labels, current scores and baseline scores from the database.
+    We also need to retrieve and calculate the maximum score for each Function.
+    We then need to convert the actual scores to scores as a percentage of the total.
+    We need to pass Labels, current scores and baseline scores to the chart page.
     """
     def get(self, request, *args, **kwargs):
         """
         '*args' = Standard arguments parameter
         '**kwargs' = Standard keyword arguments parameter
         """
+        course_id = 4
         
-        functions = json.dumps(["Task Behaviour", "Cognitive", "Motor Planning", "Motor", "Sensory Modulation", "Social / Emotional"])
-        scores = json.dumps([20, 40, 60, 80, 100, 80])
-        baselines = json.dumps([70, 70, 60, 68, 70, 72])
+        # We need to find the latest week for a given course that has scores
+        latest_week = Session.objects.filter(course=course_id).exclude(score_session=None).aggregate(Max('week_number'))['week_number__max']
+        # Find the session for the last scoring week of a given course
+        latest_session = Session.objects.filter(course=course_id, week_number=latest_week).values('id')[0]['id']
+        # Find the scores for the last scoring week of a given course
+        # Need to have .values() before .annotate() in order to perform GROUP BY
+        scores_query = SkillScore.objects.values('skill__function__id').filter(session=latest_session).annotate(Sum('score'))
+        scores_list = [score_query.get('score__sum') for score_query in scores_query]
+        # Find the number of skills in each Function
+        total_query = Skill.objects.values('function__function_name').annotate(Count('function_id')).order_by('function_id')
+        # Get the labels for the chart
+        functions = json.dumps([ total['function__function_name'] for total in total_query])
+        # Calculate the maximum score for each Function
+        totals = [ total['function_id__count'] * 5 for total in total_query]
+        # Calculate each score as a percentage of its total
+        percent_scores = [ round(score * 100 / total) for score, total in zip(scores_list, totals)]
+        
+        # Format the percent scores to be sent to the chart
+        scores = json.dumps(percent_scores)
+        
+        # We need to find the first week for a given course that has scores, in order to calculate a baseline
+        first_week = Session.objects.filter(course=course_id).exclude(score_session=None).aggregate(Min('week_number'))['week_number__min']
+        # Find the session for the first scoring week of a given course
+        first_session = Session.objects.filter(course=course_id, week_number=first_week).values('id')[0]['id']
+        # Find the scores for the last scoring week of a given course
+        # Need to have .values() before .annotate() in order to perform GROUP BY
+        baselines_query = SkillScore.objects.values('skill__function__id').filter(session=first_session).annotate(Sum('score'))
+        baseline_list = [baseline_query.get('score__sum') for baseline_query in baselines_query]
+        # Calculate each baseline score as a percentage of its total
+        percent_baselines = [ round(score * 100 / total) for score, total in zip(baseline_list, totals)]
+           
+        baselines = json.dumps(percent_baselines)
         
         return render(
             request, 
