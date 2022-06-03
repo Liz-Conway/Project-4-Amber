@@ -27,7 +27,6 @@ function domLoaded() {
 
 	/*Generate Skills chart*/
 	generateChart();
-	generateChart2();
 }
 
 let unfocusUnique = (event) => validateUnique(event, "validateDiagnosis", "diagnosis", "#id_diagnosis");
@@ -189,16 +188,25 @@ function loadJson(selector) {
 }
 
 function generateChart() {
-	const jsonData = loadJson('#jsonData');
-	console.log("Data passed from Django", jsonData)
-	let options = {
-          series: [
-          {
-            name: 'Latest',
-            data: [
+	//scores = [20, 40, 60, 80, 100, 80]
+	baseline = [70, 70, 60, 68, 70, 72];
+	functions = ['Task Behaviour', 'Cognitive', 'Motor Planning', 'Motor', 'Sensory Modulation', 'Social/Emotional'];
+
+	scores = [{
+                x: 'Task Behaviour',
+                y: 20,
+                goals: [
+                  {
+                    name: 'Baseline',
+                    value: 70,
+                    strokeWidth: 5,
+                    strokeHeight: 10,
+                    strokeColor: '#7EB2DD'
+                  }
+                ]
+              },
               {
-                func: 'Cognitive',
-                x: '',
+                x: 'Cognitive',
                 y: 40,
                 goals: [
                   {
@@ -211,22 +219,7 @@ function generateChart() {
                 ]
               },
               {
-                func: 'Motor',
-                x: '',
-                y: 80,
-                goals: [
-                  {
-                    name: 'Baseline',
-                    value: 68,
-                    strokeWidth: 5,
-                    strokeHeight: 10,
-                    strokeColor: '#7EB2DD'
-                  }
-                ]
-              },
-              {
-                func: 'Motor Planning',
-                x: '',
+                x: 'Motor Planning',
                 y: 60,
                 goals: [
                   {
@@ -239,8 +232,20 @@ function generateChart() {
                 ]
               },
               {
-                func: 'Sensory Modulation',
-                x: '',
+                x: 'Motor',
+                y: 80,
+                goals: [
+                  {
+                    name: 'Baseline',
+                    value: 68,
+                    strokeWidth: 5,
+                    strokeHeight: 10,
+                    strokeColor: '#7EB2DD'
+                  }
+                ]
+              },
+              {
+                x: 'Sensory Modulation',
                 y: 100,
                 goals: [
                   {
@@ -253,8 +258,7 @@ function generateChart() {
                 ]
               },
               {
-                func: 'Social / Emotional',
-                x: '',
+                x: 'Social / Emotional',
                 y: 80,
                 goals: [
                   {
@@ -265,164 +269,13 @@ function generateChart() {
                     strokeColor: '#7EB2DD'
                   }
                 ]
-              },
-              {
-                func: 'Task Behaviour',
-                x: '',
-                y: 20,
-                goals: [
-                  {
-                    name: 'Baseline',
-                    value: 70,
-                    strokeWidth: 5,
-                    strokeHeight: 10,
-                    strokeColor: '#7EB2DD'
-                  }
-                ]
               }
             ]
-          }
-        ],
-          chart: {
-          height: 350,
-          type: 'bar'
-        },
-        plotOptions: {
-          bar: {
-            horizontal: true,
-          },
-         dataLabels: {
-          position: 'bottom'
-        },
-     },
-        colors: ['#F5853F'],
-        dataLabels: {
-          formatter: function(val, opt) {
-            const functionSkill =
-              opt.w.config.series[opt.seriesIndex].data[opt.dataPointIndex]
-                .func
-
-            return functionSkill;
-        
-          },
-          enabled: true,
-          textAnchor: 'start',
-          style: {
-          	colors: ['#3D2724']
-          },
-          background: {
-          	foreColor: '#3D2724'
-          },
-        },
-        yaxis: {
-          labels: {
-            show: false
-          }
-        },
-        title: {
-            text: 'Function Skill Scores',
-            align: 'center',
-            floating: true
-        },
-        subtitle: {
-            text: 'Percentage of total score available for that function',
-            align: 'center',
-        },
-        legend: {
-          show: true,
-          showForSingleSeries: true,
-          customLegendItems: ['Latest', 'Baseline'],
-          markers: {
-            fillColors: ['#F5853F', '#7EB2DD']
-          }
-        }
-        };
-
-var chart = new ApexCharts(document.querySelector("#chart"), options);
-
-chart.render();
-
-}
-
-function generateChart2() {
+          
 	var options = {
-          series: [{
+        series: [{
           	name: 'Latest',
-          //data: [20, 40, 60, 80, 100, 80]
-         	 data: [
-	          	{
-	                y: 20,
-	                goals: [
-	                  {
-	                    name: 'Baseline',
-	                    value: 70,
-	                    strokeWidth: 5,
-	                    strokeHeight: 10,
-	                    strokeColor: '#191970'
-	                  }
-	                ]
-	             },
-	            {
-	                y: 40,
-	                goals: [
-	                  {
-	                    name: 'Baseline',
-	                    value: 70,
-	                    strokeWidth: 5,
-	                    strokeHeight: 10,
-	                    strokeColor: '#191970'
-	                  }
-	                ]
-	            },
-	            {
-	                y: 60,
-	                goals: [
-	                  {
-	                    name: 'Baseline',
-	                    value: 60,
-	                    strokeWidth: 5,
-	                    strokeHeight: 10,
-	                    strokeColor: '#191970'
-	                  }
-	                ]
-	            },
-	            {
-	                y: 80,
-	                goals: [
-	                  {
-	                    name: 'Baseline',
-	                    value: 68,
-	                    strokeWidth: 5,
-	                    strokeHeight: 10,
-	                    strokeColor: '#191970'
-	                  }
-	                ]
-	            },
-	            {
-	                y: 100,
-	                goals: [
-	                  {
-	                    name: 'Baseline',
-	                    value: 70,
-	                    strokeWidth: 5,
-	                    strokeHeight: 10,
-	                    strokeColor: '#191970'
-	                  }
-	                ]
-	            },
-	            {
-	                y: 80,
-	                goals: [
-	                  {
-	                    name: 'Baseline',
-	                    value: 72,
-	                    strokeWidth: 5,
-	                    strokeHeight: 10,
-	                    strokeColor: '#191970'
-	                  }
-	                ]
-	            }
-          	]
+          	data: scores
         }],
           chart: {
           type: 'bar',
@@ -459,8 +312,7 @@ function generateChart2() {
           colors: ['#fff']
         },
         xaxis: {
-          categories: ['Task Behaviour', 'Cognitive', 'Motor Planning', 'Motor', 'Sensory Modulation', 'Social/Emotional'
-          ],
+          categories: functions,
         },
         yaxis: {
           labels: {
@@ -482,15 +334,22 @@ function generateChart2() {
             show: false
           },
           y: {
-            title: {
-              formatter: function () {
-                return ''
-              }
-            }
+	            formatter: function (val, opt) {
+	                return val + "%";
+	            }
+          }
+        },
+        legend: {
+          show: true,
+          showForSingleSeries: true,
+          customLegendItems: ['Latest', 'Baseline'],
+          markers: {
+            fillColors: ['#F5853F', '#7EB2DD']
           }
         }
+
         };
 
-        var chart = new ApexCharts(document.querySelector("#chart2"), options);
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
 }
