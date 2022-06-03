@@ -956,7 +956,7 @@ input:required + label::after, select:required + label::after, .manyManyLabel.re
 .scoreFunction {
   font-size: 1.3rem;
   font-weight: 500;
-  background-color: #7EB2DD;
+  background-color: #F5853F;
 }
 .scoreFunctionLabel {
   padding: 0.5rem 1rem;
