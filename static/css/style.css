@@ -950,7 +950,7 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
 /*~~~~~~~  Message  ~~~~~~~ */
 .message {
   padding: 1rem 0rem 1rem 3rem;
-  color: #3D2724;
+  color: #191970;
 }
 .message span.name {
   font-weight: 700;

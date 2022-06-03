@@ -101,31 +101,5 @@ class ObservationForm(forms.ModelForm):
         """
         fields = ["skill_name", ]
         
-        # tasks_unmounted = forms.ModelMultipleChoiceField(
-        #         queryset=Task.objects.filter(mounted=False),
-        #          widget=forms.CheckboxInput(attrs={'class': 'formInput'}),
-        #     )
-        #
-        # tasks_mounted = forms.ModelMultipleChoiceField(
-        #         queryset=Task.objects.filter(mounted=True),
-        #          widget=forms.CheckboxInput(attrs={'class': 'formInput'}),
-        #     )
         
-
-        # tasks = forms.ModelMultipleChoiceField(
-        #     queryset=Task.objects.all(),
-        #     # widget=forms.CheckboxInput(attrs={'class': 'formInput'}),
-        # )
-        
-        course = forms.IntegerField(widget=forms.HiddenInput())
-        
-        week_number = forms.IntegerField(widget=forms.HiddenInput())
-        
-        session_date = forms.DateField(widget=forms.HiddenInput())
-        
-        widgets={
-                   "horse":forms.Select(),
-                }
-        
-
 

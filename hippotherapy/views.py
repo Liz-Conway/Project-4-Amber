@@ -373,6 +373,22 @@ class SelectClient(TemplateView):
             client=client,   # parameter to pass to URL
         )
 
+
+def convert_observations(previous_observations):
+    converted = []
+    for observation in previous_observations:
+        if observation.startswith('csrf'):
+            continue
+        skill_id = int(observation.split('score')[1])
+        score = int(previous_observations[observation])
+        
+        observation_score = {'skill': skill_id, 'score': score}
+        converted.append(observation_score)
+    
+    return converted
+        
+
+
 class ObserveSession(TemplateView):
     template_name = "hippo/observeSession.html"
 
@@ -386,8 +402,15 @@ class ObserveSession(TemplateView):
         '*args' = Standard arguments parameter
         '**kwargs' = Standard keyword arguments parameter
         """
-        form = ObservationForm()
+        # form = ObservationForm()
+        previous_observations =  request.session.get('observations', None)
+        # Clear the session data
+        request.session.flush()
+        previous = None
         
+        if previous_observations != None:
+            previous = convert_observations(previous_observations)    
+            print(previous)
         # Get the session id that was passed in the URL
         session_id = kwargs['session']
         session_query = Session.objects.filter(id=session_id)
@@ -409,6 +432,7 @@ class ObserveSession(TemplateView):
                 "hints": hints,
                 "client": client,
                 "score_range": range(1, 6),
+                "previous": previous,
             }
         )
         
@@ -426,35 +450,49 @@ class ObserveSession(TemplateView):
         and assign it to a variable.
         Gets all of the data that we posted from our form
         """
-        observation_data=request.POST
         session_id = kwargs['session']
+        observation_data=request.POST
+        print(f"Length of observation_data :  {len(observation_data)}")
+        number_of_skills = Skill.objects.count()
+        print(f"Type of number of skills :  {type(number_of_skills)}")
+        print(f"Number of Skills :  {number_of_skills}")
+        # form = ObservationForm(data=request.POST)
+        print(f"Length of observation_data :  {len(observation_data)}")
+        print(f"Type of len(observation_data) :  {type(len(observation_data))}")
+
+        if len(observation_data) == number_of_skills + 1:
+            print("Inside if loop")
+            for observation in observation_data:
+                # First post data is the CSRF token - So skip this data point
+                if observation.startswith('csrf'):
+                    continue
+                
+                # observation will be of the form 'scoreX' or scoreXX' where X is a digit
+                # Splitting the string leaves a blank character as the first element
+                # of the returned array, so take the element at index 1 and convert to an int
+                # This gives the id of the skill associated with this score
+                skill_id = int(observation.split('score')[1])
+                score = observation_data[observation]
+                
+                # Get the skill object for this skill ID
+                skill_query = Skill.objects.filter(id=skill_id)
+                skill = get_object_or_404(skill_query)
+                # Get the session object for the session ID passed into the post method
+                session_query = Session.objects.filter(id=session_id)
+                session = get_object_or_404(session_query)
+                
+                # Create a SkillScore object for this Skill, during this Session
+                # having the observed score
+                skill_score = SkillScore(session=session, skill=skill, score=score)
+                # Save the SkillScore object to the 'through' table
+                skill_score.save()
+            
+            return redirect('viewSession', session=session_id)
         
-        for observation in observation_data:
-            # First post data is the CSRF token - So skip this data point
-            if observation.startswith('csrf'):
-                continue
-            
-            # observation will be of the form 'scoreX' or scoreXX' where X is a digit
-            # Splitting the string leaves a blank character as the first element
-            # of the returned array, so take the element at index 1 and convert to an int
-            # This gives the id of the skill associated with this score
-            skill_id = int(observation.split('score')[1])
-            score = observation_data[observation]
-            
-            # Get the skill object for this skill ID
-            skill_query = Skill.objects.filter(id=skill_id)
-            skill = get_object_or_404(skill_query)
-            # Get the session object for the session ID passed into the post method
-            session_query = Session.objects.filter(id=session_id)
-            session = get_object_or_404(session_query)
-            
-            # Create a SkillScore object for this Skill, during this Session
-            # having the observed score
-            skill_score = SkillScore(session=session, skill=skill, score=score)
-            # Save the SkillScore object to the 'through' table
-            skill_score.save()
-        
-        return redirect('viewSession', session=session_id)
+        else:
+            request.session['observations'] = observation_data
+            messages.error(request, 'You need to add a score on <span class="boldEntry">every</span> skill in <span class="boldEntry">all</span> functions', extra_tags='safe')
+            return HttpResponseRedirect(reverse('observeSession', args=[session_id]))
 
 
 class ChooseSession(TemplateView):

@@ -8,6 +8,15 @@
 		<h1>Hippotherapy Session Observations</h1>
 		
 		{% include 'hippo/includes/session-details.html' %}
+		
+		<table>
+		{% for score in previous %}
+			<tr>
+				<td>Skill: {{score.skill}}</td>
+				<td>Score: {{score.score}}</td>
+			</tr>
+		{% endfor %}
+		</table>
 
 		<p class="allRequired">Note: you must provide a score for each skill within every function</p>
 		<form id="observationForm" method="POST" action="">
@@ -38,7 +47,15 @@
 					    		<div class="skillScores">
 					    			{% for i in score_range %}
 						    				<input type="radio" id="{{function.function_name|slugify}}-{{skill.skill_name|slugify}}{{ i }}" name="score{{ skill.id }}" 
-						    					class="formRadioInput" value="{{ i }}" required>
+						    					class="formRadioInput" value="{{ i }}" 
+						    					{% for score in previous %}
+													{% if score.skill == skill.id %}
+														{% if score.score == i %}
+															checked
+														{% endif %}
+													{% endif %}
+												{% endfor %}
+						    					>
 											<label for="{{function.function_name|slugify}}-{{skill.skill_name|slugify}}{{ i }}" class="formRadioLabel">
 												<span class="formRadioButton"></span>
 												<span class="formRadioLabelText">{{ i }}</span>
