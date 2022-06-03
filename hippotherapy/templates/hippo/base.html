@@ -9,6 +9,7 @@
 	<title>{% block title %}{% endblock title %}</title>
 	
     <link rel="stylesheet" type="text/css" href="{% static 'css/jquery-ui.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.2/apexcharts.min.css" integrity="sha512-72LrFm5Wau6YFp7GGd7+qQJYkzRKj5UMQZ4aFuEo3WcRzO0xyAkVjK3NEw8wXjEsEG/skqvXKR5+VgOuzuqPtA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     
     <!-- Favicon -->
@@ -61,7 +62,7 @@
 						<a href="{% url 'selectClient' target='chooseSession' %}" class="navigationLink">View Session</a>
 					</li>
 					<li class="navigationItem">
-						<a href="{% url 'home' %}" class="navigationLink">Generate Charts</a>
+						<a href="{% url 'generateChart' %}" class="navigationLink">Generate Charts</a>
 					</li>
 					<li class="navigationItem">
 						<a href="{% url 'home' %}" class="navigationLink">View Charts</a>
@@ -95,6 +96,7 @@
 		crossorigin="anonymous"></script>
     
     <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script src="{% static 'js/script.js' %}"></script>
 
 </body>

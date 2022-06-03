@@ -1,0 +1,21 @@
+{% extends "hippo/base.html" %}
+
+{% block title %}Amber|Chart{% endblock title %}
+
+{% block content %}
+	<div id="chartContainer">
+		
+		<h1>Hippotherapy Course Chart</h1>
+		<div style="display: none" id="jsonData" data-json="{{ data }}"></div>
+		
+		{% include 'hippo/includes/session-details.html' %}
+		
+		<h2>Client :  {{ client}}</h2>
+		<div id="chart">
+		</div>
+		<div id="chart2"></div>
+
+	</div>
+
+
+{% endblock content %}

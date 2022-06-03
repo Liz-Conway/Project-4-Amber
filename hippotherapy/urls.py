@@ -30,4 +30,5 @@ urlpatterns = [
     path('chooseSession/<client>/', views.ChooseSession.as_view(), name='chooseSession'),
     path('viewSession/<session>/', views.ViewSession.as_view(), name='viewPostedSession'),
     path('viewSession', views.ViewSession.as_view(), name='viewSession'),
+    path('generateChart', views.ChartPage.as_view(), name='generateChart'),
 ]

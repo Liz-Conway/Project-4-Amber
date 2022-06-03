@@ -9,6 +9,7 @@ from _datetime import date
 from django.db.models.expressions import F
 from administration.models import Horse, Task, Diagnosis
 from django.http import response
+import json
 
 # Create your views here.
 class HomePage(TemplateView):
@@ -547,3 +548,30 @@ class ViewSession(TemplateView):
                 "session": session,
             }
         )
+        
+class ChartPage(TemplateView):
+    template_name = "hippo/generateChart.html"
+
+    """
+    In class-based views:
+    Instead of using an if statement to check the request method,  
+    we simply create class methods called GET, POST, or any other HTTP verb.
+    """
+    def get(self, request, *args, **kwargs):
+        """
+        '*args' = Standard arguments parameter
+        '**kwargs' = Standard keyword arguments parameter
+        """
+        
+        chart_data = json.dumps([30,40,35,50,49,60,70,91,125])
+        
+        return render(
+            request, 
+            self.template_name, # view to render
+            # Context - passed into the HTML template
+            {
+                "client": "Aisling Conway",
+                "data": chart_data,
+            }
+        )
+        
