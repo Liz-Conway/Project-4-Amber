@@ -3,12 +3,13 @@
 body {
   font-family: Gabriela;
   font-weight: 400;
+  font-size: 1.6rem;
   /* For accessibility - The WCAG criteria states that line-height should be at least 1.5 */
   /* The WCAG criteria is meant for "body" text, not headings. */
   /* So we can calculate the proper line height for all elements : */
   /* Instead of calculating the line height by multiplying the font-size with a number like 1.5, */
   /* this alternative uses the font-size as a base, and adds a fixed amount of space to each line. */
-  line-height: calc(1em + 0.7rem);
+  line-height: calc(1em + 1.3rem);
   color: #3D2724;
 }
 
@@ -16,6 +17,7 @@ body {
   text-align: center;
   line-height: calc(1em + 1rem);
   padding: 0 1rem;
+  font-size: 2rem;
 }
 .subTitle #amber {
   font-weight: 300;
@@ -174,7 +176,6 @@ header {
   padding-top: 3.4rem;
 }
 #titleBar h1 {
-  font-size: 3rem;
   margin-right: auto;
   margin-left: auto;
   padding-right: 8rem;
@@ -438,6 +439,10 @@ footer {
   text-align: center;
 }
 
+#scoreContainer {
+  margin-right: 2rem;
+}
+
 /*===== END  Layout  ===== */
 /*~~~~~~~  Home Page  ~~~~~~~ */
 .splash {
@@ -574,7 +579,6 @@ footer {
 }
 .skillName {
   font-weight: 700;
-  font-size: 1.2rem;
   padding-bottom: 0.5rem;
 }
 .skillDetails {
@@ -621,7 +625,6 @@ footer {
   -webkit-transform: translateY(-3.25rem);
           transform: translateY(-3.25rem);
   font-weight: 700;
-  font-size: 1.1rem;
   width: 100%;
   background-color: #7EB2DD;
   -ms-flex-wrap: wrap;
@@ -644,7 +647,7 @@ footer {
 #accordion h3 {
   /*First colour is a "fall back" in case the image does not work */
   background: #F5853F url(../images/ui-state-default-bg.png) 50% 50% repeat-x;
-  font-size: 1.4rem;
+  font-size: 2rem;
 }
 #accordion h3 .tapHint {
   display: none;
@@ -656,7 +659,7 @@ footer {
 }
 #accordion h3[aria-selected="true"] .tapHint {
   display: inline-block;
-  font-size: 1rem;
+  font-size: 1.6rem;
 }
 #accordion h3:hover {
   background-color: #F5853F;
@@ -699,12 +702,11 @@ form {
   margin-bottom: 2rem;
 }
 .formInput, .form #id_diagnosis {
-  /*Always when padding an element give it a bit more on the sides to look better */
-  font-size: 1.5rem;
-  font-family: inherit;
   /*Font family & colour are set by the browser for form inputs */
   /*So we need to set them to inherit from the body element */
+  font-family: inherit;
   color: inherit;
+  /*Always when padding an element give it a bit more on the sides to look better */
   padding: 1.5rem 2rem;
   border-radius: 2px;
   background-color: rgba(255, 255, 255, 0.5);
@@ -752,7 +754,6 @@ form {
   color: #999999;
 }
 .formLabel {
-  font-size: 1.2rem;
   font-weight: 700;
   /*Use 'block' so we can apply margins to the element */
   display: block;
@@ -794,13 +795,11 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
           flex-direction: row;
   margin-left: auto;
   margin-right: auto;
-  font-size: 1.5rem;
 }
 #addClientForm #id_gender label {
   margin-right: 3rem;
 }
 #addClientForm #id_diagnosis {
-  font-size: 1.4rem;
   width: 90%;
   border: 1px solid #7EB2DD;
   -webkit-box-shadow: 0 1.5rem 4rem rgba(61, 39, 36, 0.15);
@@ -848,94 +847,6 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
           flex-direction: row;
 }
 
-.formRadioInput {
-  display: none;
-}
-.formRadioLabel {
-  font-size: 1.6rem;
-  position: relative;
-  cursor: pointer;
-  /*Make room for our custom button */
-  padding-left: 4.5rem;
-}
-.formRadioLabelGroup {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  padding-left: 4rem;
-}
-.formRadioLabelCourse {
-  margin-right: 1.5rem;
-  font-weight: 700;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.formRadioLabelDates {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-.formRadioButton {
-  height: 3rem;
-  width: 3rem;
-  border: 5px solid #F5853F;
-  border-radius: 50%;
-  /*The above attributes only work on block elements */
-  /*Make it inline-block so they are on the same line as their label */
-  display: inline-block;
-  position: absolute;
-  left: 0;
-  top: 2.2rem;
-  /*The inner 'dot' of the selected radio button */
-}
-.formRadioButton::after {
-  content: "";
-  display: block;
-  height: 1.5rem;
-  width: 1.5rem;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  background-color: #191970;
-  opacity: 0;
-  -webkit-transition: opacity 0.2s;
-  transition: opacity 0.2s;
-}
-.formRadioInput:checked + .formRadioLabel .formRadioButton::after {
-  /*For a checked (selected) RadioInput, get the next sibling RadioLabel, */
-  /*then get the RadioLabels RadioButton child and select the RadioButton's ::after pseudo class */
-  opacity: 1;
-}
-
-.skillRadio .formRadioButton {
-  /*Align the Observe Session skill radio buttons */
-  top: 0;
-}
-.skillRadio .formRadioLabel {
-  /*Align the Observe Session skill radio labels */
-  padding-left: 3.5rem;
-}
-.skillRadio .formRadioLabelText {
-  /*Need to make the display inline-block so we can apply height & width to this element */
-  display: inline-block;
-  padding-top: 0.5rem;
-}
-
 /*===== END  Form  ===== */
 /*~~~~~~~  Button  ~~~~~~~ */
 .btn {
@@ -943,7 +854,6 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
   display: inline-block;
   padding: 1.5rem 4rem;
   border-radius: 10rem;
-  font-size: 1.2rem;
   background-color: #FFCDBC;
   color: #3D2724;
   border: 3px solid #3D2724;
@@ -1022,7 +932,6 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
 .message {
   padding: 1rem 0rem 1rem 3rem;
   color: #3D2724;
-  font-size: 1.2rem;
 }
 .message span.name {
   font-weight: 700;
@@ -1044,13 +953,16 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
 }
 .manyManyCheck label {
   margin-left: 1rem;
+  margin-top: -0.6rem;
+  padding-bottom: 0.6rem;
 }
 
 /*===== END  Many-to-many components  ===== */
 /*~~~~~~~  Table  ~~~~~~~ */
 .scoreTable {
   border: 1px solid #191970;
-  margin: 1rem auto;
+  margin: 1rem auto 2rem auto;
+  max-width: calc(100% - 4rem);
   border-collapse: collapse;
 }
 .scoreTable .rightPad {
@@ -1067,7 +979,7 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
   padding-right: 1rem;
 }
 .scoreFunction {
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   font-weight: 500;
   background-color: #F5853F;
 }
@@ -1103,7 +1015,6 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
           flex-direction: row;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  font-size: 1.5rem;
   margin-top: 1.5rem;
 }
 .sessionClient {
@@ -1120,7 +1031,97 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
 }
 
 /*===== END  Chart  ===== */
+/*~~~~~~~  Radio Button  ~~~~~~~ */
+.formRadioInput {
+  display: none;
+}
+.formRadioLabel {
+  position: relative;
+  cursor: pointer;
+  /*Make room for our custom button */
+  padding-left: 4.5rem;
+}
+.formRadioLabelGroup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding-left: 4rem;
+}
+.formRadioLabelCourse {
+  margin-right: 1.5rem;
+  font-weight: 700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.formRadioLabelDates {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.skillRadio .formRadioLabel {
+  /*Align the Observe Session skill radio labels */
+  padding-left: 3.5rem;
+}
+.skillRadio .formRadioLabelText {
+  /*Need to make the display inline-block so we can apply height & width to this element */
+  display: inline-block;
+  padding-top: 0.5rem;
+}
+.formRadioButton {
+  height: 3rem;
+  width: 3rem;
+  border: 5px solid #F5853F;
+  border-radius: 50%;
+  /*The above attributes only work on block elements */
+  /*Make it inline-block so they are on the same line as their label */
+  display: inline-block;
+  position: absolute;
+  left: 0;
+}
+.chooseCourseRadio .formRadioButton {
+  /*Align the Select Course radio buttons */
+  top: 3.6rem;
+}
+.skillRadio .formRadioButton {
+  /*Align the Observe Session skill radio buttons */
+  top: 0;
+}
+.formRadioButton::after {
+  /*The inner 'dot' of the selected radio button */
+  content: "";
+  display: block;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #191970;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+.formRadioInput:checked + .formRadioLabel .formRadioButton::after {
+  /*For a checked (selected) RadioInput, get the next sibling RadioLabel, */
+  /*then get the RadioLabels RadioButton child and select the RadioButton's ::after pseudo class */
+  opacity: 1;
+}
 
+/*===== END  Radio Button  ===== */
 
 /* Media Queries for Big Phones */
 @media only screen and (min-width: 28em) {
@@ -1323,7 +1324,97 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
 
 
 /* Media Queries for Extra Large screens */
-@media only screen and (min-width: 75em) {
+@media only screen /*~~~~~~~  Radio Button  ~~~~~~~ */
+.formRadioInput {
+  display: none;
+}
+.formRadioLabel {
+  position: relative;
+  cursor: pointer;
+  /*Make room for our custom button */
+  padding-left: 4.5rem;
+}
+.formRadioLabelGroup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding-left: 4rem;
+}
+.formRadioLabelCourse {
+  margin-right: 1.5rem;
+  font-weight: 700;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.formRadioLabelDates {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.skillRadio .formRadioLabel {
+  /*Align the Observe Session skill radio labels */
+  padding-left: 3.5rem;
+}
+.skillRadio .formRadioLabelText {
+  /*Need to make the display inline-block so we can apply height & width to this element */
+  display: inline-block;
+  padding-top: 0.5rem;
+}
+.formRadioButton {
+  height: 3rem;
+  width: 3rem;
+  border: 5px solid #F5853F;
+  border-radius: 50%;
+  /*The above attributes only work on block elements */
+  /*Make it inline-block so they are on the same line as their label */
+  display: inline-block;
+  position: absolute;
+  left: 0;
+}
+.chooseCourseRadio .formRadioButton {
+  /*Align the Select Course radio buttons */
+  top: 3.6rem;
+}
+.skillRadio .formRadioButton {
+  /*Align the Observe Session skill radio buttons */
+  top: 0;
+}
+.formRadioButton::after {
+  /*The inner 'dot' of the selected radio button */
+  content: "";
+  display: block;
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #191970;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+.formRadioInput:checked + .formRadioLabel .formRadioButton::after {
+  /*For a checked (selected) RadioInput, get the next sibling RadioLabel, */
+  /*then get the RadioLabels RadioButton child and select the RadioButton's ::after pseudo class */
+  opacity: 1;
+}
+
+/*===== END  Radio Button  ===== */and (min-width: 75em) {
   html {
     font-size: 75%;
   }
