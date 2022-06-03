@@ -15,8 +15,9 @@
 		or even functions and classes. -->
 		<h2>{{ client }}</h2>
 		
-		<!-- 'viewSession' URL that we will submit the form to -->
-		<form id="selectCourseForm" method="POST" action="/generateChart">
+		<!-- No URL to submit the form to -->
+		<!-- I.E. This is a 'postback' -->
+		<form id="selectCourseForm" method="POST" action="">
 			<!-- Whenever we're posting information in Django,
 			we need to add the CSRF or cross-site request forgery token.
 			This token is a randomly generated unique value which will be added
@@ -25,11 +26,13 @@
 			todo list app and not from another website. -->
 			{% csrf_token %}
 			
+			<input type="hidden" name="client" value="{{ client.id }}">
+			
 			<div class="chooseCourseRadio">
 				{% for course in courses %}
     				<div class="formRadioGroup">
 	    				<input type="radio" id="course{{ course.course }}" name="chosenCourse"
-	    					class="formRadioInput" value="{{ course.course }}" required>
+	    					class="formRadioInput" value="{{ course.course }}">
 						<label for="course{{ course.course }}" class="formRadioLabel">
 							<span class="formRadioButton"></span>
 							<span class="formRadioLabelGroup">

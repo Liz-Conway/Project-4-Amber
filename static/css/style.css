@@ -427,7 +427,8 @@ footer {
 /*~~~~~~~  Layout  ~~~~~~~ */
 [id$="Container"] {
   /* Target all elements with an id that ends in 'Container' */
-  margin-left: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   /*Move the container closer to the header/logo section (mobile only) */
 }
 [id$="Container"] h1 {
@@ -684,6 +685,25 @@ footer {
 }
 
 /*===== END  Observations page  ===== */
+/*~~~~~~~  Select Session Page  ~~~~~~~ */
+.chooseSessionRadio .formRadioLabel {
+  font-size: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.chooseSessionRadio .formRadioGroup {
+  width: 90%;
+}
+.chooseSessionRadio .formRadioGroup:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.chooseSessionText {
+  margin-left: auto;
+}
+
+/*===== END  Select Session Page  ===== */
 /*~~~~~~~  Form  ~~~~~~~ */
 form {
   margin: 2rem 0;

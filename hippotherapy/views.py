@@ -11,6 +11,8 @@ from administration.models import Horse, Task, Diagnosis
 from django.http import response
 import json
 import datetime
+from django.http.response import HttpResponseRedirect
+from django.urls.base import reverse
 
 # Create your views here.
 class HomePage(TemplateView):
@@ -582,7 +584,7 @@ class ChartPage(TemplateView):
     We then need to convert the actual scores to scores as a percentage of the total.
     We need to pass Labels, current scores and baseline scores to the chart page.
     """
-    def post(self, request, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         """
         '*args' = Standard arguments parameter
         '**kwargs' = Standard keyword arguments parameter
@@ -678,5 +680,22 @@ class ChooseCourse(TemplateView):
             }
         )
 
-
+    """
+    In class-based views:
+    Instead of using an if statement to check the request method,  
+    we simply create class methods called GET, POST, or any other HTTP verb.
+    """
+    def post(self, request, *args, **kwargs):
+        """
+        Get the course the Occupational Therapist chose.
+        Then generate a chart for it!
+        """
+        client_id = request.POST['client']
+        try:
+            course_id = request.POST['chosenCourse']
+        except KeyError:
+            messages.error(request, 'You must select one of the courses below')
+            return HttpResponseRedirect(reverse('chooseCourse', args=[client_id]))
+        
+        return HttpResponseRedirect(reverse('generateChart', args=[client_id, course_id]))
 
