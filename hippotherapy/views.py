@@ -289,7 +289,7 @@ class RecordSession(TemplateView):
             course_number = request.POST['course']
             week_number = request.POST['week_number']
             messages.success(request,
-                             f'New session for <span class="boldEntry">{session_client}</span> ({course_number} / {week_number}) added successfully.',
+                             f'New session for <span class="boldEntry">{session_client}</span> ({course_number}/{week_number}) added successfully.',
                              extra_tags='safe')
 
             # Redirect to the 'observeSession' page after adding a new Session
@@ -368,19 +368,21 @@ class SelectClient(TemplateView):
         if page_url == 'generateChart':
             page_url = 'chooseCourse'
             
-            # courses, client, course = self.get_scored_courses_for_client(client, scored_courses)
-            # # Store this scored_courses in the session
-            # request.session['scored_courses'] = scored_courses
         elif page_url == 'recordSession':
             courses = Course.objects.filter(client=client)
             if courses.count() != 0:
                 page_url = 'newCourse'
+                # Get the latest sessions for any Courses taken by this client
                 max_session_dates = Session.objects.filter(course__in=courses).values('course').annotate(max_date=Max('session_date')).order_by('-max_date', '-course')
+                # Get the date of the last session taken by this client
                 last_session_date = max_session_dates[0]
-                sess = Session.objects.filter(session_date=last_session_date['max_date'], course=last_session_date['course'])
-                last_session = get_object_or_404(sess)
-                last_session = last_session.id
-                    
+                # Get the sessions of the last Course taken by this client
+                sesh = Session.objects.filter(session_date=last_session_date['max_date'], course=last_session_date['course']).order_by('-week_number')
+                # Get the last session of the last Course taken by this client
+                last_sesh = sesh[0]
+                # Get the id of the last session of the last Course taken by this client 
+                last_session = last_sesh.id
+                   
         
         # https://www.tutorialspoint.com/django/django_page_redirection.htm
         return redirect(
