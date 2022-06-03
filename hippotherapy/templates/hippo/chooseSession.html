@@ -32,7 +32,8 @@
 	    					class="formRadioInput" value="{{ session.id }}" required>
 						<label for="session{{ session.id }}" class="formRadioLabel">
 							<span class="formRadioButton"></span>
-							{{ session.session_date }} {{ session }}
+							<span>{{ session.session_date }}</span> 
+							<span class="chooseSessionText">Session : {{ session }}</span>
 						</label>
     				</div>
 	   			{% endfor %}
