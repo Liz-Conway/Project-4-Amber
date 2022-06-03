@@ -9,6 +9,7 @@
 		
 		{% include 'hippo/includes/session-details.html' %}
 
+		<p class="allRequired">Note: you must provide a score for each skill within every function</p>
 		<form id="observationForm" method="POST" action="">
 			<!-- Whenever we're posting information in Django,
 			we need to add the CSRF or cross-site request forgery token.
@@ -48,6 +49,7 @@
 				  </div>
 				{% endfor %}
 			</div>
+			<p class="allRequired">Have you scored all skills in every function?</p>
 			<div class="btnGroup">
 				<input type="submit" class="btn btnMain" value="Save Observations" />
 				<a href="{% url 'home' %}" class="btn btnGhost">Cancel</a>

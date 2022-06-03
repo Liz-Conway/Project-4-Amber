@@ -664,6 +664,14 @@ footer {
   margin-bottom: 2rem;
 }
 
+#observationForm .btnGroup {
+  margin-top: 1rem;
+}
+
+.allRequired {
+  text-align: center;
+}
+
 /*===== END  Observations page  ===== */
 /*~~~~~~~  Form  ~~~~~~~ */
 .form {
