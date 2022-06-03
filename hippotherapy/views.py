@@ -382,8 +382,17 @@ class SelectClient(TemplateView):
                 last_sesh = sesh[0]
                 # Get the id of the last session of the last Course taken by this client 
                 last_session = last_sesh.id
-                   
         
+                # https://www.tutorialspoint.com/django/django_page_redirection.htm
+                return redirect(
+                    page_url,       # view to render
+                    client=client,   # parameter to pass to URL
+                    session=last_session,
+                )
+            else:
+                # First Course for this client
+                get_course_for_client(client, True)
+                
         # https://www.tutorialspoint.com/django/django_page_redirection.htm
         return redirect(
             page_url,       # view to render
