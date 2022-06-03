@@ -27,9 +27,13 @@
 			
 			<div class="chooseSessionRadio">
 				{% for session in sessions %}
-    				<div class="chooseSessionRadioButton">
-	    				<input type="radio" id="session{{ session.id }}" name="chosenSession" value="{{ session.id }}" required>
-						<label for="session{{ session.id }}">{{ session.session_date }} {{ session }}</label>
+    				<div class="formRadioGroup">
+	    				<input type="radio" id="session{{ session.id }}" name="chosenSession" 
+	    					class="formRadioInput" value="{{ session.id }}" required>
+						<label for="session{{ session.id }}" class="formRadioLabel">
+							<span class="formRadioButton"></span>
+							{{ session.session_date }} {{ session }}
+						</label>
     				</div>
 	   			{% endfor %}
    			</div>

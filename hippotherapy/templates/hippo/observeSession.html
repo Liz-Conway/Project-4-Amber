@@ -20,7 +20,7 @@
 			{% csrf_token %}
 			<div id="accordion" class="observationAccordion">
 				{% for function in functions %}
-			  		<h3>{{ function.function_name }}<span class="tapHint">&emsp;(Tap on a hint see it in full)</span></h3>
+			  	<h3>{{ function.function_name }}<span class="tapHint">&emsp;(Tap on a hint see it in full)</span></h3>
 				  <div class="skill">
 				    {% for skill in skills %}
 				    	{% if skill.function_id == function.id %}
@@ -37,9 +37,13 @@
 					    		</div>
 					    		<div class="skillScores">
 					    			{% for i in score_range %}
-					    				<div class="skillRadio">
-						    				<input type="radio" id="score{{ i }}" name="score{{ skill.id }}" value="{{ i }}" required>
-											<label for="score{{ i }}">{{ i }}</label>
+					    				<div class="skillRadio formRadioGroup">
+						    				<input type="radio" id="score{{ i }}" name="score{{ skill.id }}" 
+						    					class="formRadioInput" value="{{ i }}" required>
+											<label for="score{{ i }}" class="formRadioLabel">
+												<span class="formRadioButton"></span>
+												<span class="formRadioLabelText">{{ i }}</span>
+											</label>
 					    				</div>
 					    			{% endfor %}
 					    		</div>

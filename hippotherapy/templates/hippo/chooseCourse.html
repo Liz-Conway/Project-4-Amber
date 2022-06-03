@@ -27,12 +27,20 @@
 			
 			<div class="chooseCourseRadio">
 				{% for course in courses %}
-    				<div class="chooseCourseRadioButton">
-	    				<input type="radio" id="course{{ course.course }}" name="chosenCourse" value="{{ course.course }}" required>
-						<label for="course{{ course.id }}">
-							{{ course.course }}
-							First Session: {{ course.first_date }} (Week {{ course.first_week }})
-							Last Session: {{ course.last_date }} (Week {{ course.last_week }})
+    				<div class="formRadioGroup">
+	    				<input type="radio" id="course{{ course.course }}" name="chosenCourse"
+	    					class="formRadioInput" value="{{ course.course }}" required>
+						<label for="course{{ course.course }}" class="formRadioLabel">
+							<span class="formRadioButton"></span>
+							<span class="formRadioLabelGroup">
+								<span class="formRadioLabelCourse">
+									{{ course.course }}
+								</span>
+								<span class="formRadioLabelDates">
+									<span class="formRadioLabelDatesSession">First Session: {{ course.first_date }} (Week {{ course.first_week }})</span>
+									<span class="formRadioLabelDatesSession">Last Session: {{ course.last_date }} (Week {{ course.last_week }})</span>
+								</span>
+							</span>
 						</label>
     				</div>
 	   			{% endfor %}
