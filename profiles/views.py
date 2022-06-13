@@ -6,8 +6,6 @@ from django.contrib import messages
 
 class AddUser(TemplateView):
     template_name = 'profiles/addUser.html'
-    # form_class = HippotherapyUserCreationForm
-    
     
     """
     In class-based views:
@@ -20,8 +18,6 @@ class AddUser(TemplateView):
         '**kwargs' = Standard keyword arguments parameter
         """
         form = HippotherapyUserCreationForm()
-        # hat_sizes = Hat.objects.all()
-        # diagnoses = Diagnosis.objects.all()
         
         return render(
             request, 
@@ -29,8 +25,6 @@ class AddUser(TemplateView):
             # Context - passed into the HTML template
             {
                 "form": form, 
-                # "hat_sizes": hat_sizes,
-                # "diagnoses": diagnoses,
             }
         )
         
@@ -55,8 +49,7 @@ class AddUser(TemplateView):
         Form is valid => If all the fields have been completed
         """
         if add_user_form.is_valid():
-            saved_user = add_user_form.save()
-            # save_diagnoses(saved_user.id, request.POST)
+            add_user_form.save()
             first_name = request.POST['first_name']
             last_name = request.POST['last_name']
             messages.success(request,
@@ -71,8 +64,6 @@ class AddUser(TemplateView):
             messages.error(request, '<span class="boldEntry">Invalid form submission.</span>', extra_tags='safe')
             messages.error(request, add_user_form.errors)
 
-        # hat_sizes = Hat.objects.all()
-        # diagnoses = Diagnosis.objects.all()
         """
         Send all of this information to our render method
         """
@@ -82,8 +73,6 @@ class AddUser(TemplateView):
             # Context - passed into the HTML template
             { 
                 'form': HippotherapyUserCreationForm(),
-                # 'hat_sizes': hat_sizes,
-                # "diagnoses": diagnoses,
             }
         )
 

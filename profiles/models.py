@@ -12,5 +12,8 @@ class HippotherapyUser(AbstractUser):
         (OT, 'Occupational Therapist'),
         (ANALYST, 'Hippotherapy Analyst'),
     )
-    role = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, blank=True, null=True)
+    role = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, blank=False, null=True)
+    
+    def user_role(self):
+        return dict(HippotherapyUser.ROLE_CHOICES)[self.role]
 

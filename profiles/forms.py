@@ -3,7 +3,7 @@ from profiles.models import HippotherapyUser
 from django.contrib.auth.models import User
 from django import forms
 
-
+# https://www.codeunderscored.com/django-roles-permissions-and-groups/
 class HippotherapyUserCreationForm(UserCreationForm):
       
     class Meta:
@@ -28,6 +28,6 @@ class HippotherapyUserChangeForm(UserChangeForm):
     
     class Meta:
         model = HippotherapyUser
-        fields = ('username', 'first_name', 'last_name', 'role')
+        fields = ('username', 'first_name', 'last_name')
         
         

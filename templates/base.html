@@ -44,10 +44,12 @@
 			</div>
 			<div id="accountLinks">
 				{% if user.is_authenticated %}
+					{% if user.user_role == 'Administrator' %}
+						<a href="{% url 'addUser' %}" class="navigationLink accountLink">Add User</a>
+					{% endif %}
 					<a href="{% url 'home' %}" class="navigationLink accountLink">My Account</a> 
 					<a href="{% url 'account_logout' %}" class="navigationLink accountLink">Logout</a>
 				{% else %}
-					<a href="{% url 'addUser' %}" class="navigationLink accountLink">Add User</a>
 					<a href="{% url 'account_login' %}" class="navigationLink accountLink">Login</a>
 				{% endif %}
 			</div>
@@ -57,24 +59,36 @@
 					<li class="navigationItem">
 						<a href="{% url 'home' %}" class="navigationLink"> Home</a>
 					</li>
-					<li class="navigationItem">
-						<a href="{% url 'addClient' %}" class="navigationLink"> Client</a>
-					</li>
+					{% if user.user_role == 'Occupational Therapist' %}
+						<li class="navigationItem">
+							<a href="{% url 'addClient' %}" class="navigationLink"> Client</a>
+						</li>
+					{% endif %}
+					{% if user.user_role == 'Occupational Therapist' %}
 					<li class="navigationItem">
 						<a href="{% url 'selectClient' target='recordSession' %}" class="navigationLink">Record Session</a>
 					</li>
-					<li class="navigationItem">
-						<a href="{% url 'selectClient' target='chooseSession' %}" class="navigationLink">View Session</a>
-					</li>
-					<li class="navigationItem">
-						<a href="{% url 'selectClient' target='generateChart' %}" class="navigationLink">Generate Charts</a>
-					</li>
-					<li class="navigationItem">
-						<a href="{% url 'addDiagnosis' %}" class="navigationLink">Add Diagnosis</a>
-					</li>
-					<li class="navigationItem">
-						<a href="{% url 'admin:index' %}" class="navigationLink">Maintain Configuration</a>
-					</li>
+					{% endif %}
+					{% if user.user_role == 'Occupational Therapist' or user.user_role == 'Hippotherapy Analyst' %}
+						<li class="navigationItem">
+							<a href="{% url 'selectClient' target='chooseSession' %}" class="navigationLink">View Session</a>
+						</li>
+					{% endif %}
+					{% if user.user_role == 'Occupational Therapist' or user.user_role == 'Hippotherapy Analyst' %}
+						<li class="navigationItem">
+							<a href="{% url 'selectClient' target='generateChart' %}" class="navigationLink">Generate Charts</a>
+						</li>
+					{% endif %}
+					{% if user.user_role == 'Administrator' %}
+						<li class="navigationItem">
+							<a href="{% url 'addDiagnosis' %}" class="navigationLink">Add Diagnosis</a>
+						</li>
+					{% endif %}
+					{% if user.user_role == 'Administrator' %}
+						<li class="navigationItem">
+							<a href="{% url 'admin:index' %}" class="navigationLink">Maintain Configuration</a>
+						</li>
+					{% endif %}
 				</ul>
 			</nav>
 		</div>

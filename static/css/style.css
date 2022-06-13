@@ -495,6 +495,11 @@ footer {
   margin-top: auto;
 }
 
+.welcomeText {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
 /*===== END  Home Page  ===== */
 /*~~~~~~~  Diagnosis  ~~~~~~~ */
 #diagnosisContainer {
