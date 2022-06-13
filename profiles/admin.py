@@ -8,6 +8,6 @@ class HippotherapyUserAdmin(UserAdmin):
     add_form = HippotherapyUserCreationForm
     form = HippotherapyUserChangeForm
     model = HippotherapyUser
-    list_display = ['first_name', 'last_name', 'role', 'username']
+    list_display = ['username', 'role', 'first_name', 'last_name']
     
 admin.site.register(HippotherapyUser, HippotherapyUserAdmin)

@@ -67,13 +67,13 @@ class AddClient(TemplateView):
         and assign it to a variable.
         Gets all of the data that we posted from our form
         """
-        add_client_form = ClientForm(data=request.POST)
+        add_user_form = ClientForm(data=request.POST)
         
         """
         Form is valid => If all the fields have been completed
         """
-        if add_client_form.is_valid():
-            saved_client = add_client_form.save()
+        if add_user_form.is_valid():
+            saved_client = add_user_form.save()
             save_diagnoses(saved_client.id, request.POST)
             first_name = request.POST['first_name']
             last_name = request.POST['last_name']
@@ -87,7 +87,7 @@ class AddClient(TemplateView):
             showing the errors
             """
             messages.error(request, '<span class="boldEntry">Invalid form submission.</span>', extra_tags='safe')
-            messages.error(request, add_client_form.errors)
+            messages.error(request, add_user_form.errors)
 
         hat_sizes = Hat.objects.all()
         diagnoses = Diagnosis.objects.all()
