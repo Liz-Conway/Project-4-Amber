@@ -162,6 +162,7 @@ header {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 100%;
+  height: 16rem;
 }
 
 #titleBar {
@@ -972,6 +973,13 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
   margin-right: 2rem;
 }
 
+.blankIconButton {
+  height: 27.2px;
+  width: 27.6px;
+  border: 1px solid #FFFFFF;
+  background-color: #FFFFFF;
+}
+
 /*===== END  Button  ===== */
 /*~~~~~~~  Message  ~~~~~~~ */
 .message {
@@ -1167,7 +1175,6 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
 }
 
 /*===== END  Radio Button  ===== */
-
 /*~~~~~~~  Form  ~~~~~~~ */
 .login p {
   margin-bottom: 1rem;
