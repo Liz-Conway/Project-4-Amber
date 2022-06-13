@@ -72,13 +72,13 @@ class ViewsTest(TestCase):
         response = self.test_client.get(self.home_url)
         
         self.assertEqual(response.status_code, 200, "Going to home page should return a Status Code of 200 (OK)")
-        self.assertTemplateUsed(response, "hippo/index.html", "Home page should use the index.html template")
+        self.assertTemplateUsed(response, "index.html", "Home page should use the index.html template")
 
     def test_show_home_page_blank_url(self):
         response = self.test_client.get('')
         
         self.assertEqual(response.status_code, 200, "Going to home page should return a Status Code of 200 (OK)")
-        self.assertTemplateUsed(response, "hippo/index.html", "Home page should use the index.html template")
+        self.assertTemplateUsed(response, "index.html", "Home page should use the index.html template")
 
     def test_get_add_diagnosis(self):
         response = self.test_client.get(self.add_diagnosis_url)
@@ -137,7 +137,7 @@ class ViewsTest(TestCase):
         self.assertEqual(Client.objects.last().degree_of_difficulty, 'Gets annoyed very quickly', 'Donald certainly Gets annoyed very quickly')
         self.assertEqual(Client.objects.last().additional_notes, 'Speaks quackily', 'Additional notes should say :  Speaks quackily')
         
-        self.assertTemplateUsed(response, "addClient.html", "Add Client page should use the addClient.html template")
+        self.assertTemplateUsed(response, 'hippo/addClient.html', 'Add Client page should use the addClient.html template')
         
     def test_post_add_client_multiple_diagnoses(self):
         post_data = {
@@ -172,7 +172,7 @@ class ViewsTest(TestCase):
         self.assertEqual(last_client.degree_of_difficulty, 'Gets annoyed very quickly', 'Donald certainly Gets annoyed very quickly')
         self.assertEqual(last_client.additional_notes, 'Speaks quackily', 'Additional notes should say :  Speaks quackily')
         
-        self.assertTemplateUsed(response, "addClient.html", "Add Client page should use the addClient.html template")
+        self.assertTemplateUsed(response, 'hippo/addClient.html', 'Add Client page should use the addClient.html template')
         
     def test_post_add_client_success_message(self):
         post_data = {
@@ -194,7 +194,7 @@ class ViewsTest(TestCase):
         # Since we redisplay the Add Client page again after successfully adding a client
         # the Status Code is 200 because we used a GET instead of a redirect
         self.assertEqual(response.status_code, 200, 'Posting the Add Client form should return a Status Code of 200 (OK)')
-        self.assertTemplateUsed(response, "addClient.html", "Add Client page should use the addClient.html template")
+        self.assertTemplateUsed(response, 'hippo/addClient.html', 'Add Client page should use the addClient.html template')
         self.assertEqual(message, 'New client <span class="name">Donald Duck</span> added successfully.', 'Should have a success message when a client is added.')
         
 

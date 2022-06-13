@@ -19,11 +19,11 @@ from hippotherapy.hippotherapy_utils import get_course_for_client,\
 
 # Create your views here.
 class HomePage(TemplateView):
-    template_name = "hippo/index.html"
+    template_name = "index.html"
 
 
 class AddClient(TemplateView):
-    template_name = "hippo/addClient.html"
+    template_name = 'hippo/addClient.html'
     form_class = ClientForm
     
     
@@ -100,7 +100,7 @@ class AddClient(TemplateView):
         initial = dict(map(lambda x:(x[0], x[1][0]), dict(request.GET).items()))
         return render(
             request, 
-            'addClient.html', # View to render
+            self.template_name, # View to render
             # Context - passed into the HTML template
             { 
                 'form': ClientForm(initial=initial),

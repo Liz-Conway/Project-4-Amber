@@ -1,4 +1,4 @@
-{% extends "hippo/base.html" %}
+{% extends "base.html" %}
 
 {% block title %}Amber|View Session{% endblock title %}
 
@@ -7,7 +7,7 @@
 		
 		<h1>Session</h1>
 		<section class="sessionInfo">
-			{% include 'hippo/includes/session-details.html' %}
+			{% include 'includes/session-details.html' %}
 			<div>
 				Horse : <span class="boldEntry">{{ scores.first.session.horse }}</span>
 			</div>

@@ -64,13 +64,19 @@
 					<li class="navigationItem">
 						<a href="{% url 'selectClient' target='generateChart' %}" class="navigationLink">Generate Charts</a>
 					</li>
+					<li class="navigationItem">
+						<a href="{% url 'addDiagnosis' %}" class="navigationLink">Add Diagnosis</a>
+					</li>
+					<li class="navigationItem">
+						<a href="{% url 'admin:index' %}" class="navigationLink">Maintain Configuration</a>
+					</li>
 				</ul>
 			</nav>
 		</div>
 
 	</header>
 	
-	{% include 'hippo/includes/messages.html' %}
+	{% include 'includes/messages.html' %}
 	
 	<main>
 		{% block content %}

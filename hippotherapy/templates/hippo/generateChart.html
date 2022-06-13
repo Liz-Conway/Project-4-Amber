@@ -1,4 +1,4 @@
-{% extends "hippo/base.html" %}
+{% extends "base.html" %}
 {% load static %}
 
 {% block title %}Amber|Chart{% endblock title %}
@@ -12,7 +12,7 @@
 		<h1>Hippotherapy Course Chart</h1>
 		<div style="display: none" id="jsonData" data-json="{{ data }}"></div>
 		
-		{% include 'hippo/includes/session-details.html' %}
+		{% include 'includes/session-details.html' %}
 		
 		<p>Tap on a bar to see Baseline & Latest values</p>
 		<div id="chart">

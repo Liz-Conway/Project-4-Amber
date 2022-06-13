@@ -30,6 +30,7 @@ development = os.environ.get("DEVELOPMENT", False)
 BASE_DIR = Path(__file__).resolve().parent.parent
 HIPPO_TEMPLATES = os.path.join(BASE_DIR, "hippotherapy/templates/hippo")
 ADMIN_TEMPLATES = os.path.join(BASE_DIR, "administration/templates/admin")
+ROOT_TEMPLATES = os.path.join(BASE_DIR, "templates")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -93,7 +94,7 @@ ROOT_URLCONF = 'amber_p4.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [HIPPO_TEMPLATES, ADMIN_TEMPLATES],
+        'DIRS': [ROOT_TEMPLATES],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
