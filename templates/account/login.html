@@ -11,23 +11,58 @@
 	<div class="signIn">
 		<h1>{% trans "Sign In to " %} Amber</h1>
 
-		<h3>
+		<p class="loginText">
 			{% blocktrans %}
 				Welcome to the Amber hippotherapy measurement tool.
+			{% endblocktrans %}
+		</p>
+		<p class="loginText">
+			{% blocktrans %}
 				To access the Amber tool, please log in.
 			{% endblocktrans %}
-		</h3>
+		</p>
 	</div>
 
-	<div class="loginForm signIn">
-		<form class="login" method="POST" action="{% url 'account_login' %}">
-			{% csrf_token %} {{ form.as_p }}
+	<div class="login signIn">
+		<form role="form" class="loginForm" method="POST" action="{% url 'account_login' %}">
+			{% csrf_token %} 
+			<div>
+				{% for field in form %}
+					<div class="formGroup">
+						{{ field.errors }}
+						{% if field.label == "Remember Me" %}
+							<div class="loginRemember">
+								{{ field.label_tag }}{{ field }}
+							</div>	
+						{% elif field.label == "Password" %}
+							<input type="password" name="{{ field.html_name }}" placeholder="{{ field.label }}"
+								autocomplete="current-{{ field.label|lower }}" required  
+								id="{{ field.id_for_label }}" class="formInput" >
+							<label for="{{field.id_for_label}}" class="formLabel">{{field.label}}</label>
+						{% else %}
+							<input type="text" name="{{ field.html_name }}" placeholder="{{ field.label }}"
+								autocomplete="{{ field.label|lower }}" maxlength="30" required  
+								id="{{ field.id_for_label }}" class="formInput" >
+							<label for="{{field.id_for_label}}" class="formLabel">{{field.label}}</label>
+						{% endif %}
+					</div>
+				{% endfor %}
+			</div>
+			
 			{% if redirect_field_value %}
 				<input type="hidden" name="{{ redirect_field_name }}"
 					value="{{ redirect_field_value }}" />
 			{% endif %}
 			
-			<button class="btn btn-signup" type="submit">{% trans "Log In" %}</button>
+			<strong>
+			{% for name, value in widget.attrs.items %}
+				{% if value is not False %}
+					{{name}}{% if value is not True %}="{{ value|stringformat:'s' }}"{% endif %}
+				{% endif %}
+			{% endfor %}
+			</strong>
+			
+			<button class="btn btnMain btnLogin" type="submit">{% trans "Log In" %}</button>
 		</form>
 
 	</div>
