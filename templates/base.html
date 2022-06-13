@@ -43,8 +43,13 @@
 				<h1>Amber</h1>
 			</div>
 			<div id="accountLinks">
-				<a href="{% url 'home' %}" class="navigationLink accountLink">My Account</a> 
-				<a href="{% url 'home' %}" class="navigationLink accountLink">Logout</a>
+				{% if user.is_authenticated %}
+					<a href="{% url 'home' %}" class="navigationLink accountLink">My Account</a> 
+					<a href="{% url 'account_logout' %}" class="navigationLink accountLink">Logout</a>
+				{% else %}
+					<a href="{% url 'account_signup' %}" class="navigationLink accountLink">Register</a> 
+					<a href="{% url 'account_login' %}" class="navigationLink accountLink">Login</a>
+				{% endif %}
 			</div>
 			<!-- Top navbar -->
 			<nav id="navigationNav" class="navigationBar">

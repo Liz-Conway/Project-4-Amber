@@ -1,0 +1,35 @@
+{% extends "base.html" %} 
+{% load i18n %} 
+{% load account %} 
+{% block head_title %}
+	{% trans "Sign In to" %} Amber
+{% endblock %} 
+
+{% block content %}
+
+<div class="container">
+	<div class="signIn">
+		<h1>{% trans "Sign In to " %} Amber</h1>
+
+		<h3>
+			{% blocktrans %}
+				Welcome to the Amber hippotherapy measurement tool.
+				To access the Amber tool, please log in.
+			{% endblocktrans %}
+		</h3>
+	</div>
+
+	<div class="loginForm signIn">
+		<form class="login" method="POST" action="{% url 'account_login' %}">
+			{% csrf_token %} {{ form.as_p }}
+			{% if redirect_field_value %}
+				<input type="hidden" name="{{ redirect_field_name }}"
+					value="{{ redirect_field_value }}" />
+			{% endif %}
+			
+			<button class="btn btn-signup" type="submit">{% trans "Log In" %}</button>
+		</form>
+
+	</div>
+</div>
+{% endblock %}

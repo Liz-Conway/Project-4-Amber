@@ -66,17 +66,37 @@ else:
 
 
 # Application definition
-
+# For allauth:
+# First of all we need to add 'django.contrib.sites'
+# this is a built-in django package.
+# Then our all auth packages
+# so 'allauth' 'allauth.account' and 'allauth.socialaccount'.
+# We also need to add a site id (1)
+# This is so that Django can handle multiple sites from one database.
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'django.contrib.staticfiles',
     'administration',
     'hippotherapy',
 ]
+
+# We also need to add a site id (1)
+# This is so that Django can handle multiple sites from one database.
+SITE_ID = 1
+
+# Add in the redirection urls
+# So that after we've logged in & logged out 
+# the site will redirect us to the home page
+LOGIN_REDIRECT_URL  = "/"
+LOGOUT_REDIRECT_URL  = "/"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -184,3 +204,4 @@ FORMAT_MODULE_PATH = [
     'amber_p4.formats',
 ]
 
+ACCOUNT_EMAIL_VERIFICATION = 'none'
