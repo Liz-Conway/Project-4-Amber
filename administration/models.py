@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 
 class Diagnosis(models.Model):
@@ -30,3 +31,4 @@ class Task(models.Model):
         if(self.mounted):
             task_str = task_str + " (mounted)"
         return task_str
+    

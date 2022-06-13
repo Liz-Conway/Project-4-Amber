@@ -5,8 +5,6 @@ Created on 20 Mar 2022
 '''
 from django import forms
 from administration.models import Diagnosis
-import datetime
-from django.db.models.fields import CharField
 """
 Creating forms manually leaves our application open to errors if we don't validate them properly.
 For example if we create a form and forget to mark one of the fields as required,
@@ -45,5 +43,5 @@ class DiagnosisForm(forms.ModelForm):
         widgets={
                    "diagnosis":forms.TextInput(attrs={'class':'formInput', 'placeholder': 'New Diagnosis'}),
                 }
-        
-        
+
+           
