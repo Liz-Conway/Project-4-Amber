@@ -37,7 +37,7 @@ class ViewsTest(TestCase):
         
         self.hat_sizes = ['1']  # Refers to the ID of the hat in the hat table
         self.genders = ['M', 'F']
-        self.diagnosis1 = Diagnosis.objects.create(diagnosis='ASD')
+        self.diagnoses = [Diagnosis.objects.create(diagnosis='ASD'), Diagnosis.objects.create(diagnosis='ADD'), Diagnosis.objects.create(diagnosis='ADHD')]
         
         # Create some skills
         self.function = Function.objects.create(function_name='Test Function')
@@ -59,6 +59,7 @@ class ViewsTest(TestCase):
         self.generate_chart_url = reverse('generateChart', args=[self.course.id])
         self.choose_course_client = reverse('chooseCourse', args=[self.hip_client.id])
         self.new_course = reverse('newCourse', args=[self.hip_client.id, self.hip_session.id])
+        self.add_diagnosis_url = reverse('addDiagnosis')
         
     def test_show_home_page(self):
         response = self.test_client.get(self.home_url)
@@ -79,17 +80,18 @@ class ViewsTest(TestCase):
         self.assertTemplateUsed(response, "hippo/addClient.html", "Add Client page should use the addClient.html template")
 
     def test_post_add_client(self):
-        diagnosis1_label = f'diagnosis_{self.diagnosis1.id}'
         post_data = {
             'first_name': 'Donald',
             'last_name': 'Duck',
             'gender': self.genders[0],
             'date_of_birth': '09/06/1931',
             'hat_size': self.hat.id,
-            diagnosis1_label: 'on',
             'degree_of_difficulty': 'Gets annoyed very quickly',
             'additional_notes': 'Speaks quackily'
         }
+        
+        post_data.update({f'diagnosis_{self.diagnoses[0].id}': 'on'})
+
         
         response = self.test_client.post(self.add_client_url, post_data)
         messages = list(response.context['messages'])
@@ -105,11 +107,92 @@ class ViewsTest(TestCase):
         self.assertEqual(Client.objects.last().date_of_birth, datetime.strptime('09/06/1931', '%d/%m/%Y').date(), 'Donald Duck was born on 9th June 1931')
         self.assertEqual(Client.objects.last().hat_size, self.hat, 'Donald Duck has a hat size of 5')
         # For many-to-many relationships - Need to use 'get' to retrieve the associated object
-        self.assertEqual(Client.objects.last().diagnosis.get(), self.diagnosis1, 'Donald Duck has the first diagnosis on the list')
+        self.assertEqual(Client.objects.last().diagnosis.get(), self.diagnoses[0], 'Donald Duck has the first diagnosis on the list')
         self.assertEqual(Client.objects.last().degree_of_difficulty, 'Gets annoyed very quickly', 'Donald certainly Gets annoyed very quickly')
         self.assertEqual(Client.objects.last().additional_notes, 'Speaks quackily', 'Additional notes should say :  Speaks quackily')
         
         self.assertTemplateUsed(response, "addClient.html", "Add Client page should use the addClient.html template")
+        
+    def test_get_add_diagnosis(self):
+        response = self.test_client.get(self.add_diagnosis_url)
+        
+        self.assertEqual(response.status_code, 200, "Going to Add Diagnosis page should return a Status Code of 200 (OK)")
+        self.assertTemplateUsed(response, "admins/addDiagnosis.html", "Add Diagnosis page should use the addDiagnosis.html template")
+
+    def test_post_add_diagnosis(self):
+        post_data = {
+            'diagnosis': 'New Diagnosis',
+        }
+        
+        response = self.test_client.post(self.add_diagnosis_url, post_data)
+        # messages = list(response.context['messages'])
+        
+        # self.assertEqual(response.status_code, 302, 'Posting the Add Diagnosis form should cause a redirect (302)')
+        # Since we redisplay the Add Diagnosis page again after successfully adding a diagnosis
+        # the Status Code is 200 because we used a GET instead of a redirect
+        self.assertEqual(response.status_code, 200, 'Posting the Add Diagnosis form should return a Status Code of 200 (OK)')
+        
+        self.assertEqual(Diagnosis.objects.last().diagnosis, 'New Diagnosis', 'Diagnosis should be "New Diagnosis"')
+        
+    def test_post_add_client_multiple_diagnoses(self):
+        post_data = {
+            'first_name': 'Donald',
+            'last_name': 'Duck',
+            'gender': self.genders[0],
+            'date_of_birth': '09/06/1931',
+            'hat_size': self.hat.id,
+            'degree_of_difficulty': 'Gets annoyed very quickly',
+            'additional_notes': 'Speaks quackily'
+        }
+        for diagnosis in self.diagnoses:
+            post_data.update({f'diagnosis_{diagnosis.id}': 'on'})
+        
+        response = self.test_client.post(self.add_client_url, post_data)
+        
+        # Since we redisplay the Add Client page again after successfully adding a client
+        # the Status Code is 200 because we used a GET instead of a redirect
+        self.assertEqual(response.status_code, 200, 'Posting the Add Client form should return a Status Code of 200 (OK)')
+        
+        last_client = Client.objects.last()
+        
+        self.assertEqual(last_client.first_name, 'Donald', 'First name should be Donald')
+        self.assertEqual(last_client.last_name, 'Duck', 'Last name should be Duck')
+        self.assertEqual(last_client.gender, 'M', 'Gender should be Male')
+        self.assertEqual(last_client.date_of_birth, datetime.strptime('09/06/1931', '%d/%m/%Y').date(), 'Donald Duck was born on 9th June 1931')
+        self.assertEqual(last_client.hat_size, self.hat, 'Donald Duck has a hat size of 5')
+        # For many-to-many relationships - Need to use 'all()' to retrieve the associated objects
+        all_diagnoses = last_client.diagnosis.all()
+        for i in range(all_diagnoses.count()):
+            self.assertEquals(all_diagnoses[i], self.diagnoses[i], 'Should have the same diagnosis')
+        self.assertEqual(last_client.degree_of_difficulty, 'Gets annoyed very quickly', 'Donald certainly Gets annoyed very quickly')
+        self.assertEqual(last_client.additional_notes, 'Speaks quackily', 'Additional notes should say :  Speaks quackily')
+        
+        self.assertTemplateUsed(response, "addClient.html", "Add Client page should use the addClient.html template")
+        
+    def test_post_add_client_success_message(self):
+        post_data = {
+            'first_name': 'Donald',
+            'last_name': 'Duck',
+            'gender': self.genders[0],
+            'date_of_birth': '09/06/1931',
+            'hat_size': self.hat.id,
+            'degree_of_difficulty': 'Gets annoyed very quickly',
+            'additional_notes': 'Speaks quackily'
+        }
+        for diagnosis in self.diagnoses:
+            post_data.update({f'diagnosis_{diagnosis.id}': 'on'})
+        
+        response = self.test_client.post(self.add_client_url, post_data)
+        messages = list(response.context['messages'])
+        message = messages[0].message
+        
+        # Since we redisplay the Add Client page again after successfully adding a client
+        # the Status Code is 200 because we used a GET instead of a redirect
+        self.assertEqual(response.status_code, 200, 'Posting the Add Client form should return a Status Code of 200 (OK)')
+        self.assertTemplateUsed(response, "addClient.html", "Add Client page should use the addClient.html template")
+        self.assertEqual(message, 'New client <span class="name">Donald Duck</span> added successfully.', 'Should have a success message when a client is added.')
+        
+        
         
     def test_get_record_session(self):
         response = self.test_client.get(self.record_session_url)
