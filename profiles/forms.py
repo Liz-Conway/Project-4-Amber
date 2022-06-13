@@ -28,6 +28,16 @@ class HippotherapyUserChangeForm(UserChangeForm):
     
     class Meta:
         model = HippotherapyUser
-        fields = ('username', 'first_name', 'last_name')
+        fields = ('first_name', 'last_name')
         
+        widgets = {
+            'first_name': forms.TextInput(attrs={
+                'class': 'formInput',
+                'placeholder': 'First Name'
+            }),
+            'last_name': forms.TextInput(attrs={
+                'class': 'formInput',
+                'placeholder': 'Last Name'
+            }),
+        }
         

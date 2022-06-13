@@ -22,4 +22,5 @@ from . import views
 
 urlpatterns = [
     path('addUser', views.AddUser.as_view(), name='addUser'),
+    path('myAccount', views.MyAccount.as_view(), name='myAccount'),
 ]

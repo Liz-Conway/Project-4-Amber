@@ -62,7 +62,7 @@
 					{% if user.user_role == 'Administrator' %}
 						<a href="{% url 'addUser' %}" class="navigationLink accountLink">Add User</a>
 					{% endif %}
-					<a href="{% url 'home' %}" class="navigationLink accountLink">My Account</a> 
+					<a href="{% url 'myAccount' %}" class="navigationLink accountLink">My Account</a> 
 					<a href="{% url 'account_logout' %}" class="navigationLink accountLink">Logout</a>
 				{% else %}
 					<a href="{% url 'account_login' %}" class="navigationLink accountLink">Login</a>

@@ -54,14 +54,6 @@
 					value="{{ redirect_field_value }}" />
 			{% endif %}
 			
-			<strong>
-			{% for name, value in widget.attrs.items %}
-				{% if value is not False %}
-					{{name}}{% if value is not True %}="{{ value|stringformat:'s' }}"{% endif %}
-				{% endif %}
-			{% endfor %}
-			</strong>
-			
 			<button class="btn btnMain btnLogin" type="submit">{% trans "Log In" %}</button>
 		</form>
 

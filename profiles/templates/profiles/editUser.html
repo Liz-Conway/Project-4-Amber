@@ -3,9 +3,9 @@
 {% block title %}Amber|Add User{% endblock title %}
 
 {% block content %}
-	<div id="addUserContainer">
+	<div id="editUserContainer">
 		
-		<h1>Add a new user</h1>
+		<h1>My Account</h1>
 		<!-- Render the items key from the context dictionary that we 
 		created using this double curly bracket syntax -->
 		<!-- A template variable - anything that you return to the template
@@ -16,7 +16,7 @@
 		
 		<!-- blank URL that we will submit the form to 
 			i.e. this is a "postback" -->
-		<form id="addUserForm" method="POST" action="">
+		<form id="editUserForm" method="POST" action="">
 			<!-- Whenever we're posting information in Django,
 			we need to add the CSRF or cross-site request forgery token.
 			This token is a randomly generated unique value which will be added
@@ -24,26 +24,31 @@
 			And works to guarantee that the data we're posting is actually coming from our
 			Amber app and not from another website. -->
 			{% csrf_token %}
-	
 			<!-- 'form' has been passed as a Django form in the context to this page -->
+	
+			<h2>
+				Username:  {{ username }}
+			</h2>
 			{% for field in form %}
-			<div class="formGroup">
-				{{ field }} 
-				{{ field.label_tag }} 
-				{% if field.help_text %} 
-					<small class="formInputHelp">
-						{{ field.help_text }}
-					</small> 
-				{% endif %} 
-				{% for error in field.errors %}
-					<p class="errorText">{{ error }}</p>
-				{% endfor %}
-			</div>
+				{% if field.name != 'password' %}
+					<div class="formGroup">
+						{{ field }} 
+						{{ field.label_tag }} 
+						{% if field.help_text %} 
+							<small class="formInputHelp">
+								{{ field.help_text }}
+							</small> 
+						{% endif %} 
+						{% for error in field.errors %}
+							<p class="errorText">{{ error }}</p>
+						{% endfor %}
+					</div>
+				{% endif %}
 			{% endfor %}
 	
 	
 			<div class="btnGroup">
-			<input type="submit" class="btn btnMain" value="Save new User" /> <a
+			<input type="submit" class="btn btnMain" value="Save My Account" /> <a
 				href="{% url 'home' %}" class="btn btnGhost">Cancel</a> <input
 				type="reset" class="btn btnTextOnly" value="Reset Form" />
 		</div>

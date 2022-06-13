@@ -808,6 +808,9 @@ form {
   -webkit-transform: translateY(4.7rem);
           transform: translateY(4.7rem);
 }
+.formInputHelp {
+  color: #808080;
+}
 .formInput.fadeInLabel:placeholder-shown > .formHelp {
   /*Use adjacent sibling selector '+' to choose a label which is next to an input element */
   /*If there were elements between the label and the input we would have to use the general sibling selector '~' */
@@ -991,6 +994,11 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
 }
 .messages {
   margin: 0 1rem 2rem 1rem;
+}
+
+.msg-warning {
+  border: 1px solid #FFCDBC;
+  background-color: #FFCDBC;
 }
 
 /*===== END  Message  ===== */
