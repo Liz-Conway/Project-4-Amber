@@ -32,6 +32,18 @@
 			</a>
 		</div>
 		<div id="navWrapper">
+			{% if user.is_authenticated %}
+			<button class="ui-button ui-widget ui-corner-all ui-button-icon-only" title="{{ user.user_role }}">
+			    {% if user.user_role == 'Administrator' %}
+			    	<span class="ui-icon ui-icon-wrench"></span>
+			    {% elif user.user_role == 'Occupational Therapist' %}
+			    	<span class="ui-icon ui-icon-person"></span>
+			    {% elif user.user_role == 'Hippotherapy Analyst' %}
+			    	<span class="ui-icon ui-icon-clipboard"></span>
+			    {% endif %}
+			     Button with icon only
+			  </button>
+			{% endif %}
 			<input type="checkbox" class="navigationCheckbox" id="naviToggle">
 	       	<label class="navigationButton" for="naviToggle">
 				<span class="navigationIcon">&nbsp;</span>

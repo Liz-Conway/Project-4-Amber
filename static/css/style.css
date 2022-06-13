@@ -179,6 +179,7 @@ header {
   margin-right: auto;
   margin-left: auto;
   padding-right: 8rem;
+  margin-top: -3rem;
 }
 #titleBar a:not(:last-child) {
   padding-right: 2rem;
@@ -188,6 +189,11 @@ header {
   width: 9rem;
   margin-left: 1rem;
   margin-top: 1rem;
+}
+
+.ui-icon {
+  -webkit-transform: scale(2);
+          transform: scale(2);
 }
 
 /*===== END  Header  ===== */
