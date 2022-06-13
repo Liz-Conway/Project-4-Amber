@@ -550,7 +550,6 @@ With forking you are pushing the updates to your own Amber repo on github.
 | Link to Admin Panel | Stack Overflow |https://stackoverflow.com/questions/45122421/refer-to-admin-site-using-url-admin-in-app-django |
 | Pass parameter as key to Javascript object | Stack Overflow |https://stackoverflow.com/questions/11113008/in-javascript-how-can-i-use-a-function-parameter-as-the-key-to-an-objecto |
 | Pass parameters to a Javascript event handler | Stack Overflow |https://stackoverflow.com/questions/10000083/javascript-event-handler-with-parameters |
-
 |Add attribute to form element | Stack Overflow |https://stackoverflow.com/questions/19489699/how-to-add-class-id-placeholder-attributes-to-a-field-in-django-model-forms |
 |Add class to label | Stack Overflow |https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ |
 |Django messages | Jaysha |https://ordinarycoders.com/blog/article/django-messages-framework |
@@ -566,3 +565,5 @@ With forking you are pushing the updates to your own Amber repo on github.
 |Draw chart using ApexCharts | apexcharts.com |https://apexcharts.com/javascript-chart-demos/bar-charts/custom-datalabels/ |
 |How to query with Django | Nensi Trambadiya |https://medium.com/codeptivesolutions/https-medium-com-codeptivesolutions-commonly-used-sql-queries-using-django-orm-e8466e8d4258 |
 |How to get Django to accept valid date strings | Stack Overflow |https://stackoverflow.com/questions/4876370/django-date-format-dd-mm-yyyy |
+|How to get Django to accept valid date strings | Stack Overflow |
+|Django testing | The Dumbfounds |https://stackoverflow.com/questions/4876370/django-date-format-dd-mm-yyyy | |
