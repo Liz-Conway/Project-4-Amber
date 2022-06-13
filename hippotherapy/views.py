@@ -507,10 +507,8 @@ class ObserveSession(TemplateView):
             
             course = get_object_or_404(Course.objects.filter(courses__id=session_id))
             course_id = course.id
-            client = get_object_or_404(Client.objects.filter(participates=course_id))
-            client_id = client.id
             # return redirect('viewSession', session=session_id)
-            return redirect('generateChart', client=client_id, course=course_id)
+            return redirect('generateChart', course=course_id)
         
         else:
             request.session['observations'] = observation_data
@@ -675,13 +673,12 @@ class ChartPage(TemplateView):
             print(f"POSTed course ID")
         except KeyError:
             # No Course was chosen - redisplay the page with an error message
-            print("Key Error - No 'course' in POST data")
+            # Key Error - No 'course' in POST data
             try:
                 course_id = kwargs['course']
-                print(f"Course ID :  {course_id}")
             except:
-                print("No course id either")
                 # Throw error -> 404 page
+                pass
                 
         client = get_object_or_404(Client.objects.filter(participates__id=course_id))
         
@@ -786,7 +783,7 @@ class ChooseCourse(TemplateView):
             messages.error(request, 'You must select one of the courses below')
             return HttpResponseRedirect(reverse('chooseCourse', args=[client_id]))
         
-        return HttpResponseRedirect(reverse('generateChart', args=[client_id, course_id]))
+        return HttpResponseRedirect(reverse('generateChart', args=[course_id]))
 
 
 def create_course_for_client(client_id):
