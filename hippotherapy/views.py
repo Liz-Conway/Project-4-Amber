@@ -193,14 +193,11 @@ def save_tasks(session_id, post):
         
 
 def save_diagnoses(client_id, post):
-    total_diagnoses = Diagnosis.objects.count()
-    
     client = Client.objects.get(id=client_id)
     
-    for i in range(1, total_diagnoses + 1):
-        diagnosis_identifier = f"diagnosis_{i}"
+    for diagnosis in Diagnosis.objects.all():
+        diagnosis_identifier = f'diagnosis_{diagnosis.id}'
         if post.get(diagnosis_identifier) != None:
-            diagnosis = Diagnosis.objects.get(id=i)
             client.diagnosis.add(diagnosis)
 
 
