@@ -179,20 +179,16 @@ def get_next_session_week(course):
 
 
 def save_tasks(session_id, post):
-    total_tasks = Task.objects.count()
     
     session_query = Session.objects.filter(id=session_id)
     session = get_object_or_404(session_query)
     
-    for i in range(1, total_tasks + 1):
-        task_identifier = f"task_{i}"
-
-        if post.get(task_identifier) != None:
-            task_query = Task.objects.filter(id=i)
-            task = get_object_or_404(task_query)
-
-            session.tasks.add(task)
+    all_tasks = Task.objects.all()
+    for task in all_tasks:
+        task_identifier = f'task_{task.id}'
         
+        if post.get(task_identifier) != None:
+            session.tasks.add(task)
 
 def save_diagnoses(client_id, post):
     client = Client.objects.get(id=client_id)
