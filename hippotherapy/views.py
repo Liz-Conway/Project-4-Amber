@@ -87,6 +87,7 @@ class AddClient(TemplateView):
             messages.error(request, add_client_form.errors)
 
         hat_sizes = Hat.objects.all()
+        diagnoses = Diagnosis.objects.all()
         """
         Send all of this information to our render method
         """
@@ -101,6 +102,7 @@ class AddClient(TemplateView):
             { 
                 'form': ClientForm(initial=initial),
                 'hat_sizes': hat_sizes,
+                "diagnoses": diagnoses,
             }
         )
         
