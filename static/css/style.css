@@ -792,9 +792,9 @@ form {
   opacity: 0;
   /*Using visibility since we want the element to be gone from the page */
   visibility: hidden;
-  /*Move the label up to the same position as the placeholder text - at the start of the animation */
-  -webkit-transform: translateY(-4rem);
-          transform: translateY(-4rem);
+  /*Move the label down to the same position as the placeholder text - at the start of the animation */
+  -webkit-transform: translateY(4.7rem);
+          transform: translateY(4.7rem);
 }
 
 input:not([type="radio"]):required + label::after, select:required + label::after, .manyManyLabel.required::after {
