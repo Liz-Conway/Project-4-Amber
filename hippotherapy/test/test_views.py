@@ -7,7 +7,7 @@ from django.test import TestCase, Client as TestClient
 from hippotherapy.models import Session, Skill, SkillScore, Course, Hat,\
     Function
 from hippotherapy.models import Client
-from administration.models import Diagnosis, Horse
+from administration.models import Diagnosis, Horse, Task
 from django.urls.base import reverse
 from datetime import datetime
 
@@ -49,6 +49,12 @@ class ViewsTest(TestCase):
         self.basket_score = SkillScore.objects.create(session=self.hip_session, skill=self.basket_weaving, score=1)
         self.flower_score = SkillScore.objects.create(session=self.hip_session, skill=self.flower_arranging, score=3)
         self.sewing_score = SkillScore.objects.create(session=self.hip_session, skill=self.embroidery, score=5)
+        
+        # Add some tasks
+        self.task1 = Task.objects.create(task_name="First Task")
+        self.task2 = Task.objects.create(task_name="Second Task")
+        self.task3 = Task.objects.create(task_name="Third Task", mounted=True)
+        self.task4 = Task.objects.create(task_name="Fourth Task", mounted=True)
 
         self.test_client = TestClient()
         self.home_url = reverse('home')
@@ -58,8 +64,9 @@ class ViewsTest(TestCase):
         self.observe_session_url = reverse('observeSession', args=[self.hip_session.id])
         self.generate_chart_url = reverse('generateChart', args=[self.course.id])
         self.choose_course_client = reverse('chooseCourse', args=[self.hip_client.id])
-        self.new_course = reverse('newCourse', args=[self.hip_client.id, self.hip_session.id])
+        self.new_course_url = reverse('newCourse', args=[self.hip_client.id, self.hip_session.id])
         self.add_diagnosis_url = reverse('addDiagnosis')
+        self.choose_session_url = reverse('chooseSession', args=[self.hip_client.id])
         
     def test_show_home_page(self):
         response = self.test_client.get(self.home_url)
@@ -73,6 +80,27 @@ class ViewsTest(TestCase):
         self.assertEqual(response.status_code, 200, "Going to home page should return a Status Code of 200 (OK)")
         self.assertTemplateUsed(response, "hippo/index.html", "Home page should use the index.html template")
 
+    def test_get_add_diagnosis(self):
+        response = self.test_client.get(self.add_diagnosis_url)
+        
+        self.assertEqual(response.status_code, 200, "Going to Add Diagnosis page should return a Status Code of 200 (OK)")
+        self.assertTemplateUsed(response, "admins/addDiagnosis.html", "Add Diagnosis page should use the addDiagnosis.html template")
+
+    def test_post_add_diagnosis(self):
+        post_data = {
+            'diagnosis': 'New Diagnosis',
+        }
+        
+        response = self.test_client.post(self.add_diagnosis_url, post_data)
+        # messages = list(response.context['messages'])
+        
+        # self.assertEqual(response.status_code, 302, 'Posting the Add Diagnosis form should cause a redirect (302)')
+        # Since we redisplay the Add Diagnosis page again after successfully adding a diagnosis
+        # the Status Code is 200 because we used a GET instead of a redirect
+        self.assertEqual(response.status_code, 200, 'Posting the Add Diagnosis form should return a Status Code of 200 (OK)')
+        
+        self.assertEqual(Diagnosis.objects.last().diagnosis, 'New Diagnosis', 'Diagnosis should be "New Diagnosis"')
+        
     def test_get_add_client(self):
         response = self.test_client.get(self.add_client_url)
         
@@ -94,9 +122,7 @@ class ViewsTest(TestCase):
 
         
         response = self.test_client.post(self.add_client_url, post_data)
-        messages = list(response.context['messages'])
         
-        # self.assertEqual(response.status_code, 302, 'Posting the Add Client form should cause a redirect (302)')
         # Since we redisplay the Add Client page again after successfully adding a client
         # the Status Code is 200 because we used a GET instead of a redirect
         self.assertEqual(response.status_code, 200, 'Posting the Add Client form should return a Status Code of 200 (OK)')
@@ -112,27 +138,6 @@ class ViewsTest(TestCase):
         self.assertEqual(Client.objects.last().additional_notes, 'Speaks quackily', 'Additional notes should say :  Speaks quackily')
         
         self.assertTemplateUsed(response, "addClient.html", "Add Client page should use the addClient.html template")
-        
-    def test_get_add_diagnosis(self):
-        response = self.test_client.get(self.add_diagnosis_url)
-        
-        self.assertEqual(response.status_code, 200, "Going to Add Diagnosis page should return a Status Code of 200 (OK)")
-        self.assertTemplateUsed(response, "admins/addDiagnosis.html", "Add Diagnosis page should use the addDiagnosis.html template")
-
-    def test_post_add_diagnosis(self):
-        post_data = {
-            'diagnosis': 'New Diagnosis',
-        }
-        
-        response = self.test_client.post(self.add_diagnosis_url, post_data)
-        # messages = list(response.context['messages'])
-        
-        # self.assertEqual(response.status_code, 302, 'Posting the Add Diagnosis form should cause a redirect (302)')
-        # Since we redisplay the Add Diagnosis page again after successfully adding a diagnosis
-        # the Status Code is 200 because we used a GET instead of a redirect
-        self.assertEqual(response.status_code, 200, 'Posting the Add Diagnosis form should return a Status Code of 200 (OK)')
-        
-        self.assertEqual(Diagnosis.objects.last().diagnosis, 'New Diagnosis', 'Diagnosis should be "New Diagnosis"')
         
     def test_post_add_client_multiple_diagnoses(self):
         post_data = {
@@ -192,8 +197,7 @@ class ViewsTest(TestCase):
         self.assertTemplateUsed(response, "addClient.html", "Add Client page should use the addClient.html template")
         self.assertEqual(message, 'New client <span class="name">Donald Duck</span> added successfully.', 'Should have a success message when a client is added.')
         
-        
-        
+
     def test_get_record_session(self):
         response = self.test_client.get(self.record_session_url)
         
@@ -204,6 +208,125 @@ class ViewsTest(TestCase):
         response = self.test_client.get(reverse('recordSession', args=[666]))
         
         self.assertEqual(response.status_code, 404, "Going to Record Session page with a non-existant client should return a Status Code of 404")
+
+    def test_post_record_session_new_course(self):
+        course = Course.objects.create(client = self.hip_client)
+        post_data = {
+            'course': course.id,
+            'week_number': 1,
+            'horse': self.horse.id,
+            'task_4': 'on',
+            'task_14': 'on',
+        }
+        
+        response = self.test_client.post(self.record_session_url, post_data)
+        
+        self.assertEqual(response.status_code, 302, 'Posting the Record Session form should cause a redirect (302)')
+        self.assertEqual(Session.objects.last().course_id, course.id, "Should have created a Session with course id = 19")
+        self.assertEqual(Session.objects.last().week_number, 1, "Should have created a Session with week_number = 1")
+        self.assertEqual(Session.objects.last().horse_id, self.horse.id, "Should have created a Session with horse id = 2")
+    
+    def test_post_record_session_new_course_tasks(self):
+        course = Course.objects.create(client = self.hip_client)
+        post_data = {
+            'course': course.id,
+            'week_number': 1,
+            'horse': self.horse.id,
+            f'task_{self.task1.id}': 'on',
+            f'task_{self.task3.id}': 'on',
+        }
+        
+        response = self.test_client.post(self.record_session_url, post_data)
+        
+        self.assertEqual(response.status_code, 302, 'Posting the Record Session form should cause a redirect (302)')
+        last_session = Session.objects.last()
+        # Get the Tasks for the chosen session
+        tasks = Task.objects.filter(performed__id=last_session.id)
+        task_count = tasks.count()
+        self.assertEqual(task_count, 2, 'Posted session should have 2 tasks associated')
+        for task in tasks:
+            self.assertIn(task.id, [self.task1.id, self.task3.id], 'Tasks should be task with ID = 4 or 14')
+    
+    def test_post_record_session_success_message(self):
+        course = Course.objects.create(client = self.hip_client)
+        post_data = {
+            'course': course.id,
+            'week_number': 1,
+            'horse': self.horse.id,
+            f'task_{self.task1.id}': 'on',
+            f'task_{self.task3.id}': 'on',
+        }
+        
+        response = self.test_client.post(self.record_session_url, post_data)
+        
+        # Redirect does not have a context
+        # so need to use this instead
+        messages = list(response.wsgi_request._messages)
+        self.assertEqual(len(messages), 1, 'Should have 1 message on successful creation of a session')
+        message = messages[0].message
+        
+        self.assertEqual(response.status_code, 302, 'Posting the Record Session form should cause a redirect (302)')
+        self.assertEqual(message, f'New session for <span class="boldEntry">Mister Blobby</span> ({course.id}/1) added successfully.', 'Should have a success message when a new session is created.')
+
+    def test_post_record_session_fail_message(self):
+        course = Course.objects.create(client = self.hip_client)
+        post_data = {
+            'course': course.id,
+            'week_number': 1,
+            f'task_{self.task1.id}': 'on',
+            f'task_{self.task3.id}': 'on',
+        }
+        
+        response = self.test_client.post(self.record_session_url, post_data)
+        
+        # Redirect does not have a context
+        # so need to use this instead
+        messages = list(response.wsgi_request._messages)
+        self.assertEqual(len(messages), 2, 'Should have 1 message on submitting a session without filling all details')
+        message1 = messages[0].message
+        message2 = messages[1].message
+        
+        self.assertEqual(response.status_code, 302, 'Posting the Record Session form should cause a redirect (302)')
+        self.assertEqual(message1, 'Invalid form submission.', 'Should have a message indicating that there was an error with the form submission')
+        self.assertEqual(message2, '<ul class="errorlist"><li>horse<ul class="errorlist"><li>This field is required.</li></ul></li></ul>', 'Should have a message showing that the horse was not chosen')
+
+    def test_get_observe_session(self):
+        response = self.test_client.get(self.observe_session_url)
+    
+        self.assertEqual(response.status_code, 200, "Going to Observe Session page should return a Status Code of 200 (OK)")
+        self.assertTemplateUsed(response, "hippo/observeSession.html", "Observe Session page should use the observeSession.html template")
+
+    def test_get_observe_session_no_session(self):
+        response = self.test_client.get(reverse('observeSession', args=[666]))
+    
+        self.assertEqual(response.status_code, 404, "Going to Observe Session page with a non-existant session should return a Status Code of 404")
+
+    def test_post_observe_session(self):
+        post_data = {
+            f'score{self.basket_weaving.id}': 1,
+            f'score{self.flower_arranging.id}': 3,
+            f'score{self.embroidery.id}': 5,
+        }
+        
+        response = self.test_client.post(self.observe_session_url, post_data)
+        
+        self.assertEqual(response.status_code, 302, 'Posting the Session Observations form should cause a redirect (302)')
+        self.assertEqual(SkillScore.objects.filter(skill=self.basket_weaving).last().score, 1, "Should have created a SkillScore with score = 1")
+        self.assertEqual(SkillScore.objects.filter(skill=self.flower_arranging).last().score, 3, "Should have created a SkillScore with score = 3")
+        self.assertEqual(SkillScore.objects.filter(skill=self.embroidery).last().score, 5, "Should have created a SkillScore with score = 5")
+
+        
+    def test_post_observe_session_only_some_skills_scored(self):
+        post_data = {
+            f'score{self.basket_weaving.id}': 1,
+            f'score{self.flower_arranging.id}': 3,
+        }
+        
+        response = self.test_client.post(self.observe_session_url, post_data)
+        
+        self.assertEqual(response.status_code, 302, 'Posting the Session Observations form should cause a redirect (302)')
+        self.assertEqual(SkillScore.objects.filter(skill=self.basket_weaving).last().score, 1, "Should have created a SkillScore with score = 1")
+        self.assertEqual(SkillScore.objects.filter(skill=self.flower_arranging).last().score, 3, "Should have created a SkillScore with score = 3")
 
     def test_get_select_client(self):
         response = self.test_client.get(self.select_client_url)
@@ -217,16 +340,38 @@ class ViewsTest(TestCase):
         self.assertEqual(response.status_code, 200, "Going to Select Client page should return a Status Code of 200 (OK) regardless of the target passed in")
         self.assertTemplateUsed(response, "hippo/selectClient.html", "Select Client page should use the selectClient.html template")
 
-    def test_get_observe_session(self):
-        response = self.test_client.get(self.observe_session_url)
-    
-        self.assertEqual(response.status_code, 200, "Going to Observe Session page should return a Status Code of 200 (OK)")
-        self.assertTemplateUsed(response, "hippo/observeSession.html", "Observe Session page should use the observeSession.html template")
+    def test_post_select_client_generate_chart(self):
+        post_data = {
+            'targetPage': 'generateChart',
+            'client': self.hip_client.id,
+        }
+        
+        response = self.test_client.post(self.select_client_url, post_data)
+        
+        self.assertEqual(response.status_code, 302, 'Posting the Select Client form should cause a redirect (302)')
+        self.assertRedirects(response, self.choose_course_client, 302, 200, msg_prefix='', fetch_redirect_response=True)
 
-    def test_get_observe_session_no_session(self):
-        response = self.test_client.get(reverse('observeSession', args=[666]))
-    
-        self.assertEqual(response.status_code, 404, "Going to Observe Session page with a non-existant session should return a Status Code of 404")
+    def test_post_select_client_view_session(self):
+        post_data = {
+            'targetPage': 'chooseSession',
+            'client': self.hip_client.id,
+        }
+        
+        response = self.test_client.post(self.select_client_url, post_data)
+        
+        self.assertEqual(response.status_code, 302, 'Posting the Select Client form should cause a redirect (302)')
+        self.assertRedirects(response, self.choose_session_url, 302, 200, msg_prefix='', fetch_redirect_response=True)
+
+    def test_post_select_client_record_session(self):
+        post_data = {
+            'targetPage': 'recordSession',
+            'client': self.hip_client.id,
+        }
+        
+        response = self.test_client.post(self.select_client_url, post_data)
+        
+        self.assertEqual(response.status_code, 302, 'Posting the Select Client form should cause a redirect (302)')
+        self.assertRedirects(response, self.new_course_url, 302, 200, msg_prefix='', fetch_redirect_response=True)
 
     def test_get_generate_chart(self):
         # Needed to add some skill scores for this to work
@@ -252,85 +397,58 @@ class ViewsTest(TestCase):
     
         self.assertEqual(response.status_code, 404, "Going to Choose Course page with a non-existant client should return a Status Code of 404")
 
+    def test_post_choose_course(self):
+        post_data = {
+            'client': self.hip_client.id,
+            'chosenCourse': self.course.id,
+        }
+        
+        response = self.test_client.post(self.choose_course_client, post_data)
+        
+        self.assertEqual(response.status_code, 302, 'Posting the Choose Course form should cause a redirect (302)')
+        self.assertRedirects(response, self.generate_chart_url, 302, 200, msg_prefix='', fetch_redirect_response=True)
+
+    def test_post_choose_course_none_chosen(self):
+        post_data = {
+            'client': self.hip_client.id,
+        }
+        
+        response = self.test_client.post(self.choose_course_client, post_data)
+        # Redirect does not have a context
+        # so need to use this instead
+        messages = list(response.wsgi_request._messages)
+        self.assertEqual(len(messages), 1, 'Should have 1 message on submitting without choosing a course')
+        message1 = messages[0].message
+        
+        self.assertEqual(response.status_code, 302, 'Posting the Choose Course form without selecting a course should cause a redirect (302) back to the Choose Course page')
+        self.assertRedirects(response, self.choose_course_client, 302, 200, msg_prefix='', fetch_redirect_response=True)
+        self.assertEqual(message1, 'You must select one of the courses below', 'Should have a message indicating that there was an error with the form submission')
+
     def test_get_new_course(self):
-        response = self.test_client.get(self.new_course)
+        response = self.test_client.get(self.new_course_url)
     
         self.assertEqual(response.status_code, 200, "Going to New Course page should return a Status Code of 200 (OK)")
         self.assertTemplateUsed(response, "hippo/newCourse.html", "New Course page should use the newCourse.html template")
 
-
-# class ObservationsTest(TestCase):
-#     # databases = {'test', 'default'}
-#
-#     def setUp(self):
-#         #Create a session
-#         test_date = date.today()
-#         hat = Hat.objects.create(size='10')
-#         diagnosis = Diagnosis.objects.create(diagnosis='Messed up')
-#         client = Client.objects.create(first_name='Sir', last_name='Test', gender='M', date_of_birth=test_date, hat_size=hat)
-#         course = Course.objects.create(client=client)
-#         horse = Horse.objects.create(horse_name='Red Rum')
-#         self.session = Session.objects.create(course=course, week_number=1, session_date=test_date, horse=horse)
-#
-#         # Create some skills
-#         self.function = Function.objects.create(function_name='Test Function')
-#         self.basket_weaving = Skill.objects.create(skill_name="Basket Weaving", function=self.function)
-#         self.flower_arranging = Skill.objects.create(skill_name="Flower Arranging", function=self.function)
-#         self.embroidery = Skill.objects.create(skill_name="Embroidery", function=self.function)
-
-    # @classmethod
-    # def setUpTestData(cls):
-    #     """
-    #     https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/Testing#views
-    #     """
-    #     # Create some skills
-    #     function = Function.objects.create(function_name='Test Function2')
-    #     # basket_weaving = Skill.objects.create(skill_name="Basket Weaving", function=function)
-    #     # flower_arranging = Skill.objects.create(skill_name="Flower Arranging", function=function)
-    #     # embroidery = Skill.objects.create(skill_name="Embroidery", function=function)
-    #     Skill.objects.create(skill_name="Basket Weaving2", function=function)
-    #     Skill.objects.create(skill_name="Flower Arranging2", function=function)
-    #     Skill.objects.create(skill_name="Embroidery2", function=function)
+    def test_post_new_course_use_existing_course(self):
+        post_data = {  }
         
-    # def test_score_observations(self):
-    #     # Post a new Observation via the form on the '/observeSession/<session>' route
-    #     """
-    #     To test the HTTP responses of the views
-    #     we can use a built-in HTTP client that comes with the Django testing framework.
-    #     """
-    #     response = self.client.post(f"/observeSession/{self.session.id}/", {"score1": "1", "score2": "3", "score3": "5"})
-    #
-    #     basket_weaving = Skill.objects.create(skill_name="Basket Weaving3", function=self.function)
-    #     flower_arranging = Skill.objects.create(skill_name="Flower Arranging3", function=self.function)
-    #     embroidery = Skill.objects.create(skill_name="Embroidery3", function=self.function)
-    #
-    #     """
-    #     If the observation scores have been saved successfully:
-    #     The view should redirect back to 'VIEW CHARTS' but for now the home page.
-    #     Use assertRedirects() to confirm that it redirects back to slash.
-    #     """
-    #     '''
-    #     Does not work because the form posts back to /observeSession/<session_id>/
-    #     And it is this redirection that 'assertRedirects' detects instead of
-    #     the final destination of the page
-    #     '''
-    #     # 302 status means redirect
-    #     self.assertRedirects(response, f'/observeSession/{self.session.id}/', status_code=302)
-    #     """
-    #     Just to prove that the observation scores have been saved.
-    #     Try to get them from the database using .filter() and passing it the session ID
-    #     Since these scores are the only ones on the database for that session
-    #     We can be certain the view works by asserting that the length of existing scores
-    #     equals the number of scores we added in the test.
-    #     """
-    #     observation_scores = SkillScore.objects.filter(session=self.session.id).order_by("score")
-    #
-    #     self.assertEqual(observation_scores.count(), 3, f"There should be 3 observation scores for session : {self.session.id}")
-    #     # self.assertEqual(len(observation_scores), 3, f"There should be 3 observation scores for session : {self.session.id}")
-    #     first_score = observation_scores[0]
-    #     second_score = observation_scores[1]
-    #     third_score = observation_scores[2]
-    #
-    #     self.assertEqual(1, first_score.score, "First score should be 1")
-    #     self.assertEqual(3, second_score.score, "First score should be 3")
-    #     self.assertEqual(5, third_score.score, "First score should be 5")
+        pre_course_count = Course.objects.count()
+        response = self.test_client.post(self.new_course_url, post_data)
+        post_course_count = Course.objects.count()
+        
+        self.assertEqual(response.status_code, 302, 'Posting the Choose Course form should cause a redirect (302) to the Record Session page')
+        self.assertRedirects(response, self.record_session_url, 302, 200, msg_prefix='', fetch_redirect_response=True)
+        self.assertEqual(Course.objects.last(), self.course, 'Should have the same courses as before')
+        self.assertEqual(pre_course_count, post_course_count, 'Should have the same number of courses as before')
+
+    def test_post_new_course_make_new_course(self):
+        post_data = { 'newCourse': 'on' }
+        
+        pre_course_count = Course.objects.count()
+        response = self.test_client.post(self.new_course_url, post_data)
+        post_course_count = Course.objects.count()
+        
+        self.assertEqual(response.status_code, 302, 'Posting the Choose Course form should cause a redirect (302) to the Record Session page')
+        self.assertRedirects(response, self.record_session_url, 302, 200, msg_prefix='', fetch_redirect_response=True)
+        self.assertEqual(pre_course_count + 1, post_course_count, 'Should have one more course than before the form was submitted')
