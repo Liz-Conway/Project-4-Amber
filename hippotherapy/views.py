@@ -324,11 +324,11 @@ class ObserveSession(TemplateView):
         '**kwargs' = Standard keyword arguments parameter
         """
         previous_observations =  request.session.get('observations', None)
-        # Clear the session data
-        request.session.flush()
         previous = None
         
         if previous_observations != None:
+            # Clear the session data
+            request.session['observations'] = None
             previous = convert_observations(previous_observations)    
         # Get the session id that was passed in the URL
         session_id = kwargs['session']
@@ -377,9 +377,6 @@ class ObserveSession(TemplateView):
         # I have absolutely no idea why Django decides to drop the logged in user
         # Just retrieve the user id I saved in the session earlier
         # and log this user back in again
-        user_id = request.session['loggedUser']
-        loggedInUser = HippotherapyUser.objects.get(id=user_id)
-        login(request, loggedInUser, AUTHENTICATION_BACKENDS[0])
         
         session_id = kwargs['session']
         observation_data=request.POST
