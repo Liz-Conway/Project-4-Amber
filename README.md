@@ -566,4 +566,5 @@ With forking you are pushing the updates to your own Amber repo on github.
 |How to query with Django | Nensi Trambadiya |https://medium.com/codeptivesolutions/https-medium-com-codeptivesolutions-commonly-used-sql-queries-using-django-orm-e8466e8d4258 |
 |How to get Django to accept valid date strings | Stack Overflow |https://stackoverflow.com/questions/4876370/django-date-format-dd-mm-yyyy |
 |How to get Django to accept valid date strings | Stack Overflow |
-|Django testing | The Dumbfounds |https://stackoverflow.com/questions/4876370/django-date-format-dd-mm-yyyy | |
+|Django testing | The Dumbfounds |https://stackoverflow.com/questions/4876370/django-date-format-dd-mm-yyyy |
+|Django Custom User with Roles | HUMPHREY |https://www.codeunderscored.com/django-roles-permissions-and-groups/ |

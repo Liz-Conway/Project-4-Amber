@@ -16,6 +16,9 @@ from django.urls.base import reverse
 from hippotherapy.hippotherapy_utils import get_course_for_client,\
     get_next_session_week, save_tasks, save_diagnoses,\
     get_scored_courses_for_client, convert_observations
+from profiles.models import HippotherapyUser
+from django.contrib.auth import login
+from django.conf.global_settings import AUTHENTICATION_BACKENDS
 
 # Create your views here.
 class HomePage(TemplateView):
@@ -320,7 +323,6 @@ class ObserveSession(TemplateView):
         '*args' = Standard arguments parameter
         '**kwargs' = Standard keyword arguments parameter
         """
-        # form = ObservationForm()
         previous_observations =  request.session.get('observations', None)
         # Clear the session data
         request.session.flush()
@@ -337,6 +339,11 @@ class ObserveSession(TemplateView):
         functions = Function.objects.all()
         skills = Skill.objects.all()
         hints = Hint.objects.all()
+        
+        # When the form is submitted the user is removed by Django from the request object.
+        # Why I have no idea.
+        # Save the user in the session object, so that it can be retrieved after the form is submitted
+        request.session['loggedUser'] = request.user.id
         
         return render(
             request, 
@@ -367,6 +374,13 @@ class ObserveSession(TemplateView):
         and assign it to a variable.
         Gets all of the data that we posted from our form
         """
+        # I have absolutely no idea why Django decides to drop the logged in user
+        # Just retrieve the user id I saved in the session earlier
+        # and log this user back in again
+        user_id = request.session['loggedUser']
+        loggedInUser = HippotherapyUser.objects.get(id=user_id)
+        login(request, loggedInUser, AUTHENTICATION_BACKENDS[0])
+        
         session_id = kwargs['session']
         observation_data=request.POST
         number_of_skills = Skill.objects.count()
@@ -399,7 +413,7 @@ class ObserveSession(TemplateView):
             
             course = get_object_or_404(Course.objects.filter(courses__id=session_id))
             course_id = course.id
-            # return redirect('viewSession', session=session_id)
+            
             return redirect('generateChart', course=course_id)
         
         else:
