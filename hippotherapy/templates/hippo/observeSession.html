@@ -9,15 +9,6 @@
 		
 		{% include 'includes/session-details.html' %}
 		
-		<table>
-		{% for score in previous %}
-			<tr>
-				<td>Skill: {{score.skill}}</td>
-				<td>Score: {{score.score}}</td>
-			</tr>
-		{% endfor %}
-		</table>
-
 		<p class="allRequired">Note: you must provide a score for each skill within every function</p>
 		<form id="observationForm" method="POST" action="">
 			<!-- Whenever we're posting information in Django,
