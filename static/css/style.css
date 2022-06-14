@@ -1323,6 +1323,10 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
     margin-bottom: 8rem;
   }
 
+  header {
+    margin-bottom: 3rem;
+  }
+
   #navWrapper {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
@@ -1389,10 +1393,21 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
 
   .navigationLink:link, .navigationLink:visited {
     font-size: 1.4rem;
+    -webkit-transform: none;
+            transform: none;
   }
 
   .navigationIcon {
     display: none;
+  }
+
+  #accountLinks .navigationLink {
+    margin-left:0;
+    width: initial;
+  }
+
+  .navigationItem {
+    width: initial;
   }
 
   .splash {
