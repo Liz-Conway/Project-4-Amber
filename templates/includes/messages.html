@@ -11,3 +11,11 @@
     {% endfor %}
 </div>
 {% endif %}
+
+{% if form.errors %}
+    {% for key, value in form.errors.items %}
+         <div class="message ui-state-error">
+             {{ value.as_text|cut:"*" }}
+         </div>
+     {% endfor %}
+{% endif %}
