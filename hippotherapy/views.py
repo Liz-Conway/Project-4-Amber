@@ -19,13 +19,14 @@ from hippotherapy.hippotherapy_utils import get_course_for_client,\
 from profiles.models import HippotherapyUser
 from django.contrib.auth import login
 from django.conf.global_settings import AUTHENTICATION_BACKENDS
+from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 
 # Create your views here.
 class HomePage(TemplateView):
     template_name = "index.html"
 
 
-class AddClient(TemplateView):
+class AddClient(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = 'hippo/addClient.html'
     form_class = ClientForm
     
@@ -111,9 +112,13 @@ class AddClient(TemplateView):
                 "diagnoses": diagnoses,
             }
         )
+        
+    def test_func(self):
+        return self.request.user.user_role() == 'Occupational Therapist'
 
 
-class RecordSession(TemplateView):
+
+class RecordSession(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = "hippo/recordSession.html"
     form_class = SessionForm
     
@@ -228,9 +233,12 @@ class RecordSession(TemplateView):
                 client=client   # parameter to pass to URL
             )
 
+    def test_func(self):
+        return self.request.user.user_role() == 'Occupational Therapist'
+
         
 
-class SelectClient(TemplateView):
+class SelectClient(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = "hippo/selectClient.html"
     
     """
@@ -315,9 +323,12 @@ class SelectClient(TemplateView):
             client=client,   # parameter to pass to URL
         )
 
+    def test_func(self):
+        return self.request.user.user_role() == 'Occupational Therapist' or self.request.user.user_role() == 'Hippotherapy Analyst'
 
 
-class ObserveSession(TemplateView):
+
+class ObserveSession(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = "hippo/observeSession.html"
 
     """
@@ -381,10 +392,6 @@ class ObserveSession(TemplateView):
         and assign it to a variable.
         Gets all of the data that we posted from our form
         """
-        # I have absolutely no idea why Django decides to drop the logged in user
-        # Just retrieve the user id I saved in the session earlier
-        # and log this user back in again
-        
         session_id = kwargs['session']
         observation_data=request.POST
         number_of_skills = Skill.objects.count()
@@ -425,8 +432,11 @@ class ObserveSession(TemplateView):
             messages.error(request, 'You need to add a score on <span class="boldEntry">every</span> skill in <span class="boldEntry">all</span> functions', extra_tags='safe')
             return HttpResponseRedirect(reverse('observeSession', args=[session_id]))
 
+    def test_func(self):
+        return self.request.user.user_role() == 'Occupational Therapist'
 
-class ChooseSession(TemplateView):
+
+class ChooseSession(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = "hippo/chooseSession.html"
     
     
@@ -482,8 +492,13 @@ class ChooseSession(TemplateView):
             return HttpResponseRedirect(reverse('chooseSession', args=[client_id]))
         
         return HttpResponseRedirect(reverse('viewSession', args=[session_id]))
+
+    def test_func(self):
+        return self.request.user.user_role() == 'Occupational Therapist' or self.request.user.user_role() == 'Hippotherapy Analyst'
+
+
        
-class ViewSession(TemplateView):
+class ViewSession(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = "hippo/viewSession.html"
 
     """
@@ -557,8 +572,13 @@ class ViewSession(TemplateView):
                 "session": session,
             }
         )
+
+    def test_func(self):
+        return self.request.user.user_role() == 'Occupational Therapist' or self.request.user.user_role() == 'Hippotherapy Analyst'
+
+
         
-class ChartPage(TemplateView):
+class ChartPage(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = "hippo/generateChart.html"
 
     """
@@ -643,8 +663,11 @@ class ChartPage(TemplateView):
             }
         )
         
+    def test_func(self):
+        return self.request.user.user_role() == 'Occupational Therapist' or self.request.user.user_role() == 'Hippotherapy Analyst'
 
-class ChooseCourse(TemplateView):
+
+class ChooseCourse(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = "hippo/chooseCourse.html"
     
     
@@ -695,8 +718,11 @@ class ChooseCourse(TemplateView):
         
         return HttpResponseRedirect(reverse('generateChart', args=[course_id]))
 
+    def test_func(self):
+        return self.request.user.user_role() == 'Occupational Therapist' or self.request.user.user_role() == 'Hippotherapy Analyst'
 
-class NewCourse(TemplateView):
+
+class NewCourse(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = "hippo/newCourse.html"
     
     """
@@ -744,5 +770,8 @@ class NewCourse(TemplateView):
             'recordSession',       # view to render
             client=client,   # parameter to pass to URL
         )
+
+    def test_func(self):
+        return self.request.user.user_role() == 'Occupational Therapist'
 
 

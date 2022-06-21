@@ -4,9 +4,10 @@ from profiles.forms import HippotherapyUserCreationForm,\
 from django.views.generic.base import TemplateView
 from django.contrib import messages
 from django.views.generic.edit import CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
-class AddUser(TemplateView):
+class AddUser(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
     template_name = 'profiles/addUser.html'
     
     """
@@ -77,6 +78,9 @@ class AddUser(TemplateView):
                 'form': HippotherapyUserCreationForm(),
             }
         )
+
+    def test_func(self):
+        return self.request.user.user_role() == 'Administrator'
 
 
 class MyAccount(TemplateView):

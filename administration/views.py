@@ -5,12 +5,13 @@ from .models import Diagnosis
 from .forms import DiagnosisForm
 from django.views import View
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 # https://www.pluralsight.com/guides/work-with-ajax-django
 # How to add an item on the same page that displays an existing list of "stuff"
-class DiagnosisList(View):
+class DiagnosisList(LoginRequiredMixin, UserPassesTestMixin, View):
     form_class = DiagnosisForm
-    template_name = "admins/addDiagnosis.html"
+    template_name = 'admins/addDiagnosis.html'
 
     """
     In class-based views:
@@ -32,8 +33,8 @@ class DiagnosisList(View):
             self.template_name, # view to render
             # Context - passed into the HTML template
             {
-                "form": form, 
-                "diagnoses": diagnoses
+                'form': form, 
+                'diagnoses': diagnoses
             }
         )
 
@@ -61,15 +62,16 @@ class DiagnosisList(View):
                 # Serialise the form data in JSON format
                 ser_instance = serializers.serialize('json', [ instance, ])
                 # send to client side.
-                return JsonResponse({"instance": ser_instance}, status=200)
+                return JsonResponse({'instance': ser_instance}, status=200)
             else:
                 # Set an invalid message
-                messages.error(request, "That diagnosis already exists")
+                messages.error(request, 'That diagnosis already exists')
                 # Send a JSON error to the client
-                return JsonResponse({"error": form.errors}, status=400)
+                return JsonResponse({'error': form.errors}, status=400)
 
         # Not post => Send an error to the client
-        messages.error(request, "Form not Posted correctly")
-        return JsonResponse({"error": ""}, status=400)
+        messages.error(request, 'Form not Posted correctly')
+        return JsonResponse({'error': ''}, status=400)
 
-
+    def test_func(self):
+        return self.request.user.user_role() == 'Administrator'
