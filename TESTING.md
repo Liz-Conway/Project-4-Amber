@@ -703,3 +703,41 @@
 | Choose a Course to generate the chart for | Click the radio button next to one of the Courses | Radio button shows that the course is selected. | 
 | Reset | Click the **Reset Form** button | ''Select Course’ page appears.<br />No Courses are selected. | 
 
+# Unit Tests
+
+## Javascript
+
+Javascript Unit tests were created for Generating the graph in the 'Generate Chart' epic.  Here are the unit tests:
+<img src="documentation/test/javascript-unit-test1.png" width="100%" alt="Javascript Unit tests 1">
+<img src="documentation/test/javascript-unit-test2.png" width="100%" alt="Javascript Unit tests 2">
+<img src="documentation/test/javascript-unit-test2.png" width="100%" alt="Javascript Unit tests 3">
+<img src="documentation/test/javascript-unit-test2.png" width="100%" alt="Javascript Unit tests 4">
+<img src="documentation/test/javascript-unit-test2.png" width="100%" alt="Javascript Unit tests 5">
+
+
+
+## Django
+
+For the Django application I created 3 different test suites.  One for my models, one for some utility classes I created and one for the Django View controllers where nearly all of the logic for the application resides.
+
+### Model unit tests
+
+<img src="documentation/test/django-model-unit-test.png" width="100%" alt="Django Model Unit test">
+
+### Utility functions unit tests
+
+<img src="documentation/test/django-util-unit-test1.png" width="100%" alt="Django Utility Unit test1">
+<img src="documentation/test/django-util-unit-test2.png" width="100%" alt="Django Utility Unit test2">
+
+
+
+### View controller unit tests
+
+<img src="documentation/test/django-view-unit-test1.png" width="100%" alt="Django View Unit test1">
+<img src="documentation/test/django-view-unit-test2.png" width="100%" alt="Django View Unit test2">
+<img src="documentation/test/django-view-unit-test3.png" width="100%" alt="Django View Unit test3">
+
+
+# Peer Code Review
+
+This application underwent a Peer Code Review on the 14th June 2022.  A number of bugs were found and have been addressed.
