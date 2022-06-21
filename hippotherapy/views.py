@@ -20,7 +20,7 @@ from profiles.models import HippotherapyUser
 from django.contrib.auth import login
 from django.conf.global_settings import AUTHENTICATION_BACKENDS
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, DeleteView
 from cloudinary.cache.responsive_breakpoints_cache import instance
 from django.db.transaction import commit
 
@@ -927,4 +927,11 @@ class NewCourse(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
         return self.request.user.user_role() == 'Occupational Therapist'
 
 
-
+class DeleteClient(DeleteView):
+    # Specify the model you to use
+    model = Client
+     
+    # Specify the success url
+    # This is the url to redirect to
+    # after successfully deleting the client
+    success_url ="/getClients"

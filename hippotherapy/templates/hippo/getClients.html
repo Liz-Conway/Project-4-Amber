@@ -37,7 +37,7 @@
 			     Button with icon only
 			  </button> -->
 								<a class="ui-button ui-widget ui-corner-all ui-button-icon-only" href="{% url 'editClient' client=client.id %}"><span class="ui-icon ui-icon-pencil"></span></a>
-								<a class="ui-button ui-widget ui-corner-all ui-button-icon-only deleteAction" href="{# url 'deleteClient/{{client.id}}' #}"><span class="ui-icon ui-icon-trash"></span></a>
+								<a class="ui-button ui-widget ui-corner-all ui-button-icon-only deleteAction" href="{% url 'deleteClient' pk=client.id %}"><span class="ui-icon ui-icon-trash"></span></a>
 							</td>
 						</tr>
 					{% empty %}
