@@ -183,4 +183,8 @@ function loadJson(selector) {
   return JSON.parse(document.querySelector(selector).getAttribute('data-json'));
 }
 
-
+function selectClient(clientID) {
+	let chosen = $("#chosenClient");
+	chosen.val(clientID);
+	$("#selectClientForm").submit();
+}

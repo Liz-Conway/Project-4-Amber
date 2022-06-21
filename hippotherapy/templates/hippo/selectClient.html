@@ -24,21 +24,63 @@
 			And works to guarantee that the data we're posting is actually coming from our
 			todo list app and not from another website. -->
 			{% csrf_token %}
+			
+			<!-- Hidden input to store the value of the client
+			depending on which row the user clicks the 'Pick' button
+			Its value will be populated by Javascript after the button is clicked -->
+			<input type="hidden" name="client" id="chosenClient" value="666">
+			
+			<!-- Hidden input to store target page to go to 
+			after the client has been chosen -->
+			<input type="hidden" name="targetPage" value="{{ target }}">
 
 			<div class="formGroup">
-				<input type="hidden" name="targetPage" value="{{ target }}">
-				<select name="client" id="id_client" class="formInput" required>
-					<option value="" selected disabled>Choose a Client</option>
-					{% for client in clients %}
-						<option value="{{ client.id }}">{{ client.first_name }} {{ client.last_name }}</option>
-					{% endfor %}
-				</select>
+				<div class="clientList">
+					<table id="clientListTable" class="hippoTable">
+						<thead>
+							<tr>
+								<th class="clientListName">Name</th>
+								<th class="clientListDOB">Date of Birth</th>
+								<th>Gender</th>
+								<th class="extraColumn">First Diagnosis</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+						{% for client in clients %}
+							<tr class="hippoRow">
+								<td class="hippoLabel" title="{{ client.diagnosis.first }}">
+									{{ client }} {{ client.id }}
+								</td>
+								<td class="hippoCentre">
+									{{ client.date_of_birth }}
+								</td>
+								<td class="hippoCentre">
+									{{ client.gender }}
+								</td>
+								<td class="extraColumn">
+									{{ client.diagnosis.first }}
+								</td>
+								<td class="hippoActions">
+									<button type="button" class="clientPick ui-button ui-widget ui-corner-all" onclick="selectClient({{ client.id }});">Pick</button>
+									
+								</td>
+							</tr>
+						{% empty %}
+							<tr><td colspan="4">You have no clients yet!  Please add some clients <a href="{% url 'addClient' %}">here</a></td></tr>
+						{% endfor %}
+						</tbody>
+						<caption>
+							<p>A list of hippotherapy clients</p>
+						</caption>
+					</table>
+				</div>
 				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
 				<label for="id_client" class="formLabel">Client :</label>
 			</div>
 			
 			<div class="btnGroup">
-				<input type="submit" class="btn btnMain" value="Select this Client" />
+				
 				<a href="{% url 'home' %}" class="btn btnGhost">Cancel</a>
 				<input type="reset" class="btn btnTextOnly" value="Reset Form" />
 			</div>
