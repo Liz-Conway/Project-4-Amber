@@ -20,6 +20,8 @@ from profiles.models import HippotherapyUser
 from django.contrib.auth import login
 from django.conf.global_settings import AUTHENTICATION_BACKENDS
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
+from django.views.generic.edit import UpdateView
+from cloudinary.cache.responsive_breakpoints_cache import instance
 
 # Create your views here.
 class HomePage(TemplateView):
@@ -112,6 +114,139 @@ class AddClient(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
                 "diagnoses": diagnoses,
             }
         )
+        
+    def test_func(self):
+        return self.request.user.user_role() == 'Occupational Therapist'
+
+
+class EditClient(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    template_name = 'hippo/editClient.html'
+    form_class = ClientForm
+
+    """
+    In class-based views:
+    Instead of using an if statement to check the request method,  
+    we simply create class methods called GET, POST, or any other HTTP verb.
+    """
+    def get(self, request, *args, **kwargs):
+        """
+        '*args' = Standard arguments parameter
+        '**kwargs' = Standard keyword arguments parameter
+        """
+        client_id = kwargs['client']
+        client = get_object_or_404(Client.objects.filter(id=client_id))
+        form = ClientForm(instance=client)
+        hat_sizes = Hat.objects.all()
+        diagnoses = Diagnosis.objects.all()
+        client_hat = client.hat_size.size
+        client_diagnoses = Client.objects.filter(id=client_id).values('diagnosis')
+        print(client_diagnoses)
+        
+        return render(
+            request, 
+            self.template_name, # view to render
+            # Context - passed into the HTML template
+            {
+                'form': form, 
+                'hat_sizes': hat_sizes,
+                'diagnoses': diagnoses,
+                'hat': client_hat,
+                'client_diagnoses': client_diagnoses,
+                'client_id': client_id,
+            }
+        )
+        
+    """
+    In class based views -
+    GET & POST are supplied as class methods
+    """
+    def post(self, request, *args, **kwargs):
+        """
+        '*args' = Standard arguments parameter
+        '**kwargs' = Standard keyword arguments parameter
+        """
+        
+        # Get the client we are editing
+        client_id = request.POST['clientId']
+        client = get_object_or_404(Client.objects.filter(id=client_id)) 
+        """
+        Get the data from our form
+        and assign it to a variable.
+        Gets all of the data that we posted from our form
+        """
+        edit_user_form = ClientForm(data=request.POST, instance=client)
+        
+        """
+        Form is valid => If all the fields have been completed
+        """
+        if edit_user_form.is_valid():
+            saved_client = edit_user_form.save()
+            save_diagnoses(saved_client.id, request.POST) # ?????????  Need to edit diagnoses ????????????
+            first_name = request.POST['first_name']
+            last_name = request.POST['last_name']
+            messages.success(request,
+                             f'Client <span class="name">{first_name} {last_name}</span> has been changed successfully.',
+                             extra_tags='safe')
+        else:
+            """
+            If the form is NOT valid  
+            then return the 'edit client' form instance
+            showing the errors
+            """
+            messages.error(request, '<span class="boldEntry">Invalid form submission.</span>', extra_tags='safe')
+            messages.error(request, edit_user_form.errors)
+
+        hat_sizes = Hat.objects.all()
+        diagnoses = Diagnosis.objects.all()
+        """
+        Send all of this information to our render method
+        """
+        # https://stackoverflow.com/questions/6318074/django-bypass-form-validation
+        # Bypass Django validating the date field even though it never was asked to
+        # To add insult to injury, Django then informs that a valid date is not valid
+        # initial = dict(map(lambda x:(x[0], x[1][0]), dict(request.GET).items()))
+        return render(
+            request, 
+            self.template_name, # View to render
+            # Context - passed into the HTML template
+            { 
+                'form': ClientForm(data=request.POST),
+                'hat_sizes': hat_sizes,
+                "diagnoses": diagnoses,
+            }
+        )
+
+    def test_func(self):
+        return self.request.user.user_role() == 'Occupational Therapist'
+
+
+
+class GetClients(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
+    template_name = 'hippo/getClients.html'
+    form_class = ClientForm
+    
+    
+    """
+    In class-based views:
+    Instead of using an if statement to check the request method,  
+    we simply create class methods called GET, POST, or any other HTTP verb.
+    """
+    def get(self, request, *args, **kwargs):
+        """
+        '*args' = Standard arguments parameter
+        '**kwargs' = Standard keyword arguments parameter
+        """
+        clients = Client.objects.all()
+        
+        return render(
+            request, 
+            self.template_name, # view to render
+            # Context - passed into the HTML template
+            {
+                "clients": clients, 
+            }
+        )
+        
         
     def test_func(self):
         return self.request.user.user_role() == 'Occupational Therapist'
@@ -776,5 +911,6 @@ class NewCourse(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
 
     def test_func(self):
         return self.request.user.user_role() == 'Occupational Therapist'
+
 
 

@@ -77,6 +77,11 @@
 						</li>
 					{% endif %}
 					{% if user.user_role == 'Occupational Therapist' %}
+						<li class="navigationItem">
+							<a href="{% url 'getClients' %}" class="navigationLink">Edit Client</a>
+						</li>
+					{% endif %}
+					{% if user.user_role == 'Occupational Therapist' %}
 					<li class="navigationItem">
 						<a href="{% url 'selectClient' target='recordSession' %}" class="navigationLink">Record Session</a>
 					</li>

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Amber|Get Client List{% endblock title %}
+
+{% block content %}
+	<div id="clientListContainer">
+		
+		<h1>List of Clients</h1>
+		<section class="clientList">
+			<div>
+				<table class="clientsTable">
+					<thead>
+						<th>Name</th>
+						<th>Date of Birth</th>
+						<th>Gender</th>
+						<th class="extraColumn">First Diagnosis</th>
+						<th>Action</th>
+					</thead>
+					<tbody>
+					{% for client in clients %}
+						<tr class="clientRow">
+							<td>
+								{{ client }}
+							</td>
+							<td>
+								{{ client.date_of_birth }}
+							</td>
+							<td>
+								{{ client.gender }}
+							</td>
+							<td class="extraColumn">
+								{{ client.diagnosis.first }}
+							</td>
+							<td>
+								<a href="{% url 'editClient' client=client.id %}">Edit</a>
+								<a href="{# url 'deleteClient/{{client.id}}' #}">Delete</a>
+							</td>
+						</tr>
+					{% empty %}
+						<tr><td>You have no clients yet!  Please add some clients <a href="{% url 'addClient' %}">here</a></td></tr>
+					{% endfor %}
+					</tbody>
+					<caption>
+						<p>A list of hippotherapy clients</p>
+					</caption>
+				</table>
+			</div>
+			
+		</section>
+		
+	</div>
+
+
+{% endblock content %}				
