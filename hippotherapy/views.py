@@ -21,7 +21,6 @@ from django.contrib.auth import login
 from django.conf.global_settings import AUTHENTICATION_BACKENDS
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.views.generic.edit import UpdateView, DeleteView
-from cloudinary.cache.responsive_breakpoints_cache import instance
 from django.db.transaction import commit
 
 # Create your views here.
