@@ -131,10 +131,16 @@ def create_course_for_client(client_id):
 def get_scored_courses_for_client(client):
     scored_courses = []
     courses = Course.objects.filter(client=client)
+    
     for course in courses:
-        course_dates = {"course":course.id} 
         # We need to find the latest week for a given course that has scores
         latest_week = Session.objects.filter(course=course.id).exclude(score_session=None).values('course').aggregate(Max('week_number'))['week_number__max']
+        # If a course has no scored sessions
+        # Skip this course
+        if latest_week == None:
+            continue
+        
+        course_dates = {"course":course.id} 
         course_dates['last_week'] = latest_week
         # We need to find the date of the latest week for a given course that has scores
         latest_date = Session.objects.filter(week_number=latest_week, course=course.id).values('session_date')

@@ -5,16 +5,16 @@ Amber|404 error
 
 {% block content %}
 	    <section class="errorSection">
-		    <div class="error404">
+		<div class="error404">
 		    	404
         	</div>
 	    	
-	    	<h2 class="errorTitle">
+	    	<h1 class="errorTitle">
 	       		We can't find the page you are looking for
-	       	</h2>
-	       	<h3 class="errorSubtitle">
+	       	</h1>
+	       	<h2 class="errorSubtitle">
 	       		Let's find a better place for you to go!
-	       	</h3>
+	       	</h2>
 	       	<a href="{% url 'home' %}" class="btn btnMain"> Home</a>
 	    </section>
 {% endblock %}

@@ -185,7 +185,6 @@ class EditClient(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             edited_client = edit_client_form.save(commit=False)
             update_diagnoses(edited_client.id, request.POST) # ?????????  Need to edit diagnoses ????????????
             new_hat = get_object_or_404(Hat.objects.filter(id=request.POST['hat_size']))
-            print(f"New Hat :  {new_hat}")
             edited_client.hat_size = new_hat
             edited_client.save()
             
@@ -752,7 +751,6 @@ class ChartPage(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
         
         try:
             course_id = request.POST['course']
-            print(f"POSTed course ID")
         except KeyError:
             # No Course was chosen - redisplay the page with an error message
             # Key Error - No 'course' in POST data

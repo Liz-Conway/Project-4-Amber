@@ -97,7 +97,6 @@ class MyAccount(TemplateView):
         '**kwargs' = Standard keyword arguments parameter
         """
         me = request.user
-        print(f"I am ::  {me}")
         if me.is_anonymous:
             messages.warning(request, 'User is not logged in.  Please use the menu to log in.')
             return render(
