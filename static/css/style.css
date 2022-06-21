@@ -656,6 +656,10 @@ footer {
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
+.skillScoreLabel {
+  display: inline-block;
+  margin-top: 0.5rem;
+}
 
 #accordion h3 {
   /*First colour is a "fall back" in case the image does not work */

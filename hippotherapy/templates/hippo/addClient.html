@@ -59,7 +59,7 @@
 				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
 				<label for="id_{{ form.hat_size.name }}" class="formLabel">{{ form.hat_size.label }}:</label>
 			</div>
-			<label class="formLabel manyManyLabel required" for="manyManyDiagnosis">Diagnoses:</label>
+			<label class="formLabel manyManyLabel" for="manyManyDiagnosis">Diagnoses:</label>
 			<div class="formGroup manyMany" id="manyManyDiagnosis">
 				{% for diag in diagnoses %}
 					<div class="manyManyCheck">
