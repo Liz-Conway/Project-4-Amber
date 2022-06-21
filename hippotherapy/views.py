@@ -15,13 +15,14 @@ from django.http.response import HttpResponseRedirect
 from django.urls.base import reverse
 from hippotherapy.hippotherapy_utils import get_course_for_client,\
     get_next_session_week, save_tasks, save_diagnoses,\
-    get_scored_courses_for_client, convert_observations
+    get_scored_courses_for_client, convert_observations, update_diagnoses
 from profiles.models import HippotherapyUser
 from django.contrib.auth import login
 from django.conf.global_settings import AUTHENTICATION_BACKENDS
 from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
 from django.views.generic.edit import UpdateView
 from cloudinary.cache.responsive_breakpoints_cache import instance
+from django.db.transaction import commit
 
 # Create your views here.
 class HomePage(TemplateView):
@@ -140,7 +141,6 @@ class EditClient(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         diagnoses = Diagnosis.objects.all()
         client_hat = client.hat_size.size
         client_diagnoses = Client.objects.filter(id=client_id).values('diagnosis')
-        print(client_diagnoses)
         
         return render(
             request, 
@@ -174,19 +174,37 @@ class EditClient(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         and assign it to a variable.
         Gets all of the data that we posted from our form
         """
-        edit_user_form = ClientForm(data=request.POST, instance=client)
+        edit_client_form = ClientForm(data=request.POST, instance=client)
         
         """
         Form is valid => If all the fields have been completed
         """
-        if edit_user_form.is_valid():
-            saved_client = edit_user_form.save()
-            save_diagnoses(saved_client.id, request.POST) # ?????????  Need to edit diagnoses ????????????
+        if edit_client_form.is_valid():
+            # Save form but do not commit to DB just yet,
+            # Because we want to assign a hat size, and diagnoses to it first.
+            edited_client = edit_client_form.save(commit=False)
+            update_diagnoses(edited_client.id, request.POST) # ?????????  Need to edit diagnoses ????????????
+            new_hat = get_object_or_404(Hat.objects.filter(id=request.POST['hat_size']))
+            print(f"New Hat :  {new_hat}")
+            edited_client.hat_size = new_hat
+            edited_client.save()
+            
             first_name = request.POST['first_name']
             last_name = request.POST['last_name']
             messages.success(request,
                              f'Client <span class="name">{first_name} {last_name}</span> has been changed successfully.',
                              extra_tags='safe')
+            
+            # On successful editing of a client
+            # Show the client list page
+            return render(
+                request, 
+                'hippo/getClients.html', # View to render
+                # Context - passed into the HTML template
+                {
+                    'clients': Client.objects.all()
+                }
+            )
         else:
             """
             If the form is NOT valid  
@@ -194,27 +212,23 @@ class EditClient(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             showing the errors
             """
             messages.error(request, '<span class="boldEntry">Invalid form submission.</span>', extra_tags='safe')
-            messages.error(request, edit_user_form.errors)
+            messages.error(request, edit_client_form.errors)
 
-        hat_sizes = Hat.objects.all()
-        diagnoses = Diagnosis.objects.all()
-        """
-        Send all of this information to our render method
-        """
-        # https://stackoverflow.com/questions/6318074/django-bypass-form-validation
-        # Bypass Django validating the date field even though it never was asked to
-        # To add insult to injury, Django then informs that a valid date is not valid
-        # initial = dict(map(lambda x:(x[0], x[1][0]), dict(request.GET).items()))
-        return render(
-            request, 
-            self.template_name, # View to render
-            # Context - passed into the HTML template
-            { 
-                'form': ClientForm(data=request.POST),
-                'hat_sizes': hat_sizes,
-                "diagnoses": diagnoses,
-            }
-        )
+            hat_sizes = Hat.objects.all()
+            diagnoses = Diagnosis.objects.all()
+            """
+            Send all of this information to our render method
+            """
+            return render(
+                request, 
+                self.template_name, # View to render
+                # Context - passed into the HTML template
+                { 
+                    'form': edit_client_form,
+                    'hat_sizes': hat_sizes,
+                    "diagnoses": diagnoses,
+                }
+            )
 
     def test_func(self):
         return self.request.user.user_role() == 'Occupational Therapist'

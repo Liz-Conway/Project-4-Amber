@@ -97,6 +97,16 @@ def save_diagnoses(client_id, post):
         if post.get(diagnosis_identifier) != None:
             client.diagnosis.add(diagnosis)          
             
+def update_diagnoses(client_id, post):
+    client = Client.objects.get(id=client_id)
+    
+    for diagnosis in Diagnosis.objects.all():
+        diagnosis_identifier = f'diagnosis_{diagnosis.id}'
+        if post.get(diagnosis_identifier) != None:
+            client.diagnosis.add(diagnosis)
+        else:
+            client.diagnosis.remove(diagnosis)        
+            
 def convert_observations(previous_observations):
     converted = []
     for observation in previous_observations:

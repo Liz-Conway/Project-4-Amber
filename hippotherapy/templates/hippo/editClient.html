@@ -55,8 +55,8 @@
 				<select name="{{ form.hat_size.name }}" id="id_{{ form.hat_size.name }}" class="formInput" required>
 					<option value="" disabled>Choose a hat size</option>
 					{% for size in hat_sizes %}
-						<option {% if size == hat %}
-									{{ selected }}
+						<option {% if size.size == hat %}
+									selected
 								{% endif %} 
 							value="{{ size.id }}">{{ size.size }}</option>
 					{% endfor %}
@@ -95,7 +95,7 @@
 			
 			<div class="btnGroup">
 				<input type="submit" class="btn btnMain" value="Save changes" />
-				<a href="{% url 'home' %}" class="btn btnGhost">Cancel</a>
+				<a href="{% url 'getClients' %}" class="btn btnGhost">Cancel</a>
 				<input type="reset" class="btn btnTextOnly" value="Reset Form" />
 			</div>
 		</form>
