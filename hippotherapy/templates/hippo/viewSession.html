@@ -12,14 +12,14 @@
 				Horse : <span class="boldEntry">{{ scores.first.session.horse }}</span>
 			</div>
 			<div>
-				<table class="scoreTable">
+				<table class="hippoTable">
 				<caption>
 					<p>Tasks performed by:</p>
 					<span class="scoreClient">{{ scores.first.session.course.client }}</span>
 				</caption>
 					{% for task in tasks %}
-						<tr class="scoreRow">
-							<td class="scoreLabel">
+						<tr class="hippoRow">
+							<td class="hippoLabel">
 								{{ task.task_name }}
 							</td>
 							<td class="rightPad">
@@ -44,7 +44,7 @@
 		or even functions and classes. -->
 		<section>
 			<h2>Session Scores</h2>
-			<table class="scoreTable">
+			<table class="hippoTable">
 				<caption>
 					<p>Functional Skill scores for:</p>
 					<span class="scoreClient">{{ scores.first.session.course.client }}</span>
@@ -64,19 +64,19 @@
 								</td>
 								<td></td>
 							</tr>
-							<tr class="scoreRow">
-								<td class="scoreLabel">
+							<tr class="hippoRow">
+								<td class="hippoLabel">
 									{{ score.skill }}
 								</td>
-								<td class="scoreValue">
+								<td class="hippoCentre">
 									{{ score.score }}
 								</td>
 						{% else %}
-							<tr class="scoreRow">
-								<td class="scoreLabel">
+							<tr class="hippoRow">
+								<td class="hippoLabel">
 									{{ score.skill }}
 								</td>
-								<td class="scoreValue">
+								<td class="hippoCentre">
 									{{ score.score }}
 								</td>
 						{% endifchanged %}

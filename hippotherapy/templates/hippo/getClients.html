@@ -8,32 +8,36 @@
 		<h1>List of Clients</h1>
 		<section class="clientList">
 			<div>
-				<table class="clientsTable">
+				<table id="clientListTable" class="hippoTable">
 					<thead>
-						<th>Name</th>
-						<th>Date of Birth</th>
+						<th class="clientListName">Name</th>
+						<th class="clientListDOB">Date of Birth</th>
 						<th>Gender</th>
 						<th class="extraColumn">First Diagnosis</th>
 						<th>Action</th>
 					</thead>
 					<tbody>
 					{% for client in clients %}
-						<tr class="clientRow">
-							<td>
+						<tr class="hippoRow">
+							<td class="hippoLabel" title="{{ client.diagnosis.first }}">
 								{{ client }}
 							</td>
-							<td>
+							<td class="hippoCentre">
 								{{ client.date_of_birth }}
 							</td>
-							<td>
+							<td class="hippoCentre">
 								{{ client.gender }}
 							</td>
 							<td class="extraColumn">
 								{{ client.diagnosis.first }}
 							</td>
-							<td>
-								<a href="{% url 'editClient' client=client.id %}">Edit</a>
-								<a href="{# url 'deleteClient/{{client.id}}' #}">Delete</a>
+							<td class="hippoActions">
+								<!-- <button class="ui-button ui-widget ui-corner-all ui-button-icon-only" title="{{ user.user_role }}">
+			    	<span class="ui-icon ui-icon-wrench"></span>
+			     Button with icon only
+			  </button> -->
+								<a class="ui-button ui-widget ui-corner-all ui-button-icon-only" href="{% url 'editClient' client=client.id %}"><span class="ui-icon ui-icon-pencil"></span></a>
+								<a class="ui-button ui-widget ui-corner-all ui-button-icon-only deleteAction" href="{# url 'deleteClient/{{client.id}}' #}"><span class="ui-icon ui-icon-trash"></span></a>
 							</td>
 						</tr>
 					{% empty %}

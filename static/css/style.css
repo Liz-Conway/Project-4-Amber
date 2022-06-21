@@ -1022,25 +1022,53 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
 
 /*===== END  Many-to-many components  ===== */
 /*~~~~~~~  Table  ~~~~~~~ */
-.scoreTable {
+.hippoTable {
   border: 1px solid #191970;
   margin: 1rem auto 2rem auto;
   max-width: calc(100% - 4rem);
   border-collapse: collapse;
 }
-.scoreTable .rightPad {
+.hippoTable .rightPad {
   padding-right: 1rem;
 }
-.scoreRow:nth-child(even) {
+.hippoTable th {
+  border-bottom: 1px solid #000000;
+}
+.hippoRow:nth-child(odd) {
   background-color: #FFCDBC;
 }
-.scoreRow:hover {
+.hippoRow:hover {
   background-color: #7EB2DD;
 }
-.scoreLabel {
+.hippoLabel {
   padding-left: 2rem;
   padding-right: 1rem;
 }
+.hippoCentre {
+  text-align: center;
+}
+.hippoActions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.hippoActions a {
+  height: 4rem;
+  margin-top: 1rem;
+  width: 3.5em;
+}
+
+.deleteAction {
+  background-color: #E84610;
+}
+
 .scoreFunction {
   font-size: 1.8rem;
   font-weight: 500;
@@ -1049,11 +1077,19 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
 .scoreFunctionLabel {
   padding: 0.5rem 1rem;
 }
-.scoreValue {
-  text-align: center;
-}
 .scoreClient {
   font-weight: 600;
+}
+
+.extraColumn {
+  display: none;
+}
+
+.clientListName {
+  min-width: 14rem;
+}
+.clientListDOB {
+  min-width: 7rem;
 }
 
 /*===== END  Table  ===== */
@@ -1462,6 +1498,10 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
   .errorSection {
     min-height: 63vh;
   }
+  .extraColumn {
+    display: table-cell;
+  }
+
 }
 
 /* Media Queries for Desktop/Laptop screens */
