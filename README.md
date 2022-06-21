@@ -352,7 +352,7 @@ At the end of the project, all User Stories will be in the **Done** list and the
 **GitHub** is used as the central version control repository for this project.
 
 ### Testing 
-<a id="testing"></a>Testing is documented in the [Testing document](documentation/test/TESTING.md)
+<a id="testing"></a>Testing is documented in the [Testing document](TESTING.md)
 
 ### Bug Fixes
 **BUG:**
