@@ -1,16 +1,20 @@
 {% extends "base.html" %}
+{% block title %}
+Amber|404 error
+{% endblock %}
 
 {% block content %}
 	    <section class="errorSection">
-		    <h1 class="error404">
+		    <div class="error404">
 		    	404
-        	</h1>
+        	</div>
 	    	
-	    	<h2 class="headingPrimary">
-	       		<span class="errorTitle">We can't find the page you are looking for</span>
+	    	<h2 class="errorTitle">
+	       		We can't find the page you are looking for
 	       	</h2>
-	       	<h3>
-	       		<span class="errorSubtitle">Don't worry, they can't all be winners!</span>
+	       	<h3 class="errorSubtitle">
+	       		Let's find a better place for you to go!
 	       	</h3>
+	       	<a href="{% url 'home' %}" class="btn btnMain"> Home</a>
 	    </section>
 {% endblock %}

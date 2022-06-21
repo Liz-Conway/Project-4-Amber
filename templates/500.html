@@ -1,13 +1,17 @@
 {% extends "base.html" %}
+{% block title %}
+Amber|500 error
+{% endblock %}
 
 {% block content %}
         <section class="errorSection">
             
-            <h1 class="headingPrimary">
-                <span class="errorTitle">This one's on us.  Sorry.</span>
-            </h1>
-            <h2>
-                <span class="errorSubtitle">Please try again later</span>
-            </h2>
+	    	<h1 class="errorTitle">
+	       		This one's on us.  Sorry.
+	       	</h1>
+	       	<h2 class="errorSubtitle">
+	       		Our server is having a bad day.  Please try again later.
+	       	</h2>
+	       	<a href="{% url 'home' %}" class="btn btnMain"> Home</a>
         </section>
 {% endblock %}

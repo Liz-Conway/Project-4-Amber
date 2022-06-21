@@ -1246,6 +1246,41 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
 }
 
 /*===== END  Login  ===== */
+/*~~~~~~~  404 Page  ~~~~~~~ */
+.errorSection {
+  background-color: #FFCDBC;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  min-height: 75vh;
+  padding: 3rem;
+}
+
+.error404 {
+  font-size: 10rem;
+  font-weight: 100;
+  color: #191970;
+  margin: 5rem auto;
+}
+.errorSubtitle {
+  color: #3D2724;
+}
+
+.errorText {
+  color: #E84610;
+}
+
+/*===== END  404 Page  ===== */
 
 
 /* Media Queries for Big Phones */
@@ -1423,6 +1458,10 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
   .splashSubtitle {
     width: 48%;
   }
+
+  .errorSection {
+    min-height: 63vh;
+  }
 }
 
 /* Media Queries for Desktop/Laptop screens */
@@ -1450,6 +1489,10 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
   .splashSubtitle {
     width: 40%;
   }
+
+  .errorSection {
+    min-height: 55vh;
+  }
 }
 
 @media only screen and (min-width: 72.75em) {
@@ -1464,97 +1507,7 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
 
 
 /* Media Queries for Extra Large screens */
-@media only screen /*~~~~~~~  Radio Button  ~~~~~~~ */
-.formRadioInput {
-  display: none;
-}
-.formRadioLabel {
-  position: relative;
-  cursor: pointer;
-  /*Make room for our custom button */
-  padding-left: 4.5rem;
-}
-.formRadioLabelGroup {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  padding-left: 4rem;
-}
-.formRadioLabelCourse {
-  margin-right: 1.5rem;
-  font-weight: 700;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.formRadioLabelDates {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-.skillRadio .formRadioLabel {
-  /*Align the Observe Session skill radio labels */
-  padding-left: 3.5rem;
-}
-.skillRadio .formRadioLabelText {
-  /*Need to make the display inline-block so we can apply height & width to this element */
-  display: inline-block;
-  padding-top: 0.5rem;
-}
-.formRadioButton {
-  height: 3rem;
-  width: 3rem;
-  border: 5px solid #F5853F;
-  border-radius: 50%;
-  /*The above attributes only work on block elements */
-  /*Make it inline-block so they are on the same line as their label */
-  display: inline-block;
-  position: absolute;
-  left: 0;
-}
-.chooseCourseRadio .formRadioButton {
-  /*Align the Select Course radio buttons */
-  top: 3.6rem;
-}
-.skillRadio .formRadioButton {
-  /*Align the Observe Session skill radio buttons */
-  top: 0;
-}
-.formRadioButton::after {
-  /*The inner 'dot' of the selected radio button */
-  content: "";
-  display: block;
-  height: 1.5rem;
-  width: 1.5rem;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  background-color: #191970;
-  opacity: 0;
-  -webkit-transition: opacity 0.2s;
-  transition: opacity 0.2s;
-}
-.formRadioInput:checked + .formRadioLabel .formRadioButton::after {
-  /*For a checked (selected) RadioInput, get the next sibling RadioLabel, */
-  /*then get the RadioLabels RadioButton child and select the RadioButton's ::after pseudo class */
-  opacity: 1;
-}
-
-/*===== END  Radio Button  ===== */and (min-width: 75em) {
+@media only screen and (min-width: 75em) {
   html {
     font-size: 75%;
   }

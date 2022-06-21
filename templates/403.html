@@ -1,13 +1,16 @@
 {% extends "base.html" %}
-
+{% block title %}
+Amber|403 error
+{% endblock %}
 {% block content %}
 	    <section class="errorSection">
 	    	
-	    	<h1 class="headingPrimary">
-	       		<span class="errorTitle">Unauthorised Access</span>
+	    	<h1 class="errorTitle">
+	       		Unauthorised Access
 	       	</h1>
-	       	<h2>
-	       		<span class="errorSubtitle">You do not have permission to access this page, sorry.</span>
+	       	<h2 class="errorSubtitle">
+	       		You do not have permission to access this page, sorry.
 	       	</h2>
+	       	<a href="{% url 'home' %}" class="btn btnMain"> Home</a>
 	    </section>
 {% endblock %}

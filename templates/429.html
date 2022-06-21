@@ -1,13 +1,17 @@
 {% extends "base.html" %}
+{% block title %}
+Amber|429 error
+{% endblock %}
 
 {% block content %}
 	    <section class="errorSection">
 	    	
-	    	<h1 class="headingPrimary">
-	       		<span class="errorTitle">Too Many Requests</span>
+	    	<h1 class="errorTitle">
+	       		Too many requests
 	       	</h1>
-	       	<h2>
-	       		<span class="errorSubtitle">You are sending too many requests.</span>
+	       	<h2 class="errorSubtitle">
+	       		Our server cannot handle the number of requests.  Please wait a while and try again.
 	       	</h2>
+	       	<a href="{% url 'home' %}" class="btn btnMain"> Home</a>
 	    </section>
 {% endblock %}

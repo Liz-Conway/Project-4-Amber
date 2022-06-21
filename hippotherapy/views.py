@@ -259,6 +259,9 @@ class SelectClient(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
         elif target == 'chooseSession':
             # Do not show clients with no sessions
             clients = Client.objects.exclude(participates__courses=None)
+        else:
+            clients = None
+            return render(request, '404.html')
         
         return render(
             request, 
