@@ -10,11 +10,13 @@
 			<div>
 				<table id="clientListTable" class="hippoTable">
 					<thead>
-						<th class="clientListName">Name</th>
-						<th class="clientListDOB">Date of Birth</th>
-						<th>Gender</th>
-						<th class="extraColumn">First Diagnosis</th>
-						<th>Action</th>
+						<tr>
+							<th class="clientListName">Name</th>
+							<th class="clientListDOB">Date of Birth</th>
+							<th>Gender</th>
+							<th class="extraColumn">First Diagnosis</th>
+							<th>Action</th>
+						</tr>
 					</thead>
 					<tbody>
 					{% for client in clients %}
@@ -32,10 +34,6 @@
 								{{ client.diagnosis.first }}
 							</td>
 							<td class="hippoActions">
-								<!-- <button class="ui-button ui-widget ui-corner-all ui-button-icon-only" title="{{ user.user_role }}">
-			    	<span class="ui-icon ui-icon-wrench"></span>
-			     Button with icon only
-			  </button> -->
 								<a class="ui-button ui-widget ui-corner-all ui-button-icon-only" href="{% url 'editClient' client=client.id %}"><span class="ui-icon ui-icon-pencil"></span></a>
 								<a class="ui-button ui-widget ui-corner-all ui-button-icon-only deleteAction" href="{% url 'deleteClient' pk=client.id %}"><span class="ui-icon ui-icon-trash"></span></a>
 							</td>
