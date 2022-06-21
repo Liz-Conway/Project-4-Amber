@@ -46,6 +46,10 @@
 							</span>
 						</label>
     				</div>
+	   			{% empty %}
+	   				<div class="ui-state-error">
+	   					{{ client }} has no Courses recorded yet!
+	   				</div>
 	   			{% endfor %}
    			</div>
 			

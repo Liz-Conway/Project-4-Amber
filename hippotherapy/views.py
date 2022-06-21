@@ -243,7 +243,14 @@ class SelectClient(TemplateView):
         '*args' = Standard arguments parameter
         '**kwargs' = Standard keyword arguments parameter
         """
-        clients = Client.objects.all()
+        if target == 'recordSession':
+            clients = Client.objects.all()
+        elif target == 'generateChart':
+            # Do not show clients with no courses
+            clients = Client.objects.exclude(participates=None)
+        elif target == 'chooseSession':
+            # Do not show clients with no sessions
+            clients = Client.objects.exclude(participates__courses=None)
         
         return render(
             request, 

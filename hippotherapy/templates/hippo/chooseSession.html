@@ -39,6 +39,10 @@
 							<span class="chooseSessionText">Session : {{ session }}</span>
 						</label>
     				</div>
+	   			{% empty %}
+	   				<div class="ui-state-error">
+		   				{{ client }} has no Sessions recorded yet
+	   				</div>
 	   			{% endfor %}
    			</div>
 			
