@@ -201,7 +201,7 @@ header {
 /*~~~~~~~  Navbar  ~~~~~~~ */
 #navigationNav {
   position: fixed;
-  top: 7rem;
+  top: 3rem;
   left: 0;
   z-index: 1500;
   /*Hide the navigation initially */
@@ -408,6 +408,19 @@ header {
           transform: rotate(-135deg);
   top: 0;
 }
+
+#clientDropdown {
+  background-color: #F5853F;
+  color: #191970;
+  font-size: 1.4rem;
+  border: none;
+  text-transform: uppercase;
+}
+
+.nonMobile {
+  display: none;
+}
+
 
 /*===== END  Navbar  ===== */
 /*~~~~~~~  Footer  ~~~~~~~ */
@@ -1515,6 +1528,13 @@ h1.confirmHeader {
 
   .navigationItem {
     width: initial;
+  }
+  .nonMobile {
+    display: initial;
+  }
+
+  .mobileOnly {
+    display: none;
   }
 
   .splash {

@@ -42,7 +42,7 @@ function closeNavigation(event) {
  	/*Only needed for mobile devices - phones & tablets in portrait orientation*/
  	if (screen.width < 800) {
  		$("#accountLinks").position({
-  			my:      "top+30",
+  			my:      "top+20",
   			at:        "bottom",
  	   		of:        $("#navigationNav"),
    		 	collision: "none"
