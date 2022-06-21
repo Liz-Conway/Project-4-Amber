@@ -4,12 +4,12 @@
 	<div class="confirmContainer">
 		<form method="POST">
 			{% csrf_token %}  <!- Required for Django as security -->
-			<fieldset class="formGroup">
-				<legend class="confirmHeader">Delete Post</legend>
-				<h2>Are you sure you want to delete this client :  {{ object }}</h2>
+			<fieldset>
+				<h1 class="confirmHeader">Delete Client</h1>
+				<h2 class="confirmHeader">Are you sure you want to delete this client?<br><span class="deleteClient">{{ object }}</span></h2>
 			</fieldset> 
 			<div class="btnGroup">
-				<button class="btn btnDanger" type="submit">Yes, Delete</button>
+				<input class="btn btnDanger" type="submit" value="Yes, Delete" >
 				<a class="btn btnGhost" href="{% url 'getClients' %}">Cancel</a>
 			</div>
 		</form>

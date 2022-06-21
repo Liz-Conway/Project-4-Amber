@@ -928,10 +928,22 @@ class NewCourse(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
 
 
 class DeleteClient(DeleteView):
+    """
+    Class used to delete a Client instance from the database.
+    Inherits from Django's DeleteView class where the magic of deletion occurs.
+    Requires a 'client_confirm_delete.html' template, which is displayed,
+    only on confirmation on that page is the Client finally deleted from the database.
+    """
+    
     # Specify the model you to use
     model = Client
      
-    # Specify the success url
-    # This is the url to redirect to
-    # after successfully deleting the client
-    success_url ="/getClients"
+    def get_success_url(self):
+        """
+        Specify the success url (Client List)
+        This is the url to redirect to
+        after successfully deleting the client
+        """
+        client_name = f'{self.object.first_name} {self.object.last_name}'
+        messages.success(self.request, f'<span class="name">{client_name}</span> was successfully deleted from Amber', extra_tags='safe')
+        return '/getClients'

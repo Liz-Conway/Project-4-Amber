@@ -954,6 +954,10 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
   background-color: transparent;
   color: #F5853F;
 }
+.btnDanger {
+  background-color: #E84610;
+  color: #191970;
+}
 .btnGroup {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1317,6 +1321,24 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
 }
 
 /*===== END  404 Page  ===== */
+/*~~~~~~~  Confirm Deletion Page  ~~~~~~~ */
+.confirmHeader {
+  text-align: center;
+}
+
+h1.confirmHeader {
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+
+.deleteClient {
+  color: #191970;
+  display: inline-block;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/*===== END  Confirm Deletion Page  ===== */
 
 
 /* Media Queries for Big Phones */
