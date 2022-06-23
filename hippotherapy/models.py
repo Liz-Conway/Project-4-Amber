@@ -52,7 +52,7 @@ class Hint(models.Model):
         ordering = ['skill', 'order_in_skill']
     
     def __str__(self):
-        return self.hint_name[0:16]
+        return self.hint_name
     
     
 class Course(models.Model):
