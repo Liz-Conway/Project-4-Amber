@@ -35,7 +35,9 @@
 							</td>
 							<td class="hippoActions">
 								<a class="ui-button ui-widget ui-corner-all ui-button-icon-only" href="{% url 'editClient' client=client.id %}"><span class="ui-icon ui-icon-pencil"></span></a>
-								<a class="ui-button ui-widget ui-corner-all ui-button-icon-only deleteAction" href="{% url 'deleteClient' pk=client.id %}"><span class="ui-icon ui-icon-trash"></span></a>
+								{% if client.id in deletables %}
+									<a class="ui-button ui-widget ui-corner-all ui-button-icon-only deleteAction" href="{% url 'deleteClient' pk=client.id %}"><span class="ui-icon ui-icon-trash"></span></a>
+								{% endif %}
 							</td>
 						</tr>
 					{% empty %}
