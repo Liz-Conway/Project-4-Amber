@@ -125,6 +125,125 @@ Hippotherapy can also shorten recovery time and ensure correct development of th
 
 ## Features
 
+### Existing Features
+
+**Inital Landing page**
+
+This is where the user arrives on first entering the site.  The only option they have is to login to the amber system.
+
+![Landing page](/home/fintan/code/projects/amber/documentation/pages/home.png)
+![Landing page](/home/fintan/code/projects/amber/documentation/pages/mobile/home.png)
+
+#### Mobile Navbar
+By clicking on the well-recognised "hamburger" icon. The user is shown a responsive menu on small screen devices.
+
+Each page has a header at the top of the page which contains a logo and a NavBar.  On small screen devices the NavBar is accessible by clicking the well recognised "hamburger" icon.  On any page if the user clicks the logo they will be redirected to the Amber home page.  The benefit of this is that it is a consistent behaviour across the entire website.  This means that the user can always get back to the home page, no matter where they are in the site.
+
+**Login**
+![Login](/home/fintan/code/projects/amber/documentation/pages/login.png)
+![Login](/home/fintan/code/projects/amber/documentation/pages/mobile/login.png)
+
+**Logout**
+![Logout](/home/fintan/code/projects/amber/documentation/pages/logout.png)
+![Logout](/home/fintan/code/projects/amber/documentation/pages/mobile/logout.png)
+
+#### User Roles
+
+In the Amber web application there are 4 roles that a user can log in as:
+* SuperUser
+* Admin
+* Occupational Therapist
+* Hippotherapy Analyst
+
+Depending on the role assigned to the user, when they log in they will see a similar page but with different role-specific options.
+
+
+**Admin Home Page**
+![Admin home page](/home/fintan/code/projects/amber/documentation/pages/admin-home.png)
+![Admin mobile menu page](/home/fintan/code/projects/amber/documentation/pages/mobile/admin-menu.png)
+
+**Occupational Therapist Home Page**
+![Occupational Therapist Home Page](/home/fintan/code/projects/amber/documentation/pages/ot-home.png)
+
+**Hippotherapy Analyst Home Page**
+![Hippotherapy analyst home page](/home/fintan/code/projects/amber/documentation/pages/analyst-home.png)
+![Hippotherapy analyst mobile menu](/home/fintan/code/projects/amber/documentation/pages/mobile/analyst-menu.png)
+
+#### Admin Functionality
+**1  Add Diagnosis page**
+![Add Diagnosis page](/home/fintan/code/projects/amber/documentation/pages/add-diagnosis.png)
+![Add Diagnosis page](/home/fintan/code/projects/amber/documentation/pages/mobile/add-diagnosis.png)
+
+**2  Add User page**
+![Add User page](/home/fintan/code/projects/amber/documentation/pages/add-user.png)
+![Add User page](/home/fintan/code/projects/amber/documentation/pages/mobile/add-user.png)
+
+#### Occupational Therapist Functionality
+
+**1  Add Client page**
+![Add Client page](/home/fintan/code/projects/amber/documentation/pages/add-client.png)
+![Add Client page](/home/fintan/code/projects/amber/documentation/pages/mobile/add-client.png)
+
+**2  Edit Client**
+
+**Client List page**
+![Client List page](/home/fintan/code/projects/amber/documentation/pages/client-list.png)
+![Client List page](/home/fintan/code/projects/amber/documentation/pages/mobile/client-list.png)
+
+**Edit Client page**
+![Edit Client](/home/fintan/code/projects/amber/documentation/pages/edit-client.png)
+![Edit Client](/home/fintan/code/projects/amber/documentation/pages/mobile/edit-client.png)
+
+**3 Delete Client**
+
+**Confirm deletion of client page**
+![Confirm deletion of client page](/home/fintan/code/projects/amber/documentation/pages/confirm-delete.png)
+![Confirm deletion of client page](/home/fintan/code/projects/amber/documentation/pages/mobile/confirm-delete.png)
+
+
+**Select client page**
+![Select client page](/home/fintan/code/projects/amber/documentation/pages/select-client.png)
+![Select client page](/home/fintan/code/projects/amber/documentation/pages/mobile/select-client.png)
+
+**4 Record Session**
+
+**Last Session for this client**
+![Last session for this client page](/home/fintan/code/projects/amber/documentation/pages/new-course.png)
+![Last session for this client page](/home/fintan/code/projects/amber/documentation/pages/mobile/new-course.png)
+
+
+**Record Session page**
+![Record session page](/home/fintan/code/projects/amber/documentation/pages/record-session.png)
+![Record session page](/home/fintan/code/projects/amber/documentation/pages/mobile/record-session.png)
+
+**Observe Session page**
+![Observe Session page](/home/fintan/code/projects/amber/documentation/pages/observe-session.png)
+![Observe Session page](/home/fintan/code/projects/amber/documentation/pages/mobile/observe-session.png)
+
+#### Hippotherapy Analyst Functionality
+
+**1 View Session**
+
+**Select Session page**
+![Select Session page](/home/fintan/code/projects/amber/documentation/pages/select-session.png)
+![Select Session page](/home/fintan/code/projects/amber/documentation/pages/mobile/select-session.png)
+
+**View Session page**
+![View Session page](/home/fintan/code/projects/amber/documentation/pages/view-session.png)
+![View Session page](/home/fintan/code/projects/amber/documentation/pages/mobile/view-session.png)
+
+**2  Generate chart**
+
+**Select Course page**
+![Select Course page](/home/fintan/code/projects/amber/documentation/pages/select-course.png)
+![Select Course page](/home/fintan/code/projects/amber/documentation/pages/mobile/select-course.png)
+
+**Generate Chart page**
+![Generate chart page](/home/fintan/code/projects/amber/documentation/pages/generate-chart.png)
+![Generate chart page](/home/fintan/code/projects/amber/documentation/pages/mobile/generate-chart.png)
+
+#### Messages
+
 
 ### Known Bugs
 <a id="known-bugs"></a>
