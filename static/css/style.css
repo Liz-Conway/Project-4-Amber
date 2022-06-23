@@ -1563,6 +1563,33 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
   display: none;
 }
 
+@media only screen and (min-width: 28em) {
+  #chartContainer {
+    font-size: 1.7rem;
+  }
+}
+@media only screen and (min-width: 37.5em) {
+  #chartContainer {
+    font-size: 1.8rem;
+  }
+}
+#chartContainer .sessionDate {
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+@media only screen and (min-width: 59.375em) {
+  #chart {
+    max-width: calc(100% - 50px);
+  }
+}
+@media only screen and (min-width: 75em) {
+  #chart {
+    max-width: calc(100% - 100px);
+  }
+}
+
 /*===== END  Chart  ===== */
 /*~~~~~~~  Radio Button  ~~~~~~~ */
 .formRadioInput {
