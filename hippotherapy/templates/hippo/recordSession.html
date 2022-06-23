@@ -48,8 +48,8 @@
 				<div class="formGroup">
 					{% for task in unmounted %}
 						<div class="manyManyCheck">
-							<input type="checkbox" name="task_{{ task.id }}" id="id_{{ task.task_name }}" >
-							<label for="id_{{ task.task_name }}">{{ task.task_name }}</label>
+							<input type="checkbox" name="task_{{ task.id }}" id="id_{{ task.task_name }}{{ task.id }}" >
+							<label for="id_{{ task.task_name }}{{ task.id }}">{{ task.task_name }}</label>
 						</div>
 					{% endfor %}
 					<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
@@ -58,8 +58,8 @@
 				<div class="formGroup">
 					{% for task in mounted %}
 						<div class="manyManyCheck">
-							<input type="checkbox" name="task_{{ task.id }}" id="id_{{ task.task_name }}" >
-							<label for="id_{{ task.task_name }}">{{ task.task_name }}</label>
+							<input type="checkbox" name="task_{{ task.id }}" id="id_{{ task.task_name }}{{ task.id }}" >
+							<label for="id_{{ task.task_name }}{{ task.id }}">{{ task.task_name }}</label>
 						</div>
 					{% endfor %}
 					<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
