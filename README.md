@@ -359,29 +359,55 @@ At the end of the project, all User Stories will be in the **Done** list and the
 <a id="testing"></a>Testing is documented in the [Testing document](TESTING.md)
 
 ### Bug Fixes
-**BUG:**
-TemplateSyntaxError at /
-Could not parse the remainder: '('static', filename='css/style.css')' from 'url_for('static', filename='css/style.css')'
-**FIX:**
-Switched from using Flash syntax `href="{{ url_for('static', filename='css/style.css') }}"` to using Django syntax `href="{% static 'css/style.css' %}"`.
-
-**BUG:**
-TemplateSyntaxError at /
-Could not parse the remainder: '('home')' from 'url_for('home')'
-**FIX:**
-Switched from using Flash syntax `href="{{ url_for('home') }}"` to using Django syntax `href="{% static 'css/style.css' %}"`.
-
-**BUG:**
-TemplateSyntaxError at /
-Could not parse the remainder: '('static', filename='js/script.js')' from 'url_for('static', filename='js/script.js')'
-**FIX:**
-Switched from using Flash syntax `src="{{ url_for('static', filename='js/script.js') }}"` to using Django syntax `src="{% static 'js/script.js' %}"`.
-
-**BUG:**
-NoReverseMatch at /
-Reverse for 'client' not found. 'client' is not a valid view function or pattern name.
-**FIX:**
-Removed non-existant links from the base.html template.
+ 
+ | Bug          |    Fix    |
+| ------------------------------- | -------------------- |
+| TemplateSyntaxError at /<br /> Could not parse the remainder: '('static', filename='css/style.css')' from 'url_for('static', filename='css/style.css')' | Switched from using Flash syntax `href="{{ url_for('static', filename='css/style.css') }}"` <br />to using Django syntax `href="{% static 'css/style.css' %}"`. | 
+| TemplateSyntaxError at / <br />Could not parse the remainder: '('home')' from 'url_for('home')' | Switched from using Flash syntax `href="{{ url_for('home') }}"` <br />to using Django syntax `href="{% static 'css/style.css' %}"`. | 
+| TemplateSyntaxError at / <br />Could not parse the remainder: '('static', filename='js/script.js')' from 'url_for('static', filename='js/script.js')' | Switched from using Flash syntax `src="{{ url_for('static', filename='js/script.js') }}"` <br />to using Django syntax `src="{% static 'js/script.js' %}"`. | 
+| Picture on the home screen is duplicated when viewed on a tablet in landscape mode | Changed the height of the div which has this background image – on multiple device sizes. | 
+| Picture on the home screen is too small on some screen sizes | Changed the height of the div which has this background image – on multiple device sizes. | 
+| Django unable to convert an int to a string | Manually retrieve the int from the object and convert it to a string | 
+| Django not showing many-many relationship options as checkboxes | Show each option one-by-one as a checkbox | 
+| Mobile navigation items are still clickable even though they are invisible | Add CSS rule to move the navigation links off-screen. | 
+| After adding a client the diagnosis options are not being displayed when the ‘Add Client’ page redisplays | Generate the list of Diagnoses in the POST method for Add Client and add to the POST data | 
+| Django refuses to see custom field in a many-many model.  Migration not adding the custom field to database table. | Change the field to map to a “through” table.  Remigrate the DB tables. | 
+| Clicking an area of the screen on mobile devices redirects to another page | Removed an extra ‘}’ from the CSS file.  This allowed the CSS rule that moved the navigation links off-screen to be applied. | 
+| Initial attempt to save Skills objects assumed that the skills are saved in the database in contiguous order.  The loop to display the skills went from using ids from 1 to the count of the number of skills.  This is brittle and will break if a Skill is removed from the database, or the skills are not stored with contiguous ids | On the template page – Set the name of the skill to contain the id.  In the view controller loop through all skills – take the skill id from the name. | 
+| Session observations page – accordion not working | Add the jQuery library to the code committed to Heroku. | 
+| On mobile screens the Skill hint that shows when long-clicked, is hidden by the user’s finger | Added gap above the hints so that there is a 48px “tap area” around the clickable hints. | 
+| Sometimes long-clicking a Skill hint selects the radio button directly below it | Use CSS to add a gap between the hints and the radio buttons. | 
+| There is no indication on the Record Session page that long-clicking a hint will display the full hint. | Added a “tip” on each Function header telling the user that they can long-click a hint on a mobile device to see a full description. | 
+| Date pop-up does not allow user to select the year | Added options in the setup of the datepicker component in the javascript.  This allows the user to select the date and the year. | 
+| On the mobile page there is a large gap between the header and the start of the page details | Use CSS to move the main section of all pages closer to the header section on mobile devices. | 
+| Layout – the session details part of the page looks pure ugly.  What would be a better way to lay it out? | Used an include page and formatted it using CSS to make this section look better. | 
+| Individual radio buttons have “required” * - Need to remove these | Used CSS to remove the “required” asterisk from the radio buttons. | 
+| Dates in incorrect format on the web pages | Added the date format in the setup of the datepicker component in the javascript. | 
+| Debug statement shows the target page on the ‘Select Client’ page | Removed the debug statement from the HTML page. | 
+| ''Observe Session’ page – labels for Skill radio buttons are not aligned | Use CSS to align the labels with the centre of the radio buttons. | 
+| Instructions to long-click a hint to see more are not showing on tablets in landscape mode | Use CSS “touch” selector instead of media queries to show this message. | 
+| On the ‘Choose Course’ page – if NO radio button is selected => There is NO error message shown | Check that the form is valid – Add an error message if no selection is made | 
+| View Session – Shows sessions that have been saved without any scores | Remove non-scored sessions from the query that retrieves the sessions | 
+| If the Occupational Therapist does not provide a score for every skill in each function, the ‘Observe Session’ page redisplays and removes all previously input scores | Save incomplete scores and add a ‘checked’ attribute to these scores when the ‘Observe Session’ page redisplays | 
+| On entering a valid birth date => Error message thrown “Invalid Date” | Add a format.py page with the correct format | 
+| Unable to type some date characters into ‘Date of birth’ field | Add instructions on the correct format for dates in the ‘Date of birth’ input box | 
+| Record session – Creates an incorrect session after a new course has been created | Change session creation logic to use the newly created course instead of an old course | 
+| If the scores are all low then the 100% mark will not be displayed on the chart | Set a minimum value of ‘0’ and a maximum value of ‘100’ for the chart.  This ensures that the bar will always be shown against a full value of 100% | 
+| Add Client – if there is an error on the Add Client page, when the page redisplays the ‘Hat size’ drop down is empty | Retrieve the hat sizes from the database in both the get() and post() methods | 
+| Django throws validation error on a date that has no input box | Remove session_date from the SessionForm class | 
+| Incorrect data shown on graph | Set the order data is retrieved from the database to give the correct information on the chart | 
+| Add a client and try to record a session for that client => Throws a server 500 error | Migrate the database.  This now works | 
+| If more than one client has the same name, both show up on the list of clients => Impossible to tell which is which | Add their date of birth next to the client’s name on the client list | 
+| Initial attempt to save Client details assumed that the diagnoses are saved in the database in contiguous order.  The loop to save the diagnoses went from using ids from 1 to the count of the number of diagnoses.  This is brittle and will break if a Diagnosis is removed from the database, or the diagnoses are not stored with contiguous ids | Loop through all diagnoses and compare with the diagnoses that are sent in the POST data, rather than relying on the order or id number of the diagnosis. | 
+| Initial attempt to save Task objects assumed that the tasks are saved in the database in contiguous order.  The loop to save the tasks went from using id of 1 to the count of the number of tasks.  This is brittle and will break if a Task is removed from the database, or the tasks are not stored with contiguous ids | Loop through all Tasks and compare with the tasks that are sent in the POST data, rather than relying on the order or id number of the task. | 
+| Users can be assigned to the Amber application without assigning them a role | Remove the ‘blank=True’ attribute from the Role field in HippotherapyUser model class. | 
+| There is no error message when the User enters incorrect login details | When the login form is invalid add error messages, which will display on the login screen. | 
+| Record Session – Clicking the label for “Mounted task : Fine motor games” selects “Unmounted task : Fine motor games” | Made sure each task has its own unique id | 
+| Record Session – Saving the session logs the user out | Programatically log the user back in | 
+| Generate Chart & View Session – For a user without any courses this displays a blank form with “Choose this course” button. | Changed the Client List to only show clients who already have a Course associated | 
+| No warning message when an invalid login is attempted | Add a warning message to the login page | 
+| Edit client’s date of birth – The maximum year is restricted to the current year.  So we cannot make the date of birth after what was originally set | Changed the datepicker to show the year from 15 years prior to the existing year, to 15 years after the existing year. | 
+| Deleting a client who has had a session recorded throws a “Protected Error”. | Make only clients who have no associated Course deletable. | 
 
 
 ### Validation
