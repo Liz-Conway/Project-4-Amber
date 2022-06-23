@@ -268,6 +268,79 @@ The Django structure for the amber application is broken into 2 apps.
 ### Accessibility
 <a id="accessibility"></a>
 
+
+#### Contrast
+Using the [Grayscale Browsing extension](https://addons.mozilla.org/en-US/firefox/addon/grayscale-browsing/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search) for Firefox, I viewed each page as "black & white" to ensure that I could see all details even if the colour was gone.
+
+
+**Home**
+![Home GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/home.png)
+
+
+**Login**
+![Login GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/login.png)
+
+**Logout**
+![Logout GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/logout.png)
+
+**Admin Home Page**
+![Admin home page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/admin-home.png)
+
+**Occupational Therapist Home Page**
+![Occupational Therapist Home Page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/ot-home.png)
+
+**Hippotherapy Analyst Home Page**
+![Hippotherapy analyst home page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/analyst-home.png)
+
+**Add Diagnosis page**
+![Add Diagnosis page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/add-diagnosis.png)
+
+**Add User page**
+![Add User page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/add-user.png)
+
+**Add Client page**
+![Add Client page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/add-client.png)
+
+**Client List page**
+![Client List page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/client-list.png)
+
+**Edit Client page**
+![Edit Client GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/edit-client.png)
+
+**Confirm deletion of client page**
+![Confirm deletion of client page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/confirm-delete.png)
+
+
+**Select client page**
+![Select client page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/select-client.png)
+
+
+**Last Session for this client**
+![Last session for this client page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/new-course.png)
+
+
+**Record Session page**
+![Record session page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/record-session.png)
+
+**Observe Session page**
+![Observe Session page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/observe-session.png)
+
+**Select Session page**
+![Select Session page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/select-session.png)
+
+**View Session page**
+![View Session page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/view-session.png)
+
+
+**Select Course page**
+![Select Course page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/select-course.png)
+
+**Generate Chart page**
+![Generate chart page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/generate-chart.png)
+
+
+
+
 ## Design Decisions
 
 
