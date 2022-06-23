@@ -19,9 +19,20 @@ body {
   padding: 0 1rem;
   font-size: 2rem;
 }
+@media only screen and (min-width: 50em) {
+  .subTitle {
+    padding: 0 5rem;
+    line-height: calc(1em + 2rem);
+  }
+}
 .subTitle #amber {
   font-weight: 300;
   font-size: 2rem;
+}
+@media only screen and (min-width: 50em) {
+  .subTitle #amber {
+    font-size: 2.3rem;
+  }
 }
 .subTitle #hippo {
   font-weight: 300;
@@ -86,6 +97,21 @@ html {
   /* For mobile 1st design we will use 8px for the mobile device */
   font-size: 50%;
 }
+@media only screen and (min-width: 50em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+@media only screen and (min-width: 59.375em) {
+  html {
+    font-size: 62.5%;
+  }
+}
+@media only screen and (min-width: 75em) {
+  html {
+    font-size: 75%;
+  }
+}
 
 body {
   /* Inheritable properties */
@@ -105,6 +131,16 @@ body {
   /* Non-inheritable properties */
   padding: 0;
 }
+@media only screen and (min-width: 59.375em) {
+  body {
+    min-height: 100vh;
+  }
+}
+@media only screen and (min-width: 50em) {
+  body {
+    padding: 3rem;
+  }
+}
 
 /*~~~~~~~  Utilities  ~~~~~~~ */
 .centreText {
@@ -118,8 +154,18 @@ body {
   /* Mobile first - so smaller values first */
   margin-bottom: 3rem;
 }
+@media only screen and (min-width: 50em) {
+  .marginBottomMedium {
+    margin-bottom: 4rem;
+  }
+}
 .marginBottomBig {
   margin-bottom: 5rem;
+}
+@media only screen and (min-width: 50em) {
+  .marginBottomBig {
+    margin-bottom: 8rem;
+  }
 }
 
 .marginTopSmall {
@@ -152,6 +198,11 @@ header {
   width: 100%;
   margin-bottom: -6rem;
 }
+@media only screen and (min-width: 50em) {
+  header {
+    margin-bottom: 3rem;
+  }
+}
 
 #navWrapper {
   display: -webkit-box;
@@ -163,6 +214,17 @@ header {
           flex-direction: column;
   width: 100%;
   height: 16rem;
+}
+@media only screen and (min-width: 50em) {
+  #navWrapper {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    padding-left: 1rem;
+  }
 }
 
 #titleBar {
@@ -182,14 +244,83 @@ header {
   padding-right: 8rem;
   margin-top: -3rem;
 }
+@media only screen and (min-width: 37.5em) {
+  #titleBar h1 {
+    font-size: 4rem;
+  }
+}
+@media only screen and (min-width: 50em) {
+  #titleBar h1 {
+    padding-right: 0;
+    padding-left: 7rem;
+    margin-top: 1rem;
+  }
+}
 #titleBar a:not(:last-child) {
   padding-right: 2rem;
+}
+@media only screen and (min-width: 28em) {
+  #titleBar {
+    padding-top: 3.8rem;
+  }
+}
+@media only screen and (min-width: 37.5em) {
+  #titleBar {
+    padding-top: 4.3rem;
+  }
+}
+@media only screen and (min-width: 50em) {
+  #titleBar {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 0.4rem;
+  }
+}
+@media only screen and (min-width: 59.375em) {
+  #titleBar {
+    padding-top: 0.7rem;
+  }
+}
+@media only screen and (min-width: 72.75em) {
+  #titleBar {
+    padding-top: 1.2rem;
+  }
+}
+@media only screen and (min-width: 75em) {
+  #titleBar {
+    padding-top: 0.7rem;
+  }
+}
+@media only screen and (min-width: 93.75em) {
+  #titleBar {
+    padding-top: 1.2rem;
+  }
 }
 
 #logo {
   width: 9rem;
   margin-left: 1rem;
   margin-top: 1rem;
+}
+@media only screen and (min-width: 28em) {
+  #logo {
+    width: 10rem;
+  }
+}
+@media only screen and (min-width: 37.5em) {
+  #logo {
+    width: 11rem;
+  }
+}
+@media only screen and (min-width: 50em) {
+  #logo {
+    width: 12rem;
+  }
+}
+@media only screen and (min-width: 59.375em) {
+  #logo {
+    width: 13rem;
+  }
 }
 
 .ui-icon {
@@ -211,6 +342,16 @@ header {
   width: 0;
   -webkit-transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+@media only screen and (min-width: 50em) {
+  #navigationNav {
+    background-color: #F5853F;
+    width: 100%;
+    height: auto;
+    opacity: 1;
+    position: relative;
+    top: 0;
+  }
 }
 
 #accountLinks {
@@ -234,6 +375,22 @@ header {
   -webkit-transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
+@media only screen and (min-width: 50em) {
+  #accountLinks {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    background-color: #FFFFFF;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    height: auto;
+    opacity: 1;
+    position: relative;
+    margin-top: 0;
+  }
+}
 #accountLinks .navigationLink {
   /*Hide the navigation initially */
   /*It is not enough to have an opacity of zero */
@@ -243,6 +400,13 @@ header {
   text-align: center;
   margin-left: 8rem;
 }
+@media only screen and (min-width: 50em) {
+  #accountLinks .navigationLink {
+    margin-left: 0;
+    width: initial;
+  }
+}
+
 #naviToggle {
   display: none;
 }
@@ -262,6 +426,11 @@ header {
           box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1);
   text-align: center;
   cursor: pointer;
+}
+@media only screen and (min-width: 50em) {
+  .navigationButton {
+    display: none;
+  }
 }
 .navigationBackground {
   /*Coloured background for the navigation */
@@ -284,6 +453,11 @@ header {
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1), -webkit-transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
 }
+@media only screen and (min-width: 50em) {
+  .navigationBackground {
+    display: none;
+  }
+}
 .navigationList {
   list-style: none;
   text-align: center;
@@ -303,6 +477,14 @@ header {
           align-items: center;
   flex-direction: column;
 }
+@media only screen and (min-width: 50em) {
+  .navigationList {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
 .navigationLink {
   -webkit-transform: translateX(-200px);
           transform: translateX(-200px);
@@ -321,6 +503,13 @@ header {
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
 }
+@media only screen and (min-width: 50em) {
+  .navigationLink:link, .navigationLink:visited {
+    font-size: 1.8rem;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
 .navigationLink:hover, .navigationLink:active {
   background-position: 100%;
   color: #F5853F;
@@ -333,6 +522,11 @@ header {
   /*It is not enough to have an opacity of zero */
   /*The elements are still there and are clickable, so we need to set the width to zero as well */
   width: 0;
+}
+@media only screen and (min-width: 50em) {
+  .navigationItem {
+    width: initial;
+  }
 }
 .navigationCheckbox:checked ~ .navigationBackground {
   -webkit-transform: scale(80);
@@ -381,6 +575,11 @@ header {
   top: 0.8rem;
   /*transform-origin: left */
 }
+@media only screen and (min-width: 50em) {
+  .navigationIcon {
+    display: none;
+  }
+}
 .navigationButton:hover .navigationIcon::before {
   top: -1rem;
 }
@@ -416,11 +615,26 @@ header {
   border: none;
   text-transform: uppercase;
 }
+@media only screen and (min-width: 50em) {
+  #clientDropdown {
+    font-size: 1.8rem;
+  }
+}
 
 .nonMobile {
   display: none;
 }
+@media only screen and (min-width: 50em) {
+  .nonMobile {
+    display: initial;
+  }
+}
 
+@media only screen and (min-width: 50em) {
+  .mobileOnly {
+    display: none;
+  }
+}
 
 /*===== END  Navbar  ===== */
 /*~~~~~~~  Footer  ~~~~~~~ */
@@ -498,9 +712,52 @@ footer {
       -ms-flex-align: start;
           align-items: flex-start;
 }
+@media only screen and (min-width: 28em) {
+  .splash {
+    height: 40rem;
+    padding: 3rem;
+  }
+}
+@media only screen and (min-width: 37.5em) {
+  .splash {
+    height: 56rem;
+    padding: 4rem;
+  }
+}
+@media only screen and (min-width: 50em) {
+  .splash {
+    background-image: linear-gradient(75deg, rgba(255, 205, 188, 0.9) 0%, rgba(255, 205, 188, 0.9) 43%, transparent 50%), url("../images/hippotherapy-large.jpg");
+    margin-left: 20rem;
+    margin-right: 20rem;
+    padding: 5rem;
+    height: 37rem;
+  }
+}
+@media only screen and (min-width: 59.375em) {
+  .splash {
+    height: 43rem;
+  }
+}
+@media only screen and (min-width: 75em) {
+  .splash {
+    margin-left: 25rem;
+    margin-right: 25rem;
+    height: 38rem;
+  }
+}
+@media only screen and (min-width: 93.75em) {
+  .splash {
+    height: 60rem;
+  }
+}
 .splashTitle {
   font-size: 2.5rem;
   margin-top: 1rem;
+}
+@media only screen and (min-width: 28em) {
+  .splashTitle {
+    font-size: 3.2rem;
+  }
 }
 .splashSubtitle {
   font-size: 1.8rem;
@@ -513,6 +770,53 @@ footer {
   /*Change the line-height to space out the text vertically */
   line-height: calc(1em + 2rem);
   margin-top: auto;
+}
+@media only screen and (min-width: 28em) {
+  .splashSubtitle {
+    font-size: 2.3rem;
+    width: 40%;
+  }
+}
+@media only screen and (min-width: 37.5em) {
+  .splashSubtitle {
+    width: 27%;
+  }
+}
+@media only screen and (min-width: 50em) {
+  .splashSubtitle {
+    width: 48%;
+  }
+}
+@media only screen and (min-width: 59.375em) {
+  .splashSubtitle {
+    width: 45%;
+  }
+}
+@media only screen and (min-width: 68.5625em) {
+  .splashSubtitle {
+    width: 40%;
+  }
+}
+@media only screen and (min-width: 72.75em) {
+  .splashSubtitle {
+    width: 37%;
+  }
+}
+@media only screen and (min-width: 75em) {
+  .splashSubtitle {
+    width: 45%;
+  }
+}
+@media only screen and (min-width: 89.75em) {
+  .splashSubtitle {
+    width: 40%;
+  }
+}
+@media only screen and (min-width: 93.75em) {
+  .splashSubtitle {
+    font-size: 2.65rem;
+    width: 30%;
+  }
 }
 
 .welcomeText {
@@ -727,6 +1031,16 @@ footer {
 .chooseSessionRadio .formRadioGroup:not(:last-child) {
   margin-bottom: 1rem;
 }
+@media only screen and (min-width: 23.75em) {
+  .chooseSessionRadio .formRadioGroup {
+    width: 70%;
+  }
+}
+@media only screen and (min-width: 28em) {
+  .chooseSessionRadio .formRadioGroup {
+    width: 40rem;
+  }
+}
 
 .chooseSessionText {
   margin-left: auto;
@@ -913,6 +1227,25 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
           flex-direction: row;
 }
 
+@media only screen and (min-width: 50em) {
+  .nameLabel {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .nameLabel label {
+    min-width: 10rem;
+    font-weight: 600;
+  }
+}
+
 /*===== END  Form  ===== */
 /*~~~~~~~  Button  ~~~~~~~ */
 .btn {
@@ -987,6 +1320,14 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
       -ms-flex-align: center;
           align-items: center;
   margin-top: 2rem;
+}
+@media only screen and (min-width: 50em) {
+  .btnGroup.largeRow {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+  }
 }
 .btnGroup input:not(:last-child), .btnGroup a:not(:last-child) {
   margin-bottom: 1.5rem;
@@ -1063,6 +1404,11 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
 .hippoTable thead tr {
   border-bottom: 1px solid #000000;
 }
+@media only screen and (min-width: 37.5em) {
+  .hippoTable {
+    max-width: 70rem;
+  }
+}
 .hippoRow:nth-child(odd) {
   background-color: #FFCDBC;
 }
@@ -1111,6 +1457,12 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
 
 .extraColumn {
   display: none;
+}
+@media only screen and (min-width: 28em) {
+  .extraColumn {
+    display: table-cell;
+    text-align: center;
+  }
 }
 
 .clientList {
@@ -1334,7 +1686,16 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
   min-height: 75vh;
   padding: 3rem;
 }
-
+@media only screen and (min-width: 50em) {
+  .errorSection {
+    min-height: 63vh;
+  }
+}
+@media only screen and (min-width: 59.375em) {
+  .errorSection {
+    min-height: 55vh;
+  }
+}
 .error404 {
   font-size: 10rem;
   font-weight: 100;
@@ -1381,70 +1742,7 @@ h1.confirmHeader {
       -ms-flex-align: center;
           align-items: center;
 }
-#editUserForm h2 {
-  margin-bottom: 1rem;
-}
-
-/*===== END  My Account Page  ===== */
-
-/* Media Queries for Big Phones */
-@media only screen and (min-width: 28em) {
-  #titleBar {
-    padding-top: 3.8rem;
-  }
-
-  #logo {
-    width: 10rem;
-  }
-
-  .splash {
-    height: 40rem;
-    padding: 3rem;
-  }
-
-  .splashTitle {
-    font-size: 3.2rem;
-  }
-
-  .splashSubtitle {
-    font-size: 2.3rem;
-    width: 40%;
-  }
-  #editUserForm {
-    max-width: 70%;
-  }
-
-  .extraColumn {
-    display: table-cell;
-    text-align: center;
-  }
-
-}
-
-
-/* Media Queries for Tablets in Portrait orientation */
 @media only screen and (min-width: 37.5em) {
-  #titleBar h1 {
-    font-size: 4rem;
-  }
-
-  #titleBar {
-    padding-top: 4.3rem;
-  }
-
-  #logo {
-    width: 11rem;
-  }
-
-  .splash {
-    height: 56rem;
-    padding: 4rem;
-  }
-
-  .splashSubtitle {
-    width: 27%;
-  }
-
   #editUserContainer .formGroup {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1464,181 +1762,29 @@ h1.confirmHeader {
     min-width: 10rem;
     font-weight: 600;
   }
+}
+
+#editUserForm .formGroup input {
+  margin-left: auto;
+  margin-right: auto;
+}
+@media only screen and (min-width: 28em) {
+  #editUserForm {
+    max-width: 70%;
+  }
+}
+@media only screen and (min-width: 37.5em) {
   #editUserForm {
     max-width: unset;
   }
-
-  .hippoTable {
-    max-width: 600px;
-  }
+}
+#editUserForm h2 {
+  margin-bottom: 1rem;
 }
 
-/* Media Queries for Tablets in Landscape orientation */
+/*===== END  My Account Page  ===== */
+/*~~~~~~~  Add Client Page  ~~~~~~~ */
 @media only screen and (min-width: 50em) {
-  .subTitle {
-    padding: 0 5rem;
-    line-height: calc(1em + 2rem);
-  }
-
-  .subTitle #amber {
-    font-size: 2.3rem;
-  }
-
-  html {
-    font-size: 56.25%;
-  }
-
-  body {
-    padding: 3rem;
-  }
-
-  .marginBottomMedium {
-    margin-bottom: 4rem;
-  }
-
-  .marginBottomBig {
-    margin-bottom: 8rem;
-  }
-
-  header {
-    margin-bottom: 3rem;
-  }
-
-  #navWrapper {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    padding-left: 1rem;
-  }
-
-  #titleBar h1 {
-    padding-right: 0;
-    padding-left: 7rem;
-    margin-top: 1rem;
-  }
-
-  #titleBar {
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 0.4rem;
-  }
-
-  #logo {
-    width: 12rem;
-  }
-
-  #navigationNav {
-    background-color: #F5853F;
-    width: 100%;
-    height: auto;
-    opacity: 1;
-    position: relative;
-    top: 0;
-  }
-
-  #accountLinks {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    background-color: #FFFFFF;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-    height: auto;
-    opacity: 1;
-    position: relative;
-    margin-top: 0;
-  }
-
-  .navigationButton {
-    display: none;
-  }
-
-  .navigationBackground {
-    display: none;
-  }
-
-  .navigationList {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-  }
-
-  .navigationLink:link, .navigationLink:visited {
-    font-size: 1.8rem;
-    -webkit-transform: none;
-            transform: none;
-  }
-
-  .navigationIcon {
-    display: none;
-  }
-
-  #accountLinks .navigationLink {
-    margin-left:0;
-    width: initial;
-  }
-
-  .navigationItem {
-    width: initial;
-  }
-  .nonMobile {
-    display: initial;
-  }
-
-  .mobileOnly {
-    display: none;
-  }
-
-  .splash {
-	background-image: linear-gradient(75deg, rgba(255, 205, 188, 0.9) 0%, rgba(255, 205, 188, 0.9) 43%, transparent 50%), url("../images/hippotherapy-large.jpg");
-    margin-left: 20rem;
-    margin-right: 20rem;
-    padding: 5rem;
-    height: 37rem;
-  }
-
-  .splashSubtitle {
-    width: 48%;
-  }
-
-  .errorSection {
-    min-height: 63vh;
-  }
-
-  #clientDropdown {
-    font-size: 1.8rem;
-  }
-
-  .nameLabel {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: row-reverse;
-            flex-direction: row-reverse;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-  .nameLabel label {
-    min-width: 10rem;
-    font-weight: 600;
-  }
-
-  .btnGroup.largeRow {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: row-reverse;
-            flex-direction: row-reverse;
-  }
-
   .nameGenderGroup {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1655,15 +1801,21 @@ h1.confirmHeader {
             align-items: center;
     margin-bottom: 1rem;
   }
+}
 
+@media only screen and (min-width: 50em) {
   .names {
     width: 50%;
   }
+}
 
+@media only screen and (min-width: 50em) {
   .gender {
     margin-right: 8%;
   }
+}
 
+@media only screen and (min-width: 50em) {
   .dobHat {
     margin-top: 2rem;
     display: -webkit-box;
@@ -1680,7 +1832,9 @@ h1.confirmHeader {
         -ms-flex-align: start;
             align-items: flex-start;
   }
+}
 
+@media only screen and (min-width: 50em) {
   .notesGroup {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1697,163 +1851,73 @@ h1.confirmHeader {
             justify-content: space-between;
   }
 }
+@media only screen and (min-width: 65.625em) {
+  .notesGroup .formGroup:last-child {
+    margin-right: 4%;
+  }
+}
+@media only screen and (min-width: 71.25em) {
+  .notesGroup .formGroup:last-child {
+    margin-right: 8%;
+  }
+}
+@media only screen and (min-width: 75em) {
+  .notesGroup .formGroup:last-child {
+    margin-right: 0%;
+  }
+}
+@media only screen and (min-width: 79.25em) {
+  .notesGroup .formGroup:last-child {
+    margin-right: 4%;
+  }
+}
+@media only screen and (min-width: 82.25em) {
+  .notesGroup .formGroup:last-child {
+    margin-right: 7%;
+  }
+}
+@media only screen and (min-width: 91.25em) {
+  .notesGroup .formGroup:last-child {
+    margin-right: 12%;
+  }
+}
 
 @media only screen and (min-width: 53.125em) {
   .formGroup .noteArea {
     width: 100%;
   }
 }
-
-/* Media Queries for Desktop/Laptop screens */
-@media only screen and (min-width: 59.375em) {
-  html {
-    font-size: 62.5%;
-  }
-
-  body {
-    min-height: 100vh;
-  }
-
-  #titleBar {
-    padding-top: 0.7rem;
-  }
-
-  #logo {
-    width: 13rem;
-  }
-
-  .splash {
-    height: 43rem;
-  }
-
-  .splashSubtitle {
-    width: 45%;
-  }
-
-  .errorSection {
-    min-height: 55vh;
-  }
-}
-
 @media only screen and (min-width: 64.0625em) {
   .formGroup .noteArea {
     width: 109%;
   }
 }
-
-@media only screen and (min-width: 65.625em) {
-  .notesGroup .formGroup:last-child {
-    margin-right: 4%;
-  }
-}
-
-@media only screen and (min-width: 68.5625em) {
-  .splashSubtitle {
-    width: 40%;
-  }
-}
-
 @media only screen and (min-width: 69.4375em) {
   .formGroup .noteArea {
     width: 118%;
   }
 }
-
-@media only screen and (min-width: 71.25em) {
-  .notesGroup .formGroup:last-child {
-    margin-right: 8%;
-  }
-}
-
-@media only screen and (min-width: 72.75em) {
-  #titleBar {
-    padding-top: 1.2rem;
-  }
-
-  .splashSubtitle {
-    width: 37%;
-  }
-}
-
-
-/* Media Queries for Extra Large screens */
 @media only screen and (min-width: 75em) {
-  html {
-    font-size: 75%;
-  }
-
-  #titleBar {
-    padding-top: 0.7rem;
-  }
-
-  .splash {
-    margin-left: 25rem;
-    margin-right: 25rem;
-    height: 38rem;
-  }
-
-  .splashSubtitle {
-    width: 45%;
-  }
-
-  .notesGroup .formGroup:last-child {
-    margin-right: 0%;
-  }
-
   .formGroup .noteArea {
     width: 100%;
   }
 }
-
 @media only screen and (min-width: 79.25em) {
-  .notesGroup .formGroup:last-child {
-    margin-right: 4%;
-  }
-
   .formGroup .noteArea {
     width: 115%;
   }
 }
-
 @media only screen and (min-width: 82.25em) {
-  .notesGroup .formGroup:last-child {
-    margin-right: 7%;
-  }
-
   .formGroup .noteArea {
     width: 120%;
   }
 }
-
-@media only screen and (min-width: 89.75em) {
-  .splashSubtitle {
-    width: 40%;
-  }
-}
-
 @media only screen and (min-width: 91.25em) {
-  .notesGroup .formGroup:last-child {
-    margin-right: 12%;
-  }
-
   .formGroup .noteArea {
     width: 130%;
   }
 }
 
-/* Media Queries for XXL screens */
-@media only screen and (min-width: 93.75em) {
-  #titleBar {
-    padding-top: 1.2rem;
-  }
+/*===== END  Add Client Page  ===== */
 
-  .splash {
-    height: 60rem;
-  }
-
-  .splashSubtitle {
-    font-size: 2.65rem;
-    width: 30%;
-  }
-}
-
+/*# sourceMappingURL=style.css.map */
