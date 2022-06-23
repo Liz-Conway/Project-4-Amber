@@ -44,29 +44,31 @@
 				<label for="id_{{ form.horse.name }}" class="formLabel">{{ form.horse.label }}:</label>
 			</div>
 			<h2>Tasks</h2>
-			<div class="formGroup">
-				{% for task in unmounted %}
-					<div class="manyManyCheck">
-						<input type="checkbox" name="task_{{ task.id }}" id="id_{{ task.task_name }}" >
-						<label for="id_{{ task.task_name }}">{{ task.task_name }}</label>
-					</div>
-				{% endfor %}
-				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
-				<label for="id_{{ form.task_unmounted }}" class="formLabel tasksHeading">Unmounted Tasks:</label>
-			</div>
-			<div class="formGroup">
-				{% for task in mounted %}
-					<div class="manyManyCheck">
-						<input type="checkbox" name="task_{{ task.id }}" id="id_{{ task.task_name }}" >
-						<label for="id_{{ task.task_name }}">{{ task.task_name }}</label>
-					</div>
-				{% endfor %}
-				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
-				<label for="id_{{ form.tasks_mounted.name }}" class="formLabel tasksHeading">Mounted Tasks:</label>
+			<div class="taskList">
+				<div class="formGroup">
+					{% for task in unmounted %}
+						<div class="manyManyCheck">
+							<input type="checkbox" name="task_{{ task.id }}" id="id_{{ task.task_name }}" >
+							<label for="id_{{ task.task_name }}">{{ task.task_name }}</label>
+						</div>
+					{% endfor %}
+					<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
+					<label for="id_{{ form.task_unmounted }}" class="formLabel tasksHeading">Unmounted Tasks:</label>
+				</div>
+				<div class="formGroup">
+					{% for task in mounted %}
+						<div class="manyManyCheck">
+							<input type="checkbox" name="task_{{ task.id }}" id="id_{{ task.task_name }}" >
+							<label for="id_{{ task.task_name }}">{{ task.task_name }}</label>
+						</div>
+					{% endfor %}
+					<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
+					<label for="id_{{ form.tasks_mounted.name }}" class="formLabel tasksHeading">Mounted Tasks:</label>
+				</div>
 			</div>
 			
 			
-			<div class="btnGroup">
+			<div class="btnGroup largeRow">
 				<input type="submit" class="btn btnMain" value="Save Session" />
 				<a href="{% url 'home' %}" class="btn btnGhost">Cancel</a>
 				<input type="reset" class="btn btnTextOnly" value="Reset Form" />
