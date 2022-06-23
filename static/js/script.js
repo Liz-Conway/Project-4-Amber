@@ -13,6 +13,15 @@ function domLoaded() {
 	/*Validate unique diagnosis*/
 	$("#id_diagnosis").focusout(unfocusUnique);
 
+	/*Set the date picker for editing a date*/
+	$(".editDate > .dateInput").datepicker( {
+		showAnim: "clip",
+		changeMonth: true,
+		changeYear: true,
+		dateFormat: "dd/mm/yy",
+		yearRange: "c-15:c+15"	// c-15 => 15 Years before existing date, TO c+15 => 15 years after existing date
+	} );
+	
 	/*Set the date picker*/
 	$(".dateInput").datepicker( {
 		showAnim: "clip",
@@ -21,7 +30,7 @@ function domLoaded() {
 		dateFormat: "dd/mm/yy",
 		yearRange: "c-30:c+0"	// c-30 => 30 Years ago, TO c+0 => This year
 	} );
-	
+
 	/*Set the accordion element*/
 	$("#accordion").accordion();
 
