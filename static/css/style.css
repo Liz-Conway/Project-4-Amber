@@ -1368,7 +1368,7 @@ h1.confirmHeader {
 }
 
 /*===== END  Confirm Deletion Page  ===== */
-*~~~~~~~  My Account Page  ~~~~~~~ */
+/*~~~~~~~  My Account Page  ~~~~~~~ */
 #editUserContainer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1611,6 +1611,94 @@ h1.confirmHeader {
   #clientDropdown {
     font-size: 1.8rem;
   }
+
+  .nameLabel {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .nameLabel label {
+    min-width: 10rem;
+    font-weight: 600;
+  }
+
+  .btnGroup.largeRow {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+  }
+
+  .nameGenderGroup {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .names {
+    width: 50%;
+  }
+
+  .gender {
+    margin-right: 8%;
+  }
+
+  .dobHat {
+    margin-top: 2rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+
+  .notesGroup {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+}
+
+@media only screen and (min-width: 53.125em) {
+  .formGroup .noteArea {
+    width: 100%;
+  }
 }
 
 /* Media Queries for Desktop/Laptop screens */
@@ -1644,11 +1732,36 @@ h1.confirmHeader {
   }
 }
 
+@media only screen and (min-width: 64.0625em) {
+  .formGroup .noteArea {
+    width: 109%;
+  }
+}
+
+@media only screen and (min-width: 65.625em) {
+  .notesGroup .formGroup:last-child {
+    margin-right: 4%;
+  }
+}
+
 @media only screen and (min-width: 68.5625em) {
   .splashSubtitle {
     width: 40%;
   }
 }
+
+@media only screen and (min-width: 69.4375em) {
+  .formGroup .noteArea {
+    width: 118%;
+  }
+}
+
+@media only screen and (min-width: 71.25em) {
+  .notesGroup .formGroup:last-child {
+    margin-right: 8%;
+  }
+}
+
 @media only screen and (min-width: 72.75em) {
   #titleBar {
     padding-top: 1.2rem;
@@ -1679,11 +1792,49 @@ h1.confirmHeader {
   .splashSubtitle {
     width: 45%;
   }
+
+  .notesGroup .formGroup:last-child {
+    margin-right: 0%;
+  }
+
+  .formGroup .noteArea {
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 79.25em) {
+  .notesGroup .formGroup:last-child {
+    margin-right: 4%;
+  }
+
+  .formGroup .noteArea {
+    width: 115%;
+  }
+}
+
+@media only screen and (min-width: 82.25em) {
+  .notesGroup .formGroup:last-child {
+    margin-right: 7%;
+  }
+
+  .formGroup .noteArea {
+    width: 120%;
+  }
 }
 
 @media only screen and (min-width: 89.75em) {
   .splashSubtitle {
     width: 40%;
+  }
+}
+
+@media only screen and (min-width: 91.25em) {
+  .notesGroup .formGroup:last-child {
+    margin-right: 12%;
+  }
+
+  .formGroup .noteArea {
+    width: 130%;
   }
 }
 

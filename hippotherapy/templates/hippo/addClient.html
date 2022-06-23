@@ -28,36 +28,42 @@
 			<!-- 'form' has been passed as a Django form in the context to this page -->
 			<!-- as_p renders the elements as paragraphs, as_table renders them as a table -->
 			
-			<div class="formGroup">
-				{{ form.first_name }}
-				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
-				<label for="id_{{ form.first_name.name }}" class="formLabel">{{ form.first_name.label }}:</label>
+			<div class="nameGenderGroup">
+				<div class="names">
+					<div class="formGroup nameLabel">
+						{{ form.first_name }}
+						<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
+						<label for="id_{{ form.first_name.name }}" class="formLabel">{{ form.first_name.label }}:</label>
+					</div>
+					<div class="formGroup nameLabel">
+						{{ form.last_name }}
+						<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
+						<label for="id_{{ form.last_name.name }}" class="formLabel">{{ form.last_name.label }}:</label>
+					</div>
+				</div>
+				<div class="formGroup gender">
+					{{ form.gender }}
+					<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
+					<label for="id_{{ form.gender.name }}" class="formLabel">{{ form.gender.label }}:</label>
+				</div>
 			</div>
-			<div class="formGroup">
-				{{ form.last_name }}
-				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
-				<label for="id_{{ form.last_name.name }}" class="formLabel">{{ form.last_name.label }}:</label>
-			</div>
-			<div class="formGroup">
-				{{ form.gender }}
-				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
-				<label for="id_{{ form.gender.name }}" class="formLabel">{{ form.gender.label }}:</label>
-			</div>
-			<div class="formGroup">
-				<p>Format: dd/mm/yyyy</p>
-				{{ form.date_of_birth }}
-				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
-				<label for="id_{{ form.date_of_birth.name }}" class="formLabel">{{ form.date_of_birth.label }}:</label>
-			</div>
-			<div class="formGroup">
-				<select name="{{ form.hat_size.name }}" id="id_{{ form.hat_size.name }}" class="formInput" required>
-					<option value="" selected disabled>Choose a hat size</option>
-					{% for size in hat_sizes %}
-						<option value="{{ size.id }}">{{ size.size }}</option>
-					{% endfor %}
-				</select>
-				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
-				<label for="id_{{ form.hat_size.name }}" class="formLabel">{{ form.hat_size.label }}:</label>
+			<div class="dobHat">
+				<div class="formGroup nameLabel">
+					<p>Format: dd/mm/yyyy</p>
+					{{ form.date_of_birth }}
+					<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
+					<label for="id_{{ form.date_of_birth.name }}" class="formLabel">{{ form.date_of_birth.label }}:</label>
+				</div>
+				<div class="formGroup dobHatSize nameLabel">
+					<select name="{{ form.hat_size.name }}" id="id_{{ form.hat_size.name }}" class="formInput" required>
+						<option value="" selected disabled>Choose a hat size</option>
+						{% for size in hat_sizes %}
+							<option value="{{ size.id }}">{{ size.size }}</option>
+						{% endfor %}
+					</select>
+					<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
+					<label for="id_{{ form.hat_size.name }}" class="formLabel">{{ form.hat_size.label }}:</label>
+				</div>
 			</div>
 			<label class="formLabel manyManyLabel" for="manyManyDiagnosis">Diagnoses:</label>
 			<div class="formGroup manyMany" id="manyManyDiagnosis">
@@ -70,19 +76,21 @@
 				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
 			</div>
 			
-			<div class="formGroup">
-				{{ form.degree_of_difficulty }}
-				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
-				<label for="id_{{ form.degree_of_difficulty.name }}" class="formLabel">{{ form.degree_of_difficulty.label }}:</label>
-			</div>
-			<div class="formGroup">
-				{{ form.additional_notes }}
-				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
-				<label for="id_{{ form.additional_notes.name }}" class="formLabel">{{ form.additional_notes.label }}:</label>
+			<div class="notesGroup">
+				<div class="formGroup">
+					{{ form.degree_of_difficulty }}
+					<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
+					<label for="id_{{ form.degree_of_difficulty.name }}" class="formLabel">{{ form.degree_of_difficulty.label }}:</label>
+				</div>
+				<div class="formGroup">
+					{{ form.additional_notes }}
+					<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
+					<label for="id_{{ form.additional_notes.name }}" class="formLabel">{{ form.additional_notes.label }}:</label>
+				</div>
 			</div>
 			
 			
-			<div class="btnGroup">
+			<div class="btnGroup largeRow">
 				<input type="submit" class="btn btnMain" value="Save new Client" />
 				<a href="{% url 'home' %}" class="btn btnGhost">Cancel</a>
 				<input type="reset" class="btn btnTextOnly" value="Reset Form" />

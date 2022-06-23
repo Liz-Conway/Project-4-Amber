@@ -53,8 +53,8 @@ class ClientForm(forms.ModelForm):
                    "last_name":forms.TextInput(attrs={'class':'formInput', 'placeholder': 'Surname'}),
                    "date_of_birth":forms.DateInput(attrs={'class':'dateInput formInput', 'placeholder': 'Date of Birth'}),
                    "gender":forms.RadioSelect(),
-                   "degree_of_difficulty":forms.Textarea(attrs={'class':'formInput', 'placeholder': 'Degree of Difficulty'}),
-                   "additional_notes":forms.Textarea(attrs={'class':'formInput', 'placeholder': 'Enter any additional notes here'}),
+                   "degree_of_difficulty":forms.Textarea(attrs={'class':'formInput noteArea', 'placeholder': 'Degree of Difficulty'}),
+                   "additional_notes":forms.Textarea(attrs={'class':'formInput noteArea', 'placeholder': 'Enter any additional notes here'}),
                    "to_page":forms.HiddenInput(),
                 }
 
