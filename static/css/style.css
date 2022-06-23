@@ -1253,7 +1253,7 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
 }
 
 /*===== END  Radio Button  ===== */
-/*~~~~~~~  Form  ~~~~~~~ */
+/*~~~~~~~  Login  ~~~~~~~ */
 .login p {
   margin-bottom: 1rem;
   text-align: center;
@@ -1368,7 +1368,28 @@ h1.confirmHeader {
 }
 
 /*===== END  Confirm Deletion Page  ===== */
+*~~~~~~~  My Account Page  ~~~~~~~ */
+#editUserContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 
+#editUserForm .formGroup input {
+  margin-left: auto;
+  margin-right: auto;
+}
+#editUserForm h2 {
+  margin-bottom: 1rem;
+}
+
+/*===== END  My Account Page  ===== */
 
 /* Media Queries for Big Phones */
 @media only screen and (min-width: 28em) {
@@ -1392,6 +1413,9 @@ h1.confirmHeader {
   .splashSubtitle {
     font-size: 2.3rem;
     width: 40%;
+  }
+  #editUserForm {
+    max-width: 70%;
   }
 }
 
@@ -1417,6 +1441,29 @@ h1.confirmHeader {
 
   .splashSubtitle {
     width: 27%;
+  }
+
+  #editUserContainer .formGroup {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #editUserContainer .formGroup:first-of-type {
+    margin-top: 2rem;
+  }
+  #editUserContainer .formGroup label {
+    min-width: 10rem;
+    font-weight: 600;
+  }
+  #editUserForm {
+    max-width: unset;
   }
 }
 
