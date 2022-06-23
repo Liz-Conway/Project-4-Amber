@@ -1039,6 +1039,9 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
       -ms-flex-direction: row;
           flex-direction: row;
 }
+.manyManyCheck:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
 .manyManyCheck label {
   margin-left: 1rem;
   margin-top: -0.6rem;
@@ -1460,6 +1463,7 @@ h1.confirmHeader {
   #titleBar h1 {
     padding-right: 0;
     padding-left: 7rem;
+    margin-top: 1rem;
   }
 
   #titleBar {
@@ -1512,7 +1516,7 @@ h1.confirmHeader {
   }
 
   .navigationLink:link, .navigationLink:visited {
-    font-size: 1.4rem;
+    font-size: 1.8rem;
     -webkit-transform: none;
             transform: none;
   }
@@ -1556,6 +1560,9 @@ h1.confirmHeader {
     display: table-cell;
   }
 
+  #clientDropdown {
+    font-size: 1.8rem;
+  }
 }
 
 /* Media Queries for Desktop/Laptop screens */
@@ -1581,7 +1588,7 @@ h1.confirmHeader {
   }
 
   .splashSubtitle {
-    width: 40%;
+    width: 45%;
   }
 
   .errorSection {
@@ -1589,6 +1596,11 @@ h1.confirmHeader {
   }
 }
 
+@media only screen and (min-width: 68.5625em) {
+  .splashSubtitle {
+    width: 40%;
+  }
+}
 @media only screen and (min-width: 72.75em) {
   #titleBar {
     padding-top: 1.2rem;
@@ -1617,7 +1629,13 @@ h1.confirmHeader {
   }
 
   .splashSubtitle {
-    width: 35%;
+    width: 45%;
+  }
+}
+
+@media only screen and (min-width: 89.75em) {
+  .splashSubtitle {
+    width: 40%;
   }
 }
 
