@@ -1005,7 +1005,8 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
 }
 
 .clientPick {
-  margin-top: 1.2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 /*===== END  Button  ===== */
@@ -1053,7 +1054,7 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
 .hippoTable {
   border: 1px solid #191970;
   margin: 1rem auto 2rem auto;
-  max-width: calc(100% - 4rem);
+  width: calc(100% - 32px);
   border-collapse: collapse;
 }
 .hippoTable .rightPad {
@@ -1089,7 +1090,6 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
 }
 .hippoActions a {
   height: 4rem;
-  margin-top: 1rem;
   width: 3.5em;
 }
 
@@ -1380,10 +1380,6 @@ h1.confirmHeader {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-
-#editUserForm .formGroup input {
-  margin-left: auto;
-  margin-right: auto;
 }
 #editUserForm h2 {
   margin-bottom: 1rem;
@@ -1417,6 +1413,12 @@ h1.confirmHeader {
   #editUserForm {
     max-width: 70%;
   }
+
+  .extraColumn {
+    display: table-cell;
+    text-align: center;
+  }
+
 }
 
 
@@ -1464,6 +1466,10 @@ h1.confirmHeader {
   }
   #editUserForm {
     max-width: unset;
+  }
+
+  .hippoTable {
+    max-width: 600px;
   }
 }
 
@@ -1603,9 +1609,6 @@ h1.confirmHeader {
 
   .errorSection {
     min-height: 63vh;
-  }
-  .extraColumn {
-    display: table-cell;
   }
 
   #clientDropdown {
