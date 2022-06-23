@@ -328,6 +328,10 @@ header {
           transform: scale(2);
 }
 
+.invisible {
+  display: none;
+}
+
 /*===== END  Header  ===== */
 /*~~~~~~~  Navbar  ~~~~~~~ */
 #navigationNav {
@@ -642,7 +646,7 @@ footer {
   /*Sticky footer */
   margin-top: auto;
   background-color: #F5853F;
-  color: #FFCDBC;
+  color: #191970;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

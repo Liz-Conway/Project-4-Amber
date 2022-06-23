@@ -44,7 +44,8 @@
 			     Button with icon only
 			  </button>
 			{% else %}
-				<button class="blankIconButton">
+				<button class="blankIconButton" aria-label="blank unused icon button">
+					<span class="invisible">Blank</span>
 				</button>
 			{% endif %}
 			<input type="checkbox" class="navigationCheckbox" id="naviToggle">
