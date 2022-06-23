@@ -174,6 +174,10 @@ The Django structure for the amber application is broken into 2 apps.
 
 2. hippotherary
 	The app contains all the code for pages that an Occupational Therapist and Hippotherapy Analyst will interact with.
+	
+3.	profiles
+	This app contains all the code for managing user accounts, including defining roles to be used for authentication.
+
 
 
 ## UX
