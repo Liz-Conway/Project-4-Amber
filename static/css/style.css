@@ -1969,5 +1969,26 @@ h1.confirmHeader {
 }
 
 /*===== END  Add Client Page  ===== */
+/*~~~~~~~  Choose Course Page  ~~~~~~~ */
+.chooseCourseRadio {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+@media only screen and (min-width: 28em) {
+  .chooseCourseRadio .formRadioLabelDatesSession {
+    font-size: 1.8rem;
+  }
+}
+@media only screen and (min-width: 37.5em) {
+  .chooseCourseRadio .formRadioLabelDatesSession {
+    font-size: 2rem;
+  }
+}
+
+/*===== END  Choose Course Page  ===== */
 
 /*# sourceMappingURL=style.css.map */
