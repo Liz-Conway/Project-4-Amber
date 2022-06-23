@@ -1292,9 +1292,6 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
 
 .btnLogin {
   margin-top: 2rem;
-  margin-right: 2rem;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
 }
 
 .logout {
@@ -1311,6 +1308,10 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
 }
 .logout h3 {
   margin-bottom: 2rem;
+}
+
+.signIn p:not(:last-child) {
+  margin-bottom: 1rem;
 }
 
 /*===== END  Login  ===== */
