@@ -1476,6 +1476,10 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
   min-width: 7rem;
 }
 
+.viewSessionTable {
+  max-width: 52rem;
+}
+
 /*===== END  Table  ===== */
 /*~~~~~~~  Session Detail  ~~~~~~~ */
 .sessionDetail {
@@ -1496,15 +1500,61 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin-top: 1.5rem;
+}
+@media only screen and (min-width: 37.5em) {
+  .sessionDateDate {
+    margin-left: 15rem;
+  }
+}
+@media only screen and (min-width: 50em) {
+  .sessionDateDate {
+    margin-left: 20rem;
+  }
+}
+@media only screen and (min-width: 93.75em) {
+  .sessionDateDate {
+    margin-left: 30rem;
+  }
+}
+@media only screen and (min-width: 37.5em) {
+  .sessionDateCourse {
+    margin-right: 15rem;
+  }
+}
+@media only screen and (min-width: 50em) {
+  .sessionDateCourse {
+    margin-right: 20rem;
+  }
+}
+@media only screen and (min-width: 93.75em) {
+  .sessionDateCourse {
+    margin-right: 30rem;
+  }
 }
 .sessionClient {
   font-size: 2.5rem;
   font-weight: 300;
   text-align: center;
   margin-top: 1.5rem;
+}
+@media only screen and (min-width: 28em) {
+  .sessionHorse {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-top: -5rem;
+  }
 }
 
 /*===== END  Session Detail  ===== */

@@ -8,11 +8,11 @@
 		<h1>Session</h1>
 		<section class="sessionInfo">
 			{% include 'includes/session-details.html' %}
-			<div>
+			<div class="sessionHorse">
 				Horse : <span class="boldEntry">{{ scores.first.session.horse }}</span>
 			</div>
 			<div>
-				<table class="hippoTable">
+				<table class="hippoTable viewSessionTable">
 				<caption>
 					<p>Tasks performed by:</p>
 					<span class="scoreClient">{{ scores.first.session.course.client }}</span>
@@ -44,7 +44,7 @@
 		or even functions and classes. -->
 		<section>
 			<h2>Session Scores</h2>
-			<table class="hippoTable">
+			<table class="hippoTable viewSessionTable">
 				<caption>
 					<p>Functional Skill scores for:</p>
 					<span class="scoreClient">{{ scores.first.session.course.client }}</span>
