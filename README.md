@@ -123,27 +123,69 @@ Hippotherapy can also shorten recovery time and ensure correct development of th
 
 ![Mockup of screen](documentation/mockup/mockup.png)
 
+## User Stories
+
+The user stories have been divided into different epics:
+
+1. Login
+2. Maintain Configuration
+3. Maintain Client
+4. Record Hippotherapy Session
+5. View Hippotherapy Charts
+6. Maintain Users
+
+<img src="documentation/agile-planning/user-stories.png" alt="Amber User Stories" width="100%"/>
+
+### User Roles
+
+A number of different roles have been created for the Amber application.
+* SuperUser
+    This user role can access all the Admin functions and can also access the Django admin panel.
+* Admin
+    This user role can access the features in the Maintain Configuration epic.  I.E. Add Diagnosis and Add User.
+* Hippotherapy Analyst
+	This user role can access the View Session and Generate Charts features.
+* Occupational Therapist
+	This user role can access the features that the Hippotherapy Analyst can acess and also the Add Client, Edit Client and Record Session features.
+
+All user roles can access the Login, Logout and My Account features.
+
+
 ## Features
 
 ### Existing Features
 
-**Inital Landing page**
+#### Inital Landing page
 
-This is where the user arrives on first entering the site.  The only option they have is to login to the amber system.
+This is where the user arrives on first entering the site.  The only option a user has is to login to the amber system.  This page sets the theme for the application, with a Logo which when clicked will bring the user back to the home page.
 
 ![Landing page](/home/fintan/code/projects/amber/documentation/pages/home.png)
 ![Landing page](/home/fintan/code/projects/amber/documentation/pages/mobile/home.png)
 
-#### Mobile Navbar
-By clicking on the well-recognised "hamburger" icon. The user is shown a responsive menu on small screen devices.
+#### Login
 
-Each page has a header at the top of the page which contains a logo and a NavBar.  On small screen devices the NavBar is accessible by clicking the well recognised "hamburger" icon.  On any page if the user clicks the logo they will be redirected to the Amber home page.  The benefit of this is that it is a consistent behaviour across the entire website.  This means that the user can always get back to the home page, no matter where they are in the site.
+Access to the Amber application is achieved by logging into the Amber application.
 
-**Login**
 ![Login](/home/fintan/code/projects/amber/documentation/pages/login.png)
 ![Login](/home/fintan/code/projects/amber/documentation/pages/mobile/login.png)
 
-**Logout**
+
+#### Navigation
+Each page has a header at the top of the page which contains a logo and a NavBar.
+
+The available links in the navbar depend on what role the Admin has allocated to the logged in user's account.  This is **not** a self-registering site.  The Admin is responsible for setting up user accounts and granting each account the appropriate access role.
+
+All user roles will have access to 'My Account' and 'Logout' links once logged into the Amber application.
+
+On small screen devices the NavBar is accessible by clicking the well recognised "hamburger" icon.  The user is shown a responsive menu on small screen devices.  
+
+On any page if the user clicks the logo they will be redirected to the Amber home page.  The benefit of this is that it is a consistent behaviour across the entire website.  Also every NavBar has a "Home" link which will also always give the user the option to return to the home page of the Amber application.  This means that the user can always get back to the home page, no matter where they are in the application.
+
+
+#### Logout
+
+All logged in users, regardless of their role, can log out of the Amber application.  The logout feature asks the user to confirm that they want to logout.  This puts control in the hands of the user as they have more options, and will help prevent 'accidental' logouts.  This additional control will improve the user experience for logged in users.
+
 ![Logout](/home/fintan/code/projects/amber/documentation/pages/logout.png)
 ![Logout](/home/fintan/code/projects/amber/documentation/pages/mobile/logout.png)
 
@@ -158,27 +200,173 @@ In the Amber web application there are 4 roles that a user can log in as:
 Depending on the role assigned to the user, when they log in they will see a similar page but with different role-specific options.
 
 
-**Admin Home Page**
+#### Admin functionality
+
+When logged in with an Admin role the user has access to the 'Add Diagnosis' and 'Add User' features.
+
+
 ![Admin home page](/home/fintan/code/projects/amber/documentation/pages/admin-home.png)
 ![Admin mobile menu page](/home/fintan/code/projects/amber/documentation/pages/mobile/admin-menu.png)
 
-**Occupational Therapist Home Page**
-![Occupational Therapist Home Page](/home/fintan/code/projects/amber/documentation/pages/ot-home.png)
 
-**Hippotherapy Analyst Home Page**
-![Hippotherapy analyst home page](/home/fintan/code/projects/amber/documentation/pages/analyst-home.png)
-![Hippotherapy analyst mobile menu](/home/fintan/code/projects/amber/documentation/pages/mobile/analyst-menu.png)
+**1  Add Diagnosis**
+This feature allows an Admin user to create new diagnoses for use in the Amber application.  This is important because each client attending a hippotherapy session will have some issue that the hippotherapy is helping the client to cope with.  Without an appropriate diagnosis to choose, the Occupational Therapist cannot record accurately what is ailing the client.  This will have an impact, since in future sessions, the actual diagnosis will be used by the Occupational Therapist to guide what activities are undertaken during the session.
 
-#### Admin Functionality
-**1  Add Diagnosis page**
+By giving the Admin the option to input their own diagnoses, the Amber application gives the Admin and the Occupational Therapist a sense of control over the application.  Occupational Therapist users will have appropriate and meaningful diagnoses to choose from, rather than being restricted by someone elses list of diagnoses some of which may be completely inappropriate.  Having this sense of control will improve the user experience for both Admin users and Occupational Therapist users.
+
+*Add Diagnosis page*
 ![Add Diagnosis page](/home/fintan/code/projects/amber/documentation/pages/add-diagnosis.png)
 ![Add Diagnosis page](/home/fintan/code/projects/amber/documentation/pages/mobile/add-diagnosis.png)
 
-**2  Add User page**
+**2  Add User**
+
+The only way for a new user to be able to use the Amber application is for an Admin user to add them as a new user.  They will have to select which access role to give to each new user.  This will give the Admin user a feeling of control, as not just anyone can get access to the application.  The Admin will know who can access the Amber application and what access they will have.
+
+*Add User page*
 ![Add User page](/home/fintan/code/projects/amber/documentation/pages/add-user.png)
 ![Add User page](/home/fintan/code/projects/amber/documentation/pages/mobile/add-user.png)
 
+#### SuperUser Functionality
+
+The superuser role grants extra privileges that a user with Admin role does not have.  In the Amber application the superuser has an additional feature available.  This is the 'Maintain Configuration' feature.  On clicking this navigation link the superuser is redirected to the Django Admin panel.  Within this Admin panel the superuser can add, modify and delete objects of every model within the Amber application, including users.
+
+*Superuser home page*
+![superuser home page](/home/fintan/code/projects/amber/documentation/pages/superuser-home.png)
+
+![Django Admin Panel](/home/fintan/code/projects/amber/documentation/pages/django-admin-panel.png)
+
+
+#### Hippotherapy Analyst Functionality
+
+The Hippotherapy Analyst is only concerned with viewing information that the Amber application has captured.  The two features the Hippotherapy Analyst will use are 'View Session' and 'Generate Charts'.
+
+![Hippotherapy analyst home page](/home/fintan/code/projects/amber/documentation/pages/analyst-home.png)
+![Hippotherapy analyst mobile menu](/home/fintan/code/projects/amber/documentation/pages/mobile/analyst-menu.png)
+
+
+**1 View Session**
+
+![View Session User Flow chart](documentation/ux/user-flow/view-session.png)
+
+This is a key feature of the Amber application.  This benefit of this feature is that a Hippotherapy Analyst or Occupational Therapist can retrieve the information that has been stored in the application.  The user needs to be able to see what scores a client ahieved for a chosen session.  This will allow the user to make informed decisions on the client's progress.  Knowing how the client is progressing will allow the Occupational Therapist to tailor future sessions to maximise the client's improvements.
+
+**1a Select Client**
+A list of clients is shown and the user picks one of the clients using the button on the same row as the client of interest.  As well as the name the Amber application shows the date of birth, gender and first diagnosis of each client to help the user to distinguish between clients who might have the same name.
+
+On smaller devices the client list only shows name, date of birth and gender.  This is due to the limited screen real estate on smaller devices.
+
+The value of this page comes from the fact that you need to view a session for a particular client.  This page gives the user the option to select a client whose session they wish to view.
+
+*Select client page*
+![Select client page](/home/fintan/code/projects/amber/documentation/pages/select-client.png)
+![Select client page](/home/fintan/code/projects/amber/documentation/pages/mobile/select-client.png)
+
+**1b Select Session**
+Once the client has been chosen a list of sessions for that client is shown.  As well as the session date, the session number is shown.  
+
+The way hippotherapy sessions are organised is that a client signs up for a course of treatments.  Each treatment within a course is called a hippotherapy session.  Hippotherapy sessions are usually given approximately one week apart.  
+
+In the Amber application, each course is given a unique course number.  Each hippotherapy session is identified by a combination of its course number and a week number.  Week numbers for a single course are incremented, starting at one.  For example, for a course with an id of 216 running for 8 treatment sessions, each session would be identified as :
+* 	216/1
+* 	216/2
+* 	216/3
+* 	216/4
+* 	216/5
+* 	216/7
+* 	216/8
+
+The user picks one of the sessions by clicking/tapping on the radio button on the same row as the session they wish to view.  Each session is identified by its date and session number.
+
+The session number shown on the select session page consists of a Course number and the week number.  In the image below three sessions are shown for Course number 1.  The first session is for course 1, week 1 and is shown as "**Session :  1/1**".  The second session is for course 1, week 2 and is shown as "**Session :  1/2**".   The third session is for course 1, week 3 and is shown as "**Session :  1/3**". 
+
+The value of this page comes from the fact that you need to select a session in order to view it.  This page gives the user the option to select which exact session they wish to see details for.
+
+*Select Session page*
+![Select Session page](/home/fintan/code/projects/amber/documentation/pages/select-session.png)
+![Select Session page](/home/fintan/code/projects/amber/documentation/pages/mobile/select-session.png)
+
+**1c View Session**
+Once the user clicks the "Select this session" button the Amber application shows a page detailing:
+* the client who undertook the session
+* the date the session ran on
+* the session number assigned to this session
+* the horse used in the session
+* any tasks performed by the client during the session
+* the scores given by the Occupational Therapist for the session.
+
+Scores are given for a variety of skills which the client has demonstrated throughout the treatment session.  The Occupational Therapist will have given each skill a score between 1 and 5 inclusive.  Each skill is part of a particular function.  In the "Session Scores" table below you can see each function and its related skills are grouped together.
+
+The functions and their related skills are :
+| Function | Skill |
+| --- | --- |
+| Task Behaviour | Regulation<br />Engagement<br />Motivation<br />Frustration Tolerance |
+| Cognitive | Following Directions<br />Concentration<br />Problem Solving<br />Intention Working Memory |
+| Motor Planning | Planning<br />Sequencing<br />Praxis - Execution |
+| Motor | Postural Control / Balance<br />Proximal Joint Stability<br />BiLateral Coordination<br />Body Awareness<br />Fine motor |
+| Sensory Modulation | Proprioception<br />Vestibular<br />Tactile<br />Auditory<br />Visual<br />Olfactory |
+| Social Emotional | Communication of needs<br />Expression<br />Eye Contact<br />Joint Attention<br />Confidence |
+
+
+The benefit of this page is that an Occupational Therapist or Hippotherapy Analyst can view historical information about previous treatment sessions for their clients.  This is key information which can be used to measure improvements and make plans for further treatment sessions.
+
+*View Session page*
+![View Session page](/home/fintan/code/projects/amber/documentation/pages/view-session.png)
+![View Session page](/home/fintan/code/projects/amber/documentation/pages/mobile/view-session.png)
+
+**2  Generate chart**
+
+![Generate Charts User Flow chart](documentation/ux/user-flow/generate-charts.png)
+
+This is a key feature of the Amber application.  This benefit of this feature is that a Hippotherapy Analyst or Occupational Therapist can get a visual representation of how a client is progressing over the duration of a course.  A course typically runs over 8 weeks with one treatment session each week.
+
+**2a Select Client**
+A list of clients is shown and the user picks one of the clients using the button on the same row as the client of interest.  As well as the name the Amber application shows the date of birth, gender and first diagnosis of each client to help the user to distinguish between clients who might have the same name.
+
+On smaller devices the client list only shows name, date of birth and gender.  This is due to the limited screen real estate on smaller devices.
+
+The value of this page comes from the fact that you need to view a session for a particular client.  This page gives the user the option to select a client whose session they wish to view.
+
+*Select client page*
+![Select client page](/home/fintan/code/projects/amber/documentation/pages/select-client.png)
+![Select client page](/home/fintan/code/projects/amber/documentation/pages/mobile/select-client.png)
+
+
+**2b Select Course**
+
+Once the client has been chosen a list of courses for that client is shown.  The course number is show beside the radio button for that course.  In addition the date and week number of both the first session for this course and the last session for this course are shown.  
+
+The way hippotherapy sessions are organised is that a client signs up for a course of treatments.  Each treatment within a course is called a hippotherapy session.  Hippotherapy sessions are usually given approximately one week apart.  
+
+The user picks one of the courses by clicking/tapping on the radio button on the same row as the course they wish to generate the chart for.
+
+The benefit of this page is that it allows the user to select the course that they want to see the graph for.
+
+*Select Course page*
+![Select Course page](/home/fintan/code/projects/amber/documentation/pages/select-course.png)
+![Select Course page](/home/fintan/code/projects/amber/documentation/pages/mobile/select-course.png)
+
+
+**2c Generate Chart**
+
+When the user clicks on the "Select this course" button a chart is generated by totalling up all the skill scores for each function.  Each function has a different number of skills, so in order to give an accurate depiction of the scores, each function score is converted to a percentage of the total score available for that function.
+
+Each bar of the chart represents the Function score for the latest course.  There is also a blue marker on each bar indicating the Function score for the first course.  If there is only one session in a course the blue marker will be at the end of the bar.  However, if there are more than one sessions in a course, then the gap between the marker and the end of the bar indicates the improvement the client has made in that function during the course.  If the client has disimproved since the first (baseline) session of the course, the marker will be to the right of the bar and the gap will indicate how much the client has disimproved.
+
+The page gives the most benefit to the Occupational Therapist or Hippotherapy Analyst.  It is an easy-to-understand representation of the effects that the course of Hippotherapy treatments is having on a client.  It can be used mid-course to show where improvements are being made and this data can inform future treatment plans for the rest of the course.  It can be used at the end of a course to show how much a client has improved in a short number of weeks.  Producing this chart is the reason for creating the Amber application.  It gives succinct information that can be processed at a glance, is easily understandable and can be put to use immediately.
+
+There is also a small icon at the top right of the graph which can be used to download CSV formatted data of the graph, or to download an image of the graph.  This is helpful to the Occupational Therapist or Hippotherapy Analyst as they can take this information outside of the Amber application and use it in reports, etc.
+
+*Generate Chart page*
+![Generate chart page](/home/fintan/code/projects/amber/documentation/pages/generate-chart.png)
+![Generate chart page](/home/fintan/code/projects/amber/documentation/pages/mobile/generate-chart.png)
+
+
 #### Occupational Therapist Functionality
+
+Like the Hippotherapy Analyst the 
+
+![Occupational Therapist Home Page](/home/fintan/code/projects/amber/documentation/pages/ot-home.png)
+
 
 **1  Add Client page**
 ![Add Client page](/home/fintan/code/projects/amber/documentation/pages/add-client.png)
@@ -196,18 +384,18 @@ Depending on the role assigned to the user, when they log in they will see a sim
 
 **3 Delete Client**
 
-**Confirm deletion of client page**
+*Confirm deletion of client page*
 ![Confirm deletion of client page](/home/fintan/code/projects/amber/documentation/pages/confirm-delete.png)
 ![Confirm deletion of client page](/home/fintan/code/projects/amber/documentation/pages/mobile/confirm-delete.png)
 
 
-**Select client page**
+*Select client page*
 ![Select client page](/home/fintan/code/projects/amber/documentation/pages/select-client.png)
 ![Select client page](/home/fintan/code/projects/amber/documentation/pages/mobile/select-client.png)
 
 **4 Record Session**
 
-**Last Session for this client**
+*Last Session for this client*
 ![Last session for this client page](/home/fintan/code/projects/amber/documentation/pages/new-course.png)
 ![Last session for this client page](/home/fintan/code/projects/amber/documentation/pages/mobile/new-course.png)
 
@@ -216,40 +404,22 @@ Depending on the role assigned to the user, when they log in they will see a sim
 ![Record session page](/home/fintan/code/projects/amber/documentation/pages/record-session.png)
 ![Record session page](/home/fintan/code/projects/amber/documentation/pages/mobile/record-session.png)
 
-**Observe Session page**
+*Observe Session page*
 ![Observe Session page](/home/fintan/code/projects/amber/documentation/pages/observe-session.png)
 ![Observe Session page](/home/fintan/code/projects/amber/documentation/pages/mobile/observe-session.png)
 
-#### Hippotherapy Analyst Functionality
-
-**1 View Session**
-
-**Select Session page**
-![Select Session page](/home/fintan/code/projects/amber/documentation/pages/select-session.png)
-![Select Session page](/home/fintan/code/projects/amber/documentation/pages/mobile/select-session.png)
-
-**View Session page**
-![View Session page](/home/fintan/code/projects/amber/documentation/pages/view-session.png)
-![View Session page](/home/fintan/code/projects/amber/documentation/pages/mobile/view-session.png)
-
-**2  Generate chart**
-
-**Select Course page**
-![Select Course page](/home/fintan/code/projects/amber/documentation/pages/select-course.png)
-![Select Course page](/home/fintan/code/projects/amber/documentation/pages/mobile/select-course.png)
-
-**Generate Chart page**
-![Generate chart page](/home/fintan/code/projects/amber/documentation/pages/generate-chart.png)
-![Generate chart page](/home/fintan/code/projects/amber/documentation/pages/mobile/generate-chart.png)
 
 #### Messages
+
+#### Current Login State
 
 
 ### Known Bugs
 <a id="known-bugs"></a>
 
 * Javascript is used to position the "My Account" and "Logout" links when the page is loaded.  This depends on the width of the screen when the application is first loaded.  If a user views the Amber application on a tablet and changes the orientation, then the layout of these links will be in the wrong place.
-* On the Session Observations page, the Skills are grouped by Function.  The Skills within each Function are shown in an accordion panel, so when you click on the Function name the Skills for that Function are shown.  Only one panel is shown at a time.  Each accordion panel is the same height, i.e. the height of the Function with the most Skills.  This leaves a lot of white space underneath the Skills for Functions which only have a few Skills.  The accordion is a jQuery UI component and this display behaviour is a deliberate design choice made by the jQuery UI library. 
+* On the Session Observations page, the Skills are grouped by Function.  The Skills within each Function are shown in an accordion panel, so when you click on the Function name the Skills for that Function are shown.  Only one panel is shown at a time.  Each accordion panel is the same height, i.e. the height of the Function with the most Skills.  This leaves a lot of white space underneath the Skills for Functions which only have a few Skills.  The accordion is a jQuery UI component and this display behaviour is a deliberate design choice made by the jQuery UI library.
+* In Firefox the colours of the 'Client ...' dropdown options ('Add Client' and 'Edit Client') cannot be changed. They stay dark grey background with a light almost white foreground colour.  'Select' elements are rendered by the Operating System and Firefox does not allow styling of the Select options.
 
 ### Future features
 <a id="future-features"></a>Since Amber is a "real-life" project, this section will be used to "de-scope" some of the Use Cases and User Stories.  This will provide a Minimum Viable Product for the end-user which will also meet the criteria for examination by Code Institute. 
@@ -302,8 +472,6 @@ The Django structure for the amber application is broken into 2 apps.
 ## UX
 <a id="ux"></a>
 
-### Storyboard
-<a id="storyboard"></a>
 
 ### Personas
 <a id="personas"></a>
@@ -368,7 +536,6 @@ The Django structure for the amber application is broken into 2 apps.
 ![Record a Session User Flow chart](documentation/ux/user-flow/record-session.png)
 
 
-![Generate Charts User Flow chart](documentation/ux/user-flow/generate-charts.png)
 
 
 ![Add Client User Flow chart](documentation/ux/user-flow/add-client.png)
@@ -526,8 +693,6 @@ At the end of the project, all User Stories will be in the **Done** list and the
 
 <img src="documentation/agile-planning/amber-board-story-map.png" alt="User Story Map Sprint plan" width="100%"/>
 
-#### User Stories
-<img src="documentation/agile-planning/user-stories.png" alt="Amber User Stories" width="100%"/>
 
 
 
