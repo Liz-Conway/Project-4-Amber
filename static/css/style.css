@@ -397,8 +397,6 @@ header {
 }
 #accountLinks .navigationLink {
   /*Hide the navigation initially */
-  /*It is not enough to have an opacity of zero */
-  /*The elements are still there and are clickable, so we need to set the width to zero as well */
   width: 0;
   /*Centre the account links */
   text-align: center;
@@ -523,8 +521,6 @@ header {
 .navigationItem {
   margin: 1rem;
   /*Hide the navigation list item initially */
-  /*It is not enough to have an opacity of zero */
-  /*The elements are still there and are clickable, so we need to set the width to zero as well */
   width: 0;
 }
 @media only screen and (min-width: 50em) {
@@ -611,6 +607,9 @@ header {
           transform: rotate(-135deg);
   top: 0;
 }
+.navigationActive {
+  background-color: #7EB2DD;
+}
 
 #clientDropdown {
   background-color: #F5853F;
@@ -619,10 +618,16 @@ header {
   border: none;
   text-transform: uppercase;
 }
+#clientDropdown option {
+  background-color: #F5853F;
+}
 @media only screen and (min-width: 50em) {
   #clientDropdown {
     font-size: 1.8rem;
   }
+}
+#clientDropdown.navigationActive {
+  background-color: #7EB2DD;
 }
 
 .nonMobile {

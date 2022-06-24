@@ -60,20 +60,20 @@
 			</div>
 			<div id="accountLinks">
 				{% if user.is_authenticated %}
-					<a href="{% url 'myAccount' %}" class="navigationLink accountLink">My Account</a> 
-					<a href="{% url 'account_logout' %}" class="navigationLink accountLink">Logout</a>
+					<a href="{% url 'myAccount' %}" class="navigationLink accountLink {% block myAccountActive %}{% endblock %}">My Account</a> 
+					<a href="{% url 'account_logout' %}" class="navigationLink accountLink {% block logoutActive %}{% endblock %}">Logout</a>
 				{% else %}
-					<a href="{% url 'account_login' %}" class="navigationLink accountLink">Login</a>
+					<a href="{% url 'account_login' %}" class="navigationLink accountLink {% block loginActive %}{% endblock %}">Login</a>
 				{% endif %}
 			</div>
 			<!-- Top navbar -->
 			<nav id="navigationNav" class="navigationBar">
 				<ul class="navigationList">
 					<li class="navigationItem">
-						<a href="{% url 'home' %}" class="navigationLink"> Home</a>
+						<a href="{% url 'home' %}" class="navigationLink {% block homeActive %}{% endblock %}"> Home</a>
 					</li>
 					{% if user.user_role == 'Occupational Therapist' %}
-					<select class="nonMobile" id="clientDropdown" onchange="location = this.value">
+					<select class="nonMobile {% block clientActive %}{% endblock %}" id="clientDropdown" onchange="location = this.value">
 						<option disabled selected>Client ...</option>
 						<option value="{% url 'addClient' %}">Add Client</option>
 						<option value="{% url 'getClients' %}">Edit Client</option>
@@ -88,31 +88,46 @@
 						</li>
 					{% endif %}
 					{% if user.user_role == 'Occupational Therapist' %}
-					<li class="navigationItem">
-						<a href="{% url 'selectClient' target='recordSession' %}" class="navigationLink">Record Session</a>
-					</li>
-					{% endif %}
-					{% if user.user_role == 'Occupational Therapist' or user.user_role == 'Hippotherapy Analyst' %}
 						<li class="navigationItem">
-							<a href="{% url 'selectClient' target='chooseSession' %}" class="navigationLink">View Session</a>
+							<a href="{% url 'selectClient' target='recordSession' %}" class="navigationLink 
+								{% if target == 'recordSession' %}
+									navigationActive
+								{% endif %}
+								{% block recordActive %}{% endblock %}
+								">Record Session</a>
 						</li>
 					{% endif %}
 					{% if user.user_role == 'Occupational Therapist' or user.user_role == 'Hippotherapy Analyst' %}
 						<li class="navigationItem">
-							<a href="{% url 'selectClient' target='generateChart' %}" class="navigationLink">Generate Charts</a>
+							<a href="{% url 'selectClient' target='chooseSession' %}" class="navigationLink 
+								{% if target == 'chooseSession' %}
+									navigationActive
+								{% endif %}
+								{% block viewActive %}{% endblock %}
+								">View Session</a>
+						</li>
+					{% endif %}
+					{% if user.user_role == 'Occupational Therapist' or user.user_role == 'Hippotherapy Analyst' %}
+						<li class="navigationItem">
+							<a href="{% url 'selectClient' target='generateChart' %}" class="navigationLink 
+								{% if target == 'generateChart' %}
+									navigationActive
+								{% endif %}
+								{% block chartActive %}{% endblock %}
+								">Generate Charts</a>
 						</li>
 					{% endif %}
 					{% if user.user_role == 'Administrator' %}
 						<li class="navigationItem">
-							<a href="{% url 'addDiagnosis' %}" class="navigationLink">Add Diagnosis</a>
+							<a href="{% url 'addDiagnosis' %}" class="navigationLink {% block diagnosisActive %}{% endblock %}">Add Diagnosis</a>
 						</li>
 					{% endif %}
 					{% if user.user_role == 'Administrator' %}
-						<a href="{% url 'addUser' %}" class="navigationLink accountLink">Add User</a>
+						<a href="{% url 'addUser' %}" class="navigationLink {% block addUserActive %}{% endblock %}">Add User</a>
 					{% endif %}
 					{% if user.is_superuser %}
 						<li class="navigationItem">
-							<a href="{% url 'admin:index' %}" class="navigationLink">Maintain Configuration</a>
+							<a href="{% url 'admin:index' %}" class="navigationLink {% block configActive %}{% endblock %}">Maintain Configuration</a>
 						</li>
 					{% endif %}
 				</ul>
