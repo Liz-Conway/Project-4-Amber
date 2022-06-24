@@ -34,6 +34,10 @@ function domLoaded() {
 	/*Set the accordion element*/
 	$("#accordion").accordion();
 
+	/*Set a handler for when the window is resized
+	 * Replace the Account Links div*/
+	$( window ).resize(placeAccountLinks);
+
 }
 
 let unfocusUnique = (event) => validateUnique(event, "validateDiagnosis", "diagnosis", "#id_diagnosis");
@@ -49,14 +53,23 @@ function closeNavigation(event) {
  - only on mobile devices*/
  function placeAccountLinks() {
  	/*Only needed for mobile devices - phones & tablets in portrait orientation*/
+ 	/*Use screen width instead of window width since 
+ 	the media queries use screen width*/
  	if (screen.width < 800) {
  		$("#accountLinks").position({
   			my:      "top+20",
   			at:        "bottom",
  	   		of:        $("#navigationNav"),
-   		 	collision: "none"
+   		 	collision: "fit"
 		});
- 	} 
+ 	} else {
+		$("#accountLinks").position({
+  			my:      "right top",
+  			at:        "right top",
+ 	   		of:        $("#navWrapper"),
+   		 	collision: "fit"
+		}); 		
+ 	}
 }
 
 
