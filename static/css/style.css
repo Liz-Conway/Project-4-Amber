@@ -686,10 +686,7 @@ footer {
 /*~~~~~~~  Home Page  ~~~~~~~ */
 .splash {
   padding: 1rem;
-  margin-top: 5rem;
-  margin-left: 5rem;
-  margin-right: 5rem;
-  margin-bottom: 5rem;
+  margin: 5rem;
   /* To put a gradient on top of an image */
   /* Just specify both in the background-image separated by a comma */
   /*We can specify an angle for the gradient instead of 'to right' use '90deg', etc. */
@@ -715,6 +712,12 @@ footer {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  align-items: flex-start;
 }
 @media only screen and (min-width: 28em) {
   .splash {
@@ -763,14 +766,25 @@ footer {
     font-size: 3.2rem;
   }
 }
+@media only screen and (min-width: 37.5em) {
+  .splashTitle {
+    font-size: 4rem;
+  }
+}
+@media only screen and (min-width: 93.75em) {
+  .splashTitle {
+    font-size: 4.4rem;
+  }
+}
 .splashSubtitle {
-  font-size: 1.8rem;
-  /*Place the text close to the bottom of the image */
-  margin-top: 10rem;
-  /*Change display to inline-block, so we can modify the width */
-  display: inline-block;
-  /*Change width to force the text to wrap */
-  width: 43%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: 2rem;
   /*Change the line-height to space out the text vertically */
   line-height: calc(1em + 2rem);
   margin-top: auto;
@@ -778,48 +792,16 @@ footer {
 @media only screen and (min-width: 28em) {
   .splashSubtitle {
     font-size: 2.3rem;
-    width: 40%;
   }
 }
 @media only screen and (min-width: 37.5em) {
   .splashSubtitle {
-    width: 27%;
-  }
-}
-@media only screen and (min-width: 50em) {
-  .splashSubtitle {
-    width: 48%;
-  }
-}
-@media only screen and (min-width: 59.375em) {
-  .splashSubtitle {
-    width: 45%;
-  }
-}
-@media only screen and (min-width: 68.5625em) {
-  .splashSubtitle {
-    width: 40%;
-  }
-}
-@media only screen and (min-width: 72.75em) {
-  .splashSubtitle {
-    width: 37%;
-  }
-}
-@media only screen and (min-width: 75em) {
-  .splashSubtitle {
-    width: 45%;
-  }
-}
-@media only screen and (min-width: 89.75em) {
-  .splashSubtitle {
-    width: 40%;
+    font-size: 2.6rem;
   }
 }
 @media only screen and (min-width: 93.75em) {
   .splashSubtitle {
-    font-size: 2.65rem;
-    width: 30%;
+    font-size: 3.2rem;
   }
 }
 
