@@ -121,7 +121,7 @@ Hippotherapy can also shorten recovery time and ensure correct development of th
 ## Screen Mockup
 <a id="mockup"></a>
 
-![Mockup of screen](documentation/mockup/mockup.png)
+![Mockup of Amber application](/home/fintan/code/projects/amber/documentation/mockup/mockup.png)
 
 ## User Stories
 
