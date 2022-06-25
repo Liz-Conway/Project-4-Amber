@@ -322,6 +322,9 @@ header {
     width: 13rem;
   }
 }
+#logo img {
+  width: 100%;
+}
 
 .ui-icon {
   -webkit-transform: scale(2);
