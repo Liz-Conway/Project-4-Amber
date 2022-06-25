@@ -22,6 +22,8 @@
 	<meta name="msapplication-TileColor" content="#da532c">
 	<meta name="msapplication-config" content="{% static 'icon/browserconfig.xml' %}">
 	<meta name="theme-color" content="#ffffff">
+	
+	<meta name="description" content="Amber is a custom tool specifically designed for Occupational Therapists to measure clinical outcomes during Hippotherapy treatment sessions.">
 </head>
 <body>
 
@@ -33,7 +35,7 @@
 		</div>
 		<div id="navWrapper">
 			{% if user.is_authenticated %}
-			<button class="ui-button ui-widget ui-corner-all ui-button-icon-only" title="{{ user.user_role }}">
+			<div class="ui-button ui-widget ui-corner-all ui-button-icon-only" title="{{ user.user_role }}">
 			    {% if user.user_role == 'Administrator' %}
 			    	<span class="ui-icon ui-icon-wrench"></span>
 			    {% elif user.user_role == 'Occupational Therapist' %}
@@ -42,7 +44,7 @@
 			    	<span class="ui-icon ui-icon-clipboard"></span>
 			    {% endif %}
 			     Button with icon only
-			  </button>
+			  </div>
 			{% else %}
 				<button class="blankIconButton" aria-label="blank unused icon button">
 					<span class="invisible">Blank</span>
