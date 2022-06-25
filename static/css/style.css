@@ -550,6 +550,7 @@ header {
   display: inline-block;
   position: relative;
   margin-top: 3.5rem;
+  color: #FFFFFF;
   /*A bar before the span, the span is a bar, a bar after the span */
   /*Each bar is 3rem x 2px and is coloured dark grey */
   /*For ::before and ::after to show they need content and display properties to be set */
