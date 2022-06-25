@@ -75,11 +75,13 @@
 						<a href="{% url 'home' %}" class="navigationLink {% block homeActive %}{% endblock %}"> Home</a>
 					</li>
 					{% if user.user_role == 'Occupational Therapist' %}
-					<select class="nonMobile {% block clientActive %}{% endblock %}" id="clientDropdown" onchange="location = this.value">
-						<option disabled selected>Client ...</option>
-						<option value="{% url 'addClient' %}">Add Client</option>
-						<option value="{% url 'getClients' %}">Edit Client</option>
-					</select>
+					<li class="navigationItem">
+						<select class="nonMobile {% block clientActive %}{% endblock %}" id="clientDropdown" onchange="location = this.value">
+							<option disabled selected>Client ...</option>
+							<option value="{% url 'addClient' %}">Add Client</option>
+							<option value="{% url 'getClients' %}">Edit Client</option>
+						</select>
+					</li>
 					{% endif %}
 					{% if user.user_role == 'Occupational Therapist' %}
 						<li class="navigationItem mobileOnly">
