@@ -1997,71 +1997,8 @@ h1.confirmHeader {
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
-}
-@media only screen and (min-width: 65.625em) {
-  .notesGroup .formGroup:last-child {
-    margin-right: 4%;
-  }
-}
-@media only screen and (min-width: 71.25em) {
-  .notesGroup .formGroup:last-child {
-    margin-right: 8%;
-  }
-}
-@media only screen and (min-width: 75em) {
-  .notesGroup .formGroup:last-child {
-    margin-right: 0%;
-  }
-}
-@media only screen and (min-width: 79.25em) {
-  .notesGroup .formGroup:last-child {
-    margin-right: 4%;
-  }
-}
-@media only screen and (min-width: 82.25em) {
-  .notesGroup .formGroup:last-child {
-    margin-right: 7%;
-  }
-}
-@media only screen and (min-width: 91.25em) {
-  .notesGroup .formGroup:last-child {
-    margin-right: 12%;
-  }
-}
-
-@media only screen and (min-width: 53.125em) {
-  .formGroup .noteArea {
-    width: 100%;
-  }
-}
-@media only screen and (min-width: 64.0625em) {
-  .formGroup .noteArea {
-    width: 109%;
-  }
-}
-@media only screen and (min-width: 69.4375em) {
-  .formGroup .noteArea {
-    width: 118%;
-  }
-}
-@media only screen and (min-width: 75em) {
-  .formGroup .noteArea {
-    width: 100%;
-  }
-}
-@media only screen and (min-width: 79.25em) {
-  .formGroup .noteArea {
-    width: 115%;
-  }
-}
-@media only screen and (min-width: 82.25em) {
-  .formGroup .noteArea {
-    width: 120%;
-  }
-}
-@media only screen and (min-width: 91.25em) {
-  .formGroup .noteArea {
-    width: 130%;
+  .notesGroup .formGroup {
+    width: 45%;
   }
 }
 
