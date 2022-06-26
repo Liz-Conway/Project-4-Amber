@@ -101,8 +101,8 @@ function submitDiagnosis(event) {
             $("#id_diagnosis").val("");
 
             // display the new diagnosis in the list.
-            let instance = JSON.parse(response["instance"]);
-            let fields = instance[0]["fields"];
+            let instance = JSON.parse(response.instance);
+            let fields = instance[0].fields;
             $("#diagnosisList").append(
                 `<li class="diagnosisItem">
                 ${fields["diagnosis"]}
