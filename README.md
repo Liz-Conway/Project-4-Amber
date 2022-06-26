@@ -905,58 +905,73 @@ At the end of the project, all User Stories will be in the **Done** list and the
 
 CSS was validated using [W3C CSS validator](https://jigsaw.w3.org/css-validator/validator)
 
-
+#### HTML
 HTML was validated on all pages using [W3C HTML validator](https://validator.w3.org/)
-#### Login
+##### Login
 ![Login validation](/home/fintan/code/projects/amber/documentation/validation/HTML/login.png)
 
-#### Logout
+##### Logout
 ![Logout validation](/home/fintan/code/projects/amber/documentation/validation/HTML/logout.png)
 
-#### My Account
+##### My Account
 ![My Account validation](/home/fintan/code/projects/amber/documentation/validation/HTML/my-account.png)
 
-#### Home page
+##### Admin Home page
 ![Home page validation](/home/fintan/code/projects/amber/documentation/validation/HTML/admin-home.png)
 
-#### Add Diagnosis
+##### Occupational Therapist Home page
+![OT Home page validation](/home/fintan/code/projects/amber/documentation/validation/HTML/ot-home.png)
+
+##### Hippotherapy Analyst Home page
+![HA home page validation](/home/fintan/code/projects/amber/documentation/validation/HTML/ha-home.png)
+
+##### Add Diagnosis
 ![Add Diagnosis validation](/home/fintan/code/projects/amber/documentation/validation/HTML/add-diagnosis.png)
 
-#### Add User
+##### Add User
 ![Add User validation](/home/fintan/code/projects/amber/documentation/validation/HTML/add-user.png)
 
-#### Add Client
+##### Add Client
 ![Add Client validation](/home/fintan/code/projects/amber/documentation/validation/HTML/add-client.png)
 
-#### Client List
+##### Client List
 ![Client List validation](/home/fintan/code/projects/amber/documentation/validation/HTML/client-list.png)
 
-#### Edit Client
+##### Edit Client
 ![Edit Client validation](/home/fintan/code/projects/amber/documentation/validation/HTML/edit-client.png)
 
-#### Confirm Delete Client
+##### Confirm Delete Client
 ![Confirm Delete validation](/home/fintan/code/projects/amber/documentation/validation/HTML/confirm-delete.png)
 
-#### Select Client
+##### Select Client
 ![Select Client validation](/home/fintan/code/projects/amber/documentation/validation/HTML/select-client.png)
 
-#### New Course
+##### New Course
 ![New Course validation](/home/fintan/code/projects/amber/documentation/validation/HTML/new-course.png)
 
-#### Record Session
+##### Record Session
 ![Record Session validation](/home/fintan/code/projects/amber/documentation/validation/HTML/record-session.png)
 
-#### Observe Session
+##### Observe Session
 ![Observe Session validation](/home/fintan/code/projects/amber/documentation/validation/HTML/observe-session.png)
 
-#### Select Session
+##### Select Session
 ![Select Session validation](/home/fintan/code/projects/amber/documentation/validation/HTML/select-session.png)
 
-#### 
+##### View Session
+![View Session validation](/home/fintan/code/projects/amber/documentation/validation/HTML/view-session.png)
+
+##### Choose Course
+![Choose Course validation](/home/fintan/code/projects/amber/documentation/validation/HTML/choose-course.png)
+
+##### Generate Charts
+![Generate charts validation](/home/fintan/code/projects/amber/documentation/validation/HTML/generate_charts.png)
 
 
-
+#### Javascript
 Javascript was validated using [JSHint](https://jshint.com/)
+##### script.js
+
 
 
 ### Documentation  
