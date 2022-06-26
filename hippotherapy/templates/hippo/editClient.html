@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
-{% block clientActive %}navigationActive{% endblock %}
 {% block title %}Amber|Edit Client{% endblock title %}
+{% block clientActive %}navigationActive{% endblock %}
 
 {% block content %}
 	<div id="addClientContainer">
@@ -29,7 +29,7 @@
 		
 		<!-- blank URL that we will submit the form to 
 			i.e. this is a "postback" -->
-		<form id="editClientForm" method="POST" action="">
+		<form id="editClientForm" method="POST">
 			<!-- Whenever we're posting information in Django,
 			we need to add the CSRF or cross-site request forgery token.
 			This token is a randomly generated unique value which will be added
@@ -55,10 +55,10 @@
 						<label for="id_{{ form.last_name.name }}" class="formLabel">{{ form.last_name.label }}:</label>
 					</div>
 				</div>
-				<div class="formGroup gender">
+				<div class="formGroup gender" aria-labelledby="genderLabel">
 					{{ form.gender }}
 					<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
-					<label for="id_{{ form.gender.name }}" class="formLabel">{{ form.gender.label }}:</label>
+					<label class="formLabel" id="genderLabel">{{ form.gender.label }}:</label>
 				</div>
 			</div>
 			<div class="dobHat">
@@ -82,18 +82,18 @@
 					<label for="id_{{ form.hat_size.name }}" class="formLabel">{{ form.hat_size.label }}:</label>
 				</div>
 			</div>
-			<label class="formLabel manyManyLabel" for="manyManyDiagnosis">Diagnoses:</label>
-			<div class="formGroup manyMany" id="manyManyDiagnosis">
+			<label class="formLabel manyManyLabel" id="diagnosisLabel">Diagnoses:</label>
+			<div class="formGroup manyMany" id="manyManyDiagnosis" aria-labelledby="diagnosisLabel">
 				{% for diag in diagnoses %}
 					<div class="manyManyCheck">
-						<input type="checkbox" name="diagnosis_{{ diag.id }}" id="id_{{ diag.diagnosis }}"
+						<input type="checkbox" name="diagnosis_{{ diag.id }}" id="id_{{ diag.diagnosis|slugify }}"
 							{% for condition in client_diagnoses %}
 								{% if condition.diagnosis == diag.id %}
 								 checked
 								{% endif %}
 							{% endfor %}
 						 >
-						<label for="id_{{ diag.diagnosis }}">{{ diag.diagnosis }}</label>
+						<label for="id_{{ diag.diagnosis|slugify }}">{{ diag.diagnosis }}</label>
 					</div>
 				{% endfor %}
 				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->

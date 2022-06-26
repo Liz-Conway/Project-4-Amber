@@ -534,6 +534,14 @@ Whenever invalid information is submitted on a form the user is briefed via erro
 #### Current Login State
 Once the user is logged in the Amber application keeps them up to date with where they are in the application by highlighting the appropriate navigation link for the feature of the application that the user is currently employing.
 
+Also when a user logs in an appropriate log is shown next to the logo which indicates what role the logged in user has.
+**Admin**
+![Admin icon](/home/fintan/code/projects/amber/documentation/icons/admin-icon.png)
+**Occupational Therapist**
+![Occupational Therapist icon](/home/fintan/code/projects/amber/documentation/icons/ot-icon.png)
+**Hippotherapy Analyst**
+![Hippotherapy Analyst icon](/home/fintan/code/projects/amber/documentation/icons/ha-icon.png)
+
 #### Field Validation
 All required fields are flagged with a red asterisk, to inform the user that an entry is required in that field.  If the user tries to submit a form without filling in a required field the application will highlight the field and let the user know that they need to fill in the field before submitting the form.
 
@@ -897,7 +905,56 @@ At the end of the project, all User Stories will be in the **Done** list and the
 
 CSS was validated using [W3C CSS validator](https://jigsaw.w3.org/css-validator/validator)
 
+
 HTML was validated on all pages using [W3C HTML validator](https://validator.w3.org/)
+#### Login
+![Login validation](/home/fintan/code/projects/amber/documentation/validation/HTML/login.png)
+
+#### Logout
+![Logout validation](/home/fintan/code/projects/amber/documentation/validation/HTML/logout.png)
+
+#### My Account
+![My Account validation](/home/fintan/code/projects/amber/documentation/validation/HTML/my-account.png)
+
+#### Home page
+![Home page validation](/home/fintan/code/projects/amber/documentation/validation/HTML/admin-home.png)
+
+#### Add Diagnosis
+![Add Diagnosis validation](/home/fintan/code/projects/amber/documentation/validation/HTML/add-diagnosis.png)
+
+#### Add User
+![Add User validation](/home/fintan/code/projects/amber/documentation/validation/HTML/add-user.png)
+
+#### Add Client
+![Add Client validation](/home/fintan/code/projects/amber/documentation/validation/HTML/add-client.png)
+
+#### Client List
+![Client List validation](/home/fintan/code/projects/amber/documentation/validation/HTML/client-list.png)
+
+#### Edit Client
+![Edit Client validation](/home/fintan/code/projects/amber/documentation/validation/HTML/edit-client.png)
+
+#### Confirm Delete Client
+![Confirm Delete validation](/home/fintan/code/projects/amber/documentation/validation/HTML/confirm-delete.png)
+
+#### Select Client
+![Select Client validation](/home/fintan/code/projects/amber/documentation/validation/HTML/select-client.png)
+
+#### New Course
+![New Course validation](/home/fintan/code/projects/amber/documentation/validation/HTML/new-course.png)
+
+#### Record Session
+![Record Session validation](/home/fintan/code/projects/amber/documentation/validation/HTML/record-session.png)
+
+#### Observe Session
+![Observe Session validation](/home/fintan/code/projects/amber/documentation/validation/HTML/observe-session.png)
+
+#### Select Session
+![Select Session validation](/home/fintan/code/projects/amber/documentation/validation/HTML/select-session.png)
+
+#### 
+
+
 
 Javascript was validated using [JSHint](https://jshint.com/)
 

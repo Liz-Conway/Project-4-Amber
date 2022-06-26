@@ -22,10 +22,10 @@
 		
 		{% include 'includes/session-details.html' %}
 		
-		<div id="newCourse">
+		<div id="newCourseDiv">
 			<!-- Blank URL that we will submit the form to -->
 			<!-- means that this is a POSTback -->
-			<form id="newCourseForm" method="POST" action="">
+			<form id="newCourseForm" method="POST">
 				<!-- Whenever we're posting information in Django,
 				we need to add the CSRF or cross-site request forgery token.
 				This token is a randomly generated unique value which will be added

@@ -6,6 +6,7 @@
 {% block head_title %}
 	Amber|{% trans "Log In" %}
 {% endblock %} 
+{% block title %}Amber|Login{% endblock title %}
 
 {% block content %}
 <div class="container">
@@ -25,7 +26,7 @@
 	</div>
 
 	<div class="login signIn">
-		<form role="form" class="loginForm" method="POST" action="{% url 'account_login' %}">
+		<form class="loginForm" method="POST" action="{% url 'account_login' %}">
 			{% csrf_token %} 
 			<div>
 				{% for field in form %}

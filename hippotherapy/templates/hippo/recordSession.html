@@ -36,7 +36,7 @@
 		
 		<!-- Set action to a blank URL that we will submit the form to 
 			i.e. this is a "postback" -->
-		<form id="recordSessionForm" method="POST" action="">
+		<form id="recordSessionForm" method="POST">
 			<!-- Whenever we're posting information in Django,
 			we need to add the CSRF or cross-site request forgery token.
 			This token is a randomly generated unique value which will be added
@@ -73,7 +73,7 @@
 				<div class="formGroup">
 					{% for task in unmounted %}
 						<div class="manyManyCheck">
-							<input type="checkbox" name="task_{{ task.id }}" id="id_{{ task.task_name }}{{ task.id }}"
+							<input type="checkbox" name="task_{{ task.id }}" id="id_{{ task.task_name|slugify }}{{ task.id }}"
 								{% for breadcrumb_task in breadcrumb_tasks %}
 									{# Single digit task number#}
 									{% if breadcrumb_task|length == 6 %}
@@ -88,16 +88,16 @@
 									{% endif %}
 								{% endfor %}
 							 >
-							<label for="id_{{ task.task_name }}{{ task.id }}">{{ task.task_name }}</label>
+							<label for="id_{{ task.task_name|slugify }}{{ task.id }}">{{ task.task_name }}</label>
 						</div>
 					{% endfor %}
 					<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
-					<label for="id_{{ form.task_unmounted }}" class="formLabel tasksHeading">Unmounted Tasks:</label>
+					<label id="form.task_unmounted" class="formLabel tasksHeading">Unmounted Tasks:</label>
 				</div>
 				<div class="formGroup">
 					{% for task in mounted %}
 						<div class="manyManyCheck">
-							<input type="checkbox" name="task_{{ task.id }}" id="id_{{ task.task_name }}{{ task.id }}" 
+							<input type="checkbox" name="task_{{ task.id }}" id="id_{{ task.task_name|slugify }}{{ task.id }}" 
 							{% for breadcrumb_task in breadcrumb_tasks %}
 									{# Single digit task number#}
 									{% if breadcrumb_task|length == 6 %}
@@ -112,11 +112,11 @@
 									{% endif %}
 								{% endfor %}
 							>
-							<label for="id_{{ task.task_name }}{{ task.id }}">{{ task.task_name }}</label>
+							<label for="id_{{ task.task_name|slugify }}{{ task.id }}">{{ task.task_name }}</label>
 						</div>
 					{% endfor %}
 					<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
-					<label for="id_{{ form.tasks_mounted.name }}" class="formLabel tasksHeading">Mounted Tasks:</label>
+					<label id="tasksMounted" class="formLabel tasksHeading">Mounted Tasks:</label>
 				</div>
 			</div>
 			

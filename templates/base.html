@@ -127,7 +127,9 @@
 						</li>
 					{% endif %}
 					{% if user.user_role == 'Administrator' %}
-						<a href="{% url 'addUser' %}" class="navigationLink {% block addUserActive %}{% endblock %}">Add User</a>
+						<li class="navigationItem">
+							<a href="{% url 'addUser' %}" class="navigationLink {% block addUserActive %}{% endblock %}">Add User</a>
+						</li>
 					{% endif %}
 					{% if user.is_superuser %}
 						<li class="navigationItem">

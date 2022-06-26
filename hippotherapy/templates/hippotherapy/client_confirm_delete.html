@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
-
+{% load i18n %} 
 {% block clientActive %}navigationActive{% endblock %}
+{% block head_title %}
+Amber|{% trans "Confirm Delete" %}
+{% endblock %} 
+{% block title %}
+	Amber|Confirm Delete
+{% endblock title %}
 {% block content %}
 	<div class="confirmContainer">
 		<!-- Secondary breadcrumb navigation 
@@ -16,7 +22,7 @@
 		</nav>
 
 		<form method="POST">
-			{% csrf_token %}  <!- Required for Django as security -->
+			{% csrf_token %}  <!--  Required for Django as security -->
 			<fieldset>
 				<h1 class="confirmHeader">Delete Client</h1>
 				<h2 class="confirmHeader">Are you sure you want to delete this client?<br><span class="deleteClient">{{ object }}</span></h2>

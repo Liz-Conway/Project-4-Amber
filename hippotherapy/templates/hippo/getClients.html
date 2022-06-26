@@ -15,9 +15,12 @@
 		</nav>
 		
 		<h1>List of Clients</h1>
-		<section class="clientList">
+		<div class="clientList">
 			<div>
 				<table id="clientListTable" class="hippoTable">
+					<caption>
+						<p>A list of hippotherapy clients</p>
+					</caption>
 					<thead>
 						<tr>
 							<th class="clientListName">Name</th>
@@ -51,13 +54,11 @@
 						<tr><td colspan="4">You have no clients yet!  Please add some clients <a href="{% url 'addClient' %}">here</a></td></tr>
 					{% endfor %}
 					</tbody>
-					<caption>
-						<p>A list of hippotherapy clients</p>
-					</caption>
+					
 				</table>
 			</div>
 			
-		</section>
+		</div>
 		
 	</div>
 

@@ -32,7 +32,7 @@
 		
 		<!-- Blank URL that we will submit the form to 
 			i.e. this is a "postback" -->
-		<form id="selectClientForm" method="POST" action="">
+		<form id="selectClientForm" method="POST">
 			<!-- Whenever we're posting information in Django,
 			we need to add the CSRF or cross-site request forgery token.
 			This token is a randomly generated unique value which will be added
@@ -53,6 +53,9 @@
 			<div class="formGroup">
 				<div class="clientList">
 					<table id="clientListTable" class="hippoTable">
+						<caption>
+							<p>A list of hippotherapy clients</p>
+						</caption>
 						<thead>
 							<tr>
 								<th class="clientListName">Name</th>
@@ -86,9 +89,6 @@
 							<tr><td colspan="4">You have no clients yet!  Please add some clients <a href="{% url 'addClient' %}">here</a></td></tr>
 						{% endfor %}
 						</tbody>
-						<caption>
-							<p>A list of hippotherapy clients</p>
-						</caption>
 					</table>
 				</div>
 			</div>
