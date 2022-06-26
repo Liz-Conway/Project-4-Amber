@@ -98,21 +98,21 @@ function submitDiagnosis(event) {
             let fields = instance[0].fields;
             $("#diagnosisList").append(
                 `<li class="diagnosisItem">
-                ${fields["diagnosis"]}
+                ${fields.diagnosis}
                 </li>`
-            )
+            );
             addMessage("success", "<span class='name'>" + newDiagnosis + "</span> diagnosis was added successfully");
         },
         error: function (response) {
             let errorMessage = "";
-            if (response["responseJSON"]["error"]["diagnosis"][0] === "Diagnosis with this Diagnosis already exists." ) {
+            if (response.responseJSON.error.diagnosis[0] === "Diagnosis with this Diagnosis already exists." ) {
             	errorMessage = "A Diagnosis of <span class='newEntry'>" + newDiagnosis + "</span> has already been added.<br>You cannot add a diagnosis with the same name.'";
             } else {
-            	errorMessage = response["responseJSON"]["error"]["diagnosis"][0];
+            	errorMessage = response.responseJSON.error.diagnosis[0];
             }
             addMessage("error", errorMessage);
         }
-    })
+    });
 }
 
 function addMessage(msgType, msg) {

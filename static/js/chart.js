@@ -5,7 +5,7 @@ const makeGoal = (baseline, colour) => {
 		throw new TypeError("baseline is not a number");
 	}
 	if(baseline < 0 || baseline > 100) {
-		throw new RangeError("baseline is outside acceptable range of values")
+		throw new RangeError("baseline is outside acceptable range of values");
 	}
 	return {
 		name: "Baseline",
@@ -14,25 +14,7 @@ const makeGoal = (baseline, colour) => {
 		strokeHeight: 10,
 		strokeColor: colour
 	};
-}
-
-const mapScores = (functions, scores, baselines) => {
-	func = functions[0];
-	score = scores[0];
-	baseline = baselines[0];
-
-	return {
-				x: func,
-				y: score,
-				goals: [{
-					name: "Baseline",
-					value: baseline,
-					strokeWidth: 5,
-					strokeHeight: 10,
-					strokeColor: "#7EB2DD"
-				}]
-		};
-}
+};
 
 const mapFunctionScores = (functions, scores, baselines, functionColours) => {
 	let functionScores = [];
@@ -41,18 +23,18 @@ const mapFunctionScores = (functions, scores, baselines, functionColours) => {
 		let score = {
 				x: functions[i],
 				y: scores[i],
-				goals: [makeGoal(baselines[i], functionColours["baseline"])]
+				goals: [makeGoal(baselines[i], functionColours.baseline)]
 		};
 		functionScores.push(score);
 	}
 
 	return functionScores;
-}
+};
 
 const combineScores = (functions, scores, baselines) => {
 	let combined = [];
 
-	let combinedScores = {}
+	let combinedScores = {};
 	for(let i = 0; i < functions.length; i++) {
 		combinedScores = {
 			"function": functions[i],
@@ -64,7 +46,7 @@ const combineScores = (functions, scores, baselines) => {
 	}
 
 	return combined;
-}
+};
 
 const createOptions = (functions, scores, baselines, functionColours) => {
 	let functionScores = mapFunctionScores(functions, scores, baselines, functionColours);
@@ -84,15 +66,15 @@ const createOptions = (functions, scores, baselines, functionColours) => {
 		            dataLabels: { position: "bottom" },
 		          }
 		        },
-		        colors: [functionColours["bar"]],
+		        colors: [functionColours.bar],
 		        dataLabels: {
 		          enabled: true,
 		          textAnchor: "start",
 		          style: {
-		            colors: [functionColours["label"]]
+		            colors: [functionColours.label]
 		          },
 		          formatter: function (val, opt) {
-		            return opt.w.globals.labels[opt.dataPointIndex]
+		            return opt.w.globals.labels[opt.dataPointIndex];
 		          },
 		          offsetX: 0,
 		          dropShadow: { enabled: false }
@@ -132,14 +114,14 @@ const createOptions = (functions, scores, baselines, functionColours) => {
 		          showForSingleSeries: true,
 		          customLegendItems: ["Latest", "Baseline"],
 		          markers: {
-		            fillColors: [functionColours["bar"], functionColours["baseline"]]
+		            fillColors: [functionColours.bar, functionColours.baseline]
 		          }
 		        }
 
 		    };
 
 		    return optionsObject;
-}
+};
 
 /*https://www.hacksoft.io/blog/quick-and-dirty-django-passing-data-to-javascript-without-ajax*/
 function loadJson(selector) {
@@ -161,4 +143,7 @@ function generateChart() {
 
 
 /* To export more than one item we need to place them in curly braces */
+/*The following line of code is needed for testing the Javascript with JEST
+However if I leave it uncommented, it throws an 'Uncaught ReferenceError: module is not defined' error.
+When running the application.*/
 //module.exports = { makeGoal, mapScores, combineScores, mapFunctionScores, createOptions };
