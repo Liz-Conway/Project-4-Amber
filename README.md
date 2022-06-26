@@ -548,6 +548,9 @@ All required fields are flagged with a red asterisk, to inform the user that an 
 Dates must be entered in the correct format.  All date fields have a hint showing the user what the correct format is.  The Amber application will inform the user if the date is entered in an incorrect format.  To help ensure the date is in the right format the Amber application employs a datepicker which will automatically enter the chosen date in the appropriate format.
 ![Date Picker](/home/fintan/code/projects/amber/documentation/pages/date-picker.png)
 
+The 'Add Diagnosis' feature uses AJAX send the entered diagnosis to the database.  If the diagnosis already exists the Javascript code creates an error message informing the Admin that duplicate diagnoses cannot be entered in the Amber application.
+![Diagnosis validation](/home/fintan/code/projects/amber/documentation/validation/diagnosis-validation.png)
+
 #### Cancel
 The user can cancel any operation in the middle of it.  No information from the current page is saved and the user is returned to the home page appropriate for their User role. 
 
@@ -901,9 +904,16 @@ At the end of the project, all User Stories will be in the **Done** list and the
 
 
 ### Validation
-<a id="vakidation"></a>Source code was validated with [PEP8 Validator](http://pep8online.com/).
+<a id="validation"></a>
+In order to ensure that the code for the Amber application complies with the latest standards, each aspect of the code was run through an appropriate validator.
 
+#### Python/Django
+Source code was validated with [PEP8 Validator](http://pep8online.com/).
+
+#### CSS
 CSS was validated using [W3C CSS validator](https://jigsaw.w3.org/css-validator/validator)
+![CSS Validation](/home/fintan/code/projects/amber/documentation/validation/CSS/css-validation.png)
+
 
 #### HTML
 HTML was validated on all pages using [W3C HTML validator](https://validator.w3.org/)
@@ -929,6 +939,7 @@ HTML was validated on all pages using [W3C HTML validator](https://validator.w3.
 ![Add Diagnosis validation](/home/fintan/code/projects/amber/documentation/validation/HTML/add-diagnosis.png)
 
 ##### Add User
+This error is caused by code injected by the Django framework
 ![Add User validation](/home/fintan/code/projects/amber/documentation/validation/HTML/add-user.png)
 
 ##### Add Client
@@ -971,7 +982,16 @@ HTML was validated on all pages using [W3C HTML validator](https://validator.w3.
 #### Javascript
 Javascript was validated using [JSHint](https://jshint.com/)
 ##### script.js
+![Javascript validation](/home/fintan/code/projects/amber/documentation/validation/Javascript/jshint-script.png)
 
+The two unused variables are called from the HTML pages, but not from within this javascript code, hence the error.
+
+##### chart.js
+![Chart validation](/home/fintan/code/projects/amber/documentation/validation/Javascript/jshint-chart.png)
+
+The undefined variable is the ApexChart library that is used to create the chart for the Amber application.
+
+The unused variables are used in the creation of the chart.  The chart will not display on the web page without them.
 
 
 ### Documentation  
@@ -1055,7 +1075,8 @@ Javascript was validated using [JSHint](https://jshint.com/)
     - **Heroku** is used to host and run the Amber application.
 * [Trello](https://trello.com/)
 	* Trello is used as the Agile project planning tool for the Amber application.
-
+* [ApexCharts](https://apexcharts.com/)
+	*  ApexCharts is a modern charting library that helps developers to create beautiful and interactive visualizations for web pages.
 
 
 ## Contributing
