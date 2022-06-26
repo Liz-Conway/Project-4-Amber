@@ -2024,14 +2024,11 @@ h1.confirmHeader {
             flex-direction: row;
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
   }
 }
 @media only screen and (min-width: 59.375em) {
   .chooseCourseRadio .formRadioGroup {
-    margin-right: 1.5rem;
+    width: 48%;
   }
 }
 @media only screen and (min-width: 28em) {
@@ -2042,6 +2039,26 @@ h1.confirmHeader {
 @media only screen and (min-width: 37.5em) {
   .chooseCourseRadio .formRadioLabelDatesSession {
     font-size: 2rem;
+  }
+}
+@media only screen and (min-width: 59.375em) {
+  .chooseCourseRadio .formRadioLabelDatesSession {
+    font-size: 1.8rem;
+  }
+}
+@media only screen and (min-width: 62.5em) {
+  .chooseCourseRadio .formRadioLabelDatesSession {
+    font-size: 1.9rem;
+  }
+}
+@media only screen and (min-width: 81.25em) {
+  .chooseCourseRadio .formRadioLabelDatesSession {
+    font-size: 2rem;
+  }
+}
+@media only screen and (min-width: 93.75em) {
+  .chooseCourseRadio .formRadioLabelDatesSession {
+    font-size: 2.3rem;
   }
 }
 
