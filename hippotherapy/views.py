@@ -249,8 +249,6 @@ class GetClients(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
         '**kwargs' = Standard keyword arguments parameter
         """
         clients = Client.objects.all()
-        deleteable_clients = Client.objects.filter(participates=None)
-        deletable_ids = [ delete.id for delete in deleteable_clients]
         
         return render(
             request, 
@@ -258,7 +256,6 @@ class GetClients(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
             # Context - passed into the HTML template
             {
                 "clients": clients, 
-                "deletables": deletable_ids,
             }
         )
         

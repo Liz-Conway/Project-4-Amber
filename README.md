@@ -403,7 +403,7 @@ Supporting page - *Add Client page*
 It is important that the Occupational Therapist has the latest information regarding a client before performing a hippotherapy treatment session.  So the Amber application allows the Occupational Therapist to edit a client's details.
 
 **2a Select Edit Client**
-When the Occupational Therapist chooses the 'Edit Client' option from the 'Client ...' dropdown a page appears showing a list of clients.  As well as the name the Amber application shows the date of birth, gender and first diagnosis of each client to help the user to distinguish between clients who might have the same name.  On the right of each row are two "action" buttons.  The first button allows the Occupational Therapist to edit the details of the client.  The second button allows the Occupational Therapist to delete the client from the Amber application.
+When the Occupational Therapist chooses the 'Edit Client' option from the 'Client ...' dropdown a page appears showing a list of clients.  As well as the name the Amber application shows the date of birth, gender and first diagnosis of each client to help the user to distinguish between clients who might have the same name.  On the right of each row are two "action" buttons.  *The first button allows the Occupational Therapist to edit the details of the client*.  The second button allows the Occupational Therapist to delete the client from the Amber application.
 
 On smaller devices the client list only shows name, date of birth and gender.  This is due to the limited screen real estate on smaller devices.
 
@@ -432,10 +432,10 @@ Supporting page - *Edit Client page*
 
 When the Occupational Therapist no longer needs a client's details on the Amber application they can delete the client from the application.
 
-The value of this feature comes from the fact that the Occupational Therapist can remove irrelevant information from the Amber application.  This means that whenever the Occupational Therapist needs to choose a client for Recording a Session, or Viewing a Session or Generating a Chart they do not have irrelevant clients appearing in the selection list.  This reduces the cognitive load on the Occupational Therapist as they do not have to think about client that no longer exist.  This make the Amber application easier to use and less taxing.
+The value of this feature comes from the fact that the Occupational Therapist can remove irrelevant information from the Amber application.  This means that whenever the Occupational Therapist needs to choose a client for Recording a Session, or Viewing a Session or Generating a Chart they do not have irrelevant clients appearing in the selection list.  This reduces the cognitive load on the Occupational Therapist as they do not have to think about clients that no longer exist.  This make the Amber application easier to use and less taxing.
 
 **3a Choose Client to delete**
-When the Occupational Therapist chooses the 'Edit Client' option from the 'Client ...' dropdown a page appears showing a list of clients.  As well as the name the Amber application shows the date of birth, gender and first diagnosis of each client to help the user to distinguish between clients who might have the same name.  On the right of each row are two "action" buttons.  The first button allows the Occupational Therapist to edit the details of the client.  The second button allows the Occupational Therapist to delete the client from the Amber application.
+When the Occupational Therapist chooses the 'Edit Client' option from the 'Client ...' dropdown a page appears showing a list of clients.  As well as the name the Amber application shows the date of birth, gender and first diagnosis of each client to help the user to distinguish between clients who might have the same name.  On the right of each row are two "action" buttons.  The first button allows the Occupational Therapist to edit the details of the client.  *The second button allows the Occupational Therapist to delete the client from the Amber application*.
 
 On smaller devices the client list only shows name, date of birth and gender.  This is due to the limited screen real estate on smaller devices.
 

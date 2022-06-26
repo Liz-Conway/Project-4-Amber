@@ -76,7 +76,7 @@ class Session(models.Model):
 
 # https://awbacker.io/migrating-an-existing-django-manytomany-to-a-through-model/
 class SkillScore(models.Model):
-    session = models.ForeignKey(Session, related_name='score_session', on_delete=models.PROTECT)
+    session = models.ForeignKey(Session, related_name='score_session', on_delete=models.CASCADE)
     skill = models.ForeignKey(Skill, related_name='score_skill', on_delete=models.PROTECT)
     score = models.IntegerField()
     
