@@ -13,7 +13,6 @@
 		That includes almost anything that you can use in Python
 		Meaning you can return strings, numbers, lists, other dictionaries, 
 		or even functions and classes. -->
-		<!-- {{ diagnoses }} -->
 		
 		<!-- A query set is kind of like a list which means we can iterate through it in our
 		template just like we could iterate through a list in Python. -->
@@ -44,7 +43,7 @@
 				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
 				<label for="id_{{ form.diagnosis.name }}" class="formLabel">{{ form.diagnosis.label }}:</label>
 			</div>
-			<div class="btnGroup">
+			<div class="btnGroup largeRow">
 				<input type="submit" class="btn btnMain" value="Add Diagnosis" />
 				<a href="{% url 'home' %}" class="btn btnGhost">Cancel</a> 
 				<input type="reset" class="btn btnTextOnly" value="Reset Form" />

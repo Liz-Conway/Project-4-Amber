@@ -10,8 +10,6 @@ function domLoaded() {
 
 	/*Add a diagnosis*/
 	$("#diagnosisForm").submit(submitDiagnosis);
-	/*Validate unique diagnosis*/
-	$("#id_diagnosis").focusout(unfocusUnique);
 
 	/*Set the date picker for editing a date*/
 	$(".editDate > .dateInput").datepicker( {
@@ -39,9 +37,6 @@ function domLoaded() {
 	$( window ).resize(placeAccountLinks);
 
 }
-
-let unfocusUnique = (event) => validateUnique(event, "validateDiagnosis", "diagnosis", "#id_diagnosis");
-
 
 /* Close the navigation panel on mobile devices
 when a link is clicked*/
@@ -82,7 +77,7 @@ function closeNavigation(event) {
 function submitDiagnosis(event) {
     // preventing from page reload and default actions
     event.preventDefault();
-    // serialize the data for sending the form data.
+    // serialize the data for sending the form data to the database.
     let serializedData = $(this).serialize();
     let newDiagnosis = $("#id_diagnosis").val();
     // make POST ajax call
@@ -91,10 +86,8 @@ function submitDiagnosis(event) {
         url: "",
         data: serializedData,
         success: function (response) {
-        	console.log("Diagnosis successfully added");
             // on successfull creating object
             // 1. clear the form.
-            //let newDiagnosis = $("#id_diagnosis").val();
             $("#diagnosisForm").trigger('reset');
             // 2. focus to diagnosis input 
             $("#id_diagnosis").focus();
@@ -111,67 +104,18 @@ function submitDiagnosis(event) {
             addMessage("success", "<span class='name'>" + newDiagnosis + "</span> diagnosis was added successfully");
         },
         error: function (response) {
-        	console.log(response);
-            // alert the error if any error occured
-            // alert(response["responseJSON"]["error"]["diagnosis"]);
-            console.log(response["responseJSON"]["error"]["diagnosis"]);
-            //let newDiagnosis = $("#id_diagnosis").val();
-            console.log("newDiagnosis :  ", newDiagnosis);
             let errorMessage = "";
             if (response["responseJSON"]["error"]["diagnosis"][0] === "Diagnosis with this Diagnosis already exists." ) {
             	errorMessage = "A Diagnosis of <span class='newEntry'>" + newDiagnosis + "</span> has already been added.<br>You cannot add a diagnosis with the same name.'";
             } else {
             	errorMessage = response["responseJSON"]["error"]["diagnosis"][0];
             }
-            console.log("Error :  ", errorMessage);
             addMessage("error", errorMessage);
         }
     })
 }
 
-
-/*
-On focus out on the add diagnosis field,
-call AJAX get request to check if the diagnosis
-already exists or not.
-*/
-function validateUnique(event, validUrl, fieldType, uniqueId) {
-    console.log("validateUnique() called");
-    event.preventDefault();
-    // get the diagnosis entered
-    let unique = $(uniqueId).val();
-    console.log("Diagnosis entered :  ", unique);
-    let dataObj = {};
-    dataObj[fieldType] = unique;
-
-    // GET AJAX request
-    $.ajax({
-        type: 'GET',
-        url: validUrl,
-        data: dataObj,
-        success: function (response) {
-        	let duplicate = $(uniqueId).val();
-        	console.log("Diagnosis entered (AJAX success()) :  ", unique);
-        	console.log(response);
-
-            // if not valid user, alert the user
-            if(!response["valid"]){
-                errorMessage = "A " + fieldType + " of '" + duplicate + "' has already been added.\nYou cannot add a " + fieldType + " with the same name.'";
-                //alert(errorMessage);
-                addMessage("error", errorMessage);
-                let unique = $(uniqueId);
-                unique.val("");
-                unique.focus();
-            }
-        },
-        error: function (response) {
-            console.log(response)
-        }
-    });
-}
-
 function addMessage(msgType, msg) {
-	messageBlock();
 
 	let uiState = "ui-state-";
 	let state = "";
@@ -190,15 +134,6 @@ function addMessage(msgType, msg) {
 
 	$("#messageBlock").empty();
 	$("#messageBlock").append('<div class="message ' + uiState + '">' + msg + '</div>');
-}
-
-function messageBlock() {
-
-	// If message block does not exist
-	if (!$("#messageBlock").length ) {
-		// Add a message block
-		$("header.navigation").after('<div class="messages" id="messageBlock"></div>');
-	}
 }
 
 function loadJson(selector) {
