@@ -5,6 +5,20 @@
 
 {% block content %}
 	<div id="scoreContainer">
+		<!-- Secondary breadcrumb navigation 
+		Allows user to go back to Home page, go back to the list of clients -->
+		<nav class="breadcrumbNavigation">
+			<!-- Home Page -->
+			<a href="{% url 'home' %}" class="breadcrumbLink">Home</a>
+			<!-- List of clients -->
+			&raquo;
+			<a href="{% url 'selectClient' 'chooseSession' %}" class="breadcrumbLink">Select Client</a>
+			  <!-- Select session page -->
+			  &raquo;
+			<a href="{% url 'chooseSession' client %}" class="breadcrumbLink">Select Session</a>
+			  <!-- This page -->
+			  &raquo;  View Session
+		</nav>
 		
 		<h1>Session</h1>
 		<section class="sessionInfo">

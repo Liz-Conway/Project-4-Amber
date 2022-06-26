@@ -5,6 +5,14 @@
 
 {% block content %}
 	<div id="addClientContainer">
+		<!-- Secondary breadcrumb navigation 
+		Allows user to go back to Home page -->
+		<nav class="breadcrumbNavigation">
+			<!-- Home Page -->
+			<a href="{% url 'home' %}" class="breadcrumbLink">Home</a>
+			  <!-- This page -->
+			  &raquo;  Edit Client
+		</nav>
 		
 		<h1>Add a new client</h1>
 		<!-- Render the items key from the context dictionary that we 

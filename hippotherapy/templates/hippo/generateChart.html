@@ -9,6 +9,22 @@
 		<div id="chartFunctionData" data-chart="{{ functions }}"></div>
 		<div id="chartScoreData" data-chart="{{ scores }}"></div>
 		<div id="chartBaselineData" data-chart="{{ baselines }}"></div>
+
+		<!-- Secondary breadcrumb navigation 
+		Allows user to go back to Home page, go back to the list of clients
+		or go back to list of courses for this client -->
+		<nav class="breadcrumbNavigation">
+			<!-- Home Page -->
+			<a href="{% url 'home' %}" class="breadcrumbLink">Home</a>
+			<!-- List of clients -->
+			&raquo;
+			<a href="{% url 'selectClient' 'generateChart' %}" class="breadcrumbLink">Select Client</a>
+			<!-- List of courses for this client -->
+			&raquo;
+			<a href="{% url 'chooseCourse' client.id %}" class="breadcrumbLink">Select Course</a>
+			  <!-- This page -->
+			  &raquo;  View chart
+		</nav>
 		
 		<h1>Hippotherapy Course Chart</h1>
 		<div style="display: none" id="jsonData" data-json="{{ data }}"></div>

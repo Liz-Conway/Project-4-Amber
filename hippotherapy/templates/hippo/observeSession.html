@@ -5,6 +5,26 @@
 
 {% block content %}
 	<div id="observationContainer">
+		<!-- Secondary breadcrumb navigation 
+		Allows user to go back to Home page, go back to the list of clients
+		or the last session for this client page -->
+		<nav class="breadcrumbNavigation">
+			<!-- Home Page -->
+			<a href="{% url 'home' %}" class="breadcrumbLink">Home</a>
+			<!-- List of clients -->
+			&raquo;
+			<a href="{% url 'selectClient' 'recordSession' %}" class="breadcrumbLink">Select Client</a>
+			<!-- Last session for this client -->
+			{% if last_session|add:"0" != 0 %}
+				&raquo;
+				<a href="{% url 'newCourse' client.id last_session %}" class="breadcrumbLink">Last Session</a>
+			{% endif %}
+			<!-- Record session details -->
+			&raquo;
+			<a href="{% url 'recordSession' client.id last_session %}" class="breadcrumbLink">Record Session</a>
+			<!-- This page -->
+			  &raquo;  Observe Session
+		</nav>
 		
 		<h1>Hippotherapy Session Observations</h1>
 		
@@ -19,6 +39,9 @@
 			And works to guarantee that the data we're posting is actually coming from our
 			todo list app and not from another website. -->
 			{% csrf_token %}
+			
+			<input type="hidden" name="last_session" value="{{ last_session }}">
+			
 			<div id="accordion" class="observationAccordion">
 				{% for function in functions %}
 			  	<h3>{{ function.function_name }}<span class="tapHint">&emsp;(Tap on a hint see it in full)</span></h3>

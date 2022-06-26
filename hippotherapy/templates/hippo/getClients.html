@@ -5,6 +5,14 @@
 
 {% block content %}
 	<div id="clientListContainer">
+		<!-- Secondary breadcrumb navigation 
+		Allows user to go back to Home page -->
+		<nav class="breadcrumbNavigation">
+			<!-- Home Page -->
+			<a href="{% url 'home' %}" class="breadcrumbLink">Home</a>
+			  <!-- This page -->
+			  &raquo;  Client List
+		</nav>
 		
 		<h1>List of Clients</h1>
 		<section class="clientList">

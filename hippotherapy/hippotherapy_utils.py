@@ -18,7 +18,6 @@ def get_course_with_no_sessions(client_id):
     return courses[0]
 
 
-
 def get_course_for_client(client_id, new_course=False):
     courses = Course.objects.filter(client=client_id)
     brand_new_course = get_course_with_no_sessions(client_id)

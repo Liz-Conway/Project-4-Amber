@@ -6,6 +6,17 @@
 
 {% block content %}
 	<div id="newCourseContainer">
+		<!-- Secondary breadcrumb navigation 
+		Allows user to go back to Home page, go back to the list of clients -->
+		<nav class="breadcrumbNavigation">
+			<!-- Home Page -->
+			<a href="{% url 'home' %}" class="breadcrumbLink">Home</a>
+			<!-- List of clients -->
+			&raquo;
+			<a href="{% url 'selectClient' 'recordSession' %}" class="breadcrumbLink">Select Client</a>
+			  <!-- This page -->
+			  &raquo;  Record new course?
+		</nav>
 		
 		<h1>Last Session for :</h1>
 		
@@ -22,6 +33,10 @@
 				And works to guarantee that the data we're posting is actually coming from our
 				todo list app and not from another website. -->
 				{% csrf_token %}
+				
+				<!-- Hidden field to post the id of the last session 
+				to the breadcrumb on the record session page -->
+				<input type="hidden" name="lastSession" value="{{ session.id }}"> 
 				
 				<div class="newCourseCheckbox">
 					<input type="checkbox" id="newCourse" name="newCourse">

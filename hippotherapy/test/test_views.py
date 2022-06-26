@@ -10,6 +10,8 @@ from hippotherapy.models import Client
 from administration.models import Diagnosis, Horse, Task
 from django.urls.base import reverse
 from datetime import datetime
+from django.contrib.messages.api import get_messages
+from profiles.models import HippotherapyUser
 
 class ViewsTest(TestCase):
     def setUp(self):
@@ -59,14 +61,28 @@ class ViewsTest(TestCase):
         self.test_client = TestClient()
         self.home_url = reverse('home')
         self.add_client_url = reverse('addClient')
-        self.record_session_url = reverse('recordSession', args=[self.hip_client.id])
+        self.record_session_url = reverse('recordSession', args=[self.hip_client.id, self.hip_session.id])
         self.select_client_url = reverse('selectClient', args=['recordSession'])
-        self.observe_session_url = reverse('observeSession', args=[self.hip_session.id])
+        self.observe_session_url = reverse('observeSession', args=[self.hip_session.id, self.hip_session.id])
         self.generate_chart_url = reverse('generateChart', args=[self.course.id])
         self.choose_course_client = reverse('chooseCourse', args=[self.hip_client.id])
         self.new_course_url = reverse('newCourse', args=[self.hip_client.id, self.hip_session.id])
         self.add_diagnosis_url = reverse('addDiagnosis')
         self.choose_session_url = reverse('chooseSession', args=[self.hip_client.id])
+        
+        self.ot_login =  {
+            'username': 'testotuser',
+            'password': 'secret', 
+            'role': 2}
+        self.ot_user = HippotherapyUser.objects.create_user(**self.ot_login)
+        # self.ha_user =  {
+        #     'username': 'testuser',
+        #     'password': 'secret'}
+        # HippotherapyUser.objects.create_user(**self.ot_user)
+        # self.ot_user =  {
+        #     'username': 'testuser',
+        #     'password': 'secret'}
+        # HippotherapyUser.objects.create_user(**self.ot_user)
         
     def test_show_home_page(self):
         response = self.test_client.get(self.home_url)
@@ -103,9 +119,15 @@ class ViewsTest(TestCase):
         
     def test_get_add_client(self):
         response = self.test_client.get(self.add_client_url)
-        
+        print(response['location'])
+        self.loginAsOT()
         self.assertEqual(response.status_code, 200, "Going to Add Client page should return a Status Code of 200 (OK)")
         self.assertTemplateUsed(response, "hippo/addClient.html", "Add Client page should use the addClient.html template")
+
+    def loginAsOT(self):
+        response = self.client.post('/accounts/login/', self.ot_login, follow=True)
+        # should be logged in now
+        self.assertTrue(response.context['user'].is_authenticated())
 
     def test_post_add_client(self):
         post_data = {
@@ -184,12 +206,13 @@ class ViewsTest(TestCase):
             'degree_of_difficulty': 'Gets annoyed very quickly',
             'additional_notes': 'Speaks quackily'
         }
-        for diagnosis in self.diagnoses:
-            post_data.update({f'diagnosis_{diagnosis.id}': 'on'})
         
         response = self.test_client.post(self.add_client_url, post_data)
-        messages = list(response.context['messages'])
-        message = messages[0].message
+        
+        # https://stackoverflow.com/questions/2897609/how-can-i-unit-test-django-messages
+        messages = list(get_messages(response.wsgi_request))
+        self.assertEqual(len(messages), 1)
+        message = str(messages[0])
         
         # Since we redisplay the Add Client page again after successfully adding a client
         # the Status Code is 200 because we used a GET instead of a redirect
@@ -205,7 +228,7 @@ class ViewsTest(TestCase):
         self.assertTemplateUsed(response, "hippo/recordSession.html", "Record Session page should use the recordSession.html template")
 
     def test_get_record_session_no_client(self):
-        response = self.test_client.get(reverse('recordSession', args=[666]))
+        response = self.test_client.get(reverse('recordSession', args=[666, self.hip_session.id]))
         
         self.assertEqual(response.status_code, 404, "Going to Record Session page with a non-existant client should return a Status Code of 404")
 
@@ -297,7 +320,7 @@ class ViewsTest(TestCase):
         self.assertTemplateUsed(response, "hippo/observeSession.html", "Observe Session page should use the observeSession.html template")
 
     def test_get_observe_session_no_session(self):
-        response = self.test_client.get(reverse('observeSession', args=[666]))
+        response = self.test_client.get(reverse('observeSession', args=[666, self.hip_session.id]))
     
         self.assertEqual(response.status_code, 404, "Going to Observe Session page with a non-existant session should return a Status Code of 404")
 

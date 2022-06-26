@@ -285,42 +285,89 @@ class RecordSession(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
         unmounted_tasks = Task.objects.filter(mounted=False)
         mounted_tasks = Task.objects.filter(mounted=True)
         
+        # Get last session for this client to use in breadcrumb
+        last_session = kwargs['session']
         # Get the client id that was passed in the URL
         client_id = kwargs['client']
         client_query = Client.objects.filter(id=client_id)
         client = get_object_or_404(client_query)
         course = get_course_for_client(client.id)
         
-        # Create a new session for this course
-        session_week = get_next_session_week(course)
+        # If we are showing this page after a click on a breadcrumb link
+        # The latest session in the database will be different 
+        # to the last_session variable that was passed in
+        max_sessions = Session.objects.filter(course=course).order_by('-week_number')
+        if max_sessions.count() > 0:
+            # Get the last session taken by this client
+            max_session = max_sessions.first()
+            # Get the session id of the latest session for this client
+            max_session_id = max_session.id
+        else:
+            max_session_id = 0
         
+        breadcrumb_tasks = []
+        breadcrumb_horse = None
+        # Compare session ids to check if a new session has been created
+        # If a new session has been created then we got here from a breadcrumb link
+        if int(last_session) != max_session_id:
+            # We got here from a breadcrumb link
+            # So retrieve the data from the session
+            recorded_data = request.session['recordSession']
+            
+            #clear the session
+            request.session['recordSession'] = None
+            
+            if recorded_data != None:
+                breadcrumb_horse = recorded_data['horse']
+                for task in recorded_data:
+                    # If the previous data contains a task 
+                    # save it to the breadcrumb_tasks list
+                    if task.startswith('task'):
+                        breadcrumb_tasks.append(task)
+                    
+            # Retrieve the existing week number
+            session_week = max_session.week_number
+            # Get the session date 
+            session_date = max_session.session_date
+            
+            session = max_session
+        else:
+            # Create a new session for this course
+            session_week = get_next_session_week(course)
+            
+            # Get today's date - this will be the default date for the session
+            session_date = date.today()
+
+            session = Session(course=course, session_date=session_date, week_number=session_week)
+
         session_number = f'{course.id}/{session_week}'
         
         # Get the client name
         client_name = f'{client.first_name} {client.last_name}'
         
-        # Get today's date - this will be the default date for the session
-        session_date = date.today()
         # https://stackabuse.com/how-to-format-dates-in-python/
         session_date_string = session_date.strftime('%d-%m-%Y')
         
-        session = Session(course=course, session_date=session_date, week_number=session_week)
         
         return render(
             request, 
             self.template_name, # view to render
             # Context - passed into the HTML template
             {
-                "form": form, 
-                "course_number": course.id,
-                "session_week": session_week,
-                "client": client_name,
-                "session_date": session_date_string,
-                "session_date_string": session_date_string,
-                "horsies": horsies,
-                "unmounted": unmounted_tasks,
-                "mounted": mounted_tasks,
-                "session": session,
+                'form': form, 
+                'course_number': course.id,
+                'session_week': session_week,
+                'client': client_name,
+                'client_id': client_id,
+                'session_date': session_date_string,
+                'session_date_string': session_date_string,
+                'horsies': horsies,
+                'unmounted': unmounted_tasks,
+                'mounted': mounted_tasks,
+                'session': session,
+                'last_session': last_session,
+                'breadcrumb_tasks': breadcrumb_tasks,
+                'breadcrumb_horse': breadcrumb_horse,
             }
         )
         
@@ -341,14 +388,35 @@ class RecordSession(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
         record_session_form = SessionForm(data=request.POST)
         session_client = get_object_or_404(Client.objects.filter(id=client))
         
+        # Save the Record Session data in case the user clicks the 'Record Session' breadcrumb link
+        request.session['recordSession'] = request.POST
+        
+        
+        last_session_id = request.POST['lastSessionId']
+                
         """
         Form is valid => If all the fields have been completed
         """
         if record_session_form.is_valid():
-            form_saved = record_session_form.save()
-            save_tasks(form_saved.id, request.POST)
             course_number = request.POST['course']
             week_number = request.POST['week_number']
+            # If we got here from a breadcrumb link then
+            # we need to remove the session that was saved the last time
+            old_sessions = Session.objects.filter(course=course_number).order_by('-week_number')
+            if old_sessions.count() != 0:
+                # Get the last session saved for this client
+                duplicate_session = old_sessions.first()
+                
+                # The last session is truly a duplicate if its course number
+                # and its week number are the same as this sessions
+                if int(week_number) == duplicate_session.week_number and int(course_number) == duplicate_session.course.id:
+                    # Remove the duplicate session
+                    duplicate_session.delete()
+            
+            # Save the new session
+            form_saved = record_session_form.save()
+            # Save tasks for the new session
+            save_tasks(form_saved.id, request.POST)
             messages.success(request,
                              f'New session for <span class="boldEntry">{session_client}</span> ({course_number}/{week_number}) added successfully.',
                              extra_tags='safe')
@@ -359,7 +427,8 @@ class RecordSession(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
             # https://www.tutorialspoint.com/django/django_page_redirection.htm
             return redirect(
                 "observeSession",               # view to render
-                session=form_saved.id  # parameter to pass to URL
+                session=form_saved.id,  # parameter to pass to URL
+                last_session=last_session_id,  # parameter to pass to URL
             )
 
         else:
@@ -466,6 +535,13 @@ class SelectClient(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
             else:
                 # First Course for this client
                 get_course_for_client(client, True)
+                # https://www.tutorialspoint.com/django/django_page_redirection.htm
+                return redirect(
+                    page_url,       # view to render
+                    client=client,   # parameter to pass to URL
+                    session=0,   # parameter to pass to URL
+                )
+
                 
         # https://www.tutorialspoint.com/django/django_page_redirection.htm
         return redirect(
@@ -508,23 +584,21 @@ class ObserveSession(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
         skills = Skill.objects.all()
         hints = Hint.objects.all()
         
-        # When the form is submitted the user is removed by Django from the request object.
-        # Why I have no idea.
-        # Save the user in the session object, so that it can be retrieved after the form is submitted
-        request.session['loggedUser'] = request.user.id
-        
+        last_session = kwargs['last_session']
+                
         return render(
             request, 
             self.template_name, # view to render
             # Context - passed into the HTML template
             {
-                "session": session,
-                "functions": functions,
-                "skills": skills,
-                "hints": hints,
-                "client": client,
-                "score_range": range(1, 6),
-                "previous": previous,
+                'session': session,
+                'functions': functions,
+                'skills': skills,
+                'hints': hints,
+                'client': client,
+                'score_range': range(1, 6),
+                'previous': previous,
+                'last_session': last_session,
             }
         )
         
@@ -546,10 +620,13 @@ class ObserveSession(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
         observation_data=request.POST
         number_of_skills = Skill.objects.count()
 
-        if len(observation_data) == number_of_skills + 1:
+        if len(observation_data) == number_of_skills + 2:
             for observation in observation_data:
                 # First post data is the CSRF token - So skip this data point
                 if observation.startswith('csrf'):
+                    continue
+                # Skip the 'last_session' post variable
+                if observation.startswith('last_'):
                     continue
                 
                 # observation will be of the form 'scoreX' or scoreXX' where X is a digit
@@ -579,8 +656,9 @@ class ObserveSession(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
         
         else:
             request.session['observations'] = observation_data
+            last_session = request.POST['last_session']
             messages.error(request, 'You need to add a score on <span class="boldEntry">every</span> skill in <span class="boldEntry">all</span> functions', extra_tags='safe')
-            return HttpResponseRedirect(reverse('observeSession', args=[session_id]))
+            return HttpResponseRedirect(reverse('observeSession', args=[session_id, last_session]))
 
     def test_func(self):
         return self.request.user.user_role() == 'Occupational Therapist'
@@ -641,7 +719,7 @@ class ChooseSession(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
             messages.error(request, "You need to select one of the sessions before clicking the button")
             return HttpResponseRedirect(reverse('chooseSession', args=[client_id]))
         
-        return HttpResponseRedirect(reverse('viewSession', args=[session_id]))
+        return HttpResponseRedirect(reverse('viewSession', args=[session_id, client_id]))
 
     def test_func(self):
         return self.request.user.user_role() == 'Occupational Therapist' or self.request.user.user_role() == 'Hippotherapy Analyst'
@@ -663,6 +741,7 @@ class ViewSession(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
         """
         # Get the session id that was passed in the URL
         session_id = kwargs['session']
+        client_id = kwargs['client']
         session = get_object_or_404(Session.objects.filter(id=session_id))
         """
         Get the Scores for the chosen session
@@ -679,9 +758,10 @@ class ViewSession(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
             self.template_name, # view to render
             # Context - passed into the HTML template
             {
-                "scores": session_scores,
-                "tasks" : tasks,
-                "session": session,
+                'scores': session_scores,
+                'tasks' : tasks,
+                'session': session,
+                'client': client_id
             }
         )
         
@@ -910,6 +990,7 @@ class NewCourse(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
         
 
         client = kwargs['client']
+        last_session = request.POST['lastSession']
         
         if create_new_course:
             get_course_for_client(client, True)
@@ -918,6 +999,7 @@ class NewCourse(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
         return redirect(
             'recordSession',       # view to render
             client=client,   # parameter to pass to URL
+            session=last_session   # parameter to pass to URL
         )
 
     def test_func(self):

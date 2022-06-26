@@ -3,6 +3,18 @@
 {% block clientActive %}navigationActive{% endblock %}
 {% block content %}
 	<div class="confirmContainer">
+		<!-- Secondary breadcrumb navigation 
+		Allows user to go back to Home page, or go back to the list of clients -->
+		<nav class="breadcrumbNavigation">
+			<!-- Home Page -->
+			<a href="{% url 'home' %}" class="breadcrumbLink">Home</a>
+			<!-- List of clients -->
+			&raquo;
+			<a href="{% url 'getClients' %}" class="breadcrumbLink">Client List</a>
+			  <!-- This page -->
+			  &raquo;  Confirm Client Deletion
+		</nav>
+
 		<form method="POST">
 			{% csrf_token %}  <!- Required for Django as security -->
 			<fieldset>

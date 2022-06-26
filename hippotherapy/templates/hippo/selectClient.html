@@ -4,6 +4,22 @@
 
 {% block content %}
 	<div id="selectClientContainer">
+		<!-- Secondary breadcrumb navigation 
+		Allows user to go back to Home page -->
+		<nav class="breadcrumbNavigation">
+			<!-- Home Page -->
+			<a href="{% url 'home' %}" class="breadcrumbLink">Home</a>
+			  <!-- This page -->
+			  {% if target == "chooseSession" %}
+			  	&raquo;  Select Client (View Session)
+			  {% endif %}
+			  {% if target == "generateChart" %}
+			  	&raquo;  Select Client (to see chart)
+			  {% endif %}
+			  {% if target == "recordSession" %}
+			  	&raquo;  Select Client (Record Session)
+			  {% endif %}
+		</nav>
 		
 		<h1>Select a client</h1>
 		<!-- Render the items key from the context dictionary that we 

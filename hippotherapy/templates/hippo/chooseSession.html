@@ -5,6 +5,17 @@
 
 {% block content %}
 	<div id="selectSessionContainer">
+		<!-- Secondary breadcrumb navigation 
+		Allows user to go back to Home page, go back to the list of clients -->
+		<nav class="breadcrumbNavigation">
+			<!-- Home Page -->
+			<a href="{% url 'home' %}" class="breadcrumbLink">Home</a>
+			<!-- List of clients -->
+			&raquo;
+			<a href="{% url 'selectClient' 'chooseSession' %}" class="breadcrumbLink">Select Client</a>
+			  <!-- This page -->
+			  &raquo;  Select Session to view
+		</nav>
 		
 		<h1>Select a session for this client</h1>
 		<!-- Render the items key from the context dictionary that we 

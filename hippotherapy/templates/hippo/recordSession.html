@@ -5,6 +5,23 @@
 
 {% block content %}
 	<div id="recordSessionContainer">
+		<!-- Secondary breadcrumb navigation 
+		Allows user to go back to Home page, go back to the list of clients
+		or the last session for this client page -->
+		<nav class="breadcrumbNavigation">
+			<!-- Home Page -->
+			<a href="{% url 'home' %}" class="breadcrumbLink">Home</a>
+			<!-- List of clients -->
+			&raquo;
+			<a href="{% url 'selectClient' 'recordSession' %}" class="breadcrumbLink">Select Client</a>
+			<!-- Last session for this client -->
+			{% if last_session|add:"0" != 0 %}
+				&raquo;
+				<a href="{% url 'newCourse' client_id last_session %}" class="breadcrumbLink">Last Session</a>
+			{% endif %}
+			<!-- This page -->
+			  &raquo;  Record Session
+		</nav>
 		
 		<h1>Record Hippotherapy Session</h1>
 		<!-- Render the items key from the context dictionary that we 
@@ -32,12 +49,19 @@
 			
 			<input type="hidden" name="course" value="{{ course_number }}">
 			<input type="hidden" name="week_number" value="{{ session_week }}">
+			<!-- Hidden fields to post last session id
+			for use in the breadcrumb navigation -->
+			<input type="hidden" name="lastSessionId" value="{{ last_session }}">
 			
 			<div class="formGroup">
 				<select name="{{ form.horse.name }}" id="id_{{ form.horse.name }}" class="formInput" required>
 					<option value="" selected disabled>Choose your ride</option>
 						{% for nag in horsies %}
-							<option value="{{ nag.id }}">{{ nag.horse_name }}</option>
+							<option value="{{ nag.id }}"
+								{% if breadcrumb_horse and breadcrumb_horse|add:"0" == nag.id %}
+									selected
+								{% endif %}
+							>{{ nag.horse_name }}</option>
 						{% endfor %}
 				</select>
 
@@ -49,7 +73,21 @@
 				<div class="formGroup">
 					{% for task in unmounted %}
 						<div class="manyManyCheck">
-							<input type="checkbox" name="task_{{ task.id }}" id="id_{{ task.task_name }}{{ task.id }}" >
+							<input type="checkbox" name="task_{{ task.id }}" id="id_{{ task.task_name }}{{ task.id }}"
+								{% for breadcrumb_task in breadcrumb_tasks %}
+									{# Single digit task number#}
+									{% if breadcrumb_task|length == 6 %}
+										{% if breadcrumb_task|slice:"-1:"|add:"0" == task.id %}
+											checked
+										{% endif %}
+									{# 2 digit task number #}
+									{% else %}
+										{% if breadcrumb_task|slice:"-2:"|add:"0" == task.id %}
+											checked
+										{% endif %}
+									{% endif %}
+								{% endfor %}
+							 >
 							<label for="id_{{ task.task_name }}{{ task.id }}">{{ task.task_name }}</label>
 						</div>
 					{% endfor %}
@@ -59,7 +97,21 @@
 				<div class="formGroup">
 					{% for task in mounted %}
 						<div class="manyManyCheck">
-							<input type="checkbox" name="task_{{ task.id }}" id="id_{{ task.task_name }}{{ task.id }}" >
+							<input type="checkbox" name="task_{{ task.id }}" id="id_{{ task.task_name }}{{ task.id }}" 
+							{% for breadcrumb_task in breadcrumb_tasks %}
+									{# Single digit task number#}
+									{% if breadcrumb_task|length == 6 %}
+										{% if breadcrumb_task|slice:"-1:"|add:"0" == task.id %}
+											checked
+										{% endif %}
+									{# 2 digit task number #}
+									{% else %}
+										{% if breadcrumb_task|slice:"-2:"|add:"0" == task.id %}
+											checked
+										{% endif %}
+									{% endif %}
+								{% endfor %}
+							>
 							<label for="id_{{ task.task_name }}{{ task.id }}">{{ task.task_name }}</label>
 						</div>
 					{% endfor %}

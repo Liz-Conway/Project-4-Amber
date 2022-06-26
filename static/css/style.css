@@ -1744,6 +1744,14 @@ input:not([type="radio"]):required + label::after, select:required + label::afte
 }
 
 /*===== END  Radio Button  ===== */
+/*~~~~~~~  Breadcrumb navigation  ~~~~~~~ */
+.breadcrumbNavigation {
+  -ms-flex-item-align: start;
+      align-self: start;
+  margin-bottom: 1rem;
+}
+
+/*===== END  Breadcrumb navigation  ===== */
 /*~~~~~~~  Login  ~~~~~~~ */
 .login p {
   margin-bottom: 1rem;

@@ -732,6 +732,7 @@ For the Django application I created 3 different test suites.  One for my models
 
 
 ### View controller unit tests
+Unfortunately because I have added role-based authentication using custom User model on every view class, all tests in this unit are now failing because the test system cannot login in, and so all attempts to test any page or view is being redirected to the login page.
 
 <img src="documentation/test/django-view-unit-test1.png" width="100%" alt="Django View Unit test1">
 <img src="documentation/test/django-view-unit-test2.png" width="100%" alt="Django View Unit test2">
