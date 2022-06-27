@@ -5,7 +5,9 @@ from django import forms
 
 # https://www.codeunderscored.com/django-roles-permissions-and-groups/
 class HippotherapyUserCreationForm(UserCreationForm):
-      
+    """
+    Form that allows the Admin to create users on the Amber application.
+    """      
     class Meta:
         model = HippotherapyUser
         fields = ('username', 'first_name', 'last_name', 'role')
@@ -25,7 +27,11 @@ class HippotherapyUserCreationForm(UserCreationForm):
         }
 
 class HippotherapyUserChangeForm(UserChangeForm):
-    
+    """
+    Form that allows the users to 
+    change their own details on the Amber application.
+    """      
+
     class Meta:
         model = HippotherapyUser
         fields = ('first_name', 'last_name')

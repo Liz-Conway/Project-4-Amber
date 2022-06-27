@@ -26,7 +26,8 @@ class DiagnosisValidator(View):
                 # if diagnosis found -> return not a valid new diagnosis
                 return JsonResponse({"valid":False}, status = 200)
             else:
-                # if diagnosis not found, then administrator can create a new diagnosis.
+                # if diagnosis not found, then administrator can
+                # create a new diagnosis.
                 return JsonResponse({"valid":True}, status = 200)
     
         return JsonResponse({}, status = 400)

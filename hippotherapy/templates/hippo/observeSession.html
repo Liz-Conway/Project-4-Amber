@@ -30,7 +30,10 @@
 		
 		{% include 'includes/session-details.html' %}
 		
+		<!-- A reminder to the Occupational Therapist to be sure they have not missed scoring a skill -->
 		<p class="allRequired">Note: you must provide a score for each skill within every function</p>
+		<!-- No URL to submit the form to -->
+		<!-- I.E. This is a 'postback' -->
 		<form id="observationForm" method="POST">
 			<!-- Whenever we're posting information in Django,
 			we need to add the CSRF or cross-site request forgery token.
@@ -40,18 +43,31 @@
 			todo list app and not from another website. -->
 			{% csrf_token %}
 			
+			<!-- A hidden field which will be POSTed to the View
+			This field will be used if the Occupational Therapist uses the breadcrumb 
+			navigation to go back to the 'Last Session for this Client' page -->
 			<input type="hidden" name="last_session" value="{{ last_session }}">
 			
 			<div id="accordion" class="observationAccordion">
+				<!-- There are a number of functional areas which must be assessed by the
+				Occupational Therapist during a hippotherapy session -->
 				{% for function in functions %}
+			  	<!-- Show each function in its own accordion panel -->
 			  	<h3>{{ function.function_name }}<span class="tapHint">&emsp;(Tap on a hint see it in full)</span></h3>
 				  <div class="skill">
+				    <!-- Each function consists of a number of skills which the client
+				    will demonstrate during the hippotherapy session -->
 				    {% for skill in skills %}
 				    	{% if skill.function_id == function.id %}
 				    		<div class="skillDetails">
 					    		<div class="skillName">
 					    			{{ skill.skill_name }}
 					    		</div>
+					    		<!-- Each skill has a number of example hints to aid the Occupational Therapist
+					    		when they are entering the score for each skill.
+					    		The hints are spread evenly across the 5 scores for each skill.
+					    		Some skills have 2 hints, some 4, most have 5 and one has 6 hints
+					    		So there is not a one to one relationship between a skill's hints and the scores. -->
 					    		<div class="skillHints">
 					    			{% for hint in hints %}
 					    				{% if hint.skill_id == skill.id %}
@@ -59,8 +75,12 @@
 					    				{% endif %}
 					    			{% endfor %}
 					    		</div>
+					    		<!-- By selecting one of these radio buttons for each skill in every function
+					    		the Occupational Therapist scores the session for the client -->
 					    		<div class="skillScores">
 					    			{% for i in score_range %}
+						    					<!-- If the Occupational Therapist missed some skills and tries to submit the observations
+						    					the page redisplays and fills out the scores that the Occupational Therapist had awarded already -->
 						    				<input type="radio" id="{{function.function_name|slugify}}-{{skill.skill_name|slugify}}{{ i }}" name="score{{ skill.id }}" 
 						    					class="formRadioInput" value="{{ i }}" 
 						    					{% for score in previous %}
@@ -71,6 +91,7 @@
 													{% endif %}
 												{% endfor %}
 						    					>
+						    				<!-- This label is the score that will appear next to each radio button -->
 											<label for="{{function.function_name|slugify}}-{{skill.skill_name|slugify}}{{ i }}" class="formRadioLabel">
 												<span class="formRadioButton"></span>
 												<span class="formRadioLabelText skillScoreLabel">{{ i }}</span>
@@ -83,7 +104,17 @@
 				  </div>
 				{% endfor %}
 			</div>
+			<!-- A reminder to the Occupational Therapist to be sure they have not missed scoring a skill -->
 			<p class="allRequired">Have you scored all skills in every function?</p>
+
+
+			<!-- A set of buttons allowing the Occupational Therapist to save session observations
+			or cancel the operation altogether, or just reset the form to start over again -->
+			<!-- The Main button will be a distinct colour to highlight its primary importance.
+			The Cancel button is of secondary importance and will be white to denote this.
+			The Reset button is of tertiary importance and will be white with no border,
+			in other words it will not look like a button so that it does not attract
+			any attention away from the other more important buttons. -->
 			<div class="btnGroup largeRow">
 				<input type="submit" class="btn btnMain" value="Save Observations" />
 				<a href="{% url 'home' %}" class="btn btnGhost">Cancel</a>

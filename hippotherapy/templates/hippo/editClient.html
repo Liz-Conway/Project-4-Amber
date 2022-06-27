@@ -27,8 +27,8 @@
 		or even functions and classes. -->
 		<!-- {{ clients }} -->
 		
-		<!-- blank URL that we will submit the form to 
-			i.e. this is a "postback" -->
+		<!-- No URL to submit the form to -->
+		<!-- I.E. This is a 'postback' -->
 		<form id="editClientForm" method="POST">
 			<!-- Whenever we're posting information in Django,
 			we need to add the CSRF or cross-site request forgery token.
@@ -40,8 +40,11 @@
 			<!-- 'form' has been passed as a Django form in the context to this page -->
 			<!-- as_p renders the elements as paragraphs, as_table renders them as a table -->
 			
+			<!-- A hidden field to POST the client's ID back to the View -->
 			<input type="hidden" id="clientId" name="clientId" value="{{ client_id }}">
 			
+			<!-- The first name, last name input fields and gender radio group are placed in 
+			the same div to allow them to be manipulated as a group with CSS -->
 			<div class="nameGenderGroup">
 				<div class="names">
 					<div class="formGroup nameLabel">
@@ -61,6 +64,8 @@
 					<label class="formLabel" id="genderLabel">{{ form.gender.label }}:</label>
 				</div>
 			</div>
+			<!-- The Date of birth input field and hat size dropdown are grouped together so they
+			can be manipulated as a group -->
 			<div class="dobHat">
 				<div class="formGroup editDate nameLabel">
 					<p>Format: dd/mm/yyyy</p>
@@ -71,6 +76,7 @@
 				<div class="formGroup dobHatSize nameLabel">
 					<select name="{{ form.hat_size.name }}" id="id_{{ form.hat_size.name }}" class="formInput" required>
 						<option value="" disabled>Choose a hat size</option>
+						<!-- Loop through all the hat sizes and create a select option for each one -->
 						{% for size in hat_sizes %}
 							<option {% if size.size == hat %}
 										selected
@@ -84,8 +90,11 @@
 			</div>
 			<label class="formLabel manyManyLabel" id="diagnosisLabel">Diagnoses:</label>
 			<div class="formGroup manyMany" id="manyManyDiagnosis" aria-labelledby="diagnosisLabel">
+				<!-- Loop through all the diagnoses and create a checkbox for each one -->
 				{% for diag in diagnoses %}
 					<div class="manyManyCheck">
+						<!-- If the current diagnosis has been selected for this client
+						make sure this diagnosis checkbox is ticked -->
 						<input type="checkbox" name="diagnosis_{{ diag.id }}" id="id_{{ diag.diagnosis|slugify }}"
 							{% for condition in client_diagnoses %}
 								{% if condition.diagnosis == diag.id %}
@@ -99,6 +108,7 @@
 				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
 			</div>
 			
+			<!-- 2 free form text areas are grouped together in order to help apply CSS Stylings to them -->
 			<div class="notesGroup">
 				<div class="formGroup">
 					{{ form.degree_of_difficulty }}
@@ -113,6 +123,14 @@
 			</div>
 			
 			
+			<!-- A set of buttons allowing the Occupational Therapist to 
+			save the changes they made to this client's details.
+			or cancel the operation altogether, or just reset the form to start over again -->
+			<!-- The Main button will be a distinct colour to highlight its primary importance.
+			The Cancel button is of secondary importance and will be white to denote this.
+			The Reset button is of tertiary importance and will be white with no border,
+			in other words it will not look like a button so that it does not attract
+			any attention away from the other more important buttons. -->
 			<div class="btnGroup largeRow">
 				<input type="submit" class="btn btnMain" value="Save changes" />
 				<a href="{% url 'getClients' %}" class="btn btnGhost">Cancel</a>

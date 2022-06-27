@@ -27,8 +27,8 @@
 		or even functions and classes. -->
 		<h2>{{ client }}</h2>
 		
-		<!-- Blank URL that we will submit the form to -->
-		<!-- means that this is a POSTback -->
+		<!-- No URL to submit the form to -->
+		<!-- I.E. This is a 'postback' -->
 		<form id="selectSessionForm" method="POST">
 			<!-- Whenever we're posting information in Django,
 			we need to add the CSRF or cross-site request forgery token.
@@ -38,8 +38,11 @@
 			todo list app and not from another website. -->
 			{% csrf_token %}
 			
+			<!-- A hidden field to POST the client's ID back to the View -->
 			<input type="hidden" name="client" value="{{ client_id }}">
 			
+			<!-- A radio button for each of the client's sessions
+			The Occupational Therapist or Hippotherapy Analyst will choose one and only one -->
 			<div class="chooseSessionRadio">
 				{% for session in sessions %}
     				<div class="formRadioGroup">
@@ -52,12 +55,21 @@
 						</label>
     				</div>
 	   			{% empty %}
+	   				<!-- If this client does not have any sessions recorded yet
+	   				Show an appropriate message -->
 	   				<div class="ui-state-error">
 		   				{{ client }} has no Sessions recorded yet
 	   				</div>
 	   			{% endfor %}
    			</div>
 			
+			<!-- A set of buttons allowing the Occupational Therapist to choose this session
+			or cancel the operation altogether, or just reset the form to start over again -->
+			<!-- The Main button will be a distinct colour to highlight its primary importance.
+			The Cancel button is of secondary importance and will be white to denote this.
+			The Reset button is of tertiary importance and will be white with no border,
+			in other words it will not look like a button so that it does not attract
+			any attention away from the other more important buttons. -->
 			<div class="btnGroup largeRow">
 				<input type="submit" class="btn btnMain" value="Select this Session" />
 				<a href="{% url 'home' %}" class="btn btnGhost">Cancel</a>

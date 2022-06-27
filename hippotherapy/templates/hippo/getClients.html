@@ -17,6 +17,7 @@
 		<h1>List of Clients</h1>
 		<div class="clientList">
 			<div>
+				<!-- Table containing the list of clients -->
 				<table id="clientListTable" class="hippoTable">
 					<caption>
 						<p>A list of hippotherapy clients</p>
@@ -32,6 +33,7 @@
 					</thead>
 					<tbody>
 					{% for client in clients %}
+					<!-- Show identifying information for each client -->
 						<tr class="hippoRow">
 							<td class="hippoLabel" title="{{ client.diagnosis.first }}">
 								{{ client }}
@@ -42,15 +44,21 @@
 							<td class="hippoCentre">
 								{{ client.gender }}
 							</td>
+							<!-- This column will not be shown on smaller screen sizes
+							due to the limited screen real estate -->
 							<td class="extraColumn">
 								{{ client.diagnosis.first }}
 							</td>
 							<td class="hippoActions">
+								<!-- This "button" allows the Occupational Therapist to edit this client's details -->
 								<a class="ui-button ui-widget ui-corner-all ui-button-icon-only" href="{% url 'editClient' client=client.id %}"><span class="ui-icon ui-icon-pencil"></span></a>
+								<!-- This button allows the Occupational Therapist to delete this client from the Amber application
+								Choosing this option will also delete any course and session information recorded for this client. -->
 								<a class="ui-button ui-widget ui-corner-all ui-button-icon-only deleteAction" href="{% url 'deleteClient' pk=client.id %}"><span class="ui-icon ui-icon-trash"></span></a>
 							</td>
 						</tr>
 					{% empty %}
+						<!-- If there are no clients then show an appropriate message -->
 						<tr><td colspan="4">You have no clients yet!  Please add some clients <a href="{% url 'addClient' %}">here</a></td></tr>
 					{% endfor %}
 					</tbody>

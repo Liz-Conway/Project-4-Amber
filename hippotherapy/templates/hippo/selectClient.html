@@ -30,8 +30,8 @@
 		Meaning you can return strings, numbers, lists, other dictionaries, 
 		or even functions and classes. -->
 		
-		<!-- Blank URL that we will submit the form to 
-			i.e. this is a "postback" -->
+		<!-- No URL to submit the form to -->
+		<!-- I.E. This is a 'postback' -->
 		<form id="selectClientForm" method="POST">
 			<!-- Whenever we're posting information in Django,
 			we need to add the CSRF or cross-site request forgery token.
@@ -52,6 +52,7 @@
 
 			<div class="formGroup">
 				<div class="clientList">
+					<!-- Table of clients from which one can be picked -->
 					<table id="clientListTable" class="hippoTable">
 						<caption>
 							<p>A list of hippotherapy clients</p>
@@ -81,11 +82,13 @@
 									{{ client.diagnosis.first }}
 								</td>
 								<td class="hippoActions">
+									<!-- Use Javascript to select this client and show the next page -->
 									<button type="button" class="clientPick ui-button ui-widget ui-corner-all" onclick="selectClient({{ client.id }});">Pick</button>
 									
 								</td>
 							</tr>
 						{% empty %}
+							<!-- If the Occupational Therapist has no clients shpw an appropriate message -->
 							<tr><td colspan="4">You have no clients yet!  Please add some clients <a href="{% url 'addClient' %}">here</a></td></tr>
 						{% endfor %}
 						</tbody>
@@ -93,6 +96,8 @@
 				</div>
 			</div>
 			
+			<!-- A button allowing the Occupational Therapist or Hippotheray Analyst
+			 to cancel the current operation and return to the home page -->
 			<div class="btnGroup">
 				<a href="{% url 'home' %}" class="btn btnGhost">Cancel</a>
 			</div>

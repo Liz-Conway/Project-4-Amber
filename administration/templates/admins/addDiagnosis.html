@@ -25,8 +25,9 @@
 				<li>There are no diagnoses yet.  Please add one below :</li>
 			{% endfor %}
 		</ul>
-		<!-- 'addDiagnosis' URL that we will submit the form to 
-			i.e. this is a "postback" -->
+
+		<!-- No URL to submit the form to -->
+		<!-- I.E. This is a 'postback' -->
 		<form id="diagnosisForm">
 			<!-- Whenever we're posting information in Django,
 			we need to add the CSRF or cross-site request forgery token.
@@ -36,13 +37,22 @@
 			todo list app and not from another website. -->
 			{% csrf_token %}
 			<!-- 'form' has been passed as a Django form in the context to this page -->
-			<!-- as_p renders the elements as paragraphs, as_table renders them as a table -->
 			
+			<!-- A single text field where the Admin will enter the name of the new diagnosis -->
 			<div class="formGroup">
 				{{ form.diagnosis }}
 				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
 				<label for="id_{{ form.diagnosis.name }}" class="formLabel">{{ form.diagnosis.label }}:</label>
 			</div>
+
+
+			<!-- A set of buttons allowing the Occupational Therapist to save the new client's details
+			or cancel the operation altogether, or just reset the form to start over again -->
+			<!-- The Main button will be a distinct colour to highlight its primary importance.
+			The Cancel button is of secondary importance and will be white to denote this.
+			The Reset button is of tertiary importance and will be white with no border,
+			in other words it will not look like a button so that it does not attract
+			any attention away from the other more important buttons. -->
 			<div class="btnGroup largeRow">
 				<input type="submit" class="btn btnMain" value="Add Diagnosis" />
 				<a href="{% url 'home' %}" class="btn btnGhost">Cancel</a> 

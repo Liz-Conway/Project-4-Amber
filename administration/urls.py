@@ -1,4 +1,5 @@
-"""amber administration URL Configuration
+"""
+amber administration URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -22,5 +23,6 @@ from . import views, validators
 
 urlpatterns = [
     path('addDiagnosis/', views.DiagnosisList.as_view(), name='addDiagnosis'),
-    path('addDiagnosis/validateDiagnosis', validators.DiagnosisValidator.as_view(), name = "validateDiagnosis"),
+    path('addDiagnosis/validateDiagnosis', 
+         validators.DiagnosisValidator.as_view(), name = "validateDiagnosis"),
 ]

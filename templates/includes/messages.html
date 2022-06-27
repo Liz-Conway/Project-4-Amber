@@ -1,8 +1,10 @@
 {% if messages %}
 <div class="messages" id="messageBlock">
     {% for message in messages %}
+	    <!-- Show all the messages -->
 	    <div {% if message.tags %} class="message {{ message.tags }}"{% endif %}>
 	    	{% if 'safe' in message.tags %}
+	    		<!-- We can show html characters -->
 	    		{{ message|safe }}
 	    	{% else %}
 	    		{{ message }}

@@ -23,6 +23,7 @@
 	<meta name="msapplication-config" content="{% static 'icon/browserconfig.xml' %}">
 	<meta name="theme-color" content="#ffffff">
 	
+	<!-- For SEO -->
 	<meta name="description" content="Amber is a custom tool specifically designed for Occupational Therapists to measure clinical outcomes during Hippotherapy treatment sessions.">
 </head>
 <body>
@@ -35,6 +36,7 @@
 		</div>
 		<div id="navWrapper">
 			{% if user.is_authenticated %}
+			<!-- Icon depicting the user type -->
 			<div class="ui-button ui-widget ui-corner-all ui-button-icon-only" title="{{ user.user_role }}">
 			    {% if user.user_role == 'Administrator' %}
 			    	<span class="ui-icon ui-icon-wrench"></span>
@@ -50,6 +52,7 @@
 					<span class="invisible">Blank</span>
 				</button>
 			{% endif %}
+			<!-- Hamburger menu for mobile devices -->
 			<input type="checkbox" class="navigationCheckbox" id="naviToggle">
 	       	<label class="navigationButton" for="naviToggle">
 				<span class="navigationIcon">&nbsp;menu</span>
@@ -74,6 +77,7 @@
 					<li class="navigationItem">
 						<a href="{% url 'home' %}" class="navigationLink {% block homeActive %}{% endblock %}"> Home</a>
 					</li>
+					<!-- Role based access links -->
 					{% if user.user_role == 'Occupational Therapist' %}
 					<li class="navigationItem">
 						<select class="nonMobile {% block clientActive %}{% endblock %}" id="clientDropdown" onchange="location = this.value">
@@ -142,6 +146,7 @@
 
 	</header>
 	
+	<!-- Show any success or error messages -->
 	{% include 'includes/messages.html' %}
 	
 	<main>

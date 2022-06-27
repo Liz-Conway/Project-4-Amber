@@ -4,7 +4,9 @@
 				{{ session.course.client }}
 			</div>
 			<div class="sessionDate">
+				<!-- Date -->
 				<div class="sessionDateDate">{{ session.session_date | date:"D, jS M Y"}}</div>
+				<!-- Course number and Week number -->
 				<div class="sessionDateCourse">Course: <span class="boldEntry">{{ session.course }}</span> Week: <span class="boldEntry">{{ session.week_number }}</span></div>
 			</div>
 		</div>

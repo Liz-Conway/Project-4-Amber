@@ -27,6 +27,7 @@
 				Horse : <span class="boldEntry">{{ scores.first.session.horse }}</span>
 			</div>
 			<div>
+				<!-- Table showing the Tasks performed by the client during this session -->
 				<table class="hippoTable viewSessionTable">
 				<caption>
 					<p>Tasks performed by:</p>
@@ -37,6 +38,7 @@
 							<td class="hippoLabel">
 								{{ task.task_name }}
 							</td>
+							<!-- This columns shows if the task was performed on horseback -->
 							<td class="rightPad">
 								{% if task.mounted %}
 									Mounted
@@ -44,6 +46,7 @@
 							</td>
 						</tr>
 					{% empty %}
+						<!-- If no tasks were recorded for this session show an appropriate message -->
 						<tr><td>No tasks for this session</td></tr>
 					{% endfor %}
 				</table>
@@ -59,6 +62,7 @@
 		or even functions and classes. -->
 		<section>
 			<h2>Session Scores</h2>
+			<!-- Table displaying the scores for this session -->
 			<table class="hippoTable viewSessionTable">
 				<caption>
 					<p>Functional Skill scores for:</p>
@@ -72,6 +76,8 @@
 			    </thead>
     			<tbody>
 					{% for score in scores %}
+						<!-- When switching to the next function 
+						show an additional row with the name of the new function -->
 						{% ifchanged score.skill.function %}
 							<tr class="scoreFunction">
 								<td class="scoreFunctionLabel">
@@ -97,6 +103,7 @@
 						{% endifchanged %}
 							</tr>
 					{% empty %}
+						<!-- If this session has not been scored show an appropriate message -->
 						<tr><td>No scores for this session</td></tr>
 					{% endfor %}
 				</tbody>

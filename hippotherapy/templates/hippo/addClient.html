@@ -4,6 +4,7 @@
 {% block title %}Amber|Add Client{% endblock title %}
 
 {% block content %}
+	<!-- This is the front-end page that allows the Occupational Therapist to add more clients -->
 	<div id="addClientContainer">
 		<!-- Secondary breadcrumb navigation 
 		Allows user to go back to Home page -->
@@ -24,7 +25,7 @@
 		or even functions and classes. -->
 		<!-- {{ clients }} -->
 		
-		<!-- blank action URL that we will submit the form to 
+		<!-- No URL to submit the form to 
 			i.e. this is a "postback" -->
 		<form id="addClientForm" method="POST">
 			<!-- Whenever we're posting information in Django,
@@ -35,8 +36,11 @@
 			todo list app and not from another website. -->
 			{% csrf_token %}
 			<!-- 'form' has been passed as a Django form in the context to this page -->
-			<!-- as_p renders the elements as paragraphs, as_table renders them as a table -->
 			
+			<!-- Instead of using the Django form, this form's individual fields are displayed separately
+			This allows greater control over how the elements can be manipulated with CSS -->
+			<!-- The first name, last name and gender fields are grouped together
+			 to allow them to be manipulated as a group -->
 			<div class="nameGenderGroup">
 				<div class="names">
 					<div class="formGroup nameLabel">
@@ -56,6 +60,8 @@
 					<label class="formLabel" id="genderLabel">{{ form.gender.label }}:</label>
 				</div>
 			</div>
+			<!-- Putting the Date of birth field and the hat size in the same div
+			allows for them to be manipulated as a group -->
 			<div class="dobHat">
 				<div class="formGroup nameLabel">
 					<p>Format: dd/mm/yyyy</p>
@@ -64,8 +70,12 @@
 					<label for="id_{{ form.date_of_birth.name }}" class="formLabel">{{ form.date_of_birth.label }}:</label>
 				</div>
 				<div class="formGroup dobHatSize nameLabel">
+					<!-- For any activity with a horse a suitable hat is needed
+					Capturing the client's hat size is an important safety feature
+					for Hippotherapy treatment sessions --> 
 					<select name="{{ form.hat_size.name }}" id="id_{{ form.hat_size.name }}" class="formInput" required>
 						<option value="" selected disabled>Choose a hat size</option>
+						<!-- Loop through all the hat sizes and create a select option for each one -->
 						{% for size in hat_sizes %}
 							<option value="{{ size.id }}">{{ size.size }}</option>
 						{% endfor %}
@@ -74,8 +84,10 @@
 					<label for="id_{{ form.hat_size.name }}" class="formLabel">{{ form.hat_size.label }}:</label>
 				</div>
 			</div>
+			<!-- The Occupational Therapist can choose any number of diagnoses for a client -->
 			<label class="formLabel manyManyLabel" id="diagnosisLabel">Diagnoses:</label>
 			<div class="formGroup manyMany" id="manyManyDiagnosis" aria-labelledby="diagnosisLabel">
+				<!-- Loop through all the diagnoses and create a checkbox for each one -->
 				{% for diag in diagnoses %}
 					<div class="manyManyCheck">
 						<input type="checkbox" name="diagnosis_{{ diag.id }}" id="id_{{ diag.diagnosis|slugify }}" >
@@ -85,12 +97,18 @@
 				<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
 			</div>
 			
+			<!-- This group of fields is for free-form text entry
+			This information is entirely optional -->
 			<div class="notesGroup">
+				<!-- Degree of difficulty - the Occupational Therapist can insert notes on any 
+				challenges which may face this client -->
 				<div class="formGroup">
 					{{ form.degree_of_difficulty }}
 					<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
 					<label for="id_{{ form.degree_of_difficulty.name }}" class="formLabel">{{ form.degree_of_difficulty.label }}:</label>
 				</div>
+				<!-- Any additional information the Occupational Therapist may have
+				or may have observed about the client can go in this field -->
 				<div class="formGroup">
 					{{ form.additional_notes }}
 					<!-- https://theprogrammersfirst.wordpress.com/2020/07/22/add-class-to-django-label_tag-output/ -->
@@ -98,7 +116,13 @@
 				</div>
 			</div>
 			
-			
+			<!-- A set of buttons allowing the Occupational Therapist to save the new client's details
+			or cancel the operation altogether, or just reset the form to start over again -->
+			<!-- The Main button will be a distinct colour to highlight its primary importance.
+			The Cancel button is of secondary importance and will be white to denote this.
+			The Reset button is of tertiary importance and will be white with no border,
+			in other words it will not look like a button so that it does not attract
+			any attention away from the other more important buttons. -->
 			<div class="btnGroup largeRow">
 				<input type="submit" class="btn btnMain" value="Save new Client" />
 				<a href="{% url 'home' %}" class="btn btnGhost">Cancel</a>

@@ -23,8 +23,8 @@
 		{% include 'includes/session-details.html' %}
 		
 		<div id="newCourseDiv">
-			<!-- Blank URL that we will submit the form to -->
-			<!-- means that this is a POSTback -->
+			<!-- No URL to submit the form to -->
+			<!-- I.E. This is a 'postback' -->
 			<form id="newCourseForm" method="POST">
 				<!-- Whenever we're posting information in Django,
 				we need to add the CSRF or cross-site request forgery token.
@@ -39,12 +39,23 @@
 				<input type="hidden" name="lastSession" value="{{ session.id }}"> 
 				
 				<div class="newCourseCheckbox">
+					<!-- It is up to the Occupational Therapist to decide when to start a new course for a client.
+					Giving them this control will make for a more positive user experience. -->
 					<input type="checkbox" id="newCourse" name="newCourse">
 					<label for="newCourse">Start a new Course for this client?</label>
 				</div>			
 				
 				
-				<div class="btnGroup">
+			<!-- A set of buttons allowing the Occupational Therapist to 
+			start recording the session having decided whether to start a new course for
+			this client, or continue with the existing course,
+			or cancel the operation altogether, or just reset the form to start over again -->
+			<!-- The Main button will be a distinct colour to highlight its primary importance.
+			The Cancel button is of secondary importance and will be white to denote this.
+			The Reset button is of tertiary importance and will be white with no border,
+			in other words it will not look like a button so that it does not attract
+			any attention away from the other more important buttons. -->
+				<div class="btnGroup largeRow">
 					<input type="submit" class="btn btnMain" value="Record Session" />
 					<a href="{% url 'home' %}" class="btn btnGhost">Cancel</a>
 					<input type="reset" class="btn btnTextOnly" value="Reset Form" />

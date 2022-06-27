@@ -3,6 +3,9 @@ from django.contrib.auth.models import AbstractUser
 
 # https://learndjango.com/tutorials/django-custom-user-model
 class HippotherapyUser(AbstractUser):
+    """
+    Gives access priveleges to users of the Amber application.
+    """
     ADMIN = 1
     OT = 2
     ANALYST =3
@@ -12,7 +15,8 @@ class HippotherapyUser(AbstractUser):
         (OT, 'Occupational Therapist'),
         (ANALYST, 'Hippotherapy Analyst'),
     )
-    role = models.PositiveSmallIntegerField(choices=ROLE_CHOICES, blank=False, null=True)
+    role = models.PositiveSmallIntegerField(
+        choices=ROLE_CHOICES, blank=False, null=True)
     
     def user_role(self):
         return dict(HippotherapyUser.ROLE_CHOICES)[self.role]

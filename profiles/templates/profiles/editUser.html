@@ -56,7 +56,14 @@
 			{% endfor %}
 	
 	
-			<div class="btnGroup">
+			<!-- A set of buttons allowing the Occupational Therapist to save the new client's details
+			or cancel the operation altogether, or just reset the form to start over again -->
+			<!-- The Main button will be a distinct colour to highlight its primary importance.
+			The Cancel button is of secondary importance and will be white to denote this.
+			The Reset button is of tertiary importance and will be white with no border,
+			in other words it will not look like a button so that it does not attract
+			any attention away from the other more important buttons. -->
+			<div class="btnGroup largeRow">
 			<input type="submit" class="btn btnMain" value="Save My Account" /> <a
 				href="{% url 'home' %}" class="btn btnGhost">Cancel</a> <input
 				type="reset" class="btn btnTextOnly" value="Reset Form" />
