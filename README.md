@@ -121,7 +121,7 @@ Hippotherapy can also shorten recovery time and ensure correct development of th
 ## Screen Mockup
 <a id="mockup"></a>
 
-![Mockup of Amber application](/home/fintan/code/projects/amber/documentation/mockup/mockup.png)
+![Mockup of Amber application](documentation/mockup/mockup.png)
 
 ## User Stories
 
@@ -159,16 +159,16 @@ All user roles can access the Login, Logout and My Account features.
 
 This is where the user arrives on first entering the site.  The only option a user has is to login to the amber system.  This page sets the theme for the application, with a Logo which when clicked will bring the user back to the home page.
 
-![Landing page](/home/fintan/code/projects/amber/documentation/pages/home.png)
-![Landing page](/home/fintan/code/projects/amber/documentation/pages/mobile/home.png)
+![Landing page](documentation/pages/home.png)
+![Landing page](documentation/pages/mobile/home.png)
 
 #### Login
 
 Access to the Amber application is achieved by using the Login feature.
 
 Supporting page - **Login page**
-![Login](/home/fintan/code/projects/amber/documentation/pages/login.png)
-![Login](/home/fintan/code/projects/amber/documentation/pages/mobile/login.png)
+![Login](documentation/pages/login.png)
+![Login](documentation/pages/mobile/login.png)
 
 
 #### Navigation
@@ -188,8 +188,8 @@ On any page if the user clicks the logo they will be redirected to the Amber hom
 All logged in users, regardless of their role, can log out of the Amber application.  The logout feature asks the user to confirm that they want to logout.  This puts control in the hands of the user as they have more options, and will help prevent 'accidental' logouts.  This additional control will improve the user experience for logged in users.
 
 Supporting page - **Logout page**
-![Logout](/home/fintan/code/projects/amber/documentation/pages/logout.png)
-![Logout](/home/fintan/code/projects/amber/documentation/pages/mobile/logout.png)
+![Logout](documentation/pages/logout.png)
+![Logout](documentation/pages/mobile/logout.png)
 
 #### User Roles
 
@@ -207,8 +207,8 @@ Depending on the role assigned to the user, when they log in they will see a sim
 When logged in with an Admin role the user has access to the 'Add Diagnosis' and 'Add User' features.
 
 Supporting page - **Admin home page**
-![Admin home page](/home/fintan/code/projects/amber/documentation/pages/admin-home.png)
-![Admin mobile menu page](/home/fintan/code/projects/amber/documentation/pages/mobile/admin-menu.png)
+![Admin home page](documentation/pages/admin-home.png)
+![Admin mobile menu page](documentation/pages/mobile/admin-menu.png)
 
 
 **1  Add Diagnosis**
@@ -217,25 +217,25 @@ This feature allows an Admin user to create new diagnoses for use in the Amber a
 By giving the Admin the option to input their own diagnoses, the Amber application gives the Admin and the Occupational Therapist a sense of control over the application.  Occupational Therapist users will have appropriate and meaningful diagnoses to choose from, rather than being restricted by someone elses list of diagnoses some of which may be completely inappropriate.  Having this sense of control will improve the user experience for both Admin users and Occupational Therapist users.
 
 Supporting page - *Add Diagnosis page*
-![Add Diagnosis page](/home/fintan/code/projects/amber/documentation/pages/add-diagnosis.png)
-![Add Diagnosis page](/home/fintan/code/projects/amber/documentation/pages/mobile/add-diagnosis.png)
+![Add Diagnosis page](documentation/pages/add-diagnosis.png)
+![Add Diagnosis page](documentation/pages/mobile/add-diagnosis.png)
 
 **2  Add User**
 
 The only way for a new user to be able to use the Amber application is for an Admin user to add them as a new user.  The Admin will have to select which access role to give to each new user.  This will give the Admin user a feeling of control, as not just anyone can get access to the application.  The Admin will know who can access the Amber application and what access they will have.
 
 Supporting page - *Add User page*
-![Add User page](/home/fintan/code/projects/amber/documentation/pages/add-user.png)
-![Add User page](/home/fintan/code/projects/amber/documentation/pages/mobile/add-user.png)
+![Add User page](documentation/pages/add-user.png)
+![Add User page](documentation/pages/mobile/add-user.png)
 
 #### SuperUser Functionality
 
 The superuser role grants extra privileges that a user with Admin role does not have.  In the Amber application the superuser has an additional feature available.  This is the 'Maintain Configuration' feature.  On clicking this navigation link the superuser is redirected to the Django Admin panel.  Within this Admin panel the superuser can add, modify and delete objects of every model within the Amber application, including users.
 
 Supporting page - *Superuser home page*
-![superuser home page](/home/fintan/code/projects/amber/documentation/pages/superuser-home.png)
+![superuser home page](documentation/pages/superuser-home.png)
 
-![Django Admin Panel](/home/fintan/code/projects/amber/documentation/pages/django-admin-panel.png)
+![Django Admin Panel](documentation/pages/django-admin-panel.png)
 
 
 #### Hippotherapy Analyst Functionality
@@ -243,8 +243,8 @@ Supporting page - *Superuser home page*
 The Hippotherapy Analyst is only concerned with viewing information that the Amber application has captured.  The two features the Hippotherapy Analyst will use are 'View Session' and 'Generate Charts'.
 
 Supporting page - **Hippotherapy Analyst home page**
-![Hippotherapy analyst home page](/home/fintan/code/projects/amber/documentation/pages/analyst-home.png)
-![Hippotherapy analyst mobile menu](/home/fintan/code/projects/amber/documentation/pages/mobile/analyst-menu.png)
+![Hippotherapy analyst home page](documentation/pages/analyst-home.png)
+![Hippotherapy analyst mobile menu](documentation/pages/mobile/analyst-menu.png)
 
 
 **1 View Session**
@@ -261,8 +261,8 @@ On smaller devices the client list only shows name, date of birth and gender.  T
 The value of this feature comes from the fact that you need to view a session for a particular client.  This page gives the user the option to select a client whose session they wish to view.
 
 Supporting page - *Select client page*
-![Select client page](/home/fintan/code/projects/amber/documentation/pages/select-client.png)
-![Select client page](/home/fintan/code/projects/amber/documentation/pages/mobile/select-client.png)
+![Select client page](documentation/pages/select-client.png)
+![Select client page](documentation/pages/mobile/select-client.png)
 
 **1b Select Session**
 Once the client has been chosen a list of sessions for that client is shown.  As well as the session date, the session number is shown.  
@@ -285,8 +285,8 @@ The session number shown on the select session page consists of a Course number 
 The value of this feature comes from the fact that you need to select a session in order to view it.  This page gives the user the option to select which exact session they wish to see details for.
 
 Supporting page - *Select Session page*
-![Select Session page](/home/fintan/code/projects/amber/documentation/pages/select-session.png)
-![Select Session page](/home/fintan/code/projects/amber/documentation/pages/mobile/select-session.png)
+![Select Session page](documentation/pages/select-session.png)
+![Select Session page](documentation/pages/mobile/select-session.png)
 
 **1c View Session**
 Once the user clicks the "Select this session" button the Amber application shows a page detailing:
@@ -313,8 +313,8 @@ The functions and their related skills are :
 The benefit of this feature is that an Occupational Therapist or Hippotherapy Analyst can view historical information about previous treatment sessions for their clients.  This is key information which can be used to measure improvements and make plans for further treatment sessions.
 
 Supporting page - *View Session page*
-![View Session page](/home/fintan/code/projects/amber/documentation/pages/view-session.png)
-![View Session page](/home/fintan/code/projects/amber/documentation/pages/mobile/view-session.png)
+![View Session page](documentation/pages/view-session.png)
+![View Session page](documentation/pages/mobile/view-session.png)
 
 **2  Generate chart**
 
@@ -330,8 +330,8 @@ On smaller devices the client list only shows name, date of birth and gender.  T
 The value of this feature comes from the fact that you need to view a session for a particular client.  This page gives the user the option to select a client whose session they wish to view.
 
 Supporting page - *Select client page*
-![Select client page](/home/fintan/code/projects/amber/documentation/pages/select-client.png)
-![Select client page](/home/fintan/code/projects/amber/documentation/pages/mobile/select-client.png)
+![Select client page](documentation/pages/select-client.png)
+![Select client page](documentation/pages/mobile/select-client.png)
 
 
 **2b Select Course**
@@ -345,8 +345,8 @@ The user picks one of the courses by clicking/tapping on the radio button on the
 The benefit of this feature is that it allows the user to select the course that they want to see the graph for.
 
 Supporting page - *Select Course page*
-![Select Course page](/home/fintan/code/projects/amber/documentation/pages/select-course.png)
-![Select Course page](/home/fintan/code/projects/amber/documentation/pages/mobile/select-course.png)
+![Select Course page](documentation/pages/select-course.png)
+![Select Course page](documentation/pages/mobile/select-course.png)
 
 
 **2c Generate Chart**
@@ -360,8 +360,8 @@ The feature gives the most benefit to the Occupational Therapist or Hippotherapy
 There is also a small icon at the top right of the graph which can be used to download CSV formatted data of the graph, or to download an image of the graph.  This is helpful to the Occupational Therapist or Hippotherapy Analyst as they can take this information outside of the Amber application and use it in reports, etc.
 
 Supporting page - *Generate Chart page*
-![Generate chart page](/home/fintan/code/projects/amber/documentation/pages/generate-chart.png)
-![Generate chart page](/home/fintan/code/projects/amber/documentation/pages/mobile/generate-chart.png)
+![Generate chart page](documentation/pages/generate-chart.png)
+![Generate chart page](documentation/pages/mobile/generate-chart.png)
 
 
 #### Occupational Therapist Functionality
@@ -372,10 +372,12 @@ Like the Hippotherapy Analyst the Occupational Therapist can use the 'View Sessi
 * Record Session
 
 Supporting page - **Occupational Therapist home page**
-![Occupational Therapist Home Page](/home/fintan/code/projects/amber/documentation/pages/ot-home.png)
+![Occupational Therapist Home Page](documentation/pages/ot-home.png)
 
 In order to access the 'Client features' the Occupational Therapist clicks on the 'Client ...' dropdown.  The Occupational Therapist can now choose from either 'Add Client' or 'Edit Client'.
-![Client Dropdown list](/home/fintan/code/projects/amber/documentation/pages/client-dropdown.png)
+
+
+![Client Dropdown list](documentation/pages/client-dropdown.png)
 
 
 **1  Add Client**
@@ -391,8 +393,8 @@ The 'Add Client' page appears and the Occupational Therapist enters details for 
 After adding the new client, the 'Add Client' page reappears with a message confirming that the new client has been added.  This allows the Occupational Therapist to add another new client straight away if needed.
 
 Supporting page - *Add Client page*
-![Add Client page](/home/fintan/code/projects/amber/documentation/pages/add-client.png)
-![Add Client page](/home/fintan/code/projects/amber/documentation/pages/mobile/add-client.png)
+![Add Client page](documentation/pages/add-client.png)
+![Add Client page](documentation/pages/mobile/add-client.png)
 
 **2  Edit Client**
 
@@ -414,8 +416,8 @@ The value of this feature comes from the fact that the Occupational Therapist ne
 **2b Select Client to edit**
 
 Supporting page - *Client List page*
-![Client List page](/home/fintan/code/projects/amber/documentation/pages/client-list.png)
-![Client List page](/home/fintan/code/projects/amber/documentation/pages/mobile/client-list.png)
+![Client List page](documentation/pages/client-list.png)
+![Client List page](documentation/pages/mobile/client-list.png)
 
 **2b Edit Client**
 
@@ -424,10 +426,13 @@ When the Occupational Therapist clicks the orange "edit" action button, the 'Edi
 The benefit of this feature is that it allows modifications to a client's details to be saved to the application.  Now the Occupational Therapist has the best information available so they can make the best decisions for the client based on the most recent data.
 
 Supporting page - *Edit Client page*
-![Edit Client](/home/fintan/code/projects/amber/documentation/pages/edit-client.png)
-![Edit Client](/home/fintan/code/projects/amber/documentation/pages/mobile/edit-client.png)
+![Edit Client](documentation/pages/edit-client.png)
+![Edit Client](documentation/pages/mobile/edit-client.png)
+
 
 **3 Delete Client**
+
+
 ![Delete Client User Flow chart](documentation/ux/user-flow/delete-client.png)
 
 When the Occupational Therapist no longer needs a client's details on the Amber application they can delete the client from the application.
@@ -446,8 +451,8 @@ Once the Occupational Therapist chooses the "delete" button on the row of the cl
 
 
 Supporting page - *Confirm deletion of client page*
-![Confirm deletion of client page](/home/fintan/code/projects/amber/documentation/pages/confirm-delete.png)
-![Confirm deletion of client page](/home/fintan/code/projects/amber/documentation/pages/mobile/confirm-delete.png)
+![Confirm deletion of client page](documentation/pages/confirm-delete.png)
+![Confirm deletion of client page](documentation/pages/mobile/confirm-delete.png)
 
 
 
@@ -465,8 +470,8 @@ On smaller devices the client list only shows name, date of birth and gender.  T
 The value of this feature comes from the fact that you need to record the session for a particular client.  This page gives the user the option to select a client whose session they wish to record.
 
 Supporting page - *Select client page*
-![Select client page](/home/fintan/code/projects/amber/documentation/pages/select-client.png)
-![Select client page](/home/fintan/code/projects/amber/documentation/pages/mobile/select-client.png)
+![Select client page](documentation/pages/select-client.png)
+![Select client page](documentation/pages/mobile/select-client.png)
 
 **4b Start a new course for this client**
 
@@ -486,8 +491,8 @@ If the Occupational Therapist chooses not to create a new course, the Amber appl
 The benefit of this feature is that leaving the choice of when to start a new course for a client to the Occupational Therapist gives them a feeling of control over the Amber application.  This feeling of control makes for a more positive user experience for the Occupational Therapist.
 
 Supporting page - *Last Session for this client*
-![Last session for this client page](/home/fintan/code/projects/amber/documentation/pages/new-course.png)
-![Last session for this client page](/home/fintan/code/projects/amber/documentation/pages/mobile/new-course.png)
+![Last session for this client page](documentation/pages/new-course.png)
+![Last session for this client page](documentation/pages/mobile/new-course.png)
 
 **4c Record the session**
 
@@ -500,8 +505,8 @@ The value of this feature is that the Occupational Therapist captures the activi
 
 
 Supporting page - *Record Session page*
-![Record session page](/home/fintan/code/projects/amber/documentation/pages/record-session.png)
-![Record session page](/home/fintan/code/projects/amber/documentation/pages/mobile/record-session.png)
+![Record session page](documentation/pages/record-session.png)
+![Record session page](documentation/pages/mobile/record-session.png)
 
 **4c Score the clients activities**
 
@@ -522,8 +527,8 @@ After clicking 'Save Session' the 'Observe Session' page is displayed.  The Occu
 This feature is at the heart of the Amber application.  This feature is needed to record how well a client is performing during the hippotherapy treatment session.  Using the information captured by this feature the Occupational Therapist can guage how well a client is responding to the hippotherapy treatment.  The Occupational Therapist can use this information to develop further plans for future hippotherapy treatment sessions for this client.
 
 Supporting page - *Observe Session page*
-![Observe Session page](/home/fintan/code/projects/amber/documentation/pages/observe-session.png)
-![Observe Session page](/home/fintan/code/projects/amber/documentation/pages/mobile/observe-session.png)
+![Observe Session page](documentation/pages/observe-session.png)
+![Observe Session page](documentation/pages/mobile/observe-session.png)
 
 
 #### Messages
@@ -535,21 +540,24 @@ Whenever invalid information is submitted on a form the user is briefed via erro
 Once the user is logged in the Amber application keeps them up to date with where they are in the application by highlighting the appropriate navigation link for the feature of the application that the user is currently employing.
 
 Also when a user logs in an appropriate log is shown next to the logo which indicates what role the logged in user has.
+
+
 **Admin**
-![Admin icon](/home/fintan/code/projects/amber/documentation/icons/admin-icon.png)
+![Admin icon](documentation/icons/admin-icon.png)
 **Occupational Therapist**
-![Occupational Therapist icon](/home/fintan/code/projects/amber/documentation/icons/ot-icon.png)
+![Occupational Therapist icon](documentation/icons/ot-icon.png)
 **Hippotherapy Analyst**
-![Hippotherapy Analyst icon](/home/fintan/code/projects/amber/documentation/icons/ha-icon.png)
+![Hippotherapy Analyst icon](documentation/icons/ha-icon.png)
+
 
 #### Field Validation
 All required fields are flagged with a red asterisk, to inform the user that an entry is required in that field.  If the user tries to submit a form without filling in a required field the application will highlight the field and let the user know that they need to fill in the field before submitting the form.
 
 Dates must be entered in the correct format.  All date fields have a hint showing the user what the correct format is.  The Amber application will inform the user if the date is entered in an incorrect format.  To help ensure the date is in the right format the Amber application employs a datepicker which will automatically enter the chosen date in the appropriate format.
-![Date Picker](/home/fintan/code/projects/amber/documentation/pages/date-picker.png)
+![Date Picker](documentation/pages/date-picker.png)
 
 The 'Add Diagnosis' feature uses AJAX send the entered diagnosis to the database.  If the diagnosis already exists the Javascript code creates an error message informing the Admin that duplicate diagnoses cannot be entered in the Amber application.
-![Diagnosis validation](/home/fintan/code/projects/amber/documentation/validation/diagnosis-validation.png)
+![Diagnosis validation](documentation/validation/diagnosis-validation.png)
 
 #### Cancel
 The user can cancel any operation in the middle of it.  No information from the current page is saved and the user is returned to the home page appropriate for their User role. 
@@ -675,84 +683,92 @@ In order to keep with a Minimum Viable Product some elements shown in this wiref
 #### Lighthouse Report
 
 **Desktop**
-![Lighthouse Report for Amber application](/home/fintan/code/projects/amber/documentation/accessibility/lighthouse-report.png)
+
+
+![Lighthouse Report for Amber application](documentation/accessibility/lighthouse-report.png)
 
 **Mobile**
-![Lighthouse report for mobile](/home/fintan/code/projects/amber/documentation/accessibility/lighthouse-report-mobile.png)
+
+
+![Lighthouse report for mobile](documentation/accessibility/lighthouse-report-mobile.png)
 
 #### WAVE Accessibility tool
 The Amber application was checked to ensure accessibility using the [WAVE](https://wave.webaim.org/) web accessibility evaluation tool. 
 
-![WAVE tool report](/home/fintan/code/projects/amber/documentation/accessibility/wave-tool.png)
+![WAVE tool report](documentation/accessibility/wave-tool.png)
 
 #### Contrast
 Using the [Grayscale Browsing extension](https://addons.mozilla.org/en-US/firefox/addon/grayscale-browsing/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search) for Firefox, I viewed each page as "black & white" to ensure that I could see all details even if the colour was gone.
 
 
 **Home**
-![Home GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/home.png)
+![Home GreyScale](documentation/pages/greyscale/home.png)
 
 
 **Login**
-![Login GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/login.png)
+![Login GreyScale](documentation/pages/greyscale/login.png)
 
 **Logout**
-![Logout GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/logout.png)
+![Logout GreyScale](documentation/pages/greyscale/logout.png)
 
 **Admin Home Page**
-![Admin home page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/admin-home.png)
+
+
+![Admin home page GreyScale](documentation/pages/greyscale/admin-home.png)
 
 **Occupational Therapist Home Page**
-![Occupational Therapist Home Page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/ot-home.png)
+![Occupational Therapist Home Page GreyScale](documentation/pages/greyscale/ot-home.png)
 
 **Hippotherapy Analyst Home Page**
-![Hippotherapy analyst home page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/analyst-home.png)
+![Hippotherapy analyst home page GreyScale](documentation/pages/greyscale/analyst-home.png)
 
 **Add Diagnosis page**
-![Add Diagnosis page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/add-diagnosis.png)
+
+
+![Add Diagnosis page GreyScale](documentation/pages/greyscale/add-diagnosis.png)
 
 **Add User page**
-![Add User page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/add-user.png)
+![Add User page GreyScale](documentation/pages/greyscale/add-user.png)
 
 **Add Client page**
-![Add Client page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/add-client.png)
+![Add Client page GreyScale](documentation/pages/greyscale/add-client.png)
 
 **Client List page**
-![Client List page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/client-list.png)
+![Client List page GreyScale](documentation/pages/greyscale/client-list.png)
 
 **Edit Client page**
-![Edit Client GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/edit-client.png)
+![Edit Client GreyScale](documentation/pages/greyscale/edit-client.png)
 
 **Confirm deletion of client page**
-![Confirm deletion of client page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/confirm-delete.png)
+![Confirm deletion of client page GreyScale](documentation/pages/greyscale/confirm-delete.png)
 
 
 **Select client page**
-![Select client page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/select-client.png)
+![Select client page GreyScale](documentation/pages/greyscale/select-client.png)
 
 
 **Last Session for this client**
-![Last session for this client page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/new-course.png)
+![Last session for this client page GreyScale](documentation/pages/greyscale/new-course.png)
 
 
 **Record Session page**
-![Record session page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/record-session.png)
+![Record session page GreyScale](documentation/pages/greyscale/record-session.png)
 
 **Observe Session page**
-![Observe Session page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/observe-session.png)
+![Observe Session page GreyScale](documentation/pages/greyscale/observe-session.png)
 
 **Select Session page**
-![Select Session page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/select-session.png)
+![Select Session page GreyScale](documentation/pages/greyscale/select-session.png)
 
 **View Session page**
-![View Session page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/view-session.png)
+![View Session page GreyScale](documentation/pages/greyscale/view-session.png)
 
 
 **Select Course page**
-![Select Course page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/select-course.png)
+![Select Course page GreyScale](documentation/pages/greyscale/select-course.png)
 
 **Generate Chart page**
-![Generate chart page GreyScale](/home/fintan/code/projects/amber/documentation/pages/greyscale/generate-chart.png)
+![Generate chart page GreyScale](documentation/pages/greyscale/generate-chart.png)
 
 
 
@@ -843,6 +859,8 @@ At the end of the project, all User Stories will be in the **Done** list and the
     - STYLE: Changes to CSS
     - REFACTOR: Where changes are made that do not change the functionality.
     - DEPLOY: Changes made for deploying the application
+    - TEST: When adding tests
+    - ARIA: Changes made to improve accessibility
     
 - Git messages will be no longer than 50 characters long.
 
@@ -910,84 +928,89 @@ In order to ensure that the code for the Amber application complies with the lat
 #### Python/Django
 Source code was validated with [PEP8 Validator](http://pep8online.com/).
 
+
+![PEP8 Validation](documentation/validation/PEP8/Python.png)
+
 #### CSS
 CSS was validated using [W3C CSS validator](https://jigsaw.w3.org/css-validator/validator)
-![CSS Validation](/home/fintan/code/projects/amber/documentation/validation/CSS/css-validation.png)
+
+
+![CSS Validation](documentation/validation/CSS/css-validation.png)
 
 
 #### HTML
 HTML was validated on all pages using [W3C HTML validator](https://validator.w3.org/)
 ##### Login
-![Login validation](/home/fintan/code/projects/amber/documentation/validation/HTML/login.png)
+![Login validation](documentation/validation/HTML/login.png)
 
 ##### Logout
-![Logout validation](/home/fintan/code/projects/amber/documentation/validation/HTML/logout.png)
+![Logout validation](documentation/validation/HTML/logout.png)
 
 ##### My Account
-![My Account validation](/home/fintan/code/projects/amber/documentation/validation/HTML/my-account.png)
+![My Account validation](documentation/validation/HTML/my-account.png)
 
 ##### Admin Home page
-![Home page validation](/home/fintan/code/projects/amber/documentation/validation/HTML/admin-home.png)
+![Home page validation](documentation/validation/HTML/admin-home.png)
 
 ##### Occupational Therapist Home page
-![OT Home page validation](/home/fintan/code/projects/amber/documentation/validation/HTML/ot-home.png)
+![OT Home page validation](documentation/validation/HTML/ot-home.png)
 
 ##### Hippotherapy Analyst Home page
-![HA home page validation](/home/fintan/code/projects/amber/documentation/validation/HTML/ha-home.png)
+![HA home page validation](documentation/validation/HTML/ha-home.png)
 
 ##### Add Diagnosis
-![Add Diagnosis validation](/home/fintan/code/projects/amber/documentation/validation/HTML/add-diagnosis.png)
+![Add Diagnosis validation](documentation/validation/HTML/add-diagnosis.png)
 
 ##### Add User
 This error is caused by code injected by the Django framework
-![Add User validation](/home/fintan/code/projects/amber/documentation/validation/HTML/add-user.png)
+![Add User validation](documentation/validation/HTML/add-user.png)
 
 ##### Add Client
-![Add Client validation](/home/fintan/code/projects/amber/documentation/validation/HTML/add-client.png)
+![Add Client validation](documentation/validation/HTML/add-client.png)
 
 ##### Client List
-![Client List validation](/home/fintan/code/projects/amber/documentation/validation/HTML/client-list.png)
+![Client List validation](documentation/validation/HTML/client-list.png)
 
 ##### Edit Client
-![Edit Client validation](/home/fintan/code/projects/amber/documentation/validation/HTML/edit-client.png)
+![Edit Client validation](documentation/validation/HTML/edit-client.png)
 
 ##### Confirm Delete Client
-![Confirm Delete validation](/home/fintan/code/projects/amber/documentation/validation/HTML/confirm-delete.png)
+![Confirm Delete validation](documentation/validation/HTML/confirm-delete.png)
 
 ##### Select Client
-![Select Client validation](/home/fintan/code/projects/amber/documentation/validation/HTML/select-client.png)
+![Select Client validation](documentation/validation/HTML/select-client.png)
 
 ##### New Course
-![New Course validation](/home/fintan/code/projects/amber/documentation/validation/HTML/new-course.png)
+![New Course validation](documentation/validation/HTML/new-course.png)
 
 ##### Record Session
-![Record Session validation](/home/fintan/code/projects/amber/documentation/validation/HTML/record-session.png)
+![Record Session validation](documentation/validation/HTML/record-session.png)
 
 ##### Observe Session
-![Observe Session validation](/home/fintan/code/projects/amber/documentation/validation/HTML/observe-session.png)
+![Observe Session validation](documentation/validation/HTML/observe-session.png)
 
 ##### Select Session
-![Select Session validation](/home/fintan/code/projects/amber/documentation/validation/HTML/select-session.png)
+![Select Session validation](documentation/validation/HTML/select-session.png)
 
 ##### View Session
-![View Session validation](/home/fintan/code/projects/amber/documentation/validation/HTML/view-session.png)
+![View Session validation](documentation/validation/HTML/view-session.png)
 
 ##### Choose Course
-![Choose Course validation](/home/fintan/code/projects/amber/documentation/validation/HTML/choose-course.png)
+![Choose Course validation](documentation/validation/HTML/choose-course.png)
 
 ##### Generate Charts
-![Generate charts validation](/home/fintan/code/projects/amber/documentation/validation/HTML/generate_charts.png)
+![Generate charts validation](documentation/validation/HTML/generate_charts.png)
 
 
 #### Javascript
 Javascript was validated using [JSHint](https://jshint.com/)
 ##### script.js
-![Javascript validation](/home/fintan/code/projects/amber/documentation/validation/Javascript/jshint-script.png)
+![Javascript validation](documentation/validation/Javascript/jshint-script.png)
 
 The two unused variables are called from the HTML pages, but not from within this javascript code, hence the error.
 
 ##### chart.js
-![Chart validation](/home/fintan/code/projects/amber/documentation/validation/Javascript/jshint-chart.png)
+![Chart validation](documentation/validation/Javascript/jshint-chart.png)
 
 The undefined variable is the ApexChart library that is used to create the chart for the Amber application.
 
