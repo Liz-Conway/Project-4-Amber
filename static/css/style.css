@@ -2002,6 +2002,10 @@ h1.confirmHeader {
   }
 }
 
+#ui-datepicker-div {
+  z-index: 1600 !important;
+}
+
 /*===== END  Add Client Page  ===== */
 /*~~~~~~~  Choose Course Page  ~~~~~~~ */
 .chooseCourseRadio {
